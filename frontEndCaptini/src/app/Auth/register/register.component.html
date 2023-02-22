@@ -1,0 +1,93 @@
+<div class="d-flex  sign-in-body">
+    <div class="form-signin">
+        <div class="mb-2 text-center">
+            <img src="../../../assets/image/logo.svg" style="width: 250px;">>
+        </div>
+        <div class="pb-1">
+            <label>{{ 'register.get-board' | translate }}</label>
+        </div>
+        <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="showMsg">
+            {{msgContent}}
+            <button type="button" class=" btn close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <form autocomplete="off" [formGroup]="registerForm" (ngSubmit)="register()">
+            <div class="mb-2">
+                <label class="form-label">{{'user.username' | translate}}</label>
+                <input [class.is-invalid]="Rf['username'] && Rf['username'].invalid && Rf['username'].touched " type="text" class="form-control" placeholder="{{'user.username' | translate}}" formControlName="username" required>
+                <span *ngIf="Rf['username'] && Rf['username'].invalid && Rf['username'].touched " class="text-danger ">{{'validation.required'|translate}}</span>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">{{'user.email' | translate}}</label>
+                <input [class.is-invalid]="Rf['email'] && Rf['email'].invalid && Rf['email'].touched" type="email" class="form-control" [class.is-invalid] placeholder="{{'user.email' | translate}}" formControlName="email">
+                <div *ngIf="Rf['email'] && Rf['email'].invalid && Rf['email'].touched">
+                    <span class="text-danger" *ngIf="Rf['email'] && Rf['email'].errors?.['required']">{{'validation.required'|translate}}</span>
+                    <span class="text-danger" *ngIf="Rf['email'] && Rf['email'].errors?.['email']">
+                      {{'validation.email'|translate}}
+                    </span>
+                </div>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">{{'user.firstName' | translate}}</label>
+                <input type="text" class="form-control" placeholder="{{'user.firstName' | translate}}" formControlName="first_name">
+                <span *ngIf="Rf['first_name'] && Rf['first_name'].invalid && Rf['first_name'].touched " class="text-danger ">{{'validation.required'|translate}}</span>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">{{'user.lastName' | translate}}</label>
+                <input type="text" class="form-control" placeholder="{{'user.lastName' | translate}}" formControlName="last_name">
+                <span *ngIf="Rf['last_name'] && Rf['last_name'].invalid && Rf['last_name'].touched " class="text-danger ">{{'validation.required'|translate}}</span>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">{{'user.nationality' | translate}}</label>
+                <input [class.is-invalid]="Rf['nationality'] && Rf['nationality'].invalid && Rf['nationality'].touched" type="text" class="form-control" placeholder="{{'user.nationality' | translate}}" formControlName="nationality">
+                <span *ngIf="Rf['nationality'] && Rf['nationality'].invalid && Rf['nationality'].touched " class="text-danger ">{{'validation.required'|translate}}</span>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">{{'user.location' | translate}}</label>
+                <input [class.is-invalid]="Rf['location'] && Rf['location'].invalid && Rf['location'].touched" type="text" class="form-control" placeholder="{{'user.location' | translate}}" formControlName="location">
+                <span *ngIf="Rf['location'] && Rf['location'].invalid && Rf['location'].touched " class="text-danger ">{{'validation.required'|translate}}</span>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">{{'user.age' | translate}}</label>
+                <input type="number" class="form-control" placeholder="{{'user.age' | translate}}" formControlName="age">
+                <span *ngIf="Rf['age'] && Rf['age'].invalid && Rf['age'].touched " class="text-danger ">{{'validation.required'|translate}}</span>
+            </div>
+            <div class="form-group mb-2">
+                <label class="form-label">{{'user.password' | translate}}</label>
+                <div class="input-group">
+                    <input type="password" #pass class="form-control" placeholder="*****" formControlName="password" aria-describedby="basic-addon1" style="border-right: none;" appShowPassword>
+                </div>
+                <div *ngIf="Rf['password'] && Rf['password'].invalid && Rf['password'].touched">
+                    <span *ngIf="Rf['password'] && Rf['password'].errors?.['required']" class="text-danger ">{{'validation.required'|translate}}</span>
+                    <span class="text-danger" *ngIf="Rf['password'] && Rf['password'].errors?.['pattern']">
+                      {{'validation.patternPasword'|translate}}
+                    </span>
+                </div>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">{{'user.confirm'| translate}}</label>
+                <div class="input-group">
+                    <input type="password" #confirmPass class="form-control" placeholder="*****" formControlName="password2" style="border-right: none;" appShowPassword>
+                </div>
+                <span class="text-danger" *ngIf="check(confirmPass.value,pass.value)">{{'validation.confirmPassword'|translate}}</span>
+            </div>
+            <div class="checkbox mb-2">
+                <span>
+                  <input type="checkbox" value="false" [checked]="isChecked" formControlName="agree"> {{'register.agree' |translate}}<a href="#"> {{'register.terms' |translate}}</a> {{'register.and' |translate}} <a href="#"> {{'register.privacy' |translate}}</a>
+                </span>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary mb-2" type="submit" [disabled]="registerForm.invalid && isChecked">{{'buttons.sign-up' | translate}}</button>
+        </form>
+        <span> {{'register.account'|translate}} <a routerLink="/login">{{'register.singIn'|translate}}</a></span>
+        <div class="text-center footer">
+            <div>
+                <a [routerLink]="" (click)="switchLang('en')"><img src="../../../assets/image/flag/en.png" alt="England" class="pe-2"></a>
+                <a [routerLink]="" (click)="switchLang('icl')"><img src="../../../assets/image/flag/icl.png" alt="Iceland"></a>
+            </div>
+            <hr>
+            <p class=" text-muted text-center">CAPTinI &copy; 2022</p>
+        </div>
+    </div>
+
+</div>
