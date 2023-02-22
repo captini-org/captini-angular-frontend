@@ -15,7 +15,6 @@ import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
 import { NgxPageScrollModule } from 'ngx-page-scroll';
-
 import { ShowPasswordDirective } from './Shared/directives/show-password.directive';
 @NgModule({
   declarations: [

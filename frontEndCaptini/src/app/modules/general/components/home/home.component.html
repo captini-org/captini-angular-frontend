@@ -54,9 +54,9 @@
                     <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let item of users">
                         <div class="item-content">
                             <img src="../../assets/image/avatar/avatar2.jpg" alt="">
-                            <span class="ps-2">{{item.first_name}} (98)</span>
+                            <span class="ps-2">{{item.username}} ({{item.score}})</span>
                         </div>
-                        <span>14</span>
+                        <span>{{item.global_rank}}</span>
                     </li>
 
 

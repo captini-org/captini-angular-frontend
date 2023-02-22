@@ -55,7 +55,9 @@
         "other": "Annað",
         "unkown": "vil ekki segja",
         "help": "Þurfa hjálp ?",
-        "Read": "Lestu"
+        "Read": "Lestu",
+        "old-password": "Gamalt lykilorð",
+        "new-password": "Nýtt lykilorð"
     },
     "validation": {
         "required": "Þessi reitur er nauðsynlegur",
@@ -75,7 +77,8 @@
         "LessonsData": "Lærdómsgögn",
         "modalTitle": "uppfærðu prófílmyndina þína",
         "importPhoto": "flytja inn mynd",
-        "suggested": "Tillögur að myndum"
+        "suggested": "Tillögur að myndum",
+        "change-password": "Breyta lykilorði"
     },
     "alert": {
         "signInMsg": "Þetta er notendanafnið sem þú þarft til að skrá þig inn með"

@@ -14,25 +14,54 @@ export class ProfileComponent implements OnInit {
   Responsedata:any;
   loading = true;
   showMsg: boolean = false;
+  errorMessage:string='';
   msgContent:string='';
   ResponsedataProfile:any;
   user :any;
   constructor(private langService:LangService,private route:Router, private userService:UserService,private formBuilder: FormBuilder) { }
   ngOnInit(): void {
     let id = localStorage.getItem("id");
-    this.userService.UserDetails(id).subscribe(result=>{
+    console.warn(id);
+    this.loading = true;
+      this.errorMessage = "";
+      /*this.userService.UserDetailsCatchError(id!)
+        .subscribe(
+          () => {                           //Next callback
+            console.log('response received', Response)
+            this.ResponsedataProfile = Response;
+            this.profilForm.patchValue({
+              id:String(this.ResponsedataProfile.data.id),
+              fullname:String(this.ResponsedataProfile.data.fullname),
+              username:String(this.ResponsedataProfile.data.name),
+              email:String(this.ResponsedataProfile.data.email),
+            });
+          },
+          (error) => {                              //Error callback
+            console.error('error caught in component', error)
+            this.errorMessage = error;
+
+            this.loading = false;
+  
+
+            throw error;
+          }
+        )*/
+    this.userService.UserDetailsCatchError(id!).subscribe(result=>{
       if(result!=null)
       {
         this.Responsedata=result;
+        console.warn(this.Responsedata);
         this.loading = false;
         this.profilForm.patchValue({
-          id:String(this.Responsedata.data.id),
-          fullname:String(this.Responsedata.data.fullname),
-          username:String(this.Responsedata.data.name),
-          email:String(this.Responsedata.data.email),
+          id:String(this.Responsedata.id),
+          fullname:String(this.Responsedata.first_name)+" "+ String(this.Responsedata.last_name),
+          username:String(this.Responsedata.username),
+          email:String(this.Responsedata.email),
         });
       }
     })
+
+   
     const bodyElement = document.body;
     bodyElement.classList.remove("teacher-bird");
   }
@@ -56,7 +85,12 @@ export class ProfileComponent implements OnInit {
       emailNotif:['true']
     }
   )
-  
+  passwordForm=this.formBuilder.group(
+    {
+      _oldPass:[''],
+      _newPass:['']
+    }
+  )
   logOUt()
   {
     localStorage.clear();
@@ -71,6 +105,19 @@ export class ProfileComponent implements OnInit {
           {
             this.ResponsedataProfile=profile;
             this.msgContent=this.ResponsedataProfile.message;
+            this.showMsg=true;
+          }
+        })
+      }
+  }
+  changePassword ()
+  {
+    if(this.passwordForm.valid)
+      {
+        this.userService.updatePassword(this.profilForm.value).subscribe(password=>{
+          if(password!=null)
+          {
+           
             this.showMsg=true;
           }
         })

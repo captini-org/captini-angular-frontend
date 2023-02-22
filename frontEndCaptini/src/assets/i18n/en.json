@@ -57,7 +57,9 @@
         "other": "Other",
         "unkown": "don't want to say",
         "help": "Need help ?",
-        "Read": "Read the"
+        "Read": "Read the",
+        "old-password": "Old password",
+        "new-password": "New password"
     },
     "validation": {
         "required": "This field is required",
@@ -77,7 +79,8 @@
         "LessonsData": "Lessons Data",
         "modalTitle": "update your profile picture",
         "importPhoto": "import a photo",
-        "suggested": "Suggested pictures"
+        "suggested": "Suggested pictures",
+        "change-password": "Change password"
     },
     "alert": {
         "signInMsg": "This is the username you will need to sign in with"

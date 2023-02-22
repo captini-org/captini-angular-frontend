@@ -15,7 +15,7 @@ export class LessonComponent implements OnInit {
   public topic_id :number|undefined;
   Responsedata: any;
   public listtopics?:ITopics[];
-  public topic_by_id ?:ITopics;
+  public topic_by_id !:ITopics;
   public listlesson ?:ILesson[];
   ngOnInit(): void {
     let id =+this.route.snapshot.paramMap.get('id')!;
@@ -26,8 +26,15 @@ export class LessonComponent implements OnInit {
         {
           //this.loading = false;
           this.Responsedata=data;
-          this.listtopics=this.Responsedata.results;
-          //console.warn(this.Responsedata.results);
+          let listT = []
+          //this.loading = false;
+          this.Responsedata=data;
+          for(const prop in this.Responsedata){
+            listT.push(this.Responsedata[prop]);
+          }
+          this.listtopics = listT
+         
+          console.log(this.listtopics);
           this.topic_by_id= this.listtopics?.find(i => i.id === this.topic_id)!;
         }
       }

@@ -13,6 +13,7 @@ import {TopicsService} from 'src/app/Shared/services/topics/topics.service';
 export class TopicsComponent implements OnInit {
   Responsedata: any;
   public listtopics!:ITopics[];
+  
   constructor(private langService:LangService,private topicService:TopicsService ,private route:Router) { }
 
   ngOnInit(): void {
@@ -20,9 +21,13 @@ export class TopicsComponent implements OnInit {
       data=>{
         if(data!=null)
         {
+          let listUsers = []
           //this.loading = false;
           this.Responsedata=data;
-          this.listtopics=this.Responsedata.results;
+          for(const prop in this.Responsedata){
+           listUsers.push(this.Responsedata[prop]);
+          }
+          this.listtopics = listUsers
           //console.warn(this.Responsedata.results);
         }
       }

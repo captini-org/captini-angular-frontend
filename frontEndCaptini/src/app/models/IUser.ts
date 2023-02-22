@@ -4,6 +4,7 @@ export interface IUser{
     last_name:string,
     first_name:string,
     email:string;
+    birthday: string;
     location:string,
     nationality:string,
     age:number,

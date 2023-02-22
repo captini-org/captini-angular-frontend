@@ -18,7 +18,10 @@ import { AllLanguagesDirective } from '../../Shared/directives/all-languages.dir
 import {BirthYearsDirective} from '../../Shared/directives/birth-years.directive';
 import {RecPplayStateDirective} from '../../Shared/directives/rec-pplay-state.directive';
 import {SpecificAlphabetDirective} from '../../Shared/directives/specific-alphabet.directive';
-import { LessonDetailsComponent } from './components/topics/lesson/lesson-details/lesson-details.component'
+
+import { LessonDetailsComponent } from './components/topics/lesson/lesson-details/lesson-details.component';
+
+
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }

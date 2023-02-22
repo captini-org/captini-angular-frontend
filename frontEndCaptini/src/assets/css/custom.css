@@ -248,6 +248,13 @@ label {
     background-position: center;
 }
 
+.profile-content .nav {
+    background: transparent;
+    padding: 0px;
+    border-radius: 8px;
+    box-shadow: none;
+}
+
 .profile-img .profile-preview .dropdown-toggle::after {
     display: none;
     margin-left: 0.255em;

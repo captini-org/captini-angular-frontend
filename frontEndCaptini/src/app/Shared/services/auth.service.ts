@@ -1,28 +1,55 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Global } from 'src/app/common/global';
+import { Injectable } from '@angular/core'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { Global } from 'src/app/common/global'
+import { Router } from '@angular/router'
+import { FormGroup } from '@angular/forms'
+
+const httpoptions = { headers: new HttpHeaders({'Authorization': 'Bearer ' }) }
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-  apiUrl=Global.apiURL +"users/login/";
-  apiRegister=Global.apiURL +"users/signup/"
-  errorMsg: string="";
-  constructor(private http:HttpClient) { }
-  loginUser(usercred:any)
-  {
-    return this.http.post(this.apiUrl,usercred);
+  apiUrl = Global.apiURL + 'account/api/token/'
+  apiRegister = Global.apiURL + 'account/register/'
+  apiLoginForget = Global.apiURL + 'account/api/password_reset/'
+  apirefreshToken = Global.apiURL + 'account/api/token/refresh/'
+  errorMsg: string = ''
+  Responsedata: any
+
+  constructor(private http: HttpClient, private route: Router) {}
+  loginUser(usercred: any) {
+    return this.http.post(this.apiUrl, usercred)
   }
-  registerUser(usercred:any)
-  {
-    return this.http.post(this.apiRegister,usercred);
+  registerUser(usercred: any) {
+
+    return this.http.post(this.apiRegister, usercred)
   }
-  IsLoggedIn()
-  {
-    return localStorage.getItem('token')!=null;
+  IsLoggedIn() {
+    return localStorage.getItem('token') != null
   }
-  GetToken()
-  {
-    return localStorage.getItem('token')||'';
+  GetToken() {
+    return localStorage.getItem('token') || ''
+  }
+  GetRefreshToken() {
+    return localStorage.getItem('refresh_token') || ''
+  }
+  GernerateResfreshToken() {
+    let input = {
+      refresh: this.GetRefreshToken(),
+    }
+    return this.http.post(this.apirefreshToken, input)
+  }
+  SaveToken(tokens: any) {
+    console.log(tokens)
+    localStorage.setItem('token', tokens.access)
+    localStorage.setItem('refresh_token', tokens.refresh)
+    console.log('token updated')
+  }
+  loginForget(usercred: any) {
+    return this.http.post(this.apiLoginForget, usercred)
+  }
+  logOUt() {
+    localStorage.clear()
+    this.route.navigate(['login'])
   }
 }

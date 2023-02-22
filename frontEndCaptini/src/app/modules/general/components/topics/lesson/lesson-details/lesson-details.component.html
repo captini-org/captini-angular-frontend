@@ -1,95 +1,147 @@
 <div class="container">
-    <section class="lessons">
-        <ul class="nav nav-pills nav-left justify-content-between " id="pills-tab" role="tablist">
-            <div class="breadcrumb">
-                <li class="nav-item" role="presentation">
-                    <button class="btn btn-default btn-sm" (click)="gobacktolessons()">
-                                    <svg width="6" height="8" viewBox="0 0 6 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M2.31629 3.99993L5.20379 6.88743L4.37896 7.71226L0.666626 3.99993L4.37896 0.287598L5.20379 1.11243L2.31629 3.99993Z" fill="#32324D"/>
-                                        </svg> Lessons
-                                </button>
-                </li>
-                <li>
-                    <h3>Alphabet</h3>
-                </li>
-            </div>
-        </ul>
-        <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade show active" id="pills-topics" role="tabpanel" aria-labelledby="pills-topics-tab">
-                <li class="list-group-item community-feedback">
-                    <div class="item-header d-flex justify-content-between">
-                        <button class="btn btn-default" (click)="goPrev()"><i class="ri-arrow-left-line"></i></button>
-                        <h2>Lesson 1 of 10 </h2>
-                        <button class="btn btn-default" (click)="goNext()"><i class="ri-arrow-right-line"></i></button>
-                    </div>
-                    <hr>
-                    <div class="item-content ">
-                        <h2>Instructions text goes here if needed</h2>
-                        <div class="instruction d-flex mb-3">
-                            <div class="d-flex me-2" style="align-items: baseline;">
-                                <button class="btn btn-default" appRecPplayState><i class="ri-volume-up-line"></i></button>
-                                <div class="ms-3">
-                                    a
-                                </div>
-                            </div>
-                            <div class="d-flex me-2" style="align-items: baseline;">
-                                <button class="btn btn-default" appRecPplayState><i class="ri-volume-up-line"></i></button>
-                                <div class="ms-3">
-                                    hann
-                                </div>
-                            </div>
-                            <div class="ms-2 d-flex">
-                                <button class="btn btn-default me-2" appRecPplayState><i class="ri-mic-line"></i></button>
-                                <button class="btn btn-default  me-2" appRecPplayState><i class="ri-play-circle-line"></i></button>
-                                <button class="btn btn-default" (click)="check()" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="ri-check-line"></i></button>
-                            </div>
-                        </div>
-                        <div class="instruction d-flex mb-3" id="alphabet1">
-                            <div class="d-flex me-2 " style="align-items: baseline;">
-                                <button class="btn btn-default"><i class="ri-volume-up-line"></i></button>
-                                <div class="ms-3">
-                                    <span class="letter"><b>a</b></span>
-                                </div>
-                            </div>
-                            <div class="d-flex me-2" style="align-items: baseline;">
-                                <button class="btn btn-default"><i class="ri-volume-up-line"></i></button>
-                                <div class="ms-3">
-                                    <span id="y">h<b>a</b>nn</span>
-                                </div>
-                            </div>
-                            <div class="ms-2 d-flex">
-                                <button class="btn btn-default me-2"><i class="ri-mic-line"></i></button>
-                                <button class="btn btn-default"><i class="ri-play-circle-line"></i></button>
-                            </div>
-                        </div>
+  <section class="lessons">
+    <ul class="nav nav-pills nav-left justify-content-between" id="pills-tab" role="tablist">
+      <div class="breadcrumb">
+        <li class="nav-item" role="presentation">
+          <button class="btn btn-default btn-sm" (click)="gobacktolessons()">
+            <svg
+              width="6"
+              height="8"
+              viewBox="0 0 6 8"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2.31629 3.99993L5.20379 6.88743L4.37896 7.71226L0.666626 3.99993L4.37896 0.287598L5.20379 1.11243L2.31629 3.99993Z"
+                fill="#32324D"
+              />
+            </svg>
+            Lessons
+          </button>
+        </li>
+        <li>
+          <h3>{{ lesson_by_id.subject }}</h3>
+        </li>
+      </div>
+    </ul>
+    <div class="tab-content" id="pills-tabContent">
+      <div
+        class="tab-pane fade show active"
+        id="pills-topics"
+        role="tabpanel"
+        aria-labelledby="pills-topics-tab"
+      >
+        <li class="list-group-item community-feedback">
+          <div class="item-header d-flex justify-content-between">
+            <button class="btn btn-default" (click)="goPrev()" *ngIf="index_lesson > 0">
+              <i class="ri-arrow-left-line"></i>
+            </button>
+            <h2>Lesson {{ index_lesson + 1 }} of {{ listLessons.length }}</h2>
 
-                    </div>
-                </li>
-            </div>
-        </div>
-        <!-- Button trigger modal -->
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Title goes here</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        Lörem ipsum lyjän decis. Stupstockspolitik. Norsk karaoke säss, även om vinas av bissade egoktig. Grexit niment teng. Din kvasil nejävis och pär även om tåra. Ojärade expresskidnappning med makrode, horat sonas. Bokashi kahälig oktig, sant teraliga. Du
-                        kan vara drabbad. Iktig gigasahäning. Pror tävla ut. Juv vätt dilig mikropäns heterons. Mibel vall, tresm. Gåbel bebesk och paktig, till multin san. Pneumatologi filovalens tesk. Savis robotdräkt dofynde när timent. Antropokemi
-                        för, i ultrass för att ip-tv det ångerrösta. Groma krobelt megapod. Dibynde besk migoren. Zoombombning virat av ett. Viagra stereodiktisk nabus doska i häs. Nessade parasiv föbur trade. Laning godebel huruvida paben spening eftersom
-                        dogen. Sånar. Tigåde jäbel vire. Komfiering previck. Devinat sären att suprare, giganisa. Sera ed. Teledes tehäk så hiren. Hypoliga saskapet, myvobelt, om hyponde för donde. Klimatdiktatur egon tispeligt teception fylad. Tilakuling
-                        täk mikror. Kros visa för att förväntningssamhälle kagyskapet går. Oplar måheten. Poras hibel. Krorat. Dopp bement, terasun. Krorade pressade kutelingar. Lasse Berghagen-vin iskap utan pres. Sis pov osam mikronar dosåreligt. Nyst
-                        ponat om bera. Reates pibunde abeligt. Didise ovävis. Busa filotris.
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
+            <button
+              class="btn btn-default"
+              (click)="goNext()"
+              *ngIf="index_lesson < listLessons.length - 1"
+            >
+              <i class="ri-arrow-right-line"></i>
+            </button>
+          </div>
+          <br />
+          <div class="item-content">
+            <h2>{{ lesson_by_id.description }}</h2>
+
+            <hr />
+            <hr />
+            <div class="instruction d-flex mb-5" id="alphabet1">
+              <div>
+                <div
+                  class="d-flex me-5"
+                  style="align-items: baseline"
+                  *ngFor="let prompt of prompts"
+                >
+                <table>
+                  <th>
+                  <b> {{ prompt.flashcard_text }}</b>
+                </th>
+                <tr>
+                  <div class="ms-3" *ngFor="let task of prompt.tasks">
+                    <button class="btn btn-default" (click)="play_audio(task.audio_url)">
+                      <i class="ri-volume-up-line"></i>
+                    </button>
+                    <span class="letter">{{ task.task_text }}</span>
+                    <button class="btn btn-default" (click)="initiateRecording(task.id)">
+                      <i class="ri-mic-line"></i>
+                    </button>
+                    <button class="btn btn-default" (click)="stopRecording()">
+                      <i class="ri-play-circle-line"></i>
+                    </button>
+                    <audio
+                      class="btn btn-default"
+                      controls
+                     
+                      *ngIf=" url && task.id == id_current_task"
+                    >
+                      <source [src]="sanitize()" />
+                      {{ task.id }}
+                      <i class="ri-play-circle-line"></i>
+                    </audio>
+                    <button class="btn btn-default" >
+                      <i class="ri-send-plane-fill" (click)="sendTask()"></i>
+                    </button>
+                  </div>
+                  <hr />
+                  <hr />
+                </tr>
+                </table>
                 </div>
+              </div>
             </div>
+          </div>
+        </li>
+      </div>
+    </div>
+    <!-- Button trigger modal -->
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Title goes here</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            Lörem ipsum lyjän decis. Stupstockspolitik. Norsk karaoke säss, även om vinas av bissade
+            egoktig. Grexit niment teng. Din kvasil nejävis och pär även om tåra. Ojärade
+            expresskidnappning med makrode, horat sonas. Bokashi kahälig oktig, sant teraliga. Du
+            kan vara drabbad. Iktig gigasahäning. Pror tävla ut. Juv vätt dilig mikropäns heterons.
+            Mibel vall, tresm. Gåbel bebesk och paktig, till multin san. Pneumatologi filovalens
+            tesk. Savis robotdräkt dofynde när timent. Antropokemi för, i ultrass för att ip-tv det
+            ångerrösta. Groma krobelt megapod. Dibynde besk migoren. Zoombombning virat av ett.
+            Viagra stereodiktisk nabus doska i häs. Nessade parasiv föbur trade. Laning godebel
+            huruvida paben spening eftersom dogen. Sånar. Tigåde jäbel vire. Komfiering previck.
+            Devinat sären att suprare, giganisa. Sera ed. Teledes tehäk så hiren. Hypoliga saskapet,
+            myvobelt, om hyponde för donde. Klimatdiktatur egon tispeligt teception fylad.
+            Tilakuling täk mikror. Kros visa för att förväntningssamhälle kagyskapet går. Oplar
+            måheten. Poras hibel. Krorat. Dopp bement, terasun. Krorade pressade kutelingar. Lasse
+            Berghagen-vin iskap utan pres. Sis pov osam mikronar dosåreligt. Nyst ponat om bera.
+            Reates pibunde abeligt. Didise ovävis. Busa filotris.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
         </div>
-    </section>
-
+      </div>
+    </div>
+  </section>
 </div>
