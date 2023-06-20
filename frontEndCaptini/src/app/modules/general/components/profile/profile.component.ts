@@ -21,42 +21,41 @@ export class ProfileComponent implements OnInit {
   constructor(private langService:LangService,private route:Router, private userService:UserService,private formBuilder: FormBuilder) { }
   ngOnInit(): void {
     let id = localStorage.getItem("id");
-    console.warn(id);
     this.loading = true;
       this.errorMessage = "";
-      /*this.userService.UserDetailsCatchError(id!)
+      this.userService.UserDetailsCatchError(id!)
         .subscribe(
-          () => {                           //Next callback
-            console.log('response received', Response)
+          () => {                      
             this.ResponsedataProfile = Response;
             this.profilForm.patchValue({
-              id:String(this.ResponsedataProfile.data.id),
-              fullname:String(this.ResponsedataProfile.data.fullname),
-              username:String(this.ResponsedataProfile.data.name),
-              email:String(this.ResponsedataProfile.data.email),
+              id:String(this.ResponsedataProfile.id),
+              first_name:String(this.ResponsedataProfile.first_name),
+              last_name:String(this.ResponsedataProfile.last_name),
+              username:String(this.ResponsedataProfile.name),
+              email:String(this.ResponsedataProfile.email),
+              birthday:String(this.ResponsedataProfile.birthday),
+              nationality:String(this.ResponsedataProfile.nationality),
             });
           },
-          (error) => {                              //Error callback
-            console.error('error caught in component', error)
+          (error) => {                   
             this.errorMessage = error;
-
             this.loading = false;
-  
-
             throw error;
           }
-        )*/
+        )
     this.userService.UserDetailsCatchError(id!).subscribe(result=>{
       if(result!=null)
       {
         this.Responsedata=result;
-        console.warn(this.Responsedata);
         this.loading = false;
         this.profilForm.patchValue({
           id:String(this.Responsedata.id),
-          fullname:String(this.Responsedata.first_name)+" "+ String(this.Responsedata.last_name),
+          first_name:String(this.Responsedata.first_name),
+          last_name :String(this.Responsedata.last_name),
           username:String(this.Responsedata.username),
           email:String(this.Responsedata.email),
+          birthday:String(this.Responsedata.birthday),
+          nationality:String(this.Responsedata.nationality),
         });
       }
     })
@@ -68,12 +67,14 @@ export class ProfileComponent implements OnInit {
   profilForm=this.formBuilder.group(
     {
       id:[''],
-      fullname:['jhon deo',Validators.required],
+      first_name:['jhon',Validators.required],
+      last_name:['deo',Validators.required],
       username:['JHON',Validators.required],
       email:['jhondeo@domaincom',[Validators.required,Validators.email]],
       nativeLang:[''],
       gender:[''],
-      yearBirth:[''],
+      birthday:[''],
+      nationality:[''],
       beginner:['true'],
       intermediate:[''],
       advanced:[''],
@@ -104,7 +105,7 @@ export class ProfileComponent implements OnInit {
           if(profile!=null)
           {
             this.ResponsedataProfile=profile;
-            this.msgContent=this.ResponsedataProfile.message;
+            this.msgContent="Profile updated!";
             this.showMsg=true;
           }
         })

@@ -78,11 +78,15 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.valid) {
       this.API.registerUser(this.registerForm.value).subscribe((result) => {
         if (result != null) {
-          console.log('registration with success')
           this.msgContent = this.Responsedata
           this.showMsg = true
           alert('registration with success')
         }
+      },
+      (error) => {
+        // Handle registration error here
+        alert('verify your data')
+        // Display an error message to the user or perform any necessary actions
       })
     
     }

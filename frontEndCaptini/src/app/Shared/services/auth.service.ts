@@ -40,10 +40,8 @@ export class AuthService {
     return this.http.post(this.apirefreshToken, input)
   }
   SaveToken(tokens: any) {
-    console.log(tokens)
     localStorage.setItem('token', tokens.access)
     localStorage.setItem('refresh_token', tokens.refresh)
-    console.log('token updated')
   }
   loginForget(usercred: any) {
     return this.http.post(this.apiLoginForget, usercred)

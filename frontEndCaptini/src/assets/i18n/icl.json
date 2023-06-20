@@ -39,6 +39,7 @@
         "nativeLanguage": "Móðurmál",
         "gender": "kyn",
         "year": "Fæðingarár",
+        "birthday": "Afmæli",
         "langLevel": "Tungumálastig",
         "beginner": "Byrjandi",
         "intermediate": "Millistig",

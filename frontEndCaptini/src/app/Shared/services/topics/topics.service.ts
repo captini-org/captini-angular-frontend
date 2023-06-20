@@ -10,6 +10,7 @@ import { AuthService } from 'src/app/Shared/services/auth.service';
 })
 export class TopicsService {
   topicUrl=Global.apiURL +"captini/topics/";
+  lessonUrl=Global.apiURL +"captini/lessons/";
   constructor(private httpService:HttpClient,private API:AuthService) { }
 
   public getTopics(): Observable<ITopics> {
@@ -26,19 +27,13 @@ export class TopicsService {
   }
  
   getTopicsById(value:any):Observable<any>{
-
-    const api = `https://captini-backend.herokuapp.com/captini/topics/${value}/`;
-    console.log(api)
-
+    const api = this.topicUrl +`${value}/`;
     return this.httpService.get<ITopics>(api).pipe(
       map(data => new ITopics().deserialize(data))
     );
   }
   getPromptsByIdLesson(value:any):Observable<any>{
-
-    const api = `https://captini-backend.herokuapp.com/captini/lessons/${value}/`;
-    console.log(api)
-
+    const api = this.topicUrl +`${value}/`;
     return this.httpService.get<ILesson>(api).pipe(
       map(data => new ILesson().deserialize(data))
     );

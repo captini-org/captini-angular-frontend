@@ -9,31 +9,40 @@ import { AuthService } from 'src/app/Shared/services/auth.service';
 })
 export class UserService {
   apiUrl=Global.apiURL +"user/details";
-  updateUrl=Global.apiURL +"";
+  updateUrl=Global.apiURL +"account/users/";
   deleteUrl =Global.apiURL +"";
   UsersUrl=Global.apiURL +"account/users/";
   passwordUpdateUrl=Global.apiURL+"api/change-password/"
   constructor(private http:HttpClient,private API:AuthService) {}
   UserDetails(id:string)
   {
-    const api = `https://captini-backend.herokuapp.com/account/users/${id}/`;
+    const api = this.UsersUrl + `${id}/`;
     return this.http.get(api);
   }
   //With catchError
   UserDetailsCatchError(id: string): Observable<any[]> {
-    const api = `https://captini-backend.herokuapp.com/account/users/${id}/`;
-    return this.http.get<any[]>(api)
+    const api = this.UsersUrl + `${id}/`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.API.GetToken()
+    });
+    return this.http.get<any[]>(api,  { headers })
       .pipe(
         catchError((err) => {
-          console.log('error caught in service')
-          console.error(err);
           return throwError(() => new Error('test'));
         })
       )
   }
   updateProfile(usercred:any)
   {
-    return this.http.post(this.updateUrl,usercred);
+    
+    let id = localStorage.getItem("id");
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.API.GetToken()
+    });
+    const api = this.UsersUrl + `${id}/` +  'update/'
+    return this.http.patch(api,usercred,{ headers });
   }
   deletUser (id:any)
   {

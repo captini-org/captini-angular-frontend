@@ -7,7 +7,6 @@ export interface IUser{
     birthday: string;
     location:string,
     nationality:string,
-    age:number,
     password:string,
     password2:string
 }

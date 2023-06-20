@@ -20,7 +20,7 @@
           </button>
         </li>
         <li>
-          <h3>{{ lesson_by_id.subject }}</h3>
+          <h3>{{ lesson_by_id?.subject }}</h3>
         </li>
       </div>
     </ul>
@@ -36,19 +36,19 @@
             <button class="btn btn-default" (click)="goPrev()" *ngIf="index_lesson > 0">
               <i class="ri-arrow-left-line"></i>
             </button>
-            <h2>Lesson {{ index_lesson + 1 }} of {{ listLessons.length }}</h2>
+            <h2>Lesson {{ index_lesson + 1 }} of {{ listLessons?.length }}</h2>
 
             <button
               class="btn btn-default"
               (click)="goNext()"
-              *ngIf="index_lesson < listLessons.length - 1"
+              *ngIf="listLessons && index_lesson < listLessons.length - 1" 
             >
               <i class="ri-arrow-right-line"></i>
             </button>
           </div>
           <br />
           <div class="item-content">
-            <h2>{{ lesson_by_id.description }}</h2>
+            <h2>{{ lesson_by_id?.description }}</h2>
 
             <hr />
             <hr />
@@ -79,7 +79,7 @@
                       class="btn btn-default"
                       controls
                      
-                      *ngIf=" url && task.id == id_current_task"
+                      *ngIf="url && task.id == id_current_task"
                     >
                       <source [src]="sanitize()" />
                       {{ task.id }}

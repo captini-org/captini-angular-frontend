@@ -7,8 +7,8 @@
             <label>{{'user.hello' | translate }}</label>
             <p>{{'user.welcome' | translate }}</p>
         </div>
-        <div *ngIf="message">
-            kjhgksdg
+        <div *ngIf="message" class="alert text-danger">
+            <strong>invalid credentials!</strong> 
         </div>
         <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
             <div>
