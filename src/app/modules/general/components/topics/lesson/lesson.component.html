@@ -1,0 +1,41 @@
+<div class="container-fluid">
+    <section class="lessons">
+        <ul class="nav nav-pills nav-left justify-content-between" id="pills-tab" role="tablist">
+            <div class="breadcrumb">
+                <li class="nav-item" role="presentation">
+                    <button class="btn btn-default btn-sm" type="button" routerLink="/topics">
+                        <svg width="6" height="8" viewBox="0 0 6 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2.31629 3.99993L5.20379 6.88743L4.37896 7.71226L0.666626 3.99993L4.37896 0.287598L5.20379 1.11243L2.31629 3.99993Z" fill="#32324D"/>
+                            </svg> Topics
+                     </button>
+                </li>
+                <li>
+                    <h3>Lessons</h3>
+                </li>
+            </div>
+            <li>
+                <form class="form-inline search mt-xs-4">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search for any lesson" aria-label="Search">
+                </form>
+            </li>
+        </ul>
+        <div class="tab-content" id="pills-tabContent">
+            <div class="col-md-12">
+                <div class="card-group mb-3">
+                    <div class="card" style="cursor: pointer;" (click)="gotodetails(less.id,topic_by_id?.id)" *ngFor="let less of topic_by_id?.lessons; let i = index">
+                        <div class="card-body bg-yellow">
+                            <div class="number">0{{less.id}}.</div>
+                        </div>
+                        <div class="card-header d-flex justify-content-between">
+                            <div class="">
+                                <h3>lesson {{less.id}}</h3>
+                                <p class="semi-bold">{{less.subject}}</p>
+                            </div>
+                            <span class="success badge"> Finished</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

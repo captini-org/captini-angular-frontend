@@ -1,0 +1,93 @@
+{
+    "login": {
+        "forgot": "Forgot password ?",
+        "notAccount": "Don't have an account?",
+        "create": "Create one now"
+    },
+    "register": {
+        "get-board": "Get on board",
+        "agree": "I agree to",
+        "terms": "the term of use",
+        "and": "and",
+        "privacy": "privacy policy",
+        "account": "You have an account?",
+        "singIn": "Sign in instead"
+    },
+    "buttons": {
+        "sign-up": "Sign up",
+        "sign-in": "Sign in",
+        "logOut": "Log out",
+        "edit": "Edit",
+        "update": "Update"
+
+    },
+    "copyrights": {
+        "copyright": "CAPTinI &copy; 2022",
+        "Terms": "Terms of services"
+    },
+    "user": {
+        "full-name": "Full name",
+        "username": "User name",
+        "firstName": "First name",
+        "lastName": "Last name",
+        "nationality": "Nationality",
+        "location": "Location",
+        "age": "Age",
+        "password": "Password",
+        "email": "Email",
+        "hello": "Hello there,",
+        "welcome": "Welcome back",
+        "confirm": "Confirm password",
+        "nativeLanguage": "Native language",
+        "gender": "Gender",
+        "year": "Year of birth",
+        "birthday": "Birthday",
+        "langLevel": "Language level",
+        "beginner": "Beginner",
+        "intermediate": "Intermediate",
+        "advanced": "Advanced",
+        "type": "Type",
+        "learner": "Learner",
+        "tutor": "Tutor",
+        "displayLang": "Display language",
+        "notif": "Notification",
+        "appNotif": "Enable in-app notifications",
+        "emailNotif": "Enable email notifications",
+        "male": "Male",
+        "female": "Female",
+        "other": "Other",
+        "unkown": "don't want to say",
+        "help": "Need help ?",
+        "Read": "Read the",
+        "old-password": "Old password",
+        "new-password": "New password"
+    },
+    "validation": {
+        "required": "This field is required",
+        "email": "You must enter a valid email",
+        "patternPasword": "the password must be like this example: Azs8}54*",
+        "confirmPassword": "Passwords do not match ,please try again"
+    },
+    "form": {
+        "choose": "Choose"
+    },
+    "title": {
+        "profile": "Profile",
+        "interfaceNotif": "Interface and language ",
+        "privacyData": "Privacy data",
+        "account": "Account",
+        "accountActions": "Account actions",
+        "LessonsData": "Lessons Data",
+        "modalTitle": "update your profile picture",
+        "importPhoto": "import a photo",
+        "suggested": "Suggested pictures",
+        "change-password": "Change password"
+    },
+    "alert": {
+        "signInMsg": "This is the username you will need to sign in with"
+    },
+    "language": {
+        "en": "English",
+        "icl": "Icelandic"
+    }
+}
