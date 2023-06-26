@@ -37,7 +37,7 @@ export class LessonComponent implements OnInit {
           console.log(this.listtopics);
           this.topic_by_id= this.listtopics?.find(i => i.id === this.topic_id)!;
 
-          //sort the lessons here, not by id but by extracting the prompt and order it
+          /**sort the lessons here, not by id but by extracting the prompt and order it**/
           if (this.topic_by_id?.lessons) {
             this.topic_by_id.lessons.sort((a, b) => (a.id || 0) - (b.id || 0));
           }

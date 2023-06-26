@@ -8,6 +8,7 @@ import { WriteVarExpr } from '@angular/compiler'
 import { DomSanitizer } from '@angular/platform-browser'
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { Global } from 'src/app/common/global';
+//import { get } from 'https'
 @Component({
   selector: 'app-lesson-details',
   templateUrl: './lesson-details.component.html',
@@ -39,6 +40,9 @@ export class LessonDetailsComponent implements OnInit {
   public error = ''
   public id_current_task: any
   public id_current_user:any
+  public lessonNumber:any
+  public score = ''
+
   jsonAudio: any
   ngOnInit(): void {
     //get the id from the url when you navigate between 2 diffrent components
@@ -52,7 +56,7 @@ export class LessonDetailsComponent implements OnInit {
       this.lesson_id = _idLess
       const bodyElement = document.body
       bodyElement.classList.add('teacher-bird')
-      // problem 
+      // problem
       this.topicService.getTopicsById(this.topic_id).subscribe((data) => {
         if (data != null) {
           //this.loading = false;
@@ -63,9 +67,37 @@ export class LessonDetailsComponent implements OnInit {
           this.index_lesson = this.listLessons?.findIndex((i) => i == this.lesson_by_id)
           this.prompts = this.Responsedata.lessons[this.index_lesson].prompts
         }
+    });
+  })
+  this.getLessonNumber();
+  }
+
+   /**
+    * extract the prompt number to be used in page enumeration for the lessons
+    **/
+  private getLessonNumber(): void {
+    let extractedPromptNum : string | undefined = undefined;
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      this.topicService.getPromptsByIdLesson(this.lesson_id).subscribe((data) => {
+        if (data != null) {
+          //this.loading = false;
+          this.Responsedata = data
+          console.log(data.lessons)
+          let entry = data.lessons
+          if (entry && entry.prompts && entry.prompts.length > 0 && entry.prompts[0].prompt_number) {
+            extractedPromptNum = entry.prompts[0].prompt_number.toString().charAt(2);
+          }
+          const matchingLesson = entry.find((lesson: { subject: string }) => lesson.subject === this.lesson_by_id?.subject);
+          if (extractedPromptNum!== undefined && matchingLesson) {
+            this.lessonNumber = extractedPromptNum;
+            console.log(this.lessonNumber);
+          }
+        }
       })
     })
   }
+
+
   check() {
     const button = document.getElementById('rec')
     //alert('gdflmgjsd');
@@ -85,7 +117,7 @@ export class LessonDetailsComponent implements OnInit {
   }
 
   sanitize() {
-    
+
     let current_audio_url = this.url
     this.url = ''
     return this.domSanitizer.bypassSecurityTrustUrl(current_audio_url)
@@ -129,7 +161,7 @@ export class LessonDetailsComponent implements OnInit {
       this.record.stop(this.processRecording.bind(this))
       this.recording=false
      }
-    
+
   }
   /**
    * processRecording Do what ever you want with blob
@@ -160,23 +192,23 @@ export class LessonDetailsComponent implements OnInit {
       const sendObj = {
         audio: base64data,
       };
-  
+
       // Create a FormData object and append the recording data
       const formData = new FormData();
       formData.append('recording', this.jsonAudio);
       formData.append('user', this.id_current_user); // Replace with the appropriate user ID
       formData.append('task', this.id_current_task);
-  
+
       const myHeaders = new Headers();
       myHeaders.append('Authorization', 'Bearer ' + localStorage.getItem('token'));
-  
+
       const requestOptions: RequestInit = {
         method: 'POST',
         headers: myHeaders,
         body: formData,
         redirect: 'follow',
       };
-  
+
       fetch(this.tasksUrl + this.id_current_task + '/upload/', requestOptions)
         .then((response) => {
           // Handle the response and show a success message
@@ -192,8 +224,11 @@ export class LessonDetailsComponent implements OnInit {
           console.log('error', error);
         });
     };
-  
+
     reader.readAsDataURL(this.jsonAudio);
   }
- 
+  getScore(){
+    this.score = '100';
+  }
+
 }

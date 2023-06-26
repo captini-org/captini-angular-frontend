@@ -24,11 +24,11 @@
                 <div class="card-group mb-3">
                     <div class="card" style="cursor: pointer;" (click)="gotodetails(less.id,topic_by_id?.id)" *ngFor="let less of topic_by_id?.lessons; let i = index">
                         <div class="card-body bg-yellow">
-                            <div class="number">0{{less.id}}.</div>
+                            <div class="number">0{{i+1}}.</div>
                         </div>
                         <div class="card-header d-flex justify-content-between">
                             <div class="">
-                                <h3>lesson {{less.id}}</h3>
+                                <h3>Lesson {{i+1}}</h3>
                                 <p class="semi-bold">{{less.subject}}</p>
                             </div>
                             <span class="success badge"> Finished</span>

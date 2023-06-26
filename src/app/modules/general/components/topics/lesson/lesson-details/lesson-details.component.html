@@ -36,12 +36,12 @@
             <button class="btn btn-default" (click)="goPrev()" *ngIf="index_lesson > 0">
               <i class="ri-arrow-left-line"></i>
             </button>
-            <h2>Lesson {{ index_lesson + 1 }} of {{ listLessons?.length }}</h2>
+            <h2>Lesson {{ lessonNumber }} of {{ listLessons?.length }}</h2>
 
             <button
               class="btn btn-default"
               (click)="goNext()"
-              *ngIf="listLessons && index_lesson < listLessons.length - 1" 
+              *ngIf="listLessons && index_lesson < listLessons.length - 1"
             >
               <i class="ri-arrow-right-line"></i>
             </button>
@@ -73,21 +73,27 @@
                       <i class="ri-mic-line"></i>
                     </button>
                     <button class="btn btn-default" (click)="stopRecording()">
-                      <i class="ri-play-circle-line"></i>
+                      <i class="ri-play-fill"></i>
                     </button>
                     <audio
                       class="btn btn-default"
                       controls
-                     
+
                       *ngIf="url && task.id == id_current_task"
                     >
                       <source [src]="sanitize()" />
                       {{ task.id }}
-                      <i class="ri-play-circle-line"></i>
+                      <i class="ri-play-fill"></i>
                     </audio>
                     <button class="btn btn-default" >
-                      <i class="ri-send-plane-fill" (click)="sendTask()"></i>
+                      <i class="ri-share-fill" (click)="sendTask()"></i>
                     </button>
+                    <div>
+                      <button class="btn btn-default" >
+                        <i class="ri-check-double-fill" (click)="getScore()"></i>
+                      </button>
+                      <span>Score: {{score}}</span>
+                    </div>
                   </div>
                   <hr />
                   <hr />
