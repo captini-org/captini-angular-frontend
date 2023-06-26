@@ -69,30 +69,32 @@
                       <i class="ri-volume-up-line"></i>
                     </button>
                     <span class="letter">{{ task.task_text }}</span>
-                    <button class="btn btn-default" (click)="initiateRecording(task.id)">
-                      <i class="ri-mic-line"></i>
-                    </button>
-                    <button class="btn btn-default" (click)="stopRecording()">
-                      <i class="ri-play-fill"></i>
-                    </button>
-                    <audio
-                      class="btn btn-default"
-                      controls
-
-                      *ngIf="url && task.id == id_current_task"
-                    >
-                      <source [src]="sanitize()" />
-                      {{ task.id }}
-                      <i class="ri-play-fill"></i>
-                    </audio>
-                    <button class="btn btn-default" >
-                      <i class="ri-share-fill" (click)="sendTask()"></i>
-                    </button>
                     <div>
-                      <button class="btn btn-default" >
-                        <i class="ri-check-double-fill" (click)="getScore()"></i>
+                      <button class="btn btn-default" (click)="initiateRecording(task.id)">
+                        <i class="ri-mic-line"></i>
                       </button>
-                      <span>Score: {{score}}</span>
+                      <button class="btn btn-default" (click)="stopRecording()">
+                        <i class="ri-play-fill"></i>
+                      </button>
+                      <audio
+                        class="btn btn-default"
+                        controls
+
+                        *ngIf="url && task.id == id_current_task"
+                      >
+                        <source [src]="sanitize()" />
+                        {{ task.id }}
+                        <i class="ri-play-fill"></i>
+                      </audio>
+                      <span>
+                        <button class="btn btn-default" >
+                          <i class="ri-check-double-fill" (click)="getScore()"></i>
+                        </button>
+                        <span>Score: {{score}}</span>
+                      </span>
+                      <button class="btn btn-default" >
+                        <i class="ri-share-fill" (click)="sendTask()"></i>
+                      </button>
                     </div>
                   </div>
                   <hr />
