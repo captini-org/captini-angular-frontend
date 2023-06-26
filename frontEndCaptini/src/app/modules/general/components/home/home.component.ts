@@ -20,7 +20,6 @@ export class HomeComponent implements OnInit {
         this.loading = false;
         this.Responsedata=data;
         this.users=this.Responsedata;
-        console.log(this.users)
       }
     });
     const bodyElement = document.body;
