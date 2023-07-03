@@ -17,6 +17,8 @@ export class LessonComponent implements OnInit {
   public listtopics?:ITopics[];
   public topic_by_id !:ITopics;
   public listlesson ?:ILesson[];
+  public score = ''
+
   ngOnInit(): void {
     let id =+this.route.snapshot.paramMap.get('id')!;
     this.topic_id=id;
@@ -33,17 +35,25 @@ export class LessonComponent implements OnInit {
             listT.push(this.Responsedata[prop]);
           }
           this.listtopics = listT
-         
+
           console.log(this.listtopics);
           this.topic_by_id= this.listtopics?.find(i => i.id === this.topic_id)!;
+
+          /* sort lesson by id */
+          if (this.topic_by_id?.lessons) {
+            this.topic_by_id.lessons.sort((a, b) => (a.id || 0) - (b.id || 0));
+          }
         }
       }
       )
+
       const bodyElement = document.body;
       bodyElement.classList.remove("teacher-bird");
   }
   gotodetails(less_id:any,topic_by_id:any) {
     this.navigate.navigate(['/lesson',topic_by_id,less_id]);
   }
-
+  getScore(){
+    this.score = '100';
+  }
 }

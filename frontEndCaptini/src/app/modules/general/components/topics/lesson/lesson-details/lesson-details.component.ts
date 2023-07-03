@@ -39,7 +39,11 @@ export class LessonDetailsComponent implements OnInit {
   public error = ''
   public id_current_task: any
   public id_current_user:any
+  public score = ''
+  public lessonNumber:any
+
   jsonAudio: any
+
   ngOnInit(): void {
     //get the id from the url when you navigate between 2 diffrent components
     let topic_by_id = this.route.snapshot.paramMap.get('topicId')
@@ -52,7 +56,7 @@ export class LessonDetailsComponent implements OnInit {
       this.lesson_id = _idLess
       const bodyElement = document.body
       bodyElement.classList.add('teacher-bird')
-      // problem 
+      // problem
       this.topicService.getTopicsById(this.topic_id).subscribe((data) => {
         if (data != null) {
           //this.loading = false;
@@ -62,6 +66,7 @@ export class LessonDetailsComponent implements OnInit {
           this.lesson_by_id = this.listLessons?.find((i) => i.id === this.lesson_id)!
           this.index_lesson = this.listLessons?.findIndex((i) => i == this.lesson_by_id)
           this.prompts = this.Responsedata.lessons[this.index_lesson].prompts
+          this.lessonNumber = 'X'
         }
       })
     })
@@ -85,7 +90,7 @@ export class LessonDetailsComponent implements OnInit {
   }
 
   sanitize() {
-    
+
     let current_audio_url = this.url
     this.url = ''
     return this.domSanitizer.bypassSecurityTrustUrl(current_audio_url)
@@ -129,7 +134,7 @@ export class LessonDetailsComponent implements OnInit {
       this.record.stop(this.processRecording.bind(this))
       this.recording=false
      }
-    
+
   }
   /**
    * processRecording Do what ever you want with blob
@@ -160,23 +165,23 @@ export class LessonDetailsComponent implements OnInit {
       const sendObj = {
         audio: base64data,
       };
-  
+
       // Create a FormData object and append the recording data
       const formData = new FormData();
       formData.append('recording', this.jsonAudio);
       formData.append('user', this.id_current_user); // Replace with the appropriate user ID
       formData.append('task', this.id_current_task);
-  
+
       const myHeaders = new Headers();
       myHeaders.append('Authorization', 'Bearer ' + localStorage.getItem('token'));
-  
+
       const requestOptions: RequestInit = {
         method: 'POST',
         headers: myHeaders,
         body: formData,
         redirect: 'follow',
       };
-  
+
       fetch(this.tasksUrl + this.id_current_task + '/upload/', requestOptions)
         .then((response) => {
           // Handle the response and show a success message
@@ -192,8 +197,10 @@ export class LessonDetailsComponent implements OnInit {
           console.log('error', error);
         });
     };
-  
+
     reader.readAsDataURL(this.jsonAudio);
   }
- 
+  getScore(){
+    this.score = '100';
+  }
 }
