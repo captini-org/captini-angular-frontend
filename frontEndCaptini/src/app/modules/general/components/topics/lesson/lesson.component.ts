@@ -25,7 +25,6 @@ export class LessonComponent implements OnInit {
       if (data != null) {
         //this.loading = false;
         this.topic_by_id = data;
-        console.log(this.topic_by_id);
         this.listlesson = this.topic_by_id?.lessons;
         this.listlesson?.sort((a, b) => a.number - b.number);
         

@@ -68,7 +68,6 @@ export class LessonDetailsComponent implements OnInit {
            
           this.prompts = this.lesson_by_id?.prompts;
           this.prompts?.sort((a, b) => a.number - b.number);
-          console.log(this.prompts);
         }
       })
     })
@@ -183,7 +182,6 @@ export class LessonDetailsComponent implements OnInit {
         body: formData,
         redirect: 'follow',
       };
-  
       fetch(this.tasksUrl + this.id_current_task + '/upload/', requestOptions)
         .then((response) => {
           // Handle the response and show a success message
