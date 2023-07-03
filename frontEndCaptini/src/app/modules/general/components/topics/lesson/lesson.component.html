@@ -22,14 +22,14 @@
         <div class="tab-content" id="pills-tabContent">
             <div class="col-md-12">
                 <div class="card-group mb-3">
-                    <div class="card" style="cursor: pointer;" (click)="gotodetails(less.id,topic_by_id?.id)" *ngFor="let less of topic_by_id?.lessons; let i = index">
+                    <div class="card" style="cursor: pointer; margin-right: 8px;" (click)="gotodetails(lesson.id,topic_by_id?.id)" *ngFor="let lesson of listlesson; let i = index">
                         <div class="card-body bg-yellow">
-                            <div class="number"><span *ngIf="i<topic_by_id.lessons.length">0</span>{{i+1}}.</div>
+                            <div class="number"><span *ngIf="listlesson && i<listlesson.length">0</span>{{i+1}}.</div>
                         </div>
-                        <div class="card-header d-flex justify-content-between">
+                        <div class="card-header d-flex justify-content-between"style=" height: 100px;">
                             <div class="">
                                 <h3>lesson {{i+1}}</h3>
-                                <p class="semi-bold">{{less.subject}}</p>
+                                <p class="semi-bold">{{lesson.subject}}</p>
                             </div>
                             <span class="success badge"> Finished</span>
                         </div>

@@ -1,11 +1,11 @@
-
 import {Deserializable} from './deserializable.model';
 import {IPrompts} from './IPrompts'
 export class ILesson implements Deserializable {
     public id:number | undefined;
     public description!: string;
     public subject!:string;
-    public Prompts!:IPrompts[];
+    public prompts!:IPrompts[];
+    public number!:number ;
     deserialize(input: any): this {
         // Assign input to our object BEFORE deserialize our prompts to prevent already deserialized prompts from being overwritten.
         Object.assign(this, input);

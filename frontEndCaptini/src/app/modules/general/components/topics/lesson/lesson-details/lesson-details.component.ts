@@ -8,6 +8,7 @@ import { WriteVarExpr } from '@angular/compiler'
 import { DomSanitizer } from '@angular/platform-browser'
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { Global } from 'src/app/common/global';
+import { IPrompts } from 'src/app/models/IPrompts'
 @Component({
   selector: 'app-lesson-details',
   templateUrl: './lesson-details.component.html',
@@ -22,15 +23,14 @@ export class LessonDetailsComponent implements OnInit {
     private topicService: TopicsService,
     private domSanitizer: DomSanitizer
   ) {}
-  public topic_id!: any
+  public topic_id!: number
   public lesson_id!: number
-  Responsedata: any
-  public listLessons!: ILesson[]
+  public listLessons?: ILesson[]
   public listtopics?: ITopics[]
   public topic_by_id?: ITopics
-  public lesson_by_id!: ILesson
+  public lesson_by_id?: ILesson
   public index_lesson!: number
-  public prompts: any
+  public prompts?: any[]
   public audio = new Audio()
   public audio_paused = true
   public recording = false
@@ -42,26 +42,33 @@ export class LessonDetailsComponent implements OnInit {
   jsonAudio: any
   ngOnInit(): void {
     //get the id from the url when you navigate between 2 diffrent components
-    let topic_by_id = this.route.snapshot.paramMap.get('topicId')
-    this.topic_id = topic_by_id
     this.prompts = []
     this.id_current_user = localStorage.getItem("id");
     //get the id from the url when you navigate in the same component
     this.route.paramMap.subscribe((params: ParamMap) => {
-      let _idLess = parseInt(params.get('id')!)
-      this.lesson_id = _idLess
+      this.topic_id  = parseInt(params.get('topicId')!)
+      this.lesson_id  = parseInt(params.get('id')!)
       const bodyElement = document.body
       bodyElement.classList.add('teacher-bird')
       // problem 
       this.topicService.getTopicsById(this.topic_id).subscribe((data) => {
         if (data != null) {
           //this.loading = false;
-          this.Responsedata = data
-          this.listtopics = this.Responsedata
-          this.listLessons = this.Responsedata.lessons
-          this.lesson_by_id = this.listLessons?.find((i) => i.id === this.lesson_id)!
-          this.index_lesson = this.listLessons?.findIndex((i) => i == this.lesson_by_id)
-          this.prompts = this.Responsedata.lessons[this.index_lesson].prompts
+          this.topic_by_id = data;
+          this.listLessons = [];
+          this.listLessons = this.topic_by_id?.lessons;
+          this.listLessons?.sort((a, b) => a.number - b.number);
+          this.lesson_by_id = this.listLessons?.find((i) => i.id === this.lesson_id);
+          if(this.listLessons){
+            this.index_lesson = this.listLessons?.findIndex((i) => i == this.lesson_by_id);
+          }
+           else {
+            this.index_lesson = 0;
+          }
+           
+          this.prompts = this.lesson_by_id?.prompts;
+          this.prompts?.sort((a, b) => a.number - b.number);
+          console.log(this.prompts);
         }
       })
     })
@@ -71,21 +78,21 @@ export class LessonDetailsComponent implements OnInit {
     //alert('gdflmgjsd');
   }
   gobacktolessons() {
-    this.navigateRouter.navigate(['/topics', this.topic_id])
+    this.navigateRouter.navigate(['/topics', this.topic_id], {state: {data:this.topic_by_id}})
   }
+  // sort the lesson and get the next lesson of the sorted list
   goPrev() {
-    let lesson = this.listLessons[this.index_lesson - 1]
-    let id = lesson.id
+    let nextLesson = this.listLessons?.[this.index_lesson  - 1];
+    let id = nextLesson?.id
     this.navigateRouter.navigate(['/lesson', this.topic_id, id])
   }
   goNext() {
-    let lesson = this.listLessons[this.index_lesson + 1]
-    let id = lesson.id
+    let previousLesson = this.listLessons?.[this.index_lesson  + 1];
+    let id = previousLesson?.id
     this.navigateRouter.navigate(['/lesson', this.topic_id, id])
   }
 
   sanitize() {
-    
     let current_audio_url = this.url
     this.url = ''
     return this.domSanitizer.bypassSecurityTrustUrl(current_audio_url)
