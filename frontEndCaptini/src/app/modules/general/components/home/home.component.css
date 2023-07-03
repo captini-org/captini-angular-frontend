@@ -1,0 +1,207 @@
+.leader-dash .card {
+    margin: 0px 0px 16px;
+    background: #FFFFFF;
+    /* Popup Shadow */
+    box-shadow: 0px 2px 15px rgba(33, 33, 52, 0.1);
+    border-radius: 8px;
+    /*position: absolute;*/
+    width: 340px;
+    color: #32324D;
+    height: auto;
+}
+
+.leader-dash .card.active {
+    background-color: var(--bs-primary-600);
+    color: #FFFFFF;
+}
+
+.leader-dash .card-title {
+    font-family: var(--bs-body-font-family-roboto);
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.leader-dash h3 {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    /* identical to box height, or 125% */
+    text-align: right;
+}
+
+.progress {
+    width: 220px;
+    height: 0.5rem;
+}
+
+.honorary-podium {
+    margin-top: 90px;
+}
+
+.honorary-podium .card {
+    width: 221px;
+    box-shadow: 0px 2px 15px rgba(33, 33, 52, 0.1);
+    border-radius: 8px;
+    border: none;
+    color: #FFFFFF;
+    font-size: 1rem;
+}
+
+.honorary-podium .silver:first-child {
+    margin-left: 0px;
+    height: 176px;
+    background: #A2A2A1;
+}
+
+.honorary-podium .crown-silver::after {
+    content: "";
+    background-image: url(../../../../../assets/image/icon/crown-silver.svg);
+    width: 100px;
+    height: 120px;
+    position: absolute;
+    top: -105px;
+    background-repeat: no-repeat;
+    left: 90px;
+}
+
+.honorary-podium .crown-gold::after {
+    content: "";
+    background-image: url(../../../../../assets/image/icon/crown-gold.svg);
+    width: 100px;
+    height: 120px;
+    position: absolute;
+    top: -105px;
+    background-repeat: no-repeat;
+    left: 90px;
+}
+
+.honorary-podium .crown-bronze::after {
+    content: "";
+    background-image: url(../../../../../assets/image/icon/crow-bronze.svg);
+    width: 100px;
+    height: 120px;
+    position: absolute;
+    top: -105px;
+    background-repeat: no-repeat;
+    left: 90px;
+}
+
+.honorary-podium .card-body {
+    position: relative;
+    overflow: hidden;
+}
+
+.honorary-podium .gold {
+    height: 192px;
+    /* Gold */
+    background: #EEBC1D;
+}
+
+.honorary-podium .bronze {
+    height: 160px;
+    /* Bronze */
+    background: #966F41;
+}
+
+.honorary-podium img {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    position: absolute;
+    top: -60px;
+    right: 40px;
+    object-fit: cover;
+}
+
+.honorary-podium .rank {
+    position: absolute;
+    font-family: var(--bs-body-font-family-roboto);
+    font-style: normal;
+    font-weight: bold;
+    font-size: 96px;
+    line-height: 112px;
+    color: #FFFFFF;
+    left: -13px;
+    bottom: -26px;
+}
+
+.honorary-podium .gold .rank {
+    left: -10px;
+    bottom: -12px;
+    font-size: 128px;
+}
+
+.honorary-podium .bronze .rank {
+    left: -9px;
+    bottom: -29px;
+}
+
+.gold-border {
+    border: 4px solid #EEBC1D;
+}
+
+.bronze-border {
+    border: 4px solid #966F41;
+}
+
+.silver-border {
+    border: 4px solid #A2A2A1;
+}
+
+@media (max-width: 575.98px) {
+    .leader-dash .honorary-podium .card {
+        min-width: 107px;
+        /*width: auto;*/
+    }
+    .honorary-podium img {
+        width: 64px;
+        height: 64px;
+        top: -40px;
+        right: 25px;
+    }
+    .honorary-podium .crown-silver::after {
+        top: -80px;
+        left: 25px;
+    }
+    .honorary-podium .crown-gold::after {
+        top: -80px;
+        left: 25px;
+    }
+    .honorary-podium .crown-bronze::after {
+        top: -80px;
+        left: 25px;
+    }
+    .honorary-podium .rank {
+        left: -10px;
+        bottom: -29px;
+    }
+    .honorary-podium .bronze .rank {
+        left: 70px;
+        bottom: -29px;
+    }
+    .honorary-podium .gold .rank {
+        left: 19px;
+        bottom: -12px;
+    }
+    .honorary-podium {
+        margin-top: 70px;
+    }
+    .card-body .mt-auto {
+        margin-top: 30px !important;
+    }
+    .card-body {
+        padding: 0.5rem 0.5rem
+    }
+    .leader-dash h3 {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 20px;
+        /* identical to box height, or 125% */
+        text-align: center;
+    }
+    .leader-dash .card {
+        width: auto;
+    }
+}

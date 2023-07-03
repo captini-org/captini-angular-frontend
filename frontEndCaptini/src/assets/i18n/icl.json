@@ -1,0 +1,91 @@
+{
+    "login": {
+        "forgot": "Gleymt lykilorð ?",
+        "notAccount": "Ertu ekki með reikning?",
+        "create": "búa til einn núna"
+    },
+    "register": {
+        "get-board": "Farðu um borð",
+        "agree": "Ég er sammála",
+        "terms": "notkunarskilmála",
+        "and": "og",
+        "privacy": "friðhelgisstefna",
+        "account": "Ertu með reikning ?",
+        "singIn": "Skráðu þig inn í staðinn"
+    },
+    "buttons": {
+        "sign-in": "Skráðu þig inn",
+        "sign-up": "skráðu þig",
+        "logOut": "að skrá þig út",
+        "edit": "Breyta",
+        "update": "Uppfærsla"
+    },
+    "copyrights": {
+        "copyright": "CAPTinI &copy; 2022"
+    },
+    "user": {
+        "full-name": "Fullt nafn",
+        "username": "notenda nafn",
+        "firstName": "Fyrsta nafn",
+        "lastName": "Eftir nafn",
+        "nationality": "þjóðerni",
+        "location": "staðsetningu",
+        "age": "Aldur",
+        "password": "Lykilorð",
+        "email": "Netfang/notendanafn",
+        "hello": "Halló,",
+        "welcome": "Velkominn aftur",
+        "confirm": "Staðfesta lykilorð",
+        "nativeLanguage": "Móðurmál",
+        "gender": "kyn",
+        "year": "Fæðingarár",
+        "birthday": "Afmæli",
+        "langLevel": "Tungumálastig",
+        "beginner": "Byrjandi",
+        "intermediate": "Millistig",
+        "advanced": "Ítarlegri",
+        "type": "Tegund",
+        "learner": "Nemandi",
+        "tutor": "Kennari",
+        "displayLang": "Sýna tungumál",
+        "notif": "Tilkynning",
+        "appNotif": "Virkjaðu tilkynningar í forriti",
+        "emailNotif": "Virkja tölvupósttilkynningar",
+        "male": "Karlkyns",
+        "female": "Kvenkyns",
+        "other": "Annað",
+        "unkown": "vil ekki segja",
+        "help": "Þurfa hjálp ?",
+        "Read": "Lestu",
+        "old-password": "Gamalt lykilorð",
+        "new-password": "Nýtt lykilorð"
+    },
+    "validation": {
+        "required": "Þessi reitur er nauðsynlegur",
+        "email": "Þú verður að slá inn gilt netfang",
+        "patternPasword": "lykilorðið verður að vera eins og þetta dæmi: Azs8}54*",
+        "confirmPassword": "lykilorð passa ekki, vinsamlegast reyndu aftur"
+    },
+    "form": {
+        "choose": "Veldu"
+    },
+    "title": {
+        "profile": "Prófíll",
+        "interfaceNotif": "Viðmót og tungumál ",
+        "privacyData": "Persónuverndargögn",
+        "account": "Reikningur",
+        "accountActions": "Reikningsaðgerðir",
+        "LessonsData": "Lærdómsgögn",
+        "modalTitle": "uppfærðu prófílmyndina þína",
+        "importPhoto": "flytja inn mynd",
+        "suggested": "Tillögur að myndum",
+        "change-password": "Breyta lykilorði"
+    },
+    "alert": {
+        "signInMsg": "Þetta er notendanafnið sem þú þarft til að skrá þig inn með"
+    },
+    "language": {
+        "en": "Enska",
+        "icl": "íslenskur"
+    }
+}

@@ -5,6 +5,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+In case you are going to run the backend loaclly; you should update the apiURL in this file frontEndCaptini/src/app/common/global.ts to :
+public static apiURL: string = "http://127.0.0.1:8000/" instead of this herokuapp url https://captini-backend.herokuapp.com/.
+
 
 ## Code scaffolding
 
