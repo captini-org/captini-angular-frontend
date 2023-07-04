@@ -13,47 +13,27 @@ export class LessonComponent implements OnInit {
 
   constructor(private route:ActivatedRoute ,private topicService:TopicsService ,private navigate:Router) { }
   public topic_id :number|undefined;
-  Responsedata: any;
   public listtopics?:ITopics[];
   public topic_by_id !:ITopics;
   public listlesson ?:ILesson[];
-  public score = ''
-
   ngOnInit(): void {
     let id =+this.route.snapshot.paramMap.get('id')!;
     this.topic_id=id;
-    this.topicService.getTopics().subscribe(
-      data=>{
-        if(data!=null)
-        {
-          //this.loading = false;
-          this.Responsedata=data;
-          let listT = []
-          //this.loading = false;
-          this.Responsedata=data;
-          for(const prop in this.Responsedata){
-            listT.push(this.Responsedata[prop]);
-          }
-          this.listtopics = listT
-
-          console.log(this.listtopics);
-          this.topic_by_id= this.listtopics?.find(i => i.id === this.topic_id)!;
-
-          /* sort lesson by id */
-          if (this.topic_by_id?.lessons) {
-            this.topic_by_id.lessons.sort((a, b) => (a.id || 0) - (b.id || 0));
-          }
-        }
+    const bodyElement = document.body;
+    bodyElement.classList.remove("teacher-bird");
+    this.topicService.getTopicsById(this.topic_id).subscribe((data) => {
+      if (data != null) {
+        //this.loading = false;
+        this.topic_by_id = data;
+        this.listlesson = this.topic_by_id?.lessons;
+        this.listlesson?.sort((a, b) => a.number - b.number);
+        
       }
-      )
+    })
+  }
+  
+  gotodetails(lesson_id:any,topic_by_id:any) {
+    this.navigate.navigate(['/lesson',topic_by_id,lesson_id]);
+  }
 
-      const bodyElement = document.body;
-      bodyElement.classList.remove("teacher-bird");
-  }
-  gotodetails(less_id:any,topic_by_id:any) {
-    this.navigate.navigate(['/lesson',topic_by_id,less_id]);
-  }
-  getScore(){
-    this.score = '100';
-  }
 }

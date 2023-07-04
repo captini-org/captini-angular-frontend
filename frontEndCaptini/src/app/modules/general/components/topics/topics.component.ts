@@ -21,24 +21,21 @@ export class TopicsComponent implements OnInit {
       data=>{
         if(data!=null)
         {
-          let listUsers = []
+          this.listtopics = []
           //this.loading = false;
           this.Responsedata=data;
-          for(const prop in this.Responsedata){
-           listUsers.push(this.Responsedata[prop]);
+          for(const prop in data){
+            this.listtopics.push(this.Responsedata[prop]);
           }
-          this.listtopics = listUsers
-          //console.warn(this.Responsedata.results);
-
-          /*sort list of topics by id */
-          this.listtopics.sort((a, b) => (a.id || 0) - (b.id || 0));
+          this.listtopics.sort((a, b) => a.number - b.number);
+          
         }
       }
       )
       const bodyElement = document.body;
       bodyElement.classList.remove("teacher-bird");
   }
-  gotolessons(topic:any) {
+  gotolessons(topic:ITopics) {
     this.route.navigate(['/topics',topic.id]);
   }
 }
