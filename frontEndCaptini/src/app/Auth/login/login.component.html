@@ -8,7 +8,7 @@
             <p>{{'user.welcome' | translate }}</p>
         </div>
         <div *ngIf="message" class="alert text-danger">
-            <strong>invalid credentials!</strong> 
+            <strong>{{'alert.loginErrorMsg' | translate }}</strong> 
         </div>
         <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
             <div>
@@ -33,7 +33,7 @@
             </div>
             <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="loginForm.invalid">{{ 'buttons.sign-in' | translate }}</button>
         </form>
-        <div class="text-center footer">
+        <div class="text-center">
             <div>
                 <a [routerLink]="" (click)="switchLang( 'en')"><img src="../../../assets/image/flag/en.png" alt="England" class="pe-2"></a>
                 <a [routerLink]="" (click)="switchLang( 'icl')"><img src="../../../assets/image/flag/icl.png" alt="Iceland"></a>

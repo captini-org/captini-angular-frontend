@@ -18,7 +18,8 @@
         "sign-up": "skráðu þig",
         "logOut": "að skrá þig út",
         "edit": "Breyta",
-        "update": "Uppfærsla"
+        "update": "Uppfærsla",
+        "sendResetLink": "Senda hlekk til að endurstilla lykilorð"
     },
     "copyrights": {
         "copyright": "CAPTinI &copy; 2022"
@@ -82,10 +83,42 @@
         "change-password": "Breyta lykilorði"
     },
     "alert": {
-        "signInMsg": "Þetta er notendanafnið sem þú þarft til að skrá þig inn með"
+        "signInMsg": "Þetta er notendanafnið sem þú þarft til að skrá þig inn með",
+        "signUpMsg": "Til hamingju með skráninguna í CAPTinI! ",
+        "updateProfileMsg": "Prófíll uppfærður með góðum árangri!",
+        "loginErrorMsg": "Notandanafn og/eða lykilorð virkar ekki!"
     },
     "language": {
         "en": "Enska",
         "icl": "íslenskur"
-    }
+    },
+    "header": {
+        "lessons": "Æfingar",
+        "leaderBoard": "Stigatafla",
+        "review": "Yfirferð",
+        "community": "Samfélag",
+        "statics": "Tölfræði"
+        },
+        "menu": {
+        "updateProfile": "Uppfæra prófil",
+        "delete": "Eyða aðgangi"
+        },
+        "topic": {
+        "topics": "Bálkur",
+        "searchTopic": "Leita að bálki",
+        "searchLesson": "Leita að Þráður",
+        "lessons": "Þræðir",
+        "lesson": "Þráður",
+        "of": "af",
+        "recordMsg": "Það tókst að senda þína upptöku! Skoðum hvað hinir segja",
+        "tasksRecordings": "Tasks Recordings",
+        "okButton": "OK",
+        "score": "Stig",
+        "finished": "Lokið"
+        },
+        "resetPassword": {
+            "backToSignin": "Átt þú ekki að vera hér? ",
+            "backToSigninMsg": "Fara til baka á innskráningarsíðu",
+            "resetMsg": "Endurstilla lykilorð"
+        }
 }

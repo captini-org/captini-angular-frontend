@@ -18,7 +18,8 @@
         "sign-in": "Sign in",
         "logOut": "Log out",
         "edit": "Edit",
-        "update": "Update"
+        "update": "Update",
+        "sendResetLink": "Send reset link"
 
     },
     "copyrights": {
@@ -84,10 +85,44 @@
         "change-password": "Change password"
     },
     "alert": {
-        "signInMsg": "This is the username you will need to sign in with"
+        "signInMsg": "This is the username you will need to sign in with",
+        "signUpMsg": "Congratulations on successfully registering for CAPTinI!",
+        "updateProfileMsg": "Profile updated successfully!",
+        "loginErrorMsg": "Invalid Credentials!"
     },
     "language": {
         "en": "English",
         "icl": "Icelandic"
-    }
+    },
+    "header": {
+        "lessons": "Lessons",
+        "leaderBoard": "LeaderBoard",
+        "review": "Review",
+        "community": "Community",
+        "statics": "Statics"
+    },
+    "menu": {
+        "updateProfile": "Update Profile",
+        "delete": "Delete"
+    },
+    "topic": {
+        "topics": "Topics",
+        "searchTopic": "Search for any topic",
+        "searchLesson": "Search for any lesson",
+        "lessons": "Lessons",
+        "lesson": "Lesson",
+        "of": "of",
+        "recordMsg": "Your recording was successfully sent! Wait for the community feedbacks!",
+        "tasksRecordings": "Tasks Recordings",
+        "okButton": "OK",
+        "score": "Score",
+        "finished": "Finished"
+    } ,
+    "resetPassword": {
+        "backToSignin": "Here mistakenly? ",
+        "backToSigninMsg": "Go back to the sign in page",
+        "resetMsg": "Reset your password"
+    } 
+   
+
 }
