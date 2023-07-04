@@ -8,10 +8,10 @@ import { AuthService } from 'src/app/Shared/services/auth.service';
   providedIn: 'root'
 })
 export class UserService {
-  apiUrl=Global.apiURL +"captini/user/details"; // Perhaps having "captini" in some other variable would be ideal
-  updateUrl=Global.apiURL +"";
+  apiUrl=Global.apiURL +"user/details";
+  updateUrl=Global.apiURL +"account/users/";
   deleteUrl =Global.apiURL +"";
-  UsersUrl=Global.apiURL +"captini/account/users/"; // Perhaps having "captini" in some other variable would be ideal
+  UsersUrl=Global.apiURL +"account/users/";
   passwordUpdateUrl=Global.apiURL+"api/change-password/"
   constructor(private http:HttpClient,private API:AuthService) {}
   UserDetails(id:string)
