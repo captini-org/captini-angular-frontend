@@ -96,10 +96,10 @@
     },
     "header": {
         "lessons": "Lessons",
-        "leaderBoard": "LeaderBoard",
+        "leaderBoard": "Leaderboard",
         "review": "Review",
         "community": "Community",
-        "statics": "Statics"
+        "statics": "Statistics"
     },
     "menu": {
         "updateProfile": "Update Profile",
@@ -122,7 +122,7 @@
         "backToSignin": "Here mistakenly? ",
         "backToSigninMsg": "Go back to the sign in page",
         "resetMsg": "Reset your password"
-    } 
-   
+    }
+
 
 }
