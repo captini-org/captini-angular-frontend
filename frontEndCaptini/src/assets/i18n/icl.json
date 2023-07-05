@@ -1,68 +1,70 @@
 {
     "login": {
-        "forgot": "Gleymt lykilorð ?",
+        "forgot": "Gleymdirðu lykilorðinu?",
         "notAccount": "Ertu ekki með reikning?",
-        "create": "búa til einn núna"
+        "create": "Stofna aðgang núna"
     },
     "register": {
         "get-board": "Farðu um borð",
         "agree": "Ég er sammála",
         "terms": "notkunarskilmála",
         "and": "og",
-        "privacy": "friðhelgisstefna",
+        "privacy": "friðhelgisstefnu",
         "account": "Ertu með reikning ?",
         "singIn": "Skráðu þig inn í staðinn"
     },
     "buttons": {
-        "sign-in": "Skráðu þig inn",
-        "sign-up": "skráðu þig",
-        "logOut": "að skrá þig út",
+        "sign-in": "Innskráning",
+        "sign-up": "Stofna aðgang",
+        "logOut": "Skrá út",
         "edit": "Breyta",
-        "update": "Uppfærsla",
+        "update": "Vista breytingar",
         "sendResetLink": "Senda hlekk til að endurstilla lykilorð"
     },
     "copyrights": {
-        "copyright": "CAPTinI &copy; 2022"
+        "copyright": "CAPTinI &copy; 2022",
+        "Terms": "notkunarskilmála",
+        "and": "og"
     },
     "user": {
         "full-name": "Fullt nafn",
-        "username": "notenda nafn",
-        "firstName": "Fyrsta nafn",
-        "lastName": "Eftir nafn",
-        "nationality": "þjóðerni",
-        "location": "staðsetningu",
+        "username": "Notandanafn",
+        "firstName": "Eiginnafn/nöfn",
+        "lastName": "Kenninafn",
+        "nationality": "Þjóðerni",
+        "location": "Staðsetning",
         "age": "Aldur",
         "password": "Lykilorð",
-        "email": "Netfang/notendanafn",
+        "email": "Netfang",
         "hello": "Halló,",
-        "welcome": "Velkominn aftur",
+        "welcome": "Velkomin/n/ð aftur",
         "confirm": "Staðfesta lykilorð",
         "nativeLanguage": "Móðurmál",
-        "gender": "kyn",
+        "gender": "Kyn",
         "year": "Fæðingarár",
-        "birthday": "Afmæli",
+        "birthday": "Fæðingardagur",
         "langLevel": "Tungumálastig",
         "beginner": "Byrjandi",
-        "intermediate": "Millistig",
-        "advanced": "Ítarlegri",
-        "type": "Tegund",
+        "intermediate": "Miðstig",
+        "advanced": "Lengra komið",
+        "type": "Ég er",
         "learner": "Nemandi",
         "tutor": "Kennari",
-        "displayLang": "Sýna tungumál",
+        "displayLang": "Veldu tungumál",
         "notif": "Tilkynning",
-        "appNotif": "Virkjaðu tilkynningar í forriti",
+        "appNotif": "Virkja tilkynningar í forriti",
         "emailNotif": "Virkja tölvupósttilkynningar",
-        "male": "Karlkyns",
-        "female": "Kvenkyns",
+        "male": "Karl",
+        "female": "Kona",
         "other": "Annað",
-        "unkown": "vil ekki segja",
-        "help": "Þurfa hjálp ?",
-        "Read": "Lestu",
+        "unkown": "Vil ekki svara",
+        "help": "Þarftu aðstoð?",
+        "Read": "Lestu okkar",
         "old-password": "Gamalt lykilorð",
         "new-password": "Nýtt lykilorð"
     },
     "validation": {
-        "required": "Þessi reitur er nauðsynlegur",
+        "required": "Þessi reitur má ekki vera tómur",
         "email": "Þú verður að slá inn gilt netfang",
         "patternPasword": "lykilorðið verður að vera eins og þetta dæmi: Azs8}54*",
         "confirmPassword": "lykilorð passa ekki, vinsamlegast reyndu aftur"
@@ -71,7 +73,7 @@
         "choose": "Veldu"
     },
     "title": {
-        "profile": "Prófíll",
+        "profile": "Minn prófíll",
         "interfaceNotif": "Viðmót og tungumál ",
         "privacyData": "Persónuverndargögn",
         "account": "Reikningur",
@@ -85,12 +87,12 @@
     "alert": {
         "signInMsg": "Þetta er notendanafnið sem þú þarft til að skrá þig inn með",
         "signUpMsg": "Til hamingju með skráninguna í CAPTinI! ",
-        "updateProfileMsg": "Prófíll uppfærður með góðum árangri!",
-        "loginErrorMsg": "Notandanafn og/eða lykilorð virkar ekki!"
+        "updateProfileMsg": "Prófíllinn þinn hefur verið uppfærður",
+        "loginErrorMsg": "Notandanafn og/eða lykilorð virkar ekki"
     },
     "language": {
         "en": "Enska",
-        "icl": "íslenskur"
+        "icl": "Íslenska"
     },
     "header": {
         "lessons": "Æfingar",
@@ -106,7 +108,7 @@
         "topic": {
         "topics": "Bálkur",
         "searchTopic": "Leita að bálki",
-        "searchLesson": "Leita að Þráður",
+        "searchLesson": "Leita að þræði/æfingar",
         "lessons": "Þræðir",
         "lesson": "Þráður",
         "of": "af",
