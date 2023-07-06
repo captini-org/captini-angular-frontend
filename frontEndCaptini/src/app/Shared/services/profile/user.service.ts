@@ -8,20 +8,25 @@ import { AuthService } from 'src/app/Shared/services/auth.service';
   providedIn: 'root'
 })
 export class UserService {
-  apiUrl=Global.apiURL +"user/details";
+  /*apiUrl=Global.apiURL +"captini/user/details";
+  updateUrl=Global.apiURL +"captini/account/users/";
+  deleteUrl =Global.apiURL +"";
+  UsersUrl=Global.apiURL +"captini/account/users/";
+  */
+  apiUrl=Global.apiURL +"account/users/";
   updateUrl=Global.apiURL +"account/users/";
   deleteUrl =Global.apiURL +"";
-  UsersUrl=Global.apiURL +"account/users/";
+  UsersUrl=Global.apiURL +"captini/account/users/";
   passwordUpdateUrl=Global.apiURL+"api/change-password/"
   constructor(private http:HttpClient,private API:AuthService) {}
   UserDetails(id:string)
   {
-    const api = this.UsersUrl + `${id}/`;
+    const api = this.apiUrl + `${id}/`;
     return this.http.get(api);
   }
   //With catchError
   UserDetailsCatchError(id: string): Observable<any[]> {
-    const api = this.UsersUrl + `${id}/`;
+    const api = this.apiUrl + `${id}/`;
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + this.API.GetToken()
@@ -35,13 +40,12 @@ export class UserService {
   }
   updateProfile(usercred:any)
   {
-    
     let id = localStorage.getItem("id");
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + this.API.GetToken()
+      'Authorization': 'Bearer ' + this.API.GetToken()
     });
-    const api = this.UsersUrl + `${id}/` +  'update/'
+    const api = this.apiUrl + `${id}/` +  'update/'
     return this.http.patch(api,usercred,{ headers });
   }
   deletUser (id:any)
@@ -57,7 +61,7 @@ export class UserService {
       })
     };
     return this.http.get<IUser[]>(this.UsersUrl)
-    
+
   }
   updatePassword(usercred:any)
   {
