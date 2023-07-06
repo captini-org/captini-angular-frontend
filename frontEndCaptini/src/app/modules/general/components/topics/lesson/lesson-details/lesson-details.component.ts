@@ -39,8 +39,10 @@ export class LessonDetailsComponent implements OnInit {
   public error = ''
   public id_current_task: any
   public id_current_user:any
-  public score = ''
+  public score!: number
   public lessonNumber:any
+
+  private i = 0
 
   jsonAudio: any
 
@@ -69,9 +71,13 @@ export class LessonDetailsComponent implements OnInit {
            else {
             this.index_lesson = 0;
           }
-           
+
           this.prompts = this.lesson_by_id?.prompts;
           this.prompts?.sort((a, b) => a.number - b.number);
+
+          //populate score
+          this.score = 0;
+          this.i +=1;
         }
       })
     })
@@ -139,7 +145,6 @@ export class LessonDetailsComponent implements OnInit {
       this.record.stop(this.processRecording.bind(this))
       this.recording=false
      }
-
   }
   /**
    * processRecording Do what ever you want with blob
@@ -156,7 +161,7 @@ export class LessonDetailsComponent implements OnInit {
     this.error = 'Can not play audio in your browser'
   }
 
-   showSuccessMessage(title :any, message:any, icon = null,showCancelButton = true){
+  showSuccessMessage(title :any, message:any, icon = null,showCancelButton = true){
     return Swal.fire(title, message)
   }
   sendTask() {
@@ -205,6 +210,52 @@ export class LessonDetailsComponent implements OnInit {
     reader.readAsDataURL(this.jsonAudio);
   }
   getScore(){
-    this.score = '100';
+    if (!this.jsonAudio) {
+      // Show an error message or handle the case when there is no recording available
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      const base64data = reader.result as string;
+      const sendObj = {
+        audio: base64data,
+      };
+
+      // Create a FormData object and append the recording data
+      const formData = new FormData();
+      formData.append('recording', this.jsonAudio);
+      formData.append('user', this.id_current_user); // Replace with the appropriate user ID
+      formData.append('task', this.id_current_task);
+      //need to pass info to identify prompt number
+
+      const myHeaders = new Headers();
+      myHeaders.append('Authorization', 'Bearer ' + localStorage.getItem('token'));
+
+      const requestOptions: RequestInit = {
+        method: 'POST',
+        headers: myHeaders,
+        body: formData,
+        redirect: 'follow',
+      };
+      /*change url to endpoint for ai model */
+      fetch(this.tasksUrl + this.id_current_task + '/upload/', requestOptions)
+        .then((response) => {
+          // Handle the response and show a success message
+          this.showSuccessMessage(
+            'Checked',
+            'Your recording was sent and graded! Check your score now'
+          );
+          // Clear the recording data
+        this.jsonAudio = null;
+        })
+        .catch((error) => {
+          // Handle the error and show an error message
+          console.log('error', error);
+        });
+    };
+    reader.readAsDataURL(this.jsonAudio);
+    /*only update the score for this task */
+    this.score = 100;
+    console.log("current task id"+this.id_current_task);
   }
 }
