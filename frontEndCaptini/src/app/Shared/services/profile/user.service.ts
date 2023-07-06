@@ -8,10 +8,10 @@ import { AuthService } from 'src/app/Shared/services/auth.service';
   providedIn: 'root'
 })
 export class UserService {
-  apiUrl=Global.apiURL +"captini/user/details";
-  updateUrl=Global.apiURL +"captini/account/users/";
+  apiUrl=Global.apiURL +"user/details";
+  updateUrl=Global.apiURL +"account/users/";
   deleteUrl =Global.apiURL +"";
-  UsersUrl=Global.apiURL +"captini/account/users/";
+  UsersUrl=Global.apiURL +"account/users/";
   passwordUpdateUrl=Global.apiURL+"api/change-password/"
   constructor(private http:HttpClient,private API:AuthService) {}
   UserDetails(id:string)
@@ -49,14 +49,13 @@ export class UserService {
   }
   getusers():Observable<IUser[]>
   {
-    let httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': 'JWT ' + this.API.GetToken()
-      })
-    };
-    return this.http.get<IUser[]>(this.UsersUrl)
-
+      let httpOptions = {
+          headers: new HttpHeaders({
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + this.API.GetToken()
+          })
+      };
+      return this.http.get<IUser[]>(this.UsersUrl, httpOptions)
   }
   updatePassword(usercred:any)
   {
