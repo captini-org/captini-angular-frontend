@@ -5,10 +5,10 @@
         <div class="navbar-collapse collapse mt-xs-24" id="navbarSupportedContent">
             <div class="float-start d-inline-flex">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" routerLink="/topics">Lessons</a></li>
-                    <li class="nav-item"><a class="nav-link" routerLink="/">Leaderboard</a></li>
-                    <li class="nav-item"><a class="nav-link" routerLink="/review">Review</a></li>
-                    <li class="nav-item"><a class="nav-link" routerLink="/community">Community</a></li>
+                    <li class="nav-item"><a class="nav-link" routerLink="/topics">{{'header.lessons' | translate}}</a></li>
+                    <li class="nav-item"><a class="nav-link" routerLink="/">{{'header.leaderBoard' | translate}}</a></li>
+                    <li class="nav-item"><a class="nav-link" routerLink="/review">{{'header.review' | translate}}</a></li>
+                    <li class="nav-item"><a class="nav-link" routerLink="/community">{{'header.community' | translate}}</a></li>
                 </ul>
             </div>
             <div class="float-end d-inline-flex ms-auto">
@@ -23,9 +23,9 @@
                             <img src="../../../assets/image/avatar/profile-avatar.jpg" alt="Iceland">
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start" aria-labelledby="dropdownMenu2">
-                            <li><a class="dropdown-item" type="button" routerLink="/profile">Update profile</a></li>
-                            <li><a class="dropdown-item" type="button" [swal]="{ title: 'Are you sure?',text:'You won\'t be able to revert this!',icon: 'warning',confirmButtonText:'Delete',buttonsStyling:true, showCancelButton: true }" (confirm)="delete($event)">Delete</a></li>
-                            <li><a class="dropdown-item" type="button" (click)="logOUt()">Logout</a></li>
+                            <li><a class="dropdown-item" type="button" routerLink="/profile">{{'menu.updateProfile' | translate}}</a></li>
+                            <li><a class="dropdown-item" type="button" [swal]="{ title: 'Are you sure?',text:'You won\'t be able to revert this!',icon: 'warning',confirmButtonText:'Delete',buttonsStyling:true, showCancelButton: true }" (confirm)="delete($event)">{{'menu.delete' | translate}}</a></li>
+                            <li><a class="dropdown-item" type="button" (click)="logOUt()">{{'buttons.logOut' | translate}}</a></li>
                         </ul>
                     </div>
                 </div>

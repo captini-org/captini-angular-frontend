@@ -12,6 +12,7 @@ import {
 
 import { AuthService } from 'src/app/Shared/services/auth.service'
 import { HttpHeaders } from '@angular/common/http'
+import { ActivatedRoute, Router } from '@angular/router'
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -69,7 +70,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private langService: LangService,
     private formBuilder: FormBuilder,
-    private API: AuthService
+    private API: AuthService,
+    private navigate:Router
   ) {}
   switchLang(lang: string) {
     this.langService.useLanguage(lang)
@@ -80,7 +82,7 @@ export class RegisterComponent implements OnInit {
         if (result != null) {
           this.msgContent = this.Responsedata
           this.showMsg = true
-          alert('registration with success')
+          //this.navigate.navigate(['/login',]);
         }
       },
       (error) => {

@@ -18,36 +18,23 @@ export class ProfileComponent implements OnInit {
   msgContent:string='';
   ResponsedataProfile:any;
   user :any;
+  notification_setting_email: boolean = false;
+  notification_setting_in_app: boolean = false;
+  profilePicture:  any;
   constructor(private langService:LangService,private route:Router, private userService:UserService,private formBuilder: FormBuilder) { }
+  
   ngOnInit(): void {
     let id = localStorage.getItem("id");
     this.loading = true;
       this.errorMessage = "";
-      this.userService.UserDetailsCatchError(id!)
-        .subscribe(
-          () => {                      
-            this.ResponsedataProfile = Response;
-            this.profilForm.patchValue({
-              id:String(this.ResponsedataProfile.id),
-              first_name:String(this.ResponsedataProfile.first_name),
-              last_name:String(this.ResponsedataProfile.last_name),
-              username:String(this.ResponsedataProfile.name),
-              email:String(this.ResponsedataProfile.email),
-              birthday:String(this.ResponsedataProfile.birthday),
-              nationality:String(this.ResponsedataProfile.nationality),
-            });
-          },
-          (error) => {                   
-            this.errorMessage = error;
-            this.loading = false;
-            throw error;
-          }
-        )
+      
     this.userService.UserDetailsCatchError(id!).subscribe(result=>{
       if(result!=null)
-      {
+      { 
         this.Responsedata=result;
         this.loading = false;
+        this.notification_setting_email = Boolean(this.Responsedata.notification_setting_email);
+        this.notification_setting_in_app = Boolean(this.Responsedata.notification_setting_in_app);
         this.profilForm.patchValue({
           id:String(this.Responsedata.id),
           first_name:String(this.Responsedata.first_name),
@@ -56,11 +43,19 @@ export class ProfileComponent implements OnInit {
           email:String(this.Responsedata.email),
           birthday:String(this.Responsedata.birthday),
           nationality:String(this.Responsedata.nationality),
+          native_language:String(this.Responsedata.native_language),
+          gender:String(this.Responsedata.gender) ==='M' ? 'Male' : String(this.Responsedata.gender) === 'F' ? 'Female' : 'Other',
+          /*beginner: (String(this.Responsedata.language_level) === "L" ||  String(this.Responsedata.language_level) === "L") ? true : false,
+          intermediate:  String(this.Responsedata.language_level) === "M" ? true : false,
+          advanced:  String(this.Responsedata.language_level) === "H" ? true : false,
+          */
+          language_level:String(this.Responsedata.language_level),
+          notification_setting_email:Boolean(this.Responsedata.notification_setting_email),
+          notification_setting_in_app:Boolean(this.Responsedata.notification_setting_in_app),
+          profile_photo:this.Responsedata.profile_photo,
         });
       }
     })
-
-   
     const bodyElement = document.body;
     bodyElement.classList.remove("teacher-bird");
   }
@@ -71,19 +66,14 @@ export class ProfileComponent implements OnInit {
       last_name:['deo',Validators.required],
       username:['JHON',Validators.required],
       email:['jhondeo@domaincom',[Validators.required,Validators.email]],
-      nativeLang:[''],
-      gender:[''],
+      native_language:[''],
+      gender:['N'],
       birthday:[''],
       nationality:[''],
-      beginner:['true'],
-      intermediate:[''],
-      advanced:[''],
-      learner:['true'],
-      tutor:[''],
-      displangEn:['true'],
-      displangIcl:[''],
-      appNotif:[''],
-      emailNotif:['true']
+      language_level:[''],
+      notification_setting_in_app:[false],
+      notification_setting_email:[false],
+      profile_photo:[''],
     }
   )
   passwordForm=this.formBuilder.group(
@@ -100,11 +90,24 @@ export class ProfileComponent implements OnInit {
   updateProfil()
   {
     if(this.profilForm.valid)
-      {
-        this.userService.updateProfile(this.profilForm.value).subscribe(profile=>{
+      {  const genderValue = this.profilForm.value.gender === 'Male' ? 'M' : this.profilForm.value.gender === 'Female' ? 'F' : 'N';
+      // Update the gender field in the form with the mapped value
+      this.profilForm.patchValue({
+          gender: genderValue,
+          notification_setting_email: this.notification_setting_email ,
+          notification_setting_in_app: this.notification_setting_in_app
+        });-
+        console.log(this.profilForm )
+      this.userService.updateProfile(this.profilForm.value).subscribe(profile=>{
           if(profile!=null)
           {
-            this.ResponsedataProfile=profile;
+          const genderValue = this.profilForm.value.gender === 'M' ? 'Male' : this.profilForm.value.gender === 'F' ? 'Female' : 'Other';
+      // Update the gender field in the form with the mapped value
+            this.Responsedata=profile;
+            this.profilForm.patchValue({
+              gender: genderValue,
+            });
+            console.log(this.Responsedata)
             this.msgContent="Profile updated!";
             this.showMsg=true;
           }
@@ -124,4 +127,42 @@ export class ProfileComponent implements OnInit {
         })
       }
   }
+  // Inside your component class
+toggleAppNotification() {
+
+  console.log(this.profilForm.value.notification_setting_in_app)
+   this.notification_setting_in_app = !this.notification_setting_in_app
+   this.profilForm.patchValue({
+    notification_setting_in_app: this.notification_setting_in_app 
+  });
+   console.log(this.profilForm.value.notification_setting_in_app) 
+}
+
+toggleEmailNotification() {
+   this.notification_setting_email = !this.notification_setting_email
+   this.profilForm.patchValue({
+    notification_setting_email: this.notification_setting_email 
+  });
+}
+updateLanguageLevel(value: string) {
+  this.profilForm.patchValue({
+    language_level: value
+  });
+}
+
+// Function to handle the file selection
+onImageUpload(event: any) {
+  /*
+  this.profilePicture = event.target.files[0];*/
+  console.log(this.profilePicture)
+}
+
+// Function to save the profile picture
+saveProfilePicture() {
+  /*this.profilForm.patchValue({
+    profile_photo: this.profilePicture
+  });*/
+  console.log(this.profilForm.value.profile_photo)
+}
+
 }
