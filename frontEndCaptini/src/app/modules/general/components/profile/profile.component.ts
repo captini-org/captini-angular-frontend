@@ -18,14 +18,14 @@ export class ProfileComponent implements OnInit {
   msgContent:string='';
   ResponsedataProfile:any;
   user :any;
-  constructor(private langService:LangService,private route:Router, private userService:UserService,private formBuilder: FormBuilder) { }
+  constructor(private langService:LangService,private route:Router, private userService:UserService,private formBuilder: FormBuilder,private langServ:LangService) { }
   ngOnInit(): void {
     let id = localStorage.getItem("id");
     this.loading = true;
       this.errorMessage = "";
       this.userService.UserDetailsCatchError(id!)
         .subscribe(
-          () => {                      
+          () => {
             this.ResponsedataProfile = Response;
             this.profilForm.patchValue({
               id:String(this.ResponsedataProfile.id),
@@ -37,7 +37,7 @@ export class ProfileComponent implements OnInit {
               nationality:String(this.ResponsedataProfile.nationality),
             });
           },
-          (error) => {                   
+          (error) => {
             this.errorMessage = error;
             this.loading = false;
             throw error;
@@ -60,7 +60,7 @@ export class ProfileComponent implements OnInit {
       }
     })
 
-   
+
     const bodyElement = document.body;
     bodyElement.classList.remove("teacher-bird");
   }
@@ -118,10 +118,14 @@ export class ProfileComponent implements OnInit {
         this.userService.updatePassword(this.profilForm.value).subscribe(password=>{
           if(password!=null)
           {
-           
+
             this.showMsg=true;
           }
         })
       }
   }
+  switchLang(lang:string){
+    this.langServ.useLanguage(lang);
+     }
+
 }
