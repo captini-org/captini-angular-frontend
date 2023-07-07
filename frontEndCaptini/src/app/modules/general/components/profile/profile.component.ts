@@ -18,7 +18,8 @@ export class ProfileComponent implements OnInit {
   msgContent:string='';
   ResponsedataProfile:any;
   user :any;
-  constructor(private langService:LangService,private route:Router, private userService:UserService,private formBuilder: FormBuilder,private langServ:LangService) { }
+  lang:string ='en';
+  constructor(private langService:LangService,private route:Router, private userService:UserService,private formBuilder: FormBuilder) { }
   ngOnInit(): void {
     let id = localStorage.getItem("id");
     this.loading = true;
@@ -124,8 +125,10 @@ export class ProfileComponent implements OnInit {
         })
       }
   }
-  switchLang(lang:string){
-    this.langServ.useLanguage(lang);
-     }
+  switchLang()
+  {
+    if(this.lang='en') this.langService.useLanguage('icl');
+    else this.langService.useLanguage('en');
+  }
 
 }
