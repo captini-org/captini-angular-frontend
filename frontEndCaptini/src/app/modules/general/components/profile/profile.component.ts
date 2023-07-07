@@ -20,21 +20,43 @@ export class ProfileComponent implements OnInit {
   user :any;
   notification_setting_email: boolean = false;
   notification_setting_in_app: boolean = false;
+  is_icelandic: boolean = false;
   profilePicture:  any;
   constructor(private langService:LangService,private route:Router, private userService:UserService,private formBuilder: FormBuilder) { }
-  
+
   ngOnInit(): void {
     let id = localStorage.getItem("id");
     this.loading = true;
       this.errorMessage = "";
-      
+      this.userService.UserDetailsCatchError(id!)
+        .subscribe(
+          () => {
+            this.ResponsedataProfile = Response;
+            this.profilForm.patchValue({
+              id:String(this.ResponsedataProfile.id),
+              first_name:String(this.ResponsedataProfile.first_name),
+              last_name:String(this.ResponsedataProfile.last_name),
+              username:String(this.ResponsedataProfile.name),
+              email:String(this.ResponsedataProfile.email),
+              birthday:String(this.ResponsedataProfile.birthday),
+              nationality:String(this.ResponsedataProfile.nationality),
+            });
+          },
+          (error) => {
+            this.errorMessage = error;
+            this.loading = false;
+            throw error;
+          }
+        )
+
     this.userService.UserDetailsCatchError(id!).subscribe(result=>{
       if(result!=null)
-      { 
+      {
         this.Responsedata=result;
         this.loading = false;
         this.notification_setting_email = Boolean(this.Responsedata.notification_setting_email);
         this.notification_setting_in_app = Boolean(this.Responsedata.notification_setting_in_app);
+        this.is_icelandic = Boolean(this.Responsedata.is_icelandic);
         this.profilForm.patchValue({
           id:String(this.Responsedata.id),
           first_name:String(this.Responsedata.first_name),
@@ -52,10 +74,13 @@ export class ProfileComponent implements OnInit {
           language_level:String(this.Responsedata.language_level),
           notification_setting_email:Boolean(this.Responsedata.notification_setting_email),
           notification_setting_in_app:Boolean(this.Responsedata.notification_setting_in_app),
+          is_icelandic:Boolean(this.Responsedata.is_icelandic),
           profile_photo:this.Responsedata.profile_photo,
         });
       }
     })
+
+
     const bodyElement = document.body;
     bodyElement.classList.remove("teacher-bird");
   }
@@ -73,6 +98,7 @@ export class ProfileComponent implements OnInit {
       language_level:[''],
       notification_setting_in_app:[false],
       notification_setting_email:[false],
+      is_icelandic:[false],
       profile_photo:[''],
     }
   )
@@ -121,48 +147,63 @@ export class ProfileComponent implements OnInit {
         this.userService.updatePassword(this.profilForm.value).subscribe(password=>{
           if(password!=null)
           {
-           
+
             this.showMsg=true;
           }
         })
       }
   }
+
+  switchLang()
+  {
+    if(!this.is_icelandic) {
+      this.langService.useLanguage('icl');
+    }
+    else {
+      this.langService.useLanguage('en');
+    }
+    this.is_icelandic = !this.is_icelandic;
+    this.profilForm.patchValue({
+      is_icelandic: this.is_icelandic
+    });
+  }
+
   // Inside your component class
-toggleAppNotification() {
+  toggleAppNotification() {
 
-  console.log(this.profilForm.value.notification_setting_in_app)
-   this.notification_setting_in_app = !this.notification_setting_in_app
-   this.profilForm.patchValue({
-    notification_setting_in_app: this.notification_setting_in_app 
-  });
-   console.log(this.profilForm.value.notification_setting_in_app) 
-}
+    console.log(this.profilForm.value.notification_setting_in_app)
+    this.notification_setting_in_app = !this.notification_setting_in_app
+    this.profilForm.patchValue({
+      notification_setting_in_app: this.notification_setting_in_app
+    });
+    console.log(this.profilForm.value.notification_setting_in_app)
+  }
 
-toggleEmailNotification() {
-   this.notification_setting_email = !this.notification_setting_email
-   this.profilForm.patchValue({
-    notification_setting_email: this.notification_setting_email 
-  });
-}
-updateLanguageLevel(value: string) {
-  this.profilForm.patchValue({
-    language_level: value
-  });
-}
+  toggleEmailNotification() {
+    this.notification_setting_email = !this.notification_setting_email
+    this.profilForm.patchValue({
+      notification_setting_email: this.notification_setting_email
+    });
+  }
+  updateLanguageLevel(value: string) {
+    this.profilForm.patchValue({
+      language_level: value
+    });
+  }
 
-// Function to handle the file selection
-onImageUpload(event: any) {
-  /*
-  this.profilePicture = event.target.files[0];*/
-  console.log(this.profilePicture)
-}
+  // Function to handle the file selection
+  onImageUpload(event: any) {
+    /*
+    this.profilePicture = event.target.files[0];*/
+    console.log(this.profilePicture)
+  }
 
-// Function to save the profile picture
-saveProfilePicture() {
-  /*this.profilForm.patchValue({
-    profile_photo: this.profilePicture
-  });*/
-  console.log(this.profilForm.value.profile_photo)
-}
+  // Function to save the profile picture
+  saveProfilePicture() {
+    /*this.profilForm.patchValue({
+      profile_photo: this.profilePicture
+    });*/
+    console.log(this.profilForm.value.profile_photo)
+  }
 
 }
