@@ -40,10 +40,7 @@ export class UserService {
   }
   updateProfile(usercred:any)
   {
-<<<<<<< HEAD
 
-=======
->>>>>>> translation-service
     let id = localStorage.getItem("id");
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -58,15 +55,6 @@ export class UserService {
   }
   getusers():Observable<IUser[]>
   {
-<<<<<<< HEAD
-      let httpOptions = {
-          headers: new HttpHeaders({
-              'Content-Type': 'application/json',
-              'Authorization': 'Bearer ' + this.API.GetToken()
-          })
-      };
-      return this.http.get<IUser[]>(this.UsersUrl, httpOptions)
-=======
     let httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -75,7 +63,6 @@ export class UserService {
     };
     return this.http.get<IUser[]>(this.UsersUrl)
 
->>>>>>> translation-service
   }
   updatePassword(usercred:any)
   {

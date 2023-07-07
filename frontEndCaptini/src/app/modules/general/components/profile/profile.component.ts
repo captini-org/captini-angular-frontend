@@ -18,9 +18,9 @@ export class ProfileComponent implements OnInit {
   msgContent:string='';
   ResponsedataProfile:any;
   user :any;
-  lang:string ='en';
   notification_setting_email: boolean = false;
   notification_setting_in_app: boolean = false;
+  is_icelandic: boolean = false;
   profilePicture:  any;
   constructor(private langService:LangService,private route:Router, private userService:UserService,private formBuilder: FormBuilder) { }
 
@@ -56,6 +56,7 @@ export class ProfileComponent implements OnInit {
         this.loading = false;
         this.notification_setting_email = Boolean(this.Responsedata.notification_setting_email);
         this.notification_setting_in_app = Boolean(this.Responsedata.notification_setting_in_app);
+        this.is_icelandic = Boolean(this.Responsedata.is_icelandic);
         this.profilForm.patchValue({
           id:String(this.Responsedata.id),
           first_name:String(this.Responsedata.first_name),
@@ -73,6 +74,7 @@ export class ProfileComponent implements OnInit {
           language_level:String(this.Responsedata.language_level),
           notification_setting_email:Boolean(this.Responsedata.notification_setting_email),
           notification_setting_in_app:Boolean(this.Responsedata.notification_setting_in_app),
+          is_icelandic:Boolean(this.Responsedata.is_icelandic),
           profile_photo:this.Responsedata.profile_photo,
         });
       }
@@ -96,6 +98,7 @@ export class ProfileComponent implements OnInit {
       language_level:[''],
       notification_setting_in_app:[false],
       notification_setting_email:[false],
+      is_icelandic:[false],
       profile_photo:[''],
     }
   )
@@ -150,11 +153,21 @@ export class ProfileComponent implements OnInit {
         })
       }
   }
+
   switchLang()
   {
-    if(this.lang='en') this.langService.useLanguage('icl');
-    else this.langService.useLanguage('en');
+    if(!this.is_icelandic) {
+      this.langService.useLanguage('icl');
+    }
+    else {
+      this.langService.useLanguage('en');
+    }
+    this.is_icelandic = !this.is_icelandic;
+    this.profilForm.patchValue({
+      is_icelandic: this.is_icelandic
+    });
   }
+
   // Inside your component class
   toggleAppNotification() {
 
