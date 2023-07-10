@@ -5,8 +5,8 @@ import { Directive,ElementRef } from '@angular/core';
 })
 export class AllLanguagesDirective {
 
-  constructor(private el: ElementRef) { 
-    const parent = this.el.nativeElement; 
+  constructor(private el: ElementRef) {
+    const parent = this.el.nativeElement;
     parent.innerHTML = `<option>Choose..</option>
     <option value="af">Afrikaans</option>
     <option value="sq">Albanian - shqip</option>
@@ -151,5 +151,5 @@ export class AllLanguagesDirective {
     <option value="yo">Yoruba - Èdè Yorùbá</option>
     <option value="zu">Zulu - isiZulu</option>`;
   }
-  
+
 }
