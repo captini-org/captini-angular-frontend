@@ -52,7 +52,9 @@ export class ProfileComponent implements OnInit {
         this.notification_setting_in_app = Boolean(
           this.Responsedata.notification_setting_in_app
         );
-        this.is_icelandic = Boolean(this.Responsedata.is_icelandic);
+        this.is_icelandic = Boolean(
+          String(this.Responsedata.display_language) === 'icl'
+        );
         this.profilForm.patchValue({
           id: String(this.Responsedata.id),
           first_name: String(this.Responsedata.first_name),
@@ -75,13 +77,17 @@ export class ProfileComponent implements OnInit {
           notification_setting_in_app: Boolean(
             this.Responsedata.notification_setting_in_app
           ),
+          is_icelandic :
+            String(this.Responsedata.display_language) === 'en'
+            ? false : true,
         });
-        is_icelandic:Boolean(this.Responsedata.is_icelandic),
+        this.langService.useLanguage(this.Responsedata.display_language),
         this.profilePicture = this.Responsedata.profile_photo;
       }
     });
     const bodyElement = document.body;
     bodyElement.classList.remove('teacher-bird');
+
   }
   profilForm = this.formBuilder.group({
     id: [''],
@@ -96,7 +102,8 @@ export class ProfileComponent implements OnInit {
     language_level: [''],
     notification_setting_in_app: [false],
     notification_setting_email: [false],
-    is_icelandic:[false],
+    display_language:[''],
+    is_icelandic:this.is_icelandic,
   });
   form = this.formBuilder.group({
     profile_photo: [''],
@@ -111,16 +118,18 @@ export class ProfileComponent implements OnInit {
   }
   updateProfil() {
     if (this.profilForm.valid) {
+      const displayLanguageValue = this.is_icelandic ? 'icl' : 'en';
       const genderValue =
         this.profilForm.value.gender === 'Male'
           ? 'M'
           : this.profilForm.value.gender === 'Female'
           ? 'F'
           : 'N';
-      console.log(this.profilePicture);
+      console.log("displang value: "+displayLanguageValue);
       // Update the gender field in the form with the mapped value
       this.profilForm.patchValue({
         gender: genderValue,
+        display_language: displayLanguageValue,
         notification_setting_email: this.notification_setting_email,
         notification_setting_in_app: this.notification_setting_in_app,
       });
@@ -129,6 +138,7 @@ export class ProfileComponent implements OnInit {
         .updateProfile(this.profilForm.value)
         .subscribe((profile) => {
           if (profile != null) {
+            const displayLanguageValue = this.is_icelandic ? 'icl' : 'en';
             const genderValue =
               this.profilForm.value.gender === 'M'
                 ? 'Male'
@@ -140,6 +150,7 @@ export class ProfileComponent implements OnInit {
             console.log(this.Responsedata.profile_photo);
             this.profilForm.patchValue({
               gender: genderValue,
+              display_language: displayLanguageValue,
             });
             console.log(this.Responsedata);
             this.msgContent = 'Profile updated!';
@@ -199,7 +210,7 @@ export class ProfileComponent implements OnInit {
       const formData = new FormData();
       formData.append('profile_photo', this.form.value.profile_photo);
       this.userService.updateProfilePicture(formData);
-      
+
     }
   }
   cancel(){
