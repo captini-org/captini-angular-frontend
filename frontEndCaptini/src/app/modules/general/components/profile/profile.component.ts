@@ -29,7 +29,7 @@ export class ProfileComponent implements OnInit {
   notification_setting_in_app: boolean = false;
   profilePicture: String = '';
   file: File | string = '';
-
+  is_icelandic: boolean = false;
   constructor(
     private langService: LangService,
     private route: Router,
@@ -52,6 +52,7 @@ export class ProfileComponent implements OnInit {
         this.notification_setting_in_app = Boolean(
           this.Responsedata.notification_setting_in_app
         );
+        this.is_icelandic = Boolean(this.Responsedata.is_icelandic);
         this.profilForm.patchValue({
           id: String(this.Responsedata.id),
           first_name: String(this.Responsedata.first_name),
@@ -75,6 +76,7 @@ export class ProfileComponent implements OnInit {
             this.Responsedata.notification_setting_in_app
           ),
         });
+        is_icelandic:Boolean(this.Responsedata.is_icelandic),
         this.profilePicture = this.Responsedata.profile_photo;
       }
     });
@@ -94,6 +96,7 @@ export class ProfileComponent implements OnInit {
     language_level: [''],
     notification_setting_in_app: [false],
     notification_setting_email: [false],
+    is_icelandic:[false],
   });
   form = this.formBuilder.group({
     profile_photo: [''],
@@ -201,5 +204,18 @@ export class ProfileComponent implements OnInit {
   }
   cancel(){
     this.profilePicture = this.Responsedata.profile_photo;
+  }
+  switchLang()
+  {
+    if(!this.is_icelandic) {
+      this.langService.useLanguage('icl');
+    }
+    else {
+      this.langService.useLanguage('en');
+    }
+    this.is_icelandic = !this.is_icelandic;
+    this.profilForm.patchValue({
+      is_icelandic: this.is_icelandic
+    });
   }
 }

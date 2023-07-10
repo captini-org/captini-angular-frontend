@@ -170,6 +170,21 @@
                             </div>
                             <div class="form-group">
                                 <div>
+                                    <label>{{'user.displayLang'|translate}}</label>
+                                </div>
+                                <div class="d-inline-flex">
+                                  <div class="form-check ps-0">
+                                    <label class="form-check-label" for="gridEnglish">{{'language.en'|translate}} <img src="../../assets/image/flag/en.png"></label>
+                                  </div>
+                                  <div class="form-switch ps-5">
+                                    <input mdbCheckbox class="form-check-input" type="radio" role="switch" id="gridIcl" formControlName="displangIcl" [checked]="is_icelandic" (click)="switchLang()">
+                                  </div>
+                                  <div class="form-check ps-0">
+                                    <label class="form-check-label" for="gridIcl">{{'language.icl'|translate}} <img
+                                      src="../../assets/image/flag/icl.png"></label>
+                                  </div>
+                                </div>
+                                <div>
                                     <label>{{'user.notif'|translate}}</label>
                                 </div>
                                 <div class="form-check form-switch d-flex justify-content-between ps-0">
