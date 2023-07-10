@@ -8,18 +8,14 @@ import { AuthService } from 'src/app/Shared/services/auth.service';
   providedIn: 'root',
 })
 export class UserService {
-  /*apiUrl=Global.apiURL +"captini/user/details";
-  updateUrl=Global.apiURL +"captini/account/users/";
+  apiUrl=Global.apiURL +"user/details";
+  updateUrl=Global.apiURL +"account/users/";
   deleteUrl =Global.apiURL +"";
-  UsersUrl=Global.apiURL +"captini/account/users/";
-  */
-  apiUrl = Global.apiURL + 'account/users/';
-  updateUrl = Global.apiURL + 'account/users/';
-  deleteUrl = Global.apiURL + '';
-  UsersUrl = Global.apiURL + 'captini/account/users/';
-  passwordUpdateUrl = Global.apiURL + 'api/change-password/';
-  constructor(private http: HttpClient, private API: AuthService) {}
-  UserDetails(id: string) {
+  UsersUrl=Global.apiURL +"account/users/";
+  passwordUpdateUrl=Global.apiURL+"api/change-password/"
+  constructor(private http:HttpClient,private API:AuthService) {}
+  UserDetails(id:string)
+  {
     const api = this.apiUrl + `${id}/`;
     return this.http.get(api);
   }
@@ -70,17 +66,20 @@ export class UserService {
         console.log('error', error);
       });
   }
+
   deletUser(id: any) {
     return this.http.post(this.deleteUrl, id);
   }
-  getusers(): Observable<IUser[]> {
-    let httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: 'JWT ' + this.API.GetToken(),
-      }),
-    };
-    return this.http.get<IUser[]>(this.UsersUrl);
+
+  getusers():Observable<IUser[]>
+  {
+      let httpOptions = {
+          headers: new HttpHeaders({
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + this.API.GetToken()
+          })
+      };
+      return this.http.get<IUser[]>(this.UsersUrl, httpOptions)
   }
   updatePassword(usercred: any) {
     return this.http.post(this.passwordUpdateUrl, usercred);
