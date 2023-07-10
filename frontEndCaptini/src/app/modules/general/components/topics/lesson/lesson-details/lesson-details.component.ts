@@ -1,61 +1,61 @@
-import { Component, OnInit } from '@angular/core'
-import { ActivatedRoute, ParamMap, Router } from '@angular/router'
-import { ITopics } from 'src/app/models/ITopics'
-import { TopicsService } from 'src/app/Shared/services/topics/topics.service'
-import { ILesson } from 'src/app/models/ILesson'
-import * as RecordRTC from 'recordrtc'
-import { WriteVarExpr } from '@angular/compiler'
-import { DomSanitizer } from '@angular/platform-browser'
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ITopics } from 'src/app/models/ITopics';
+import { TopicsService } from 'src/app/Shared/services/topics/topics.service';
+import { ILesson } from 'src/app/models/ILesson';
+import * as RecordRTC from 'recordrtc';
+import { WriteVarExpr } from '@angular/compiler';
+import { DomSanitizer } from '@angular/platform-browser';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { Global } from 'src/app/common/global';
-import { IPrompts } from 'src/app/models/IPrompts'
+import { IPrompts } from 'src/app/models/IPrompts';
 @Component({
   selector: 'app-lesson-details',
   templateUrl: './lesson-details.component.html',
   styleUrls: ['./lesson-details.component.css'],
 })
 export class LessonDetailsComponent implements OnInit {
-  tasksUrl=Global.apiURL +"captini/tasks/";
-  lessonUrl=Global.apiURL +"captini/lessons/";
+  tasksUrl = Global.apiURL + 'captini/tasks/';
+  lessonUrl = Global.apiURL + 'captini/lessons/';
   constructor(
     private route: ActivatedRoute,
     private navigateRouter: Router,
     private topicService: TopicsService,
     private domSanitizer: DomSanitizer
   ) {}
-  public topic_id!: number
-  public lesson_id!: number
-  public listLessons?: ILesson[]
-  public listtopics?: ITopics[]
-  public topic_by_id?: ITopics
-  public lesson_by_id?: ILesson
-  public index_lesson!: number
-  public prompts?: any[]
-  public audio = new Audio()
-  public audio_paused = true
-  public recording = false
-  public record: any
-  public url = ''
-  public error = ''
-  public id_current_task: any
-  public id_current_user:any
-  public score!: number
-  public lessonNumber:any
+  public topic_id!: number;
+  public lesson_id!: number;
+  public listLessons?: ILesson[];
+  public listtopics?: ITopics[];
+  public topic_by_id?: ITopics;
+  public lesson_by_id?: ILesson;
+  public index_lesson!: number;
+  public prompts?: any[];
+  public audio = new Audio();
+  public audio_paused = true;
+  public recording = false;
+  public record: any;
+  public url = '';
+  public error = '';
+  public id_current_task: any;
+  public id_current_user: any;
+  public score!: number;
+  public lessonNumber: any;
 
-  private i = 0
+  private i = 0;
 
-  jsonAudio: any
+  jsonAudio: any;
 
   ngOnInit(): void {
     //get the id from the url when you navigate between 2 diffrent components
-    this.prompts = []
-    this.id_current_user = localStorage.getItem("id");
+    this.prompts = [];
+    this.id_current_user = localStorage.getItem('id');
     //get the id from the url when you navigate in the same component
     this.route.paramMap.subscribe((params: ParamMap) => {
-      this.topic_id  = parseInt(params.get('topicId')!)
-      this.lesson_id  = parseInt(params.get('id')!)
-      const bodyElement = document.body
-      bodyElement.classList.add('teacher-bird')
+      this.topic_id = parseInt(params.get('topicId')!);
+      this.lesson_id = parseInt(params.get('id')!);
+      const bodyElement = document.body;
+      bodyElement.classList.add('teacher-bird');
       // problem
       this.topicService.getTopicsById(this.topic_id).subscribe((data) => {
         if (data != null) {
@@ -64,11 +64,14 @@ export class LessonDetailsComponent implements OnInit {
           this.listLessons = [];
           this.listLessons = this.topic_by_id?.lessons;
           this.listLessons?.sort((a, b) => a.number - b.number);
-          this.lesson_by_id = this.listLessons?.find((i) => i.id === this.lesson_id);
-          if(this.listLessons){
-            this.index_lesson = this.listLessons?.findIndex((i) => i == this.lesson_by_id);
-          }
-           else {
+          this.lesson_by_id = this.listLessons?.find(
+            (i) => i.id === this.lesson_id
+          );
+          if (this.listLessons) {
+            this.index_lesson = this.listLessons?.findIndex(
+              (i) => i == this.lesson_by_id
+            );
+          } else {
             this.index_lesson = 0;
           }
 
@@ -77,54 +80,56 @@ export class LessonDetailsComponent implements OnInit {
 
           //populate score
           this.score = 0;
-          this.i +=1;
+          this.i += 1;
         }
-      })
-    })
+      });
+    });
   }
   check() {
-    const button = document.getElementById('rec')
+    const button = document.getElementById('rec');
     //alert('gdflmgjsd');
   }
   gobacktolessons() {
-    this.navigateRouter.navigate(['/topics', this.topic_id], {state: {data:this.topic_by_id}})
+    this.navigateRouter.navigate(['/topics', this.topic_id], {
+      state: { data: this.topic_by_id },
+    });
   }
   // sort the lesson and get the next lesson of the sorted list
   goPrev() {
-    let nextLesson = this.listLessons?.[this.index_lesson  - 1];
-    let id = nextLesson?.id
-    this.navigateRouter.navigate(['/lesson', this.topic_id, id])
+    let nextLesson = this.listLessons?.[this.index_lesson - 1];
+    let id = nextLesson?.id;
+    this.navigateRouter.navigate(['/lesson', this.topic_id, id]);
   }
   goNext() {
-    let previousLesson = this.listLessons?.[this.index_lesson  + 1];
-    let id = previousLesson?.id
-    this.navigateRouter.navigate(['/lesson', this.topic_id, id])
+    let previousLesson = this.listLessons?.[this.index_lesson + 1];
+    let id = previousLesson?.id;
+    this.navigateRouter.navigate(['/lesson', this.topic_id, id]);
   }
 
   sanitize() {
-    let current_audio_url = this.url
-    this.url = ''
-    return this.domSanitizer.bypassSecurityTrustUrl(current_audio_url)
+    let current_audio_url = this.url;
+    this.url = '';
+    return this.domSanitizer.bypassSecurityTrustUrl(current_audio_url);
   }
   play_audio(url: string) {
-    this.audio.src = url
+    this.audio.src = url;
     if (this.audio_paused) {
-      this.audio.play()
-      this.audio_paused = false
+      this.audio.play();
+      this.audio_paused = false;
     } else {
-      this.audio.pause()
-      this.audio_paused = true
+      this.audio.pause();
+      this.audio_paused = true;
     }
   }
   initiateRecording(id: any) {
-    this.id_current_task = id
+    this.id_current_task = id;
     let mediaConstraints = {
       video: false,
       audio: true,
-    }
+    };
     navigator.mediaDevices
       .getUserMedia(mediaConstraints)
-      .then(this.successCallback.bind(this), this.errorCallback.bind(this))
+      .then(this.successCallback.bind(this), this.errorCallback.bind(this));
   }
 
   /**
@@ -132,37 +137,42 @@ export class LessonDetailsComponent implements OnInit {
    */
   successCallback(stream: any) {
     //Start Actuall Recording
-    this.recording=true
-    var StereoAudioRecorder = RecordRTC.StereoAudioRecorder
-    this.record = new StereoAudioRecorder(stream)
-    this.record.record()
+    this.recording = true;
+    var StereoAudioRecorder = RecordRTC.StereoAudioRecorder;
+    this.record = new StereoAudioRecorder(stream);
+    this.record.record();
   }
   /**
    * Stop recording.
    */
   stopRecording() {
-     if(this.recording ) {
-      this.record.stop(this.processRecording.bind(this))
-      this.recording=false
-     }
+    if (this.recording) {
+      this.record.stop(this.processRecording.bind(this));
+      this.recording = false;
+    }
   }
   /**
    * processRecording Do what ever you want with blob
    * @param  {any} blob Blog
    */
   processRecording(blob: any) {
-    this.url = URL.createObjectURL(blob)
-    this.jsonAudio = blob
+    this.url = URL.createObjectURL(blob);
+    this.jsonAudio = blob;
   }
   /**
    * Process Error.
    */
   errorCallback(error: string) {
-    this.error = 'Can not play audio in your browser'
+    this.error = 'Can not play audio in your browser';
   }
 
-  showSuccessMessage(title :any, message:any, icon = null,showCancelButton = true){
-    return Swal.fire(title, message)
+  showSuccessMessage(
+    title: any,
+    message: any,
+    icon = null,
+    showCancelButton = true
+  ) {
+    return Swal.fire(title, message);
   }
   sendTask() {
     if (!this.jsonAudio) {
@@ -183,7 +193,10 @@ export class LessonDetailsComponent implements OnInit {
       formData.append('task', this.id_current_task);
 
       const myHeaders = new Headers();
-      myHeaders.append('Authorization', 'Bearer ' + localStorage.getItem('token'));
+      myHeaders.append(
+        'Authorization',
+        'Bearer ' + localStorage.getItem('token')
+      );
 
       const requestOptions: RequestInit = {
         method: 'POST',
@@ -199,7 +212,7 @@ export class LessonDetailsComponent implements OnInit {
             'Your recording was successfully sent! Wait for the community feedbacks!'
           );
           // Clear the recording data
-        this.jsonAudio = null;
+          this.jsonAudio = null;
         })
         .catch((error) => {
           // Handle the error and show an error message
@@ -209,7 +222,7 @@ export class LessonDetailsComponent implements OnInit {
 
     reader.readAsDataURL(this.jsonAudio);
   }
-  getScore(){
+  getScore() {
     if (!this.jsonAudio) {
       // Show an error message or handle the case when there is no recording available
       return;
@@ -229,7 +242,10 @@ export class LessonDetailsComponent implements OnInit {
       //need to pass info to identify prompt number
 
       const myHeaders = new Headers();
-      myHeaders.append('Authorization', 'Bearer ' + localStorage.getItem('token'));
+      myHeaders.append(
+        'Authorization',
+        'Bearer ' + localStorage.getItem('token')
+      );
 
       const requestOptions: RequestInit = {
         method: 'POST',
@@ -246,7 +262,7 @@ export class LessonDetailsComponent implements OnInit {
             'Your recording was sent and graded! Check your score now'
           );
           // Clear the recording data
-        this.jsonAudio = null;
+          this.jsonAudio = null;
         })
         .catch((error) => {
           // Handle the error and show an error message
@@ -256,6 +272,6 @@ export class LessonDetailsComponent implements OnInit {
     reader.readAsDataURL(this.jsonAudio);
     /*only update the score for this task */
     this.score = 100;
-    console.log("current task id"+this.id_current_task);
+    console.log('current task id' + this.id_current_task);
   }
 }
