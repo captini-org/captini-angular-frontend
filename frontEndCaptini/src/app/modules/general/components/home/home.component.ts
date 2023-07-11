@@ -37,9 +37,8 @@ export class HomeComponent implements OnInit {
   // Function to fetch a specific user
   getUser(id: string) {
     this.userService.UserDetailsCatchError(id!).subscribe(
-      data => {  // Correctly handle the received data
-        this.user = data;  // Store the data in the `user` property
-        console.log(this.user);
+      data => {
+        this.user = data;
       },
       (error) => {
         throw error;
