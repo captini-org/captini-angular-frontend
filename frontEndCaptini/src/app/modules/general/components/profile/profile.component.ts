@@ -77,9 +77,10 @@ export class ProfileComponent implements OnInit {
           notification_setting_in_app: Boolean(
             this.Responsedata.notification_setting_in_app
           ),
+          display_language: String(this.Responsedata.display_language),
           is_icelandic :
-            String(this.Responsedata.display_language) === 'en'
-            ? false : true,
+            String(this.Responsedata.display_language) === 'icl'
+            ? true : false,
         });
         this.langService.useLanguage(this.Responsedata.display_language),
         this.profilePicture = this.Responsedata.profile_photo;
@@ -103,7 +104,6 @@ export class ProfileComponent implements OnInit {
     notification_setting_in_app: [false],
     notification_setting_email: [false],
     display_language:[''],
-    is_icelandic:this.is_icelandic,
   });
   form = this.formBuilder.group({
     profile_photo: [''],
@@ -125,7 +125,6 @@ export class ProfileComponent implements OnInit {
           : this.profilForm.value.gender === 'Female'
           ? 'F'
           : 'N';
-      console.log("displang value: "+displayLanguageValue);
       // Update the gender field in the form with the mapped value
       this.profilForm.patchValue({
         gender: genderValue,
@@ -133,12 +132,10 @@ export class ProfileComponent implements OnInit {
         notification_setting_email: this.notification_setting_email,
         notification_setting_in_app: this.notification_setting_in_app,
       });
-      console.log(this.profilForm.value);
       this.userService
         .updateProfile(this.profilForm.value)
         .subscribe((profile) => {
           if (profile != null) {
-            const displayLanguageValue = this.is_icelandic ? 'icl' : 'en';
             const genderValue =
               this.profilForm.value.gender === 'M'
                 ? 'Male'
@@ -150,7 +147,6 @@ export class ProfileComponent implements OnInit {
             console.log(this.Responsedata.profile_photo);
             this.profilForm.patchValue({
               gender: genderValue,
-              display_language: displayLanguageValue,
             });
             console.log(this.Responsedata);
             this.msgContent = 'Profile updated!';
@@ -226,7 +222,8 @@ export class ProfileComponent implements OnInit {
     }
     this.is_icelandic = !this.is_icelandic;
     this.profilForm.patchValue({
-      is_icelandic: this.is_icelandic
+      display_language:
+        this.is_icelandic ? 'icl' : 'en'
     });
   }
 }
