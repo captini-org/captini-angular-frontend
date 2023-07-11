@@ -118,7 +118,10 @@ export class ProfileComponent implements OnInit {
   }
   updateProfil() {
     if (this.profilForm.valid) {
-      const displayLanguageValue = this.is_icelandic ? 'icl' : 'en';
+      const displayLanguageValue =
+        this.is_icelandic
+        ? 'icl'
+        : 'en';
       const genderValue =
         this.profilForm.value.gender === 'Male'
           ? 'M'
@@ -129,6 +132,7 @@ export class ProfileComponent implements OnInit {
       this.profilForm.patchValue({
         gender: genderValue,
         display_language: displayLanguageValue,
+        is_icelandic: this.is_icelandic,
         notification_setting_email: this.notification_setting_email,
         notification_setting_in_app: this.notification_setting_in_app,
       });
@@ -142,11 +146,16 @@ export class ProfileComponent implements OnInit {
                 : this.profilForm.value.gender === 'F'
                 ? 'Female'
                 : 'Other';
+            const displayLanguageValue =
+              this.profilForm.value.display_language === 'icl'
+              ? true
+              : false
             // Update the gender field in the form with the mapped value
             this.Responsedata = profile;
             console.log(this.Responsedata.profile_photo);
             this.profilForm.patchValue({
               gender: genderValue,
+              is_icelandic: displayLanguageValue,
             });
             console.log(this.Responsedata);
             this.msgContent = 'Profile updated!';
