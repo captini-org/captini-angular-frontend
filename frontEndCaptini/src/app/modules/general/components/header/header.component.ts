@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  user: any;
   constructor(private route:Router,private userService:UserService,private langServ:LangService) { }
   @Input() isOpen = false;
   @Output() closed = new EventEmitter();
@@ -16,6 +17,15 @@ export class HeaderComponent implements OnInit {
     this.closed.emit();
   }
   ngOnInit(): void {
+    const id = localStorage.getItem("id"); 
+    this.userService.UserDetailsCatchError(id!).subscribe(
+      data => {
+        this.user = data;
+      },
+      (error) => {
+        throw error;
+      }
+    );
   }
   logOUt()
   {
