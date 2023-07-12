@@ -8,7 +8,7 @@ import { AuthService } from 'src/app/Shared/services/auth.service';
   providedIn: 'root'
 })
 export class UserService {
-  apiUrl=Global.apiURL +"account/users/";
+  apiUrl=Global.apiURL +"user/details";
   updateUrl=Global.apiURL +"account/users/";
   deleteUrl =Global.apiURL +"";
   UsersUrl=Global.apiURL +"account/users/";
