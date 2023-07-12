@@ -97,7 +97,7 @@ export class ProfileComponent implements OnInit {
     username: ['JHON', Validators.required],
     email: ['jhondeo@domaincom', [Validators.required, Validators.email]],
     native_language: [''],
-    gender: ['N'],
+    gender: [''],
     birthday: [''],
     nationality: [''],
     language_level: [''],
@@ -123,9 +123,9 @@ export class ProfileComponent implements OnInit {
         ? 'icl'
         : 'en';
       const genderValue =
-        this.profilForm.value.gender === 'Male'
+        this.profilForm.value.gender === 'Male'||this.profilForm.value.gender === 'Karl'
           ? 'M'
-          : this.profilForm.value.gender === 'Female'
+          : this.profilForm.value.gender === 'Female'||this.profilForm.value.gender === 'Kona'
           ? 'F'
           : 'N';
       // Update the gender field in the form with the mapped value
@@ -140,21 +140,29 @@ export class ProfileComponent implements OnInit {
         .updateProfile(this.profilForm.value)
         .subscribe((profile) => {
           if (profile != null) {
-            const genderValue =
+            const genderValueEN =
               this.profilForm.value.gender === 'M'
                 ? 'Male'
                 : this.profilForm.value.gender === 'F'
                 ? 'Female'
                 : 'Other';
+            const genderValueIS =
+                this.profilForm.value.gender === 'M'
+                  ? 'Karl'
+                  : this.profilForm.value.gender === 'F'
+                  ? 'Kona'
+                  : 'Annað';
             const displayLanguageValue =
               this.profilForm.value.display_language === 'icl'
               ? true
               : false
             // Update the gender field in the form with the mapped value
             this.Responsedata = profile;
-            console.log(this.Responsedata.profile_photo);
             this.profilForm.patchValue({
-              gender: genderValue,
+              gender:
+              Boolean(displayLanguageValue)
+              ? genderValueIS
+              : genderValueEN,
               is_icelandic: displayLanguageValue,
             });
             console.log(this.Responsedata);
