@@ -65,11 +65,17 @@ export class ProfileComponent implements OnInit {
           nationality: String(this.Responsedata.nationality),
           native_language: String(this.Responsedata.native_language),
           gender:
-            String(this.Responsedata.gender) === 'M'
+              String(this.Responsedata.gender) === 'M' && String(this.Responsedata.display_language) === 'icl'
+              ? 'Karl'
+              : String(this.Responsedata.gender) === 'F' && String(this.Responsedata.display_language) === 'icl'
+              ? 'Kona'
+              : String(this.Responsedata.gender) === 'M' && String(this.Responsedata.display_language) === 'en'
               ? 'Male'
-              : String(this.Responsedata.gender) === 'F'
+              : String(this.Responsedata.gender) === 'F' && String(this.Responsedata.display_language) === 'en'
               ? 'Female'
-              : 'Other',
+              : String(this.Responsedata.gender) === 'N' && String(this.Responsedata.display_language) === 'en'
+              ? 'Other'
+              : 'Annað',
           language_level: String(this.Responsedata.language_level),
           notification_setting_email: Boolean(
             this.Responsedata.notification_setting_email
@@ -123,9 +129,9 @@ export class ProfileComponent implements OnInit {
         ? 'icl'
         : 'en';
       const genderValue =
-        this.profilForm.value.gender === 'Male'||this.profilForm.value.gender === 'Karl'
+        this.profilForm.value.gender === 'Male'|| this.profilForm.value.gender === 'Karl'
           ? 'M'
-          : this.profilForm.value.gender === 'Female'||this.profilForm.value.gender === 'Kona'
+          : this.profilForm.value.gender === 'Female'|| this.profilForm.value.gender === 'Kona'
           ? 'F'
           : 'N';
       // Update the gender field in the form with the mapped value
