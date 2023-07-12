@@ -10,6 +10,7 @@ export class HomeComponent implements OnInit {
   loading=true ;
   Responsedata: any;
   users: any;
+  user: any;
 
   constructor(private userService:UserService) { }
 
@@ -22,8 +23,26 @@ export class HomeComponent implements OnInit {
         this.users=this.Responsedata;
       }
     });
+
+    const id = localStorage.getItem("id");  // Fetch id of logged in user
+    if (id != null) {
+      this.getUser(id);  // Fetch specific user
+    }
     const bodyElement = document.body;
     bodyElement.classList.remove("teacher-bird");
   }
 
+  
+// Function to fetch a specific user
+getUser(id: string) {
+  this.userService.UserDetailsCatchError(id!).subscribe(
+    data => {
+      this.user = data;
+    },
+    (error) => {
+      throw error;
+    }
+  );
 }
+}
+
