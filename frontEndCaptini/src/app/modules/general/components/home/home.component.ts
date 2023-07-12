@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { LangService } from '../../../../Shared/services/lang.service';
 import {UserService} from 'src/app/Shared/services/profile/user.service'
 @Component({
   selector: 'app-home',
@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   users: any;
   user: any;
 
-  constructor(private userService:UserService) { }
+  constructor(private userService:UserService, private langService: LangService) { }
 
   ngOnInit(): void {
     this.userService.getusers().subscribe(data=>{
@@ -32,12 +32,14 @@ export class HomeComponent implements OnInit {
     bodyElement.classList.remove("teacher-bird");
   }
 
-  
+
 // Function to fetch a specific user
 getUser(id: string) {
   this.userService.UserDetailsCatchError(id!).subscribe(
     data => {
       this.user = data;
+      // update content according to user specified display language
+      this.langService.useLanguage(this.user.display_language);
     },
     (error) => {
       throw error;
