@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
     this.closed.emit();
   }
   ngOnInit(): void {
-    const id = localStorage.getItem("id"); 
+    const id = localStorage.getItem("id");
     this.userService.UserDetailsCatchError(id!).subscribe(
       data => {
         this.user = data;
@@ -45,10 +45,10 @@ export class HeaderComponent implements OnInit {
         this.route.navigate(['login']);
       }
     })*/
-    
+
   }
   switchLang(lang:string){
     this.langServ.useLanguage(lang);
      }
- 
+
 }

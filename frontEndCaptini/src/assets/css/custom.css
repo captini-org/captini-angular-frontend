@@ -105,6 +105,7 @@ label {
 .navbar-light .profile-img img {
     width: 26px;
     height: 26px;
+    object-fit: cover;
     border-radius: 50%;
 }
 
@@ -182,6 +183,7 @@ label {
 .profile-content .profile-img img {
     width: 200px;
     height: 200px;
+    object-fit: cover;
     border-radius: 50%;
 }
 

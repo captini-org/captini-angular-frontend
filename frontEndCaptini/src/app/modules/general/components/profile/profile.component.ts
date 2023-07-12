@@ -88,7 +88,7 @@ export class ProfileComponent implements OnInit {
             String(this.Responsedata.display_language) === 'icl'
             ? true : false,
         });
-        this.langService.useLanguage(this.Responsedata.display_language),
+        this.langService.useLanguage(this.Responsedata.display_language);
         this.profilePicture = this.Responsedata.profile_photo;
       }
     });
