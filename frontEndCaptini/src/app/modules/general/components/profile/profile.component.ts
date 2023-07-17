@@ -12,6 +12,10 @@ import {
 } from '@angular/forms';
 import { LangService } from '../../../../Shared/services/lang.service';
 
+function formatDate(year: number, month: number = 1, day: number = 1): string {
+  const date = new Date(year, month - 1, day);
+  return date.toISOString().split('T')[0];
+}
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -61,7 +65,7 @@ export class ProfileComponent implements OnInit {
           last_name: String(this.Responsedata.last_name),
           username: String(this.Responsedata.username),
           email: String(this.Responsedata.email),
-          birthday: String(this.Responsedata.birthday),
+          birthday: new Date(this.Responsedata.birthday).getFullYear().toString(),
           nationality: String(this.Responsedata.nationality),
           native_language: String(this.Responsedata.native_language),
           gender:
@@ -122,6 +126,7 @@ export class ProfileComponent implements OnInit {
     localStorage.clear();
     this.route.navigate(['login']);
   }
+  
   updateProfil() {
     if (this.profilForm.valid) {
       const displayLanguageValue =
@@ -134,9 +139,18 @@ export class ProfileComponent implements OnInit {
           : this.profilForm.value.gender === 'Female'|| this.profilForm.value.gender === 'Kona'
           ? 'F'
           : 'N';
+
+
+      // Store the year-only value before formatting the date
+      const yearOnly = this.profilForm.value.birthday;
+
+      // Format the birthday date
+      const formattedBirthday = formatDate(yearOnly);
+
       // Update the gender field in the form with the mapped value
       this.profilForm.patchValue({
         gender: genderValue,
+        birthday: formattedBirthday,
         display_language: displayLanguageValue,
         is_icelandic: this.is_icelandic,
         notification_setting_email: this.notification_setting_email,
@@ -170,13 +184,21 @@ export class ProfileComponent implements OnInit {
               ? genderValueIS
               : genderValueEN,
               is_icelandic: displayLanguageValue,
+              birthday: yearOnly,
             });
-            console.log(this.Responsedata);
             this.msgContent = 'Profile updated!';
             this.showMsg = true;
           }
         });
     }
+  }
+  getYearOptions(): number[] {
+    const currentYear = new Date().getFullYear();
+    const startYear = currentYear - 120; // Adjust the range as needed
+    const endYear = currentYear - 4; // Adjust the range as needed
+
+    // Generate an array of years in descending order
+    return Array.from({ length: endYear - startYear + 1 }, (_, index) => endYear - index);
   }
   changePassword() {
     if (this.passwordForm.valid) {
@@ -191,12 +213,12 @@ export class ProfileComponent implements OnInit {
   }
   // Inside your component class
   toggleAppNotification() {
-    console.log(this.profilForm.value.notification_setting_in_app);
+    //console.log(this.profilForm.value.notification_setting_in_app);
     this.notification_setting_in_app = !this.notification_setting_in_app;
     this.profilForm.patchValue({
       notification_setting_in_app: this.notification_setting_in_app,
     });
-    console.log(this.profilForm.value.notification_setting_in_app);
+    //console.log(this.profilForm.value.notification_setting_in_app);
   }
 
   toggleEmailNotification() {
