@@ -158,6 +158,11 @@ export class LessonDetailsComponent implements OnInit {
   processRecording(blob: any) {
     this.url = URL.createObjectURL(blob);
     this.jsonAudio = blob;
+    const max_file_size_in_bytes = 1800000;
+    if(this.jsonAudio.size > max_file_size_in_bytes){
+      Swal.fire("File too large", "Please record a shorter audio");
+      this.jsonAudio = null;
+    }
   }
   /**
    * Process Error.
@@ -221,12 +226,14 @@ export class LessonDetailsComponent implements OnInit {
     };
 
     reader.readAsDataURL(this.jsonAudio);
+
   }
   getScore() {
     if (!this.jsonAudio) {
       // Show an error message or handle the case when there is no recording available
       return;
     }
+
     const reader = new FileReader();
     reader.onload = () => {
       const base64data = reader.result as string;

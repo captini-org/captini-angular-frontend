@@ -47,7 +47,6 @@ export class RegisterComponent implements OnInit {
     first_name: [''],
     last_name: [''],
     nationality: ['', Validators.required],
-    location: ['', Validators.required],
     birthday: [''],
     email: ['', [Validators.email, Validators.required]],
     password: [
@@ -90,7 +89,7 @@ export class RegisterComponent implements OnInit {
         alert('verify your data')
         // Display an error message to the user or perform any necessary actions
       })
-    
+
     }
   }
   ngOnInit(): void {}

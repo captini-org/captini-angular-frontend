@@ -32,7 +32,6 @@
         "firstName": "First name",
         "lastName": "Last name",
         "nationality": "Nationality",
-        "location": "Location",
         "age": "Age",
         "password": "Password",
         "email": "Email",

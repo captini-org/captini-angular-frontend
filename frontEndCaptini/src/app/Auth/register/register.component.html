@@ -44,11 +44,6 @@
                 <span *ngIf="Rf['nationality'] && Rf['nationality'].invalid && Rf['nationality'].touched " class="text-danger ">{{'validation.required'|translate}}</span>
             </div>
             <div class="mb-2">
-                <label class="form-label">{{'user.location' | translate}}</label>
-                <input [class.is-invalid]="Rf['location'] && Rf['location'].invalid && Rf['location'].touched" type="text" class="form-control" placeholder="{{'user.location' | translate}}" formControlName="location">
-                <span *ngIf="Rf['location'] && Rf['location'].invalid && Rf['location'].touched " class="text-danger ">{{'validation.required'|translate}}</span>
-            </div>
-            <div class="mb-2">
                 <label class="form-label">{{'user.birthday' | translate}}</label>
                 <input type="date" class="form-control" placeholder="{{'user.birthday' | translate}}" formControlName="birthday">
                 <span *ngIf="Rf['birthday'] && Rf['birthday'].invalid && Rf['birthday'].touched " class="text-danger ">{{'validation.required'|translate}}</span>
