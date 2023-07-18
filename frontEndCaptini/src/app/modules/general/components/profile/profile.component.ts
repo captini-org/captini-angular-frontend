@@ -242,7 +242,6 @@ export class ProfileComponent implements OnInit {
       this.form.patchValue({
         profile_photo: event.target.files[0],
       });
-      console.log(event.target.files[0].size);
       reader.onload = (e: any) => {
         // Update the profile_photo field in the form with the uploaded image
         this.profilePicture = e.target.result;
