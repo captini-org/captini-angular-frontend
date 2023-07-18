@@ -93,5 +93,13 @@ export class RegisterComponent implements OnInit {
     
     }
   }
+  getYearOptions(): number[] {
+    const currentYear = new Date().getFullYear();
+    const startYear = currentYear - 120; // Adjust the range as needed
+    const endYear = currentYear - 4; // Adjust the range as needed
+
+    // Generate an array of years in descending order
+    return Array.from({ length: endYear - startYear + 1 }, (_, index) => endYear - index);
+  }
   ngOnInit(): void {}
 }
