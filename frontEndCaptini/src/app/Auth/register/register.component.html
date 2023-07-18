@@ -38,11 +38,21 @@
                 <input type="text" class="form-control" placeholder="{{'user.lastName' | translate}}" formControlName="last_name">
                 <span *ngIf="Rf['last_name'] && Rf['last_name'].invalid && Rf['last_name'].touched " class="text-danger ">{{'validation.required'|translate}}</span>
             </div>
+
             <div class="mb-2">
                 <label class="form-label">{{'user.nationality' | translate}}</label>
                 <input [class.is-invalid]="Rf['nationality'] && Rf['nationality'].invalid && Rf['nationality'].touched" type="text" class="form-control" placeholder="{{'user.nationality' | translate}}" formControlName="nationality">
                 <span *ngIf="Rf['nationality'] && Rf['nationality'].invalid && Rf['nationality'].touched " class="text-danger ">{{'validation.required'|translate}}</span>
             </div>
+
+              <!--
+            <div class="mb-2">
+              <label class="form-label">{{'user.nationality' | translate}}</label>
+              <select class="form-control form-select select2" id="nationality"
+              formControlName="nationality" appAllNationalities>
+              </select>
+          </div>
+            -->
             <div class="mb-2">
                 <label class="form-label">{{'user.birthday' | translate}}</label>
                 <input type="date" class="form-control" placeholder="{{'user.birthday' | translate}}" formControlName="birthday">
