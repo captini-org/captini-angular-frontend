@@ -150,14 +150,11 @@ export class LessonDetailsComponent implements OnInit {
       this.record.stop(this.processRecording.bind(this));
       this.recording = false;
     }
-
-    /*
-    const max_file_size_in_bytes = 1800000;
+    const max_file_size_in_bytes = 1200000;
     if(this.jsonAudio.size > max_file_size_in_bytes){
       Swal.fire("File too large", "Please record a shorter audio");
       this.jsonAudio = null;
     }
-    */
   }
   /**
    * processRecording Do what ever you want with blob
@@ -166,7 +163,6 @@ export class LessonDetailsComponent implements OnInit {
   processRecording(blob: any) {
     this.url = URL.createObjectURL(blob);
     this.jsonAudio = blob;
-    console.log("size of audio recording "+this.jsonAudio.size)
   }
   /**
    * Process Error.
