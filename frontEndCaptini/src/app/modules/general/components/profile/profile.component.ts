@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { waitForAsync } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { UserService } from '../../../../Shared/services/profile/user.service';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 import {
   FormControl,
   FormGroupDirective,
@@ -126,7 +127,7 @@ export class ProfileComponent implements OnInit {
     localStorage.clear();
     this.route.navigate(['login']);
   }
-  
+
   updateProfil() {
     if (this.profilForm.valid) {
       const displayLanguageValue =
@@ -234,16 +235,22 @@ export class ProfileComponent implements OnInit {
   }
 
   onImageUpload(event: any) {
-    this.file = event.target.files[0];
-    const reader = new FileReader();
-    this.form.patchValue({
-      profile_photo: event.target.files[0],
-    });
-    reader.onload = (e: any) => {
-      // Update the profile_photo field in the form with the uploaded image
-      this.profilePicture = e.target.result;
-    };
-    reader.readAsDataURL(event.target.files[0]);
+    const max_file_size_in_bytes = 1500000;
+    if(event.target.files[0].size < max_file_size_in_bytes){
+      this.file = event.target.files[0];
+      const reader = new FileReader();
+      this.form.patchValue({
+        profile_photo: event.target.files[0],
+      });
+      reader.onload = (e: any) => {
+        // Update the profile_photo field in the form with the uploaded image
+        this.profilePicture = e.target.result;
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
+    else {
+      Swal.fire("File too large", "Please upload a file under "+max_file_size_in_bytes/1000+" kB");
+    }
   }
 
   saveProfilePicture() {
