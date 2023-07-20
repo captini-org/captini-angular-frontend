@@ -19,6 +19,9 @@ import {RecPplayStateDirective} from '../../Shared/directives/rec-pplay-state.di
 import {SpecificAlphabetDirective} from '../../Shared/directives/specific-alphabet.directive';
 
 import { LessonDetailsComponent } from './components/topics/lesson/lesson-details/lesson-details.component';
+import { RegisterComponent } from 'src/app/Auth/register/register.component';
+import { AllNationalitiesDirective } from 'src/app/Shared/directives/all-nationalities.directive';
+import { BirthYearsDirective } from 'src/app/Shared/directives/birth-years.directive';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -29,10 +32,13 @@ export function HttpLoaderFactory(http: HttpClient) {
     LayoutComponent,
     HeaderComponent,
     HomeComponent,
+    RegisterComponent,
     TopicsComponent,
     ProfileComponent,
     LessonComponent,
     AllLanguagesDirective,
+    AllNationalitiesDirective,
+    BirthYearsDirective,
     RecPplayStateDirective,
     SpecificAlphabetDirective,
     LessonDetailsComponent
