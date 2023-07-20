@@ -16,13 +16,15 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
 import { NgxPageScrollModule } from 'ngx-page-scroll';
 import { ShowPasswordDirective } from './Shared/directives/show-password.directive';
+import { AllNationalitiesDirective } from './Shared/directives/all-nationalities.directive';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
     ForgetPasswordComponent,
-    ShowPasswordDirective
+    ShowPasswordDirective,
+    AllNationalitiesDirective
   ],
   imports: [
     BrowserModule,
