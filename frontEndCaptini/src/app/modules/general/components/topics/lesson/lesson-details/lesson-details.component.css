@@ -1,29 +1,37 @@
 .recording i {
-    color: var(--bs-success-600);
+  color: var(--bs-success-600);
 }
 
 .recording i:hover {
-    color: var(--bs-success-600);
+  color: var(--bs-success-600);
 }
 
 .lessons .instruction .btn-default.recording {
-    background-color: var(--bs-success-200);
+  background-color: var(--bs-success-200);
 }
 
 .playing i,
 i:hover {
-    color: var(--bs-danger-600);
+  color: var(--bs-danger-600);
 }
 
 .lessons .instruction .btn-default.playing {
-    background-color: var(--bs-danger-200);
+  background-color: var(--bs-danger-200);
 }
 
 .modal-dialog {
-    position: fixed;
-    top: auto;
-    right: 200px;
-    left: auto;
-    bottom: 20px;
+  position: fixed;
+  top: auto;
+  right: 200px;
+  left: auto;
+  bottom: 20px;
 }
+.card-container {
+  margin-bottom: 20px; /* Adjust the margin value to your preference */
+}
+
+.card-separator {
+  margin: 20px 0; /* Adjust the margin value to your preference */
+}
+
 h2,h1,h3 {text-align: center;}
