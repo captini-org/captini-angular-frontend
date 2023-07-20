@@ -15,8 +15,6 @@ import {HttpClient, HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/ht
 import {ReactiveFormsModule} from '@angular/forms';
 import { LessonComponent } from './components/topics/lesson/lesson.component';
 import { AllLanguagesDirective } from '../../Shared/directives/all-languages.directive';
-import { AllNationalitiesDirective } from '../../Shared/directives/all-nationalities.directive';
-import {BirthYearsDirective} from '../../Shared/directives/birth-years.directive';
 import {RecPplayStateDirective} from '../../Shared/directives/rec-pplay-state.directive';
 import {SpecificAlphabetDirective} from '../../Shared/directives/specific-alphabet.directive';
 
@@ -35,8 +33,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     ProfileComponent,
     LessonComponent,
     AllLanguagesDirective,
-    AllNationalitiesDirective,
-    BirthYearsDirective,
     RecPplayStateDirective,
     SpecificAlphabetDirective,
     LessonDetailsComponent
