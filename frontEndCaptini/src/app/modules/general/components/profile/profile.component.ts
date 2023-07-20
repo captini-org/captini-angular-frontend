@@ -66,7 +66,7 @@ export class ProfileComponent implements OnInit {
           last_name: String(this.Responsedata.last_name),
           username: String(this.Responsedata.username),
           email: String(this.Responsedata.email),
-          birthday: new Date(this.Responsedata.birthday).getFullYear().toString(),
+          birthyear: new Number(this.Responsedata.birthyear),
           nationality: String(this.Responsedata.nationality),
           native_language: String(this.Responsedata.native_language),
           gender:
@@ -109,7 +109,7 @@ export class ProfileComponent implements OnInit {
     email: ['jhondeo@domaincom', [Validators.required, Validators.email]],
     native_language: [''],
     gender: [''],
-    birthday: [''],
+    birthyear: [''],
     nationality: [''],
     language_level: [''],
     notification_setting_in_app: [false],
@@ -143,7 +143,7 @@ export class ProfileComponent implements OnInit {
 
 
       // Store the year-only value before formatting the date
-      const yearOnly = this.profilForm.value.birthday;
+      const yearOnly = this.profilForm.value.birthyear;
 
       // Format the birthday date
       const formattedBirthday = formatDate(yearOnly);
@@ -151,7 +151,7 @@ export class ProfileComponent implements OnInit {
       // Update the gender field in the form with the mapped value
       this.profilForm.patchValue({
         gender: genderValue,
-        birthday: formattedBirthday,
+        birthyear: formattedBirthday,
         display_language: displayLanguageValue,
         is_icelandic: this.is_icelandic,
         notification_setting_email: this.notification_setting_email,
@@ -185,7 +185,7 @@ export class ProfileComponent implements OnInit {
               ? genderValueIS
               : genderValueEN,
               is_icelandic: displayLanguageValue,
-              birthday: yearOnly,
+              birthyear: yearOnly,
             });
             this.msgContent = 'Profile updated!';
             this.showMsg = true;

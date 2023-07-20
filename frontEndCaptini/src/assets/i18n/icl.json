@@ -40,7 +40,7 @@
         "confirm": "Staðfesta lykilorð",
         "nativeLanguage": "Þitt fyrsta mál",
         "gender": "Kyn",
-        "year": "Fæðingaár",
+        "year": "Fæðingarár",
         "birthday": "Fæðingardagur",
         "langLevel": "Tungumálastig",
         "beginner": "Byrjandi",
@@ -60,7 +60,10 @@
         "help": "Þarftu aðstoð?",
         "Read": "Lestu okkar",
         "old-password": "Gamalt lykilorð",
-        "new-password": "Nýtt lykilorð"
+        "new-password": "Nýtt lykilorð",
+        "choose-year": "Veldu þitt fæðingarár",
+        "choose-nationality": "Veldu þitt land",
+        "choose-first-language": "Veldu þitt fyrsta mál"
     },
     "validation": {
         "required": "Þessi reitur má ekki vera tómur",

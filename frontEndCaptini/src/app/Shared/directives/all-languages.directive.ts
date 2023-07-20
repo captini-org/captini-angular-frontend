@@ -7,7 +7,7 @@ export class AllLanguagesDirective {
 
   constructor(private el: ElementRef) {
     const parent = this.el.nativeElement;
-    parent.innerHTML = `<option>Choose..</option>
+    parent.innerHTML = `
     <option value="af">Afrikaans</option>
     <option value="sq">Albanian - shqip</option>
     <option value="am">Amharic - አማርኛ</option>

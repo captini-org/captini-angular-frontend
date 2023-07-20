@@ -7,7 +7,7 @@ export class AllNationalitiesDirective {
 
   constructor(private el: ElementRef) {
     const parent = this.el.nativeElement;
-    parent.innerHTML = `<option>Choose..</option>
+    parent.innerHTML = `
     <option value="Afghanistan">Afghanistan</option>
     <option value="Åland Islands">Åland Islands</option>
     <option value="Albania">Albania</option>

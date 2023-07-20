@@ -122,14 +122,15 @@
                             </div>
                             <div class="form-group">
                                 <label for="birthday">{{ 'user.year' | translate }}</label>
-                                <select class="form-control" id="birthday" formControlName="birthday">
-                                    <option *ngFor="let year of getYearOptions()" [value]="year">{{year}}</option>
+                                <select class="form-control" id="birthday" formControlName="birthday" appBirthYears>
+                                  <option value="" disabled selected hidden>{{ 'user.choose-year'| translate }}</option>
                                 </select>
                               </div>
                             <div class="form-group">
                                 <label for="nationality">{{'user.nationality' | translate}}</label>
                                 <select id="nationality" class="form-control form-select select2 "
                                     formControlName="nationality" appAllNationalities>
+                                  <option value="" disabled selected hidden>{{ 'user.choose-nationality'| translate }}</option>
                                 </select>
                             </div>
                             <div class="form-group">

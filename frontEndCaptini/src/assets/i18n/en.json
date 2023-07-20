@@ -60,7 +60,10 @@
         "help": "Need help ?",
         "Read": "Read the",
         "old-password": "Old password",
-        "new-password": "New password"
+        "new-password": "New password",
+        "choose-year": "Select your year of birth",
+        "choose-nationality": "Select your country of nationality",
+        "choose-first-language": "Select your first language"
     },
     "validation": {
         "required": "This field is required",
