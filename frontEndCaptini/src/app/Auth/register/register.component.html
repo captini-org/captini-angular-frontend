@@ -52,12 +52,11 @@
               formControlName="nationality" appAllNationalities>
               </select>
           </div>
-
-            <div class="mb-2">
-                <label class="form-label">{{'user.birthday' | translate}}</label>
-                <input type="date" class="form-control" placeholder="{{'user.birthday' | translate}}" formControlName="birthday">
-                <span *ngIf="Rf['birthday'] && Rf['birthday'].invalid && Rf['birthday'].touched " class="text-danger ">{{'validation.required'|translate}}</span>
-            </div>
+          <div class="mb-2">
+            <label class="form-label" for="birthday">{{ 'user.year' | translate }}</label>
+            <select class="form-control" id="birthday" formControlName="birthday" appBirthYears>
+            </select>
+          </div>
             <div class="form-group mb-2">
                 <label class="form-label">{{'user.password' | translate}}</label>
                 <div class="input-group">

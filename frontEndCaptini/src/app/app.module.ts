@@ -17,6 +17,7 @@ import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
 import { NgxPageScrollModule } from 'ngx-page-scroll';
 import { ShowPasswordDirective } from './Shared/directives/show-password.directive';
 import { AllNationalitiesDirective } from './Shared/directives/all-nationalities.directive';
+import {BirthYearsDirective} from './Shared/directives/birth-years.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,8 @@ import { AllNationalitiesDirective } from './Shared/directives/all-nationalities
     RegisterComponent,
     ForgetPasswordComponent,
     ShowPasswordDirective,
-    AllNationalitiesDirective
+    AllNationalitiesDirective,
+    BirthYearsDirective,
   ],
   imports: [
     BrowserModule,
