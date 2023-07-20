@@ -22,6 +22,8 @@ import { LessonDetailsComponent } from './components/topics/lesson/lesson-detail
 import { RegisterComponent } from 'src/app/Auth/register/register.component';
 import { AllNationalitiesDirective } from 'src/app/Shared/directives/all-nationalities.directive';
 import { BirthYearsDirective } from 'src/app/Shared/directives/birth-years.directive';
+import { LoginComponent } from 'src/app/Auth/login/login.component';
+import { ShowPasswordDirective } from 'src/app/Shared/directives/show-password.directive';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -32,6 +34,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     LayoutComponent,
     HeaderComponent,
     HomeComponent,
+    LoginComponent,
     RegisterComponent,
     TopicsComponent,
     ProfileComponent,
@@ -41,6 +44,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     BirthYearsDirective,
     RecPplayStateDirective,
     SpecificAlphabetDirective,
+    ShowPasswordDirective,
     LessonDetailsComponent
       ],
   imports: [

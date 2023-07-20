@@ -7,20 +7,16 @@ import {HttpClient, HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/ht
 import {ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './Auth/login/login.component';
 import { ForgetPasswordComponent } from './Auth/forget-password/forget-password.component';
 import { TokenInterceptorService} from './Shared/services/token-interceptor.service';
 import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
 import { NgxPageScrollModule } from 'ngx-page-scroll';
-import { ShowPasswordDirective } from './Shared/directives/show-password.directive';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     ForgetPasswordComponent,
-    ShowPasswordDirective,
   ],
   imports: [
     BrowserModule,
