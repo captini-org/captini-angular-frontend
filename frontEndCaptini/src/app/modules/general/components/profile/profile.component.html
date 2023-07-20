@@ -108,21 +108,21 @@
                                 <label for="native_language">{{'user.nativeLanguage'|translate}}</label>
                                 <select id="native_language" class="form-control form-select select2 "
                                     formControlName="native_language" appAllLanguages>
-
+                                    <option value="" disabled selected hidden>{{ 'user.choose-first-language'| translate }}</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="gender">{{'user.gender'|translate}}</label>
                                 <select id="gender" class="form-control form-select select2" formControlName="gender">
-                                    <option selected>{{'form.choose'|translate}}</option>
+                                    <option disabled selected hidden>{{'form.choose'|translate}}</option>
                                     <option>{{'user.male'|translate}}</option>
                                     <option>{{'user.female'|translate}}</option>
                                     <option>{{'user.other'|translate}}</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="birthday">{{ 'user.year' | translate }}</label>
-                                <select class="form-control" id="birthday" formControlName="birthday" appBirthYears>
+                                <label for="birthyear">{{ 'user.year' | translate }}</label>
+                                <select class="form-control" id="birthyear" formControlName="birthyear" appBirthYears>
                                   <option value="" disabled selected hidden>{{ 'user.choose-year'| translate }}</option>
                                 </select>
                               </div>

@@ -47,7 +47,7 @@ export class RegisterComponent implements OnInit {
     first_name: [''],
     last_name: [''],
     nationality: ['', Validators.required],
-    birthday: ['', Validators.required],
+    birthyear: ['', Validators.required],
     email: ['', [Validators.email, Validators.required]],
     password: [
       '',
@@ -81,6 +81,7 @@ export class RegisterComponent implements OnInit {
         if (result != null) {
           this.msgContent = this.Responsedata
           this.showMsg = true
+          console.log(result)
           //this.navigate.navigate(['/login',]);
         }
       },
@@ -88,7 +89,6 @@ export class RegisterComponent implements OnInit {
         // Handle registration error here
         alert('verify your data')
         // Display an error message to the user or perform any necessary actions
-        console.log(error)
       })
 
     }

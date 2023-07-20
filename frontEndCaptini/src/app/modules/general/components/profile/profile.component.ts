@@ -145,13 +145,10 @@ export class ProfileComponent implements OnInit {
       // Store the year-only value before formatting the date
       const yearOnly = this.profilForm.value.birthyear;
 
-      // Format the birthday date
-      const formattedBirthday = formatDate(yearOnly);
-
       // Update the gender field in the form with the mapped value
       this.profilForm.patchValue({
         gender: genderValue,
-        birthyear: formattedBirthday,
+        birthyear: yearOnly,
         display_language: displayLanguageValue,
         is_icelandic: this.is_icelandic,
         notification_setting_email: this.notification_setting_email,
