@@ -86,10 +86,10 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="card h96">
+                        <div class="card h96" *ngIf="!loading && user">
                             <div class="card-body">
-                                <h5 class="card-title">Time spent learning</h5>
-                                <p class="card-text text-end text-lg">3 days 02:36</p>
+                              <h5 class="card-title">Time since last login</h5>
+                              <p class="card-text text-end text-lg">{{timeSinceLastLogin}}</p>
                             </div>
                         </div>
                         <div class="card h78">
@@ -118,6 +118,12 @@
                             <div class="card-body">
                                 <h5 class="card-title">Corrections</h5>
                                 <p class="card-text txt-md ">13</p>
+                            </div>
+                        </div>
+                        <div class="card h96" *ngIf="!loading && user">
+                            <div class="card-body">
+                              <h5 class="card-title">Time since registration</h5>
+                              <p class="card-text text-end text-lg">{{timeSinceRegistration}}</p>
                             </div>
                         </div>
                     </div>
