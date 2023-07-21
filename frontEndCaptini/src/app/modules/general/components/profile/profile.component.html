@@ -49,7 +49,7 @@
                                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start"
                                             aria-labelledby="dropdownMenu2">
                                             <li><a class="dropdown-item" type="button" data-bs-toggle="modal"
-                                                    data-bs-target="#ImgModal">update your profile picture</a></li>
+                                                    data-bs-target="#ImgModal">{{"image.change"|translate}}</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -60,7 +60,7 @@
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="ImgModalLabel">Add your profile picture</h5>
+                                            <h5 class="modal-title" id="ImgModalLabel">{{"image.upload"|translate}}</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
 
@@ -70,16 +70,16 @@
                                                 <input type="file" id="imageUpload" accept=".jpg, .jpeg, .png"
                                                     (change)="onImageUpload($event)">
                                                 <label for="imageUpload">
-                                                    <span>import a photo</span></label>
+                                                    <span>{{"image.select"|translate}}</span></label>
                                             </div>
-                                            <hr>
+                                            <span>{{"image.warning"|translate}}</span>
 
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal"(click)="cancel()">Cancel</button>
+                                                data-bs-dismiss="modal"(click)="cancel()">{{"image.cancel"|translate}}</button>
                                             <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
-                                                (click)="saveProfilePicture()">Save changes</button>
+                                                (click)="saveProfilePicture()">{{"image.save"|translate}}</button>
                                         </div>
                                     </div>
                                 </div>

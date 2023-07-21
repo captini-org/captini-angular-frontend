@@ -74,9 +74,17 @@
     "form": {
         "choose": "Veldu"
     },
+    "image": {
+      "change": "Skipta um prófílmynd",
+      "upload": "Hlaða upp mynd",
+      "select": "Veldu mynd",
+      "warning": "Prófílmyndin má að hámarki vera 1.5 MB að stærð og þarf að hlaða henni upp á .jpg, .jpeg eða .png sniði.",
+      "save": "Vista breytingar",
+      "cancel": "Hætta við"
+    },
     "title": {
         "profile": "Minn prófíll",
-        "interfaceNotif": "Viðmót og tungumál ",
+        "interfaceNotif": "Viðmót og tungumál",
         "privacyData": "Persónuverndargögn",
         "account": "Reikningur",
         "accountActions": "Reikningsaðgerðir",

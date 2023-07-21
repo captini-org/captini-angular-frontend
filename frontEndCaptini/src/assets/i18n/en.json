@@ -74,6 +74,14 @@
     "form": {
         "choose": "Choose"
     },
+    "image": {
+      "change": "Change profile photo",
+      "upload": "Upload new profile photo",
+      "select": "Select image",
+      "warning": "Your profile photo should be either a .jpg, .jpeg, or .png file under 1.5 MB.",
+      "save": "Save changes",
+      "cancel": "Cancel"
+    },
     "title": {
         "profile": "Profile",
         "interfaceNotif": "Interface and language ",

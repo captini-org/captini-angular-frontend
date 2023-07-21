@@ -12,6 +12,7 @@ import {
   FormBuilder,
 } from '@angular/forms';
 import { LangService } from '../../../../Shared/services/lang.service';
+import { HeaderComponent } from '../header/header.component';
 
 function formatDate(year: number, month: number = 1, day: number = 1): string {
   const date = new Date(year, month - 1, day);
@@ -123,6 +124,7 @@ export class ProfileComponent implements OnInit {
     _oldPass: [''],
     _newPass: [''],
   });
+
   logOUt() {
     localStorage.clear();
     this.route.navigate(['login']);
@@ -140,7 +142,6 @@ export class ProfileComponent implements OnInit {
           : this.profilForm.value.gender === 'Female'|| this.profilForm.value.gender === 'Kona'
           ? 'F'
           : 'N';
-
 
       // Store the year-only value before formatting the date
       const yearOnly = this.profilForm.value.birthyear;
@@ -190,14 +191,7 @@ export class ProfileComponent implements OnInit {
         });
     }
   }
-  getYearOptions(): number[] {
-    const currentYear = new Date().getFullYear();
-    const startYear = currentYear - 120; // Adjust the range as needed
-    const endYear = currentYear - 4; // Adjust the range as needed
 
-    // Generate an array of years in descending order
-    return Array.from({ length: endYear - startYear + 1 }, (_, index) => endYear - index);
-  }
   changePassword() {
     if (this.passwordForm.valid) {
       this.userService
@@ -225,6 +219,7 @@ export class ProfileComponent implements OnInit {
       notification_setting_email: this.notification_setting_email,
     });
   }
+
   updateLanguageLevel(value: string) {
     this.profilForm.patchValue({
       language_level: value,
@@ -255,9 +250,10 @@ export class ProfileComponent implements OnInit {
       const formData = new FormData();
       formData.append('profile_photo', this.form.value.profile_photo);
       this.userService.updateProfilePicture(formData);
-
     }
+
   }
+
   cancel(){
     this.profilePicture = this.Responsedata.profile_photo;
   }
