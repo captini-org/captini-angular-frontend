@@ -61,4 +61,8 @@ i:hover {
   margin: 20px 0; /* Adjust the margin value to your preference */
 }
 
+.hidden {
+  visibility: hidden;
+}
+
 h2,h1,h3 {text-align: center;}

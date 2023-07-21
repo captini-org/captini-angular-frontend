@@ -68,6 +68,7 @@
                       <i class="ri-volume-up-line"></i>
                     </button>
                     <span class="letter">{{ task.task_text }}</span>
+                    <!--
                     <div>
                       <button class="btn btn-default" (click)="initiateRecording(task.id)">
                         <i class="ri-mic-line"></i>
@@ -95,19 +96,19 @@
                         <i class="ri-share-fill" (click)="sendTask()"></i>
                       </button>
                     </div>
-
+                    -->
                     <div>
                       <button class="btn btn-default" (click)="recording ? stopRecording() : initiateRecording(task.id)">
                         <i [ngClass]="recording ? 'ri-mic-off-line' : 'ri-mic-line'"></i>
                       </button>
-                      <button class="btn btn-default" (click)="play_audio(task.audio_url)">
+                      <button [ngClass]=" url && task.id == id_current_task? 'btn btn-default':'hidden'" (click)="play_audio(task.audio_url)">
                         <i [ngClass]="audio_paused ? 'ri-play-fill' : 'ri-pause-fill'"></i>
                       </button>
                       <audio
-                        class="btn btn-default"
-                        controls
+                      class="btn btn-default"
+                      controls
 
-                        *ngIf="url && task.id == id_current_task"
+                      *ngIf="url && task.id == id_current_task"
                       >
                         <source [src]="sanitize()" />
                         {{ task.id }}
