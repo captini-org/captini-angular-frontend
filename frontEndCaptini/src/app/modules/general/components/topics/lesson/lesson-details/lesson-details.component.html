@@ -95,6 +95,34 @@
                         <i class="ri-share-fill" (click)="sendTask()"></i>
                       </button>
                     </div>
+
+                    <div>
+                      <button class="btn btn-default" (click)="recording ? stopRecording() : initiateRecording(task.id)">
+                        <i [ngClass]="recording ? 'ri-mic-off-line' : 'ri-mic-line'"></i>
+                      </button>
+                      <button class="btn btn-default" (click)="play_audio(task.audio_url)">
+                        <i [ngClass]="audio_paused ? 'ri-play-fill' : 'ri-pause-fill'"></i>
+                      </button>
+                      <audio
+                        class="btn btn-default"
+                        controls
+
+                        *ngIf="url && task.id == id_current_task"
+                      >
+                        <source [src]="sanitize()" />
+                        {{ task.id }}
+                        <i class="ri-play-fill"></i>
+                      </audio>
+                      <span>
+                        <button class="btn btn-default" >
+                          <i class="ri-check-double-fill" (click)="getScore()"></i>
+                        </button>
+                        <span>{{'topic.score' | translate}}: {{score}}</span>
+                      </span>
+                      <button class="btn btn-default" >
+                        <i class="ri-share-fill" (click)="sendTask()"></i>
+                      </button>
+                    </div>
                   </div>
 
                 </div>

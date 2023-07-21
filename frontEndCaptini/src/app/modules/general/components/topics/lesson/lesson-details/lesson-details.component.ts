@@ -41,7 +41,6 @@ export class LessonDetailsComponent implements OnInit {
   public id_current_user: any;
   public score!: number;
   public lessonNumber: any;
-
   private i = 0;
 
   jsonAudio: any;
