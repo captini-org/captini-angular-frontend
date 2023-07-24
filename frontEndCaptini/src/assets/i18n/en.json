@@ -100,6 +100,13 @@
         "updateProfileMsg": "Profile updated successfully!",
         "loginErrorMsg": "Invalid Credentials!"
     },
+    "audio": {
+      "record": "Record",
+      "stop": "Stop",
+      "listen": "Listen",
+      "check": "Check",
+      "share": "Share"
+  },
     "language": {
         "en": "English",
         "icl": "Icelandic"

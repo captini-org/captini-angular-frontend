@@ -100,6 +100,13 @@
         "updateProfileMsg": "Prófíllinn þinn hefur verið uppfærður",
         "loginErrorMsg": "Notandanafn og/eða lykilorð virkar ekki"
     },
+    "audio": {
+      "record": "Taka upp",
+      "stop": "Stoppa",
+      "listen": "Hlusta",
+      "check": "Meta",
+      "share":"Deila"
+  },
     "language": {
         "en": "Enska",
         "icl": "Íslenska"

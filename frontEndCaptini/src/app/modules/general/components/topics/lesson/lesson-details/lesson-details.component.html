@@ -46,27 +46,22 @@
               <i class="ri-arrow-right-line"></i>
             </button>
           </div>
-          <br />
-          <div class="item-content">
-            <h2>{{ lesson_by_id?.description }}</h2>
 
-            <hr />
-            <hr />
+          <div class="item-content">
+            <h2 class="mt-4 mb-4">{{ lesson_by_id?.description }}</h2>
             <div class="instruction d-flex mb-5" id="alphabet1">
               <div>
                 <div
-                  class="d-flex me-5"
+                  class="d-flex"
                   style="align-items: baseline"
                   *ngFor="let prompt of prompts"
                 >
                 <div class="card text-center">
-                  <div class="card-header">{{ prompt.flashcard_text }}</div>
+                  <span *ngIf="prompt.flashcard_text" class="card-header">{{ prompt.flashcard_text }}</span>
 
                     <div class="card-title" *ngFor="let task of prompt.tasks">
                     <div class="card-body">
-                    <button class="btn btn-info btn-circle" (click)="play_audio(task.audio_url)">
-                      <i class="ri-volume-up-line"></i>
-                    </button>
+
                     <span class="letter">{{ task.task_text }}</span>
                     <!--
                     <div>
@@ -98,11 +93,13 @@
                     </div>
                     -->
                     <div>
-                      <button class="btn btn-default" (click)="recording ? stopRecording() : initiateRecording(task.id)">
-                        <i [ngClass]="recording ? 'ri-mic-off-line' : 'ri-mic-line'"></i>
+                      <button mat-button class="btn btn-listen me-2" (click)="play_audio(task.audio_url)">
+                        <i class="ri-voiceprint-fill"></i>
+                        {{ 'audio.listen' | translate}}
                       </button>
-                      <button [ngClass]=" url && task.id == id_current_task? 'btn btn-default':'hidden'" (click)="play_audio(task.audio_url)">
-                        <i [ngClass]="audio_paused ? 'ri-play-fill' : 'ri-pause-fill'"></i>
+                      <button mat-button class="btn btn-default me-2" (click)="recording ? stopRecording() : initiateRecording(task.id)">
+                        <i [ngClass]="recording ? 'ri-mic-off-line' : 'ri-mic-line'"></i>
+                        {{ recording ? ('audio.stop' | translate) : ('audio.record' | translate)}}
                       </button>
                       <audio
                       class="btn btn-default"
@@ -114,23 +111,20 @@
                         {{ task.id }}
                         <i class="ri-play-fill"></i>
                       </audio>
-                      <span>
-                        <button class="btn btn-default" >
-                          <i class="ri-check-double-fill" (click)="getScore()"></i>
-                        </button>
-                        <span>{{'topic.score' | translate}}: {{score}}</span>
-                      </span>
                       <button class="btn btn-default" >
                         <i class="ri-share-fill" (click)="sendTask()"></i>
+                        {{ 'audio.share'|translate }}
                       </button>
                     </div>
+                    <div>
+                      <button class="btn btn-evaluate me-2" >
+                        <i class="ri-check-double-fill" (click)="getScore()"></i>
+                        {{ 'audio.check' | translate}}
+                      </button>
+                      <span>{{'topic.score' | translate}}: {{score}}</span>
+                    </div>
                   </div>
-
                 </div>
-                <hr class="card-separator" />
-                <hr class="card-separator" />
-                <hr class="card-separator" />
-
                 </div>
 
                 <!-- <table>
