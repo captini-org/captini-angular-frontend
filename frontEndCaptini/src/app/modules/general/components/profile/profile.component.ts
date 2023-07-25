@@ -99,7 +99,7 @@ export class ProfileComponent implements OnInit {
     });
     const bodyElement = document.body;
     bodyElement.classList.remove('teacher-bird');
-
+    console.log("is_icelandic"+this.is_icelandic);
   }
   profilForm = this.formBuilder.group({
     id: [''],
@@ -140,7 +140,6 @@ export class ProfileComponent implements OnInit {
           : this.profilForm.value.gender === 'Female'|| this.profilForm.value.gender === 'Kona'
           ? 'F'
           : 'N';
-
 
       // Store the year-only value before formatting the date
       const yearOnly = this.profilForm.value.birthyear;
@@ -274,5 +273,6 @@ export class ProfileComponent implements OnInit {
       display_language:
         this.is_icelandic ? 'icl' : 'en'
     });
+    console.log("is_icelandic"+this.is_icelandic);
   }
 }

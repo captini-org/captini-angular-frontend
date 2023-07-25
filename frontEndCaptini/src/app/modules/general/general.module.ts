@@ -20,10 +20,11 @@ import {SpecificAlphabetDirective} from '../../Shared/directives/specific-alphab
 
 import { LessonDetailsComponent } from './components/topics/lesson/lesson-details/lesson-details.component';
 import { RegisterComponent } from 'src/app/Auth/register/register.component';
-import { AllNationalitiesDirective } from 'src/app/Shared/directives/all-nationalities.directive';
+import { AllNationalitiesEnglishDirective } from 'src/app/Shared/directives/all-nationalitiesEN.directive';
 import { BirthYearsDirective } from 'src/app/Shared/directives/birth-years.directive';
 import { LoginComponent } from 'src/app/Auth/login/login.component';
 import { ShowPasswordDirective } from 'src/app/Shared/directives/show-password.directive';
+import { AllNationalitiesIcelandicDirective } from 'src/app/Shared/directives/all-nationalitiesIS.directive';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -40,7 +41,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ProfileComponent,
     LessonComponent,
     AllLanguagesDirective,
-    AllNationalitiesDirective,
+    AllNationalitiesIcelandicDirective,
+    AllNationalitiesEnglishDirective,
     BirthYearsDirective,
     RecPplayStateDirective,
     SpecificAlphabetDirective,
