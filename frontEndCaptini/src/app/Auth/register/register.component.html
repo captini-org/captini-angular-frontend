@@ -48,10 +48,27 @@
 
             <div class="mb-2">
               <label class="form-label">{{'user.nationality' | translate}}</label>
-              <select class="form-control form-select select2" id="nationality"
-              formControlName="nationality" appAllNationalities>
+              <ng-container *ngIf="is_icelandic; else englishNationalities">
+                <select
+                  id="nationality"
+                  class="form-control form-select select2"
+                  formControlName="nationality"
+                  appAllNationalitiesIS
+                >
                 <option value="" disabled selected hidden>{{ 'user.choose-nationality'| translate }}</option>
-              </select>
+                </select>
+              </ng-container>
+
+              <ng-template #englishNationalities>
+                <select
+                  id="nationality"
+                  class="form-control form-select select2"
+                  formControlName="nationality"
+                  appAllNationalitiesEN
+                >
+                <option value="" disabled selected hidden>{{ 'user.choose-nationality'| translate }}</option>
+                </select>
+              </ng-template>
               <span *ngIf="Rf['nationality'] && Rf['nationality'].invalid && Rf['nationality'].touched " class="text-danger ">{{'validation.required'|translate}}</span>
           </div>
           <div class="mb-2">

@@ -20,6 +20,7 @@ import { ActivatedRoute, Router } from '@angular/router'
   providers: [DatePipe],
 })
 export class RegisterComponent implements OnInit {
+  is_icelandic: boolean = false
   showMsg: boolean = false
   msgContent: string = ''
   Responsedata: any
@@ -74,6 +75,7 @@ export class RegisterComponent implements OnInit {
   ) {}
   switchLang(lang: string) {
     this.langService.useLanguage(lang)
+    this.is_icelandic = !this.is_icelandic
   }
   register() {
     if (this.registerForm.valid) {
