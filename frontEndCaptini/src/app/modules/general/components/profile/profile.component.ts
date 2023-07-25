@@ -100,7 +100,7 @@ export class ProfileComponent implements OnInit {
     });
     const bodyElement = document.body;
     bodyElement.classList.remove('teacher-bird');
-
+    console.log("is_icelandic"+this.is_icelandic);
   }
   profilForm = this.formBuilder.group({
     id: [''],
@@ -270,5 +270,6 @@ export class ProfileComponent implements OnInit {
       display_language:
         this.is_icelandic ? 'icl' : 'en'
     });
+    console.log("is_icelandic"+this.is_icelandic);
   }
 }
