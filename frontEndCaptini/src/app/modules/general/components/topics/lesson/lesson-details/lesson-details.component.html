@@ -68,12 +68,12 @@
                         <i class="ri-voiceprint-fill"></i>
                         {{ 'audio.listen' | translate}}
                       </button>
-                      <button mat-button class="btn btn-default me-2" (click)="recording ? stopRecording() : initiateRecording(task.id)">
+                      <button mat-button class="btn btn-listen me-2" (click)="recording ? stopRecording() : initiateRecording(task.id)">
                         <i [ngClass]="recording ? 'ri-mic-off-line' : 'ri-mic-line'"></i>
                         {{ recording ? ('audio.stop' | translate) : ('audio.record' | translate)}}
                       </button>
                       <audio
-                      class="btn btn-default"
+                      class="btn btn-audio"
                       controls
 
                       *ngIf="url && task.id == id_current_task"
@@ -82,7 +82,7 @@
                         {{ task.id }}
                         <i class="ri-play-fill"></i>
                       </audio>
-                      <button class="btn btn-default" >
+                      <button class="btn btn-listen" >
                         <i class="ri-share-fill" (click)="sendTask()"></i>
                         {{ 'audio.share'|translate }}
                       </button>
