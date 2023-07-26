@@ -87,7 +87,8 @@
                         {{ 'audio.share'|translate }}
                       </button>
                     </div>
-                    <div>
+                    <div
+                    *ngIf="url && task.id == id_current_task">
                       <button class="btn btn-evaluate me-2" >
                         <i class="ri-check-double-fill" (click)="getScore()"></i>
                         {{ 'audio.check' | translate}}
