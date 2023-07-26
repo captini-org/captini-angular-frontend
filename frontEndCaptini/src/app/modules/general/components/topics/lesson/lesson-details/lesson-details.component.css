@@ -10,10 +10,7 @@
   background-color: var(--bs-success-200);
 }
 
-.playing i,
-i:hover {
-  color: var(--bs-danger-600);
-}
+
 
 .lessons .instruction .btn-default.playing {
   background-color: var(--bs-danger-200);
@@ -35,6 +32,10 @@ i:hover {
   font-size: 12px;
   line-height: 1.428571429;
   border-radius: 15px;
+}
+
+.no-margin{
+  margin: 0 !important;
 }
 
 .btn-listen {
@@ -102,6 +103,7 @@ i:hover {
   display: flex;
   justify-content: center; /* align horizontal */
   align-items: center; /* align vertical */
+  background-color: var(--bs-gray-100);
 }
 
 .card-separator {
@@ -117,7 +119,11 @@ i:hover {
   visibility: hidden;
 }
 
-h2,h1,h3 {text-align: center;}
+h2,h1,h3,h4 {text-align: center;}
+
+h4 {
+  margin: 2rem;
+}
 
 .instruction {
   display: flex;

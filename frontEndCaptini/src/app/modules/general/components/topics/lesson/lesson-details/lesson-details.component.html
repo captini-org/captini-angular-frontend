@@ -20,7 +20,7 @@
           </button>
         </li>
         <li>
-          <h3>{{ lesson_by_id?.subject }}</h3>
+          <h3 class="mx-3">{{ lesson_by_id?.subject }}</h3>
         </li>
       </div>
     </ul>
@@ -52,47 +52,18 @@
             <div class="instruction d-flex mb-5" id="alphabet1">
               <div>
                 <div
-                  class="d-flex"
+                  class="d-flex mb-4"
                   style="align-items: baseline"
                   *ngFor="let prompt of prompts"
                 >
-                <div class="card text-center">
-                  <span *ngIf="prompt.flashcard_text" class="card-header">{{ prompt.flashcard_text }}</span>
+                <div class="card text-center no-margin">
+                  <span *ngIf="prompt.flashcard_text" class="card-header"><h3 class="no-margin">{{ prompt.flashcard_text }}</h3></span>
 
                     <div class="card-title" *ngFor="let task of prompt.tasks">
                     <div class="card-body">
 
-                    <span class="letter">{{ task.task_text }}</span>
-                    <!--
-                    <div>
-                      <button class="btn btn-default" (click)="initiateRecording(task.id)">
-                        <i class="ri-mic-line"></i>
-                      </button>
-                      <button class="btn btn-default" (click)="stopRecording()">
-                        <i class="ri-play-fill"></i>
-                      </button>
-                      <audio
-                        class="btn btn-default"
-                        controls
-
-                        *ngIf="url && task.id == id_current_task"
-                      >
-                        <source [src]="sanitize()" />
-                        {{ task.id }}
-                        <i class="ri-play-fill"></i>
-                      </audio>
-                      <span>
-                        <button class="btn btn-default" >
-                          <i class="ri-check-double-fill" (click)="getScore()"></i>
-                        </button>
-                        <span>{{'topic.score' | translate}}: {{score}}</span>
-                      </span>
-                      <button class="btn btn-default" >
-                        <i class="ri-share-fill" (click)="sendTask()"></i>
-                      </button>
-                    </div>
-                    -->
-                    <div>
+                    <span class="letter"><h4>{{ task.task_text }}</h4></span>
+                    <div class="mb-3">
                       <button mat-button class="btn btn-listen me-2" (click)="play_audio(task.audio_url)">
                         <i class="ri-voiceprint-fill"></i>
                         {{ 'audio.listen' | translate}}
