@@ -122,6 +122,23 @@
         "backToSignin": "Here mistakenly? ",
         "backToSigninMsg": "Go back to the sign in page",
         "resetMsg": "Reset your password"
+    },
+    "community": {
+      "menu-give-feedback":"Give feedback to the community",
+      "menu-get-feedback": "Get feedback from the community",
+      "instruction": "Give your feedback to others regarding their pronunciation",
+      "first-language": "Spanish",
+      "location": "Iceland",
+      "give-feedback": "Give feedback",
+      "see-feedback": "Sjá endurgjöf frá öðrum",
+      "rate": "Rate this pronunciation",
+      "replay": "Replay audio recording",
+      "comment": "Give your feedback",
+      "guidelines": "Guidelines",
+      "type-here":"Start typing here...",
+      "cancel":"Cancel",
+      "send":"Send feedback"
+
     }
 
 

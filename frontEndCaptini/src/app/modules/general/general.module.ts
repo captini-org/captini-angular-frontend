@@ -21,6 +21,7 @@ import {RecPplayStateDirective} from '../../Shared/directives/rec-pplay-state.di
 import {SpecificAlphabetDirective} from '../../Shared/directives/specific-alphabet.directive';
 
 import { LessonDetailsComponent } from './components/topics/lesson/lesson-details/lesson-details.component';
+import { CommunityComponent } from './components/community/community.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -39,7 +40,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     BirthYearsDirective,
     RecPplayStateDirective,
     SpecificAlphabetDirective,
-    LessonDetailsComponent
+    LessonDetailsComponent,
+    CommunityComponent
       ],
   imports: [
     CommonModule,

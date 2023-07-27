@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LangService } from 'src/app/Shared/services/lang.service';
 
 @Component({
   selector: 'app-community',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommunityComponent implements OnInit {
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
   }
