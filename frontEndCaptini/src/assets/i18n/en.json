@@ -141,8 +141,8 @@
         "resetMsg": "Reset your password"
     },
     "direction": {
-        "previous": "Previous",
-        "next": "Next"
+        "previous": "Previous lesson",
+        "next": "Next lesson"
     }
 
 

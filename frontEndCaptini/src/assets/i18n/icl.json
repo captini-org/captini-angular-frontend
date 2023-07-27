@@ -141,7 +141,7 @@
             "resetMsg": "Endurstilla lykilorð"
         },
         "direction": {
-          "previous": "Fyrri",
-          "next": "Næsti"
+          "previous": "Fyrri þráður",
+          "next": "Næsti þráður"
       }
 }
