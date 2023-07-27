@@ -35,6 +35,7 @@
           <div class="item-header d-flex justify-content-between">
             <button class="btn btn-default" (click)="goPrev()" *ngIf="index_lesson > 0">
               <i class="ri-arrow-left-line"></i>
+              {{ 'direction.previous' | translate }}
             </button>
             <h2>{{'topic.lesson' | translate}}  {{ index_lesson + 1 }} {{'topic.of' | translate}} {{ listLessons?.length }}</h2>
 
@@ -43,13 +44,14 @@
               (click)="goNext()"
               *ngIf="listLessons && index_lesson < listLessons.length - 1"
             >
+              {{ 'direction.next' | translate }}
               <i class="ri-arrow-right-line"></i>
             </button>
           </div>
 
           <div class="item-content">
             <h2 class="mt-4 mb-4">{{ lesson_by_id?.description }}</h2>
-            <div class="instruction d-flex mb-5" id="alphabet1">
+            <div class="instruction d-flex" id="alphabet1">
               <div>
                 <div
                   class="d-flex mb-4"
@@ -149,6 +151,21 @@
               </div>
             </div>
           </div>
+          <div class="item-header d-flex justify-content-between">
+            <button class="btn btn-default" (click)="goPrev()" *ngIf="index_lesson > 0">
+              <i class="ri-arrow-left-line"></i>
+              {{ 'direction.previous' | translate }}
+            </button>
+            <button
+              class="btn btn-default"
+              (click)="goNext()"
+              *ngIf="listLessons && index_lesson < listLessons.length - 1"
+            >
+              {{ 'direction.next' | translate }}
+              <i class="ri-arrow-right-line"></i>
+            </button>
+          </div>
+
         </li>
       </div>
     </div>

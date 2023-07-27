@@ -139,6 +139,10 @@
         "backToSignin": "Here mistakenly? ",
         "backToSigninMsg": "Go back to the sign in page",
         "resetMsg": "Reset your password"
+    },
+    "direction": {
+        "previous": "Previous",
+        "next": "Next"
     }
 
 

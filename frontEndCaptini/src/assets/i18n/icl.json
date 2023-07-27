@@ -139,5 +139,9 @@
             "backToSignin": "Átt þú ekki að vera hér? ",
             "backToSigninMsg": "Fara til baka á innskráningarsíðu",
             "resetMsg": "Endurstilla lykilorð"
-        }
+        },
+        "direction": {
+          "previous": "Fyrri",
+          "next": "Næsti"
+      }
 }
