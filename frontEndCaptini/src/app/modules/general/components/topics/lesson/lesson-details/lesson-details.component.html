@@ -64,11 +64,7 @@
                     <div class="card-title" *ngFor="let task of prompt.tasks">
                     <div class="card-body">
 
-                    <span class="letter" [ngClass]="hasCorrection ? 'mb-2' : 'mb-4'"><h4>{{ task.task_text }}</h4></span>
-                    <div #phones>
-                      <!-- Phones for correction is added here -->
-                    </div>
-
+                    <div class="letter mb-2" #targetElement><h4>{{ task.task_text }}</h4></div>
                     <div class="mb-3">
                       <button mat-button class="btn btn-listen me-2" (click)="play_audio(task.audio_url)">
                         <i class="ri-voiceprint-fill"></i>

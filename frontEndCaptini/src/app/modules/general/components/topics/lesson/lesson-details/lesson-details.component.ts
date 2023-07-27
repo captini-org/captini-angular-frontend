@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ITopics } from 'src/app/models/ITopics';
 import { TopicsService } from 'src/app/Shared/services/topics/topics.service';
@@ -14,8 +14,8 @@ import { IPrompts } from 'src/app/models/IPrompts';
   templateUrl: './lesson-details.component.html',
   styleUrls: ['./lesson-details.component.css'],
 })
-export class LessonDetailsComponent implements OnInit, AfterViewInit {
-  @ViewChild('phones', { static: true }) targetElementRef!: ElementRef;
+export class LessonDetailsComponent implements OnInit, AfterViewChecked {
+  @ViewChild('targetElement', { static: false }) targetElementRef!: ElementRef;
   tasksUrl = Global.apiURL + 'captini/tasks/';
   lessonUrl = Global.apiURL + 'captini/lessons/';
   constructor(
@@ -46,6 +46,7 @@ export class LessonDetailsComponent implements OnInit, AfterViewInit {
   public hasCorrection = false;
   public answered = false;
   private i = 0;
+  public targetElement: any;
 
   jsonAudio: any;
 
@@ -234,21 +235,19 @@ export class LessonDetailsComponent implements OnInit, AfterViewInit {
 
   }
 
-  ngAfterViewInit() {
-    console.log("afterviewinit activated");
+  ngAfterViewChecked() {
+    this.targetElement = this.targetElementRef?.nativeElement;
   }
 
   showPhones(){
     this.hasCorrection = !this.hasCorrection;
-    // Access the nativeElement after the view has been initialized
-    const targetElement = this.targetElementRef?.nativeElement;
-    if (targetElement) {
+    if (this.targetElement) {
       // Create the span element
       const newSpan = document.createElement('span');
       newSpan.textContent = 'Phones displayed here';
 
       // Append the span element to the target element
-      targetElement.appendChild(newSpan);
+      this.targetElement.appendChild(newSpan);
       console.log("Span appended")
     }
     else {
