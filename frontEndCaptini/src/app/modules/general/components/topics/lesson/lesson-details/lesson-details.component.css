@@ -134,11 +134,15 @@ button.mat-button .i,
   visibility: hidden;
 }
 
-h2,h1,h3,h4 {text-align: center;}
-
-h4 {
-  margin: 2rem;
+.emphasis {
+  text-decoration: underline dotted red;
 }
+
+.lessons {
+  width: fit-content;
+}
+
+h2,h1,h3,h4 {text-align: center;}
 
 .instruction {
   display: flex;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ITopics } from 'src/app/models/ITopics';
 import { TopicsService } from 'src/app/Shared/services/topics/topics.service';
@@ -14,7 +14,8 @@ import { IPrompts } from 'src/app/models/IPrompts';
   templateUrl: './lesson-details.component.html',
   styleUrls: ['./lesson-details.component.css'],
 })
-export class LessonDetailsComponent implements OnInit {
+export class LessonDetailsComponent implements OnInit, AfterViewInit {
+  @ViewChild('phones', { static: true }) targetElementRef!: ElementRef;
   tasksUrl = Global.apiURL + 'captini/tasks/';
   lessonUrl = Global.apiURL + 'captini/lessons/';
   constructor(
@@ -23,6 +24,7 @@ export class LessonDetailsComponent implements OnInit {
     private topicService: TopicsService,
     private domSanitizer: DomSanitizer
   ) {}
+
   public topic_id!: number;
   public lesson_id!: number;
   public listLessons?: ILesson[];
@@ -41,6 +43,8 @@ export class LessonDetailsComponent implements OnInit {
   public id_current_user: any;
   public score!: number;
   public lessonNumber: any;
+  public hasCorrection = false;
+  public answered = false;
   private i = 0;
 
   jsonAudio: any;
@@ -149,11 +153,7 @@ export class LessonDetailsComponent implements OnInit {
       this.record.stop(this.processRecording.bind(this));
       this.recording = false;
     }
-    const max_file_size_in_bytes = 1200000;
-    if(this.jsonAudio.size > max_file_size_in_bytes){
-      Swal.fire("File too large", "Please record a shorter audio");
-      this.jsonAudio = null;
-    }
+
   }
   /**
    * processRecording Do what ever you want with blob
@@ -162,6 +162,12 @@ export class LessonDetailsComponent implements OnInit {
   processRecording(blob: any) {
     this.url = URL.createObjectURL(blob);
     this.jsonAudio = blob;
+    // limit size of audio file
+    const max_file_size_in_bytes = 1200000;
+    if(this.jsonAudio.size > max_file_size_in_bytes){
+      Swal.fire("File too large", "Please record a shorter audio");
+      this.jsonAudio = null;
+    }
   }
   /**
    * Process Error.
@@ -227,7 +233,31 @@ export class LessonDetailsComponent implements OnInit {
     reader.readAsDataURL(this.jsonAudio);
 
   }
+
+  ngAfterViewInit() {
+    console.log("afterviewinit activated");
+  }
+
+  showPhones(){
+    this.hasCorrection = !this.hasCorrection;
+    // Access the nativeElement after the view has been initialized
+    const targetElement = this.targetElementRef?.nativeElement;
+    if (targetElement) {
+      // Create the span element
+      const newSpan = document.createElement('span');
+      newSpan.textContent = 'Phones displayed here';
+
+      // Append the span element to the target element
+      targetElement.appendChild(newSpan);
+      console.log("Span appended")
+    }
+    else {
+      console.error('targetElementRef is undefined.');
+    }
+  }
+
   getScore() {
+    this.answered = true;
     if (!this.jsonAudio) {
       // Show an error message or handle the case when there is no recording available
       return;
