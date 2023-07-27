@@ -27,6 +27,11 @@ export class HomeComponent implements OnInit {
         this.loading = false;
         this.Responsedata=data;
         this.users=this.Responsedata;
+
+        // Set the initial value of showGlow property for each user
+        this.users.forEach((user: any) => {
+          user.showGlow = false; // You can set this to true or false based on your requirements
+        });
       }
     });
 
@@ -50,11 +55,13 @@ getUser(id: string) {
         if (currentUserIndex > 2) {
           const currentUser = this.users.splice(currentUserIndex, 1)[0];
           this.users.splice(3, 0, currentUser);
+          this.users.forEach((user: any, index: number) => {
+            user.showGlow = index === 3; // Highlights the current user in the leaderboard
+          });
         }
         this.users = this.users;
         // Limits the number of users to 25
         this.users = this.users.slice(0, 25);
-        console.log(this.users);
       }
     },
     (error) => {
