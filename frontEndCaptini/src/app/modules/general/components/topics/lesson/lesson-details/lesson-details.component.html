@@ -93,8 +93,8 @@
                     </div>
                     <div
                     *ngIf="answered || url && task.id == id_current_task">
-                      <button class="btn btn-evaluate me-2" >
-                        <i class="ri-check-double-fill" (click)="getScore();showPhones()"></i>
+                      <button class="btn btn-evaluate me-2" (click)="getScore();showPhones()">
+                        <i class="ri-check-double-fill"></i>
                         {{ 'audio.check' | translate}}
                       </button>
                       <span>{{'topic.score' | translate}}: {{score}}</span>
