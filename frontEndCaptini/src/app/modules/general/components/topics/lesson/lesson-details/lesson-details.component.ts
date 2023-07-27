@@ -248,7 +248,6 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
 
       // Append the span element to the target element
       this.targetElement.appendChild(newSpan);
-      console.log("Span appended")
     }
     else {
       console.error('targetElementRef is undefined.');
