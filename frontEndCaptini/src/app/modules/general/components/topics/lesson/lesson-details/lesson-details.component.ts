@@ -249,6 +249,12 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
     // find div with class name = "phones"
     const phone = div.querySelector('.phones') as HTMLElement;
     if(phone){
+      // Check if there is an existing child with class "emphasis"
+      const existingPhones = this.div.querySelector('.emphasis');
+      if (existingPhones) {
+        // If it exists, remove it before adding a new one
+        this.renderer.removeChild(this.div, existingPhones);
+      }
       // Create the span element
       const newSpan = this.renderer.createElement('span');
       this.renderer.addClass(newSpan,'emphasis');
@@ -321,8 +327,15 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
       const btn = event.target as HTMLElement;
       this.div = btn.closest('.card-body');
       if (this.div) {
-        // Create the span element
+        // Check if there is an existing child with class "score"
+        const existingScore = this.div.querySelector('.score');
+        if (existingScore) {
+          // If it exists, remove it before adding a new one
+          this.renderer.removeChild(this.div, existingScore);
+        }
+        // Create new child (div) to show score
         const sc = this.renderer.createElement('div');
+        this.renderer.addClass(sc,'score');
         this.renderer.addClass(sc,'mt-2');
         this.renderer.addClass(sc, 'mb-2');
         // Set the content of the <span> element (you can use innerText or innerHTML)
