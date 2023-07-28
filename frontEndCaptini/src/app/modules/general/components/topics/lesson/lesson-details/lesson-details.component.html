@@ -84,7 +84,7 @@
                           <i class="ri-play-fill"></i>
                         </audio>
                         <div
-                        *ngIf="answered || url && task.id == id_current_task">
+                        *ngIf="url && task.id == id_current_task">
                           <button class="btn btn-evaluate me-2" (click)="getScore($event)">
                             <i class="ri-check-double-fill"></i>
                             {{ 'audio.check' | translate}}

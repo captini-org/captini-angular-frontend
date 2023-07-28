@@ -315,19 +315,20 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
       reader.readAsDataURL(this.jsonAudio);
       //console.log('current task id' + this.id_current_task);
 
-      /*only update the score for this task */
+      /*random score*/
       this.score = 100;
+      // only show score on the relevant task
       const btn = event.target as HTMLElement;
       this.div = btn.closest('.card-body');
       if (this.div) {
         // Create the span element
-        const newSpan = this.renderer.createElement('span');
-        this.renderer.addClass(newSpan,'me-2');
-        this.renderer.addClass(newSpan, 'mb-2');
+        const sc = this.renderer.createElement('div');
+        this.renderer.addClass(sc,'mt-2');
+        this.renderer.addClass(sc, 'mb-2');
         // Set the content of the <span> element (you can use innerText or innerHTML)
-        this.renderer.appendChild(newSpan, this.renderer.createText('Score: '+this.score));
+        this.renderer.appendChild(sc, this.renderer.createText('Score: '+this.score));
         // Append the <span> element as a child of the target element
-        this.renderer.appendChild(this.div, newSpan);
+        this.renderer.appendChild(this.div, sc);
         this.showPhones(this.div);
       }
       else {
