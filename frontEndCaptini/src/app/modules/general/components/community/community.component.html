@@ -2,11 +2,11 @@
     <section class="community boxed">
         <ul class="nav nav-pills nav-justified" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="pills-givefeed-tab" data-bs-toggle="pill" data-bs-target="#pills-givefeed" type="button" role="tab" aria-controls="pills-givefeed" aria-selected="true">Give feedback to the community
+                <button class="nav-link active" id="pills-givefeed-tab" data-bs-toggle="pill" data-bs-target="#pills-givefeed" type="button" role="tab" aria-controls="pills-givefeed" aria-selected="true"> {{ 'community.menu-give-feedback'| translate }}
                 </button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="pills-getfeed-tab" data-bs-toggle="pill" data-bs-target="#pills-getfeed" type="button" role="tab" aria-controls="pills-getfeed" aria-selected="false">Get feedback from the community
+                <button class="nav-link" id="pills-getfeed-tab" data-bs-toggle="pill" data-bs-target="#pills-getfeed" type="button" role="tab" aria-controls="pills-getfeed" aria-selected="false"> {{ 'community.menu-get-feedback'| translate }}
                 </button>
             </li>
         </ul>
@@ -15,7 +15,7 @@
                 <ul class="list-group">
                     <li class="list-group-item d-flex justify-content-between align-items-center header-item bg-gray-200">
                         <div class="item-content d-flex flex-column ">
-                            <span>Give your feedback to others regarding their pronunciation</span>
+                            <span> {{ 'community.instruction'| translate }}</span>
                         </div>
                     </li>
                     <li class="list-group-item d-flex community-feedback">
@@ -27,8 +27,8 @@
                                 <aside class="ms-2">
                                     <h2>This person</h2>
                                     <div class="additional-info">
-                                        <span class="me-2"><i class="ri-user-voice-line "></i> Spanich</span>
-                                        <span> <i class="ri-map-pin-line"></i> Iceland</span>
+                                        <span class="me-2"><i class="ri-user-voice-line "></i> {{ 'community.first-language'| translate }}</span>
+                                        <span> <i class="ri-map-pin-line"></i> {{ 'community.location'| translate }}</span>
                                     </div>
                                     <div class="rating mt-1">
                                         <div class="stars">
@@ -41,8 +41,8 @@
                                     </div>
                                     <div class="mt-2">
                                         <button type="submit" class="btn btn-default me-2"><i class="ri-voiceprint-fill"></i> Play audio recording</button>
-                                        <button class="btn btn-secondary  me-2">Give feedback</button>
-                                        <div class="mt-2"><a href="#">See other’s feedback</a></div>
+                                        <button class="btn btn-secondary  me-2">{{ 'community.give-feedback'| translate }} </button>
+                                        <div class="mt-2"><a href="#">{{ 'community.see-feedback'| translate }} </a></div>
                                     </div>
                                 </aside>
                             </div>
@@ -57,15 +57,15 @@
                                 <aside class="ms-2">
                                     <h2>This person</h2>
                                     <div class="additional-info">
-                                        <span class="me-2"><i class="ri-user-voice-line"></i> Spanich</span>
-                                        <span><i class="ri-map-pin-line"></i> Iceland</span>
+                                        <span class="me-2"><i class="ri-user-voice-line"></i> {{ 'community.first-language'| translate }}</span>
+                                        <span><i class="ri-map-pin-line"></i> {{ 'community.location'| translate }}</span>
                                     </div>
                                     <div class="feedback flex-column mt-2">
                                         <button type="button" class="btn btn-default me-2">
-                                            <i class="ri-restart-line"></i> Replay audio recording
+                                            <i class="ri-restart-line"></i> {{ 'community.replay'| translate }}
                                         </button>
                                         <div class="rating mt-1">
-                                            <label>Rate this pronunciation</label>
+                                            <label>{{ 'community.rate'| translate }}</label>
                                             <div class="stars">
                                                 <i class="ri-star-line"></i>
                                                 <i class="ri-star-line"></i>
@@ -75,16 +75,16 @@
                                             </div>
                                         </div>
                                         <div class="comment mt-2">
-                                            <label for="" class="mb-2 me-2 float-start">Give your feedback </label> <span class="mb-2"><i class="ri-earth-fill"></i></span>
-                                            <label class="float-end text_blue">Guidelines </label>
+                                            <label for="" class="mb-2 me-2 float-start">{{ 'community.comment'| translate }}</label><span class="mb-2"><i class="ri-earth-fill"></i></span>
+                                            <label class="float-end text_blue">{{ 'community.guidelines'| translate }} </label>
                                             <div class="form-floating">
-                                                <textarea class="form-control text-area" placeholder="Leave a comment here" id="floatingTextarea2"></textarea>
-                                                <label for="floatingTextarea2">Start typing here...
+                                                <textarea class="form-control text-area" placeholder="Leave a comment here" id="floatingTextarea2">{{ 'community.type-here'| translate }}</textarea>
+                                                <label for="floatingTextarea2">
                                                 </label>
                                             </div>
                                             <div class="text-end mt-2">
-                                                <button type="button" class="btn btn-default me-2">Cancel</button>
-                                                <button class="btn btn-secondary">send feedback</button>
+                                                <button type="button" class="btn btn-default me-2">{{ 'community.cancel'| translate }} </button>
+                                                <button class="btn btn-secondary">{{ 'community.send'| translate }} </button>
                                             </div>
 
                                         </div>

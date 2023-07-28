@@ -132,5 +132,20 @@
             "backToSignin": "Átt þú ekki að vera hér? ",
             "backToSigninMsg": "Fara til baka á innskráningarsíðu",
             "resetMsg": "Endurstilla lykilorð"
+        },
+        "community": {
+          "menu-give-feedback":"Gefa öðrum endurgjöf",
+          "menu-get-feedback": "Fá endurgjöf frá öðrum",
+          "instruction": "Gefðu öðrum endurgjöf um hvernig þau bera fram orð/setningu",
+          "first-language": "Spænska",
+          "location":"Ísland",
+          "give-feedback": "Gefa endurgjöf",
+          "rate": "Gefa einkunn fyrir framburð",
+          "replay": "Hlusta aftur á upptöku",
+          "comment": "Setja inn athugasemd",
+          "guidelines": "Leiðbeiningar um athugasemdir",
+          "type-here":"Skrifaðu athugasemdir hér",
+          "cancel":"Hætta við",
+          "send":"Senda endurgjöf"
         }
 }

@@ -25,6 +25,7 @@ import { BirthYearsDirective } from 'src/app/Shared/directives/birth-years.direc
 import { LoginComponent } from 'src/app/Auth/login/login.component';
 import { ShowPasswordDirective } from 'src/app/Shared/directives/show-password.directive';
 import { AllNationalitiesIcelandicDirective } from 'src/app/Shared/directives/all-nationalitiesIS.directive';
+import { CommunityComponent } from './components/community/community.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -47,7 +48,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     RecPplayStateDirective,
     SpecificAlphabetDirective,
     ShowPasswordDirective,
-    LessonDetailsComponent
+    LessonDetailsComponent,
+    CommunityComponent,
       ],
   imports: [
     CommonModule,
