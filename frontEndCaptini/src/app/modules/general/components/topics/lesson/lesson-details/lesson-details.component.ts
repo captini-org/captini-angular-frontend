@@ -159,7 +159,6 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
       this.record.stop(this.processRecording.bind(this));
       this.recording = false;
     }
-
   }
   /**
    * processRecording Do what ever you want with blob
@@ -319,7 +318,6 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
           });
       };
       reader.readAsDataURL(this.jsonAudio);
-      //console.log('current task id' + this.id_current_task);
 
       /*random score*/
       this.score = 100;

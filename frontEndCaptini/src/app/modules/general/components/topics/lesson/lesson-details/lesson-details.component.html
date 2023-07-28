@@ -74,15 +74,16 @@
                             {{ recording ? ('audio.stop' | translate) : ('audio.record' | translate)}}
                           </button>
                         </div>
-                        <audio
-                        class="btn btn-audio mb-1"
-                        controls
-                        *ngIf="url && task.id == id_current_task"
-                        >
-                          <source [src]="sanitize()" />
-                          {{ task.id }}
-                          <i class="ri-play-fill"></i>
-                        </audio>
+                        <ng-container *ngIf="url && task.id == id_current_task">
+                          <audio class="btn btn-audio mb-1" controls>
+                            <source [src]="sanitize()" />{{ task.id }}
+                            <i class="ri-play-fill"></i>
+                          </audio>
+                        </ng-container>
+
+                        <ng-template #noAudio>
+                          <!-- Placeholder content when audio is not available -->
+                        </ng-template>
                         <div
                         *ngIf="url && task.id == id_current_task">
                           <button class="btn btn-evaluate me-2" (click)="getScore($event)">
