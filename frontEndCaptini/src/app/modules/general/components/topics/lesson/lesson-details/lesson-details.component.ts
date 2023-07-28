@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewChecked, Component, Renderer2, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ITopics } from 'src/app/models/ITopics';
 import { TopicsService } from 'src/app/Shared/services/topics/topics.service';
@@ -15,14 +15,18 @@ import { IPrompts } from 'src/app/models/IPrompts';
   styleUrls: ['./lesson-details.component.css'],
 })
 export class LessonDetailsComponent implements OnInit, AfterViewChecked {
-  @ViewChild('targetElement', { static: false }) targetElementRef!: ElementRef;
+  // unnecessary if working directly with DOM: class names, IDs, etc
+  // @ViewChild('targetElement', { static: false }) targetElementRef!: ElementRef;
   tasksUrl = Global.apiURL + 'captini/tasks/';
   lessonUrl = Global.apiURL + 'captini/lessons/';
+
   constructor(
     private route: ActivatedRoute,
     private navigateRouter: Router,
     private topicService: TopicsService,
-    private domSanitizer: DomSanitizer
+    private domSanitizer: DomSanitizer,
+    private renderer: Renderer2,
+    private elementRef: ElementRef,
   ) {}
 
   public topic_id!: number;
@@ -47,7 +51,8 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
   public answered = false;
   private i = 0;
   public targetElement: any;
-
+  public div: any;
+  public phone: any;
   jsonAudio: any;
 
   ngOnInit(): void {
@@ -236,76 +241,97 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
   }
 
   ngAfterViewChecked() {
-    this.targetElement = this.targetElementRef?.nativeElement;
+    this.targetElement = this.elementRef.nativeElement.querySelectorAll('.phones');
   }
 
-  showPhones(){
+  showPhones(div: any){
     this.hasCorrection = !this.hasCorrection;
-    if (this.targetElement) {
+    // find div with class name = "phones"
+    const phone = div.querySelector('.phones') as HTMLElement;
+    if(phone){
       // Create the span element
-      const newSpan = document.createElement('span');
-      newSpan.textContent = 'Phones displayed here';
-
-      // Append the span element to the target element
-      this.targetElement.appendChild(newSpan);
+      const newSpan = this.renderer.createElement('span');
+      this.renderer.addClass(newSpan,'emphasis');
+      // Set the content of the <span> element (you can use innerText or innerHTML)
+      this.renderer.appendChild(newSpan, this.renderer.createText('Phones displayed here'));
+      // Append the <span> element as a child of the target element
+      this.renderer.appendChild(phone, newSpan);
     }
     else {
-      console.error('targetElementRef is undefined.');
+      console.error('phone div is undefined.');
     }
-  }
+}
 
-  getScore() {
-    this.answered = true;
-    if (!this.jsonAudio) {
-      // Show an error message or handle the case when there is no recording available
-      return;
-    }
+  getScore(event: Event) {
 
-    const reader = new FileReader();
-    reader.onload = () => {
-      const base64data = reader.result as string;
-      const sendObj = {
-        audio: base64data,
+      this.answered = true;
+      if (!this.jsonAudio) {
+        // Show an error message or handle the case when there is no recording available
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        const base64data = reader.result as string;
+        const sendObj = {
+          audio: base64data,
+        };
+
+        // Create a FormData object and append the recording data
+        const formData = new FormData();
+        formData.append('recording', this.jsonAudio);
+        formData.append('user', this.id_current_user); // Replace with the appropriate user ID
+        formData.append('task', this.id_current_task);
+        //need to pass info to identify prompt number
+
+        const myHeaders = new Headers();
+        myHeaders.append(
+          'Authorization',
+          'Bearer ' + localStorage.getItem('token')
+        );
+
+        const requestOptions: RequestInit = {
+          method: 'POST',
+          headers: myHeaders,
+          body: formData,
+          redirect: 'follow',
+        };
+        /*change url to endpoint for ai model */
+        fetch(this.tasksUrl + this.id_current_task + '/upload/', requestOptions)
+          .then((response) => {
+            // Handle the response and show a success message
+            this.showSuccessMessage(
+              'Checked',
+              'Your recording was sent and graded! Check your score now'
+            );
+            // Clear the recording data
+            this.jsonAudio = null;
+          })
+          .catch((error) => {
+            // Handle the error and show an error message
+            console.log('error', error);
+          });
       };
+      reader.readAsDataURL(this.jsonAudio);
+      //console.log('current task id' + this.id_current_task);
 
-      // Create a FormData object and append the recording data
-      const formData = new FormData();
-      formData.append('recording', this.jsonAudio);
-      formData.append('user', this.id_current_user); // Replace with the appropriate user ID
-      formData.append('task', this.id_current_task);
-      //need to pass info to identify prompt number
-
-      const myHeaders = new Headers();
-      myHeaders.append(
-        'Authorization',
-        'Bearer ' + localStorage.getItem('token')
-      );
-
-      const requestOptions: RequestInit = {
-        method: 'POST',
-        headers: myHeaders,
-        body: formData,
-        redirect: 'follow',
-      };
-      /*change url to endpoint for ai model */
-      fetch(this.tasksUrl + this.id_current_task + '/upload/', requestOptions)
-        .then((response) => {
-          // Handle the response and show a success message
-          this.showSuccessMessage(
-            'Checked',
-            'Your recording was sent and graded! Check your score now'
-          );
-          // Clear the recording data
-          this.jsonAudio = null;
-        })
-        .catch((error) => {
-          // Handle the error and show an error message
-          console.log('error', error);
-        });
-    };
-    reader.readAsDataURL(this.jsonAudio);
-    /*only update the score for this task */
-    this.score = 100;
-    console.log('current task id' + this.id_current_task);
+      /*only update the score for this task */
+      this.score = 100;
+      const btn = event.target as HTMLElement;
+      this.div = btn.closest('.card-body');
+      if (this.div) {
+        // Create the span element
+        const newSpan = this.renderer.createElement('span');
+        this.renderer.addClass(newSpan,'me-2');
+        this.renderer.addClass(newSpan, 'mb-2');
+        // Set the content of the <span> element (you can use innerText or innerHTML)
+        this.renderer.appendChild(newSpan, this.renderer.createText('Score: '+this.score));
+        // Append the <span> element as a child of the target element
+        this.renderer.appendChild(this.div, newSpan);
+        this.showPhones(this.div);
+      }
+      else {
+        console.error('div is undefined.');
+      }
   }
 }
