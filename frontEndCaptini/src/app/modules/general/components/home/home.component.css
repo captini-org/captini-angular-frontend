@@ -205,3 +205,9 @@
         width: auto;
     }
 }
+
+.list-group-item-glow {
+    box-shadow: 0 0 20px 5px rgba(35, 226, 35, 0.7); /* Adjust the values as needed */
+    background-color: var(--bs-success-200);
+    font-weight:bold;
+  }
