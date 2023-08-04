@@ -45,6 +45,7 @@ getUser(id: string) {
   this.userService.UserDetailsCatchError(id!).subscribe(
     data => {
       this.user = data;
+      console.log(this.user);
       // update content according to user specified display language
       this.langService.useLanguage(this.user.display_language);
 

@@ -196,6 +196,7 @@ export class LessonDetailsComponent implements OnInit {
       formData.append('recording', this.jsonAudio);
       formData.append('user', this.id_current_user); // Replace with the appropriate user ID
       formData.append('task', this.id_current_task);
+      formData.append('lesson', "4"); // Now include the lesson ID
 
       const myHeaders = new Headers();
       myHeaders.append(
@@ -246,6 +247,7 @@ export class LessonDetailsComponent implements OnInit {
       formData.append('recording', this.jsonAudio);
       formData.append('user', this.id_current_user); // Replace with the appropriate user ID
       formData.append('task', this.id_current_task);
+      formData.append('lesson', "4"); // Now include the lesson ID
       //need to pass info to identify prompt number
 
       const myHeaders = new Headers();
