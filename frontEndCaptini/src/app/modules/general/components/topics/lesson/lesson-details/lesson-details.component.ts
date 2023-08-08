@@ -275,6 +275,16 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
         return;
       }
 
+      // Parse the lesson index from the URL
+      const lessonPath = window.location.pathname;
+      const lessonIndex = lessonPath.split('/').pop(); // Gets the last segment of the path
+
+      if (lessonIndex) {
+        this.lessonNumber = parseInt(lessonIndex, 10); // Convert string to integer
+      } else {
+        console.error('Lesson index not found in the URL.');
+      }
+
       const reader = new FileReader();
       reader.onload = () => {
         const base64data = reader.result as string;
@@ -287,10 +297,10 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
         formData.append('recording', this.jsonAudio);
         formData.append('user', this.id_current_user); // Replace with the appropriate user ID
         formData.append('task', this.id_current_task);
-        formData.append('lesson', this.lessonNumber);
+        formData.append('lesson', String(this.lessonNumber)); // currently undefined!
         //need to pass info to identify prompt number
 
-        console.log('form data is :'+formData);
+        console.log(this.lessonNumber);
 
         const myHeaders = new Headers();
         myHeaders.append(
