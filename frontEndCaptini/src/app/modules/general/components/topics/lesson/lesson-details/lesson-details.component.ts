@@ -297,10 +297,8 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
         formData.append('recording', this.jsonAudio);
         formData.append('user', this.id_current_user); // Replace with the appropriate user ID
         formData.append('task', this.id_current_task);
-        formData.append('lesson', String(this.lessonNumber)); // currently undefined!
+        formData.append('lesson', String(this.lessonNumber));
         //need to pass info to identify prompt number
-
-        console.log(this.lessonNumber);
 
         const myHeaders = new Headers();
         myHeaders.append(
