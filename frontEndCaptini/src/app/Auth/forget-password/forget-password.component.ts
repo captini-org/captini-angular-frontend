@@ -29,14 +29,9 @@ export class ForgetPasswordComponent implements OnInit {
   );
 
   loginForget(){
-  // Get the email value from the form
-  const email = this.loginForgetForm.value.email;
-
-  // Create the request body containing the email
-  const requestBody = { email: email };
 
   // Send the POST request to the backend API
-  this.http.post<any>('/account/api/password_reset/', requestBody).subscribe(
+  this.API.loginForget(this.loginForgetForm.value).subscribe(
     (result) => {
       // Handle the response
       if (result != null) {
