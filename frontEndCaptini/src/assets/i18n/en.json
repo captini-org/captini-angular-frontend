@@ -100,6 +100,13 @@
         "updateProfileMsg": "Profile updated successfully!",
         "loginErrorMsg": "Invalid Credentials!"
     },
+    "audio": {
+      "record": "Record",
+      "stop": "Stop",
+      "listen": "Listen",
+      "check": "Check",
+      "share": "Share recording"
+  },
     "language": {
         "en": "English",
         "icl": "Icelandic"
@@ -148,7 +155,10 @@
       "type-here":"Start typing here...",
       "cancel":"Cancel",
       "send":"Send feedback"
-
+    },
+    "direction": {
+        "previous": "Previous lesson",
+        "next": "Next lesson"
     }
 
 

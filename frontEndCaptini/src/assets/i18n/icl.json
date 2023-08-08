@@ -100,6 +100,13 @@
         "updateProfileMsg": "Prófíllinn þinn hefur verið uppfærður",
         "loginErrorMsg": "Notandanafn og/eða lykilorð virkar ekki"
     },
+    "audio": {
+      "record": "Taka upp",
+      "stop": "Stoppa",
+      "listen": "Hlusta",
+      "check": "Meta",
+      "share":"Deila upptöku"
+  },
     "language": {
         "en": "Enska",
         "icl": "Íslenska"
@@ -147,5 +154,9 @@
           "type-here":"Skrifaðu athugasemdir hér",
           "cancel":"Hætta við",
           "send":"Senda endurgjöf"
-        }
+        },
+        "direction": {
+          "previous": "Fyrri þráður",
+          "next": "Næsti þráður"
+      }
 }
