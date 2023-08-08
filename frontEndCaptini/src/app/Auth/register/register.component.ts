@@ -77,20 +77,25 @@ export class RegisterComponent implements OnInit {
   }
   register() {
     if (this.registerForm.valid) {
-      this.API.registerUser(this.registerForm.value).subscribe((result) => {
-        if (result != null) {
-          this.msgContent = this.Responsedata
-          this.showMsg = true
-          console.log(result)
-          //this.navigate.navigate(['/login',]);
+      this.API.registerUser(this.registerForm.value).subscribe(
+        (result) => {
+          if (result != null) {
+            var responseResult = result as { username: string }
+            if (responseResult.username != "user with this username already exists.") {
+              this.msgContent = this.Responsedata
+              this.showMsg = true
+            } else {
+              this.showMsg = false
+              alert('Username already exists!')
+            }
+          }
+        },
+        (error) => {
+          // Handle registration error here
+          alert('Email is already registered!')
+          // Display an error message to the user or perform any necessary actions
         }
-      },
-      (error) => {
-        // Handle registration error here
-        alert('verify your data')
-        // Display an error message to the user or perform any necessary actions
-      })
-
+      );
     }
   }
   ngOnInit(): void {}
