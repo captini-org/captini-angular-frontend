@@ -331,48 +331,6 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
       };
       reader.readAsDataURL(this.jsonAudio);
 
-<<<<<<< HEAD
-      // Create a FormData object and append the recording data
-      const formData = new FormData();
-      formData.append('recording', this.jsonAudio);
-      formData.append('user', this.id_current_user); // Replace with the appropriate user ID
-      formData.append('task', this.id_current_task);
-      formData.append('lesson', "4"); // Now include the lesson ID
-      //need to pass info to identify prompt number
-
-      const myHeaders = new Headers();
-      myHeaders.append(
-        'Authorization',
-        'Bearer ' + localStorage.getItem('token')
-      );
-
-      const requestOptions: RequestInit = {
-        method: 'POST',
-        headers: myHeaders,
-        body: formData,
-        redirect: 'follow',
-      };
-      /*change url to endpoint for ai model */
-      fetch(this.tasksUrl + this.id_current_task + '/upload/', requestOptions)
-        .then((response) => {
-          // Handle the response and show a success message
-          this.showSuccessMessage(
-            'Checked',
-            'Your recording was sent and graded! Check your score now'
-          );
-          // Clear the recording data
-          this.jsonAudio = null;
-        })
-        .catch((error) => {
-          // Handle the error and show an error message
-          console.log('error', error);
-        });
-    };
-    reader.readAsDataURL(this.jsonAudio);
-    /*only update the score for this task */
-    this.score = 100;
-    console.log('current task id' + this.id_current_task);
-=======
       /*random score*/
       this.score = 100;
       // only show score on the relevant task
@@ -399,6 +357,5 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
       else {
         console.error('div is undefined.');
       }
->>>>>>> Students
   }
 }
