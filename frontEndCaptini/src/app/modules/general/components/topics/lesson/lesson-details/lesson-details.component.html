@@ -20,7 +20,7 @@
           </button>
         </li>
         <li>
-          <h3>{{ lesson_by_id?.subject }}</h3>
+          <h3 class="mx-3">{{ lesson_by_id?.subject }}</h3>
         </li>
       </div>
     </ul>
@@ -35,6 +35,7 @@
           <div class="item-header d-flex justify-content-between">
             <button class="btn btn-default" (click)="goPrev()" *ngIf="index_lesson > 0">
               <i class="ri-arrow-left-line"></i>
+              {{ 'direction.previous' | translate }}
             </button>
             <h2>{{'topic.lesson' | translate}}  {{ index_lesson + 1 }} {{'topic.of' | translate}} {{ listLessons?.length }}</h2>
 
@@ -43,113 +44,79 @@
               (click)="goNext()"
               *ngIf="listLessons && index_lesson < listLessons.length - 1"
             >
+              {{ 'direction.next' | translate }}
               <i class="ri-arrow-right-line"></i>
             </button>
           </div>
-          <br />
-          <div class="item-content">
-            <h2>{{ lesson_by_id?.description }}</h2>
 
-            <hr />
-            <hr />
-            <div class="instruction d-flex mb-5" id="alphabet1">
+          <div class="item-content">
+            <h2 class="mt-4 mb-4">{{ lesson_by_id?.description }}</h2>
+            <div class="instruction d-flex" id="alphabet1">
               <div>
                 <div
-                  class="d-flex me-5"
+                  class="d-flex mb-4"
                   style="align-items: baseline"
                   *ngFor="let prompt of prompts"
                 >
-                <div class="card text-center">
-                  <div class="card-header">{{ prompt.flashcard_text }}</div>
+                <div class="card text-center no-margin">
+                  <span *ngIf="prompt.flashcard_text" class="card-header"><h3 class="no-margin">{{ prompt.flashcard_text }}</h3></span>
 
                     <div class="card-title" *ngFor="let task of prompt.tasks">
-                    <div class="card-body">
-                    <button class="btn btn-info btn-circle" (click)="play_audio(task.audio_url)">
-                      <i class="ri-volume-up-line"></i>
-                    </button>
-                    <span class="letter">{{ task.task_text }}</span>
-                    <div>
-                      <button class="btn btn-default" (click)="initiateRecording(task.id)">
-                        <i class="ri-mic-line"></i>
-                      </button>
-                      <button class="btn btn-default" (click)="stopRecording()">
-                        <i class="ri-play-fill"></i>
-                      </button>
-                      <audio
-                        class="btn btn-default"
-                        controls
+                      <div class="card-body">
+                        <div class="letter mb-2 phones" #targetElement><h4>{{ task.task_text }}</h4></div>
+                        <div class="mb-1">
+                          <button mat-button class="btn btn-listen me-2" (click)="play_audio(task.audio_url)">
+                            <i class="ri-voiceprint-fill"></i>
+                            {{ 'audio.listen' | translate}}
+                          </button>
+                          <button mat-button class="btn btn-listen me-2" (click)="recording ? stopRecording() : initiateRecording(task.id)">
+                            <i [ngClass]="recording ? 'ri-mic-off-line' : 'ri-mic-line'"></i>
+                            {{ recording ? ('audio.stop' | translate) : ('audio.record' | translate)}}
+                          </button>
+                        </div>
+                        <ng-container *ngIf="url && task.id == id_current_task">
+                          <audio class="btn btn-audio mb-1" controls>
+                            <source [src]="sanitize()" />{{ task.id }}
+                            <i class="ri-play-fill"></i>
+                          </audio>
+                        </ng-container>
 
-                        *ngIf="url && task.id == id_current_task"
-                      >
-                        <source [src]="sanitize()" />
-                        {{ task.id }}
-                        <i class="ri-play-fill"></i>
-                      </audio>
-                      <span>
-                        <button class="btn btn-default" >
-                          <i class="ri-check-double-fill" (click)="getScore()"></i>
-                        </button>
-                        <span>{{'topic.score' | translate}}: {{score}}</span>
-                      </span>
-                      <button class="btn btn-default" >
-                        <i class="ri-share-fill" (click)="sendTask()"></i>
-                      </button>
+                        <ng-template #noAudio>
+                          <!-- Placeholder content when audio is not available -->
+                        </ng-template>
+                        <div
+                        *ngIf="url && task.id == id_current_task">
+                          <button class="btn btn-evaluate me-2" (click)="getScore($event)">
+                            <i class="ri-check-double-fill"></i>
+                            {{ 'audio.check' | translate}}
+                          </button>
+                          <button class="btn btn-listen me-2" >
+                            <i class="ri-share-fill" (click)="sendTask()"></i>
+                            {{ 'audio.share'|translate }}
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </div>
-
-                </div>
-                <hr class="card-separator" />
-                <hr class="card-separator" />
-                <hr class="card-separator" />
-
-                </div>
-
-                <!-- <table>
-                  <th>
-                  <b> {{ prompt.flashcard_text }}</b>
-                </th>
-                <tr>
-                  <div class="ms-3" *ngFor="let task of prompt.tasks">
-                    <button class="btn btn-default" (click)="play_audio(task.audio_url)">
-                      <i class="ri-volume-up-line"></i>
-                    </button>
-                    <span class="letter">{{ task.task_text }}</span>
-                    <div>
-                      <button class="btn btn-default" (click)="initiateRecording(task.id)">
-                        <i class="ri-mic-line"></i>
-                      </button>
-                      <button class="btn btn-default" (click)="stopRecording()">
-                        <i class="ri-play-fill"></i>
-                      </button>
-                      <audio
-                        class="btn btn-default"
-                        controls
-
-                        *ngIf="url && task.id == id_current_task"
-                      >
-                        <source [src]="sanitize()" />
-                        {{ task.id }}
-                        <i class="ri-play-fill"></i>
-                      </audio>
-                      <span>
-                        <button class="btn btn-default" >
-                          <i class="ri-check-double-fill" (click)="getScore()"></i>
-                        </button>
-                        <span>{{'topic.score' | translate}}: {{score}}</span>
-                      </span>
-                      <button class="btn btn-default" >
-                        <i class="ri-share-fill" (click)="sendTask()"></i>
-                      </button>
-                    </div>
-                  </div>
-                  <hr />
-                  <hr />
-                </tr>
-                </table> -->
                 </div>
               </div>
             </div>
           </div>
+          <div class="item-header d-flex justify-content-between">
+            <button class="btn btn-default" (click)="goPrev()" *ngIf="index_lesson > 0">
+              <i class="ri-arrow-left-line"></i>
+              {{ 'direction.previous' | translate }}
+            </button>
+            <button
+              class="btn btn-default"
+              (click)="goNext()"
+              *ngIf="listLessons && index_lesson < listLessons.length - 1"
+            >
+              {{ 'direction.next' | translate }}
+              <i class="ri-arrow-right-line"></i>
+            </button>
+          </div>
+
         </li>
       </div>
     </div>
@@ -198,3 +165,4 @@
     </div>
   </section>
 </div>
+

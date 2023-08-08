@@ -10,10 +10,7 @@
   background-color: var(--bs-success-200);
 }
 
-.playing i,
-i:hover {
-  color: var(--bs-danger-600);
-}
+
 
 .lessons .instruction .btn-default.playing {
   background-color: var(--bs-danger-200);
@@ -36,6 +33,56 @@ i:hover {
   line-height: 1.428571429;
   border-radius: 15px;
 }
+
+.no-margin{
+  margin: 0 !important;
+}
+
+.btn-listen {
+  background-color: #fff;
+  border: 1px solid var(--bs-primary-600);
+  padding: 7px 16px;
+  color: var(--bs-primary-600);
+}
+
+.btn-listen:hover {
+  background-color: var(--bs-primary-200);
+  padding: 7px 16px !important;
+  color: var(--bs-primary-600);
+}
+
+.btn-listen:focus {
+  background-color: var(--bs-primary-600);
+  padding: 7px 16px !important;
+  color: #fff;
+}
+
+.btn-audio:hover {
+  padding: 7px 16px !important;
+  border: 0;
+}
+
+.btn-evaluate {
+  background-color: #fff;
+  border: 1px solid var(--bs-success);
+  padding: 7px 16px !important;
+  color: var(--bs-success);
+}
+
+.btn-evaluate:hover {
+  background-color: var(--bs-success-200);
+  border: 1px solid var(--bs-success);
+  padding: 7px 16px;
+  color: var(--bs-success-600);
+}
+
+.btn-evaluate:focus {
+  background-color: var(--bs-success-600);
+  border: 1px solid var(--bs-success-600);
+  padding: 7px 16px;
+  color: var(--bs-white);
+}
+
 .btn-circle.btn-lg {
   width: 50px;
   height: 50px;
@@ -44,6 +91,7 @@ i:hover {
   line-height: 1.33;
   border-radius: 25px;
 }
+
 .btn-circle.btn-xl {
   width: 70px;
   height: 70px;
@@ -53,12 +101,51 @@ i:hover {
   border-radius: 35px;
 }
 
+button.mat-button .i,
+.mat-button .i,
+.mat-raised-button .i,
+.mat-flat-button .i,
+.mat-stroked-button .i {
+  vertical-align: center;
+  font-size: 1.25em;
+}
+
 .card-container {
   margin-bottom: 20px; /* Adjust the margin value to your preference */
+}
+
+.card-header {
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center; /* align vertical */
+  background-color: var(--bs-gray-100);
 }
 
 .card-separator {
   margin: 20px 0; /* Adjust the margin value to your preference */
 }
 
-h2,h1,h3 {text-align: center;}
+.card {
+  height: max-content;
+  width: 100%;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.emphasis {
+  text-decoration: underline dotted red;
+}
+
+.lessons {
+  width: fit-content;
+}
+
+h2,h1,h3,h4 {text-align: center;}
+
+.instruction {
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center; /* align vertical */
+}
