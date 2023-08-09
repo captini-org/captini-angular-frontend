@@ -13,6 +13,7 @@ import {
 } from '@angular/forms';
 import { LangService } from '../../../../Shared/services/lang.service';
 import { HeaderComponent } from '../header/header.component';
+import { AuthService } from 'src/app/Shared/services/auth.service';
 
 function formatDate(year: number, month: number = 1, day: number = 1): string {
   const date = new Date(year, month - 1, day);
@@ -40,7 +41,8 @@ export class ProfileComponent implements OnInit {
     private langService: LangService,
     private route: Router,
     private userService: UserService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private API: AuthService,
   ) {}
 
   ngOnInit(): void {
@@ -194,13 +196,22 @@ export class ProfileComponent implements OnInit {
 
   changePassword() {
     if (this.passwordForm.valid) {
-      this.userService
-        .updatePassword(this.profilForm.value)
-        .subscribe((password) => {
-          if (password != null) {
-            this.showMsg = true;
-          }
-        });
+      const combinedFormData = {
+        profilForm: this.profilForm.value,
+        passwordForm: this.passwordForm.value
+      };
+      this.API.changePassword(combinedFormData).subscribe((result) => {
+        if (result != null) {
+          this.msgContent = this.Responsedata
+          this.showMsg = true
+          console.log(result)
+        }
+      },
+      (error) => {
+        // Handle registration error here
+        alert('something went wrong in the process of updating password')
+        // Display an error message to the user or perform any necessary actions
+      })
     }
   }
   // Inside your component class
@@ -271,4 +282,6 @@ export class ProfileComponent implements OnInit {
         this.is_icelandic ? 'icl' : 'en'
     });
   }
+
+
 }
