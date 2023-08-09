@@ -1,0 +1,25 @@
+<div class="d-flex  sign-in-body">
+<div class="form-signin">
+    <div class="mb-5 text-center">
+        <img src="../../../assets/image/logo.svg" style="width: 250px;">
+    </div>
+    <div class="pb-3">
+
+        <label>{{ 'resetPassword.resetMsgSuccess1' | translate }}</label>
+        <div class="mb-2">
+            {{ 'resetPassword.resetMsgSuccess2' | translate }}<br>  
+            {{ 'resetPassword.resetMsgSuccess3' | translate }}<a routerLink="/reset">{{ 'resetPassword.resetMsgSuccess4' | translate }} </a>  <br> 
+        
+        </div>
+        <span> {{'register.account'|translate}} <a routerLink="/login">{{'register.singIn'|translate}}</a></span>
+    </div>
+    <div class="text-center">
+        <div>
+            <a [routerLink]="" (click)="switchLang( 'en')"><img src="../../../assets/image/flag/en.png" alt="England" class="pe-2"></a>
+            <a [routerLink]="" (click)="switchLang( 'icl')"><img src="../../../assets/image/flag/icl.png" alt="Iceland"></a>
+        </div>
+        <hr>
+        <p class="text-muted text-center">CAPTinI &copy; 2022</p>
+    </div>
+</div>
+</div>

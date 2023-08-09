@@ -75,12 +75,12 @@
         "choose": "Veldu"
     },
     "image": {
-      "change": "Skipta um prófílmynd",
-      "upload": "Hlaða upp mynd",
-      "select": "Veldu mynd",
-      "warning": "Prófílmyndin má að hámarki vera 1.5 MB að stærð og þarf að hlaða henni upp á .jpg, .jpeg eða .png sniði.",
-      "save": "Vista breytingar",
-      "cancel": "Hætta við"
+        "change": "Skipta um prófílmynd",
+        "upload": "Hlaða upp mynd",
+        "select": "Veldu mynd",
+        "warning": "Prófílmyndin má að hámarki vera 1.5 MB að stærð og þarf að hlaða henni upp á .jpg, .jpeg eða .png sniði.",
+        "save": "Vista breytingar",
+        "cancel": "Hætta við"
     },
     "title": {
         "profile": "Minn prófíll",
@@ -101,12 +101,12 @@
         "loginErrorMsg": "Notandanafn og/eða lykilorð virkar ekki"
     },
     "audio": {
-      "record": "Taka upp",
-      "stop": "Stoppa",
-      "listen": "Hlusta",
-      "check": "Meta",
-      "share":"Deila upptöku"
-  },
+        "record": "Taka upp",
+        "stop": "Stoppa",
+        "listen": "Hlusta",
+        "check": "Meta",
+        "share": "Deila upptöku"
+    },
     "language": {
         "en": "Enska",
         "icl": "Íslenska"
@@ -117,12 +117,12 @@
         "review": "Yfirferð",
         "community": "Samfélag",
         "statics": "Tölfræði"
-        },
-        "menu": {
+    },
+    "menu": {
         "updateProfile": "Uppfæra prófil",
         "delete": "Eyða aðgangi"
-        },
-        "topic": {
+    },
+    "topic": {
         "topics": "Bálkur",
         "searchTopic": "Leita að bálki",
         "searchLesson": "Leita að þræði/æfingar",
@@ -134,29 +134,35 @@
         "okButton": "OK",
         "score": "Stig",
         "finished": "Lokið"
-        },
-        "resetPassword": {
-            "backToSignin": "Átt þú ekki að vera hér? ",
-            "backToSigninMsg": "Fara til baka á innskráningarsíðu",
-            "resetMsg": "Endurstilla lykilorð"
-        },
-        "community": {
-          "menu-give-feedback":"Gefa öðrum endurgjöf",
-          "menu-get-feedback": "Fá endurgjöf frá öðrum",
-          "instruction": "Gefðu öðrum endurgjöf um hvernig þau bera fram orð/setningu",
-          "first-language": "Spænska",
-          "location":"Ísland",
-          "give-feedback": "Gefa endurgjöf",
-          "rate": "Gefa einkunn fyrir framburð",
-          "replay": "Hlusta aftur á upptöku",
-          "comment": "Setja inn athugasemd",
-          "guidelines": "Leiðbeiningar um athugasemdir",
-          "type-here":"Skrifaðu athugasemdir hér",
-          "cancel":"Hætta við",
-          "send":"Senda endurgjöf"
-        },
-        "direction": {
-          "previous": "Fyrri þráður",
-          "next": "Næsti þráður"
-      }
+    },
+    "resetPassword": {
+        "backToSignin": "Átt þú ekki að vera hér? ",
+        "backToSigninMsg": "Lykilorðinu þínu hefur verið breytt. Fara til baka á innskráningarsíðu",
+        "resetMsg": "Endurstilla lykilorð",
+        "emailNotFound": "Enginn aðgangur er tengdur þessu netfangi.",
+        "resetLinkExpired": "Hlekkur til að endustilla lykilorðið er útrunninn. Smelltu hér til að fá nýjan hlekk:",
+        "resetMsgSuccess1": "Vinsamlegast athugaðu tölvupóstinn þinn",
+        "resetMsgSuccess2": "Þú færð tölvupóst frá okkur til að endurstilla lykilorðitt þitt.",
+        "resetMsgSuccess3": "Ef þú finnur hann ekki í innhólfinu þínu, athugaðu þá í ruslpóstinum eða ",
+        "resetMsgSuccess4": "sendu aftur beiðnina með því að slá inn netfangið."
+    },
+    "community": {
+        "menu-give-feedback": "Gefa öðrum endurgjöf",
+        "menu-get-feedback": "Fá endurgjöf frá öðrum",
+        "instruction": "Gefðu öðrum endurgjöf um hvernig þau bera fram orð/setningu",
+        "first-language": "Spænska",
+        "location": "Ísland",
+        "give-feedback": "Gefa endurgjöf",
+        "rate": "Gefa einkunn fyrir framburð",
+        "replay": "Hlusta aftur á upptöku",
+        "comment": "Setja inn athugasemd",
+        "guidelines": "Leiðbeiningar um athugasemdir",
+        "type-here": "Skrifaðu athugasemdir hér",
+        "cancel": "Hætta við",
+        "send": "Senda endurgjöf"
+    },
+    "direction": {
+        "previous": "Fyrri þráður",
+        "next": "Næsti þráður"
+    }
 }

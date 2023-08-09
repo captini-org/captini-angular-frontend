@@ -137,8 +137,15 @@
     } ,
     "resetPassword": {
         "backToSignin": "Here mistakenly? ",
-        "backToSigninMsg": "Go back to the sign in page",
-        "resetMsg": "Reset your password"
+        "backToSigninMsg": "Your password is successfully changed. Go back to the sign in page",
+        "resetMsg": "Reset your password",
+        "emailNotFound": "There is no account associated with this email address.",
+        "resetLinkExpired": "Reset password link expired. Click here to receive a new link:",
+        "resetMsgSuccess1": "Check your email",
+        "resetMsgSuccess2": "We have sent password reset instructions to your email.",
+        "resetMsgSuccess3": "If it doesn't arrive soon, check your spam folder or ",
+        "resetMsgSuccess4": "send the email again"
+        
     },
     "community": {
       "menu-give-feedback":"Give feedback to the community",

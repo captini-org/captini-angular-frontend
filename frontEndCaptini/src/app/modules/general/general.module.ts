@@ -26,6 +26,7 @@ import { LoginComponent } from 'src/app/Auth/login/login.component';
 import { ShowPasswordDirective } from 'src/app/Shared/directives/show-password.directive';
 import { AllNationalitiesIcelandicDirective } from 'src/app/Shared/directives/all-nationalitiesIS.directive';
 import { CommunityComponent } from './components/community/community.component';
+import { ResetPasswordComponent } from 'src/app/Auth/reset-password/reset-password.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -50,6 +51,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ShowPasswordDirective,
     LessonDetailsComponent,
     CommunityComponent,
+    ResetPasswordComponent,
       ],
   imports: [
     CommonModule,
