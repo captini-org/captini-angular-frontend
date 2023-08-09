@@ -65,7 +65,7 @@
                       <div class="card-body">
                         <div class="letter mb-2 phones" #targetElement><h4>{{ task.task_text }}</h4></div>
                         <div class="mb-1">
-                          <button mat-button class="btn btn-listen me-2" (click)="play_audio(task.audio_url)">
+                          <button mat-button class="btn btn-listen me-2" (click)="play_audio(task)" [disabled]="task.examples.length === 0 || recording">
                             <i class="ri-voiceprint-fill"></i>
                             {{ 'audio.listen' | translate}}
                           </button>

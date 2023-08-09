@@ -30,6 +30,7 @@ export class TopicsComponent implements OnInit {
           this.listtopics.sort((a, b) => a.number - b.number);
           
         }
+        console.log(data)
       }
       )
       const bodyElement = document.body;

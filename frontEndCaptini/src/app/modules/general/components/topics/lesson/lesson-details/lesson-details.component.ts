@@ -9,6 +9,9 @@ import { DomSanitizer } from '@angular/platform-browser';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { Global } from 'src/app/common/global';
 import { IPrompts } from 'src/app/models/IPrompts';
+import { IAudio } from 'src/app/models/IAudio';
+import { ITask } from 'src/app/models/ITask';
+
 @Component({
   selector: 'app-lesson-details',
   templateUrl: './lesson-details.component.html',
@@ -117,20 +120,17 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
 
   sanitize() {
     let current_audio_url = this.url;
-    this.url = '';
+    //this.url = '';
     return this.domSanitizer.bypassSecurityTrustUrl(current_audio_url);
   }
-  play_audio(url: string) {
-    this.audio.src = url;
-    if (this.audio_paused) {
-      this.audio.play();
-      this.audio_paused = false;
-    } else {
-      this.audio.pause();
-      this.audio_paused = true;
-    }
+  
+  play_audio(url: ITask) {
+    this.audio.src= url.examples[Math.floor(Math.random() * url.examples.length)].recording
+    this.audio.play();
   }
+
   initiateRecording(id: any) {
+    this.url=''
     this.id_current_task = id;
     let mediaConstraints = {
       video: false,
@@ -332,6 +332,7 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
 
       /*random score*/
       this.score = 100;
+      this.url=''
       // only show score on the relevant task
       const btn = event.target as HTMLElement;
       this.div = btn.closest('.card-body');
