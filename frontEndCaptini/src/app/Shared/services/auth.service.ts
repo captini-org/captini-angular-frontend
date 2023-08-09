@@ -14,7 +14,7 @@ export class AuthService {
   apiRegister = Global.apiURL + 'account/register/'
   apiLoginForget = Global.apiURL + 'account/api/password_reset/'
   apirefreshToken = Global.apiURL + 'account/api/token/refresh/'
-  apiChangePassword = Global.apiURL + 'account/api/change_password'
+  apiChangePassword = Global.apiURL + 'account/api/change_password/'
   errorMsg: string = ''
   Responsedata: any
 
