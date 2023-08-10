@@ -69,7 +69,7 @@
         "required": "Þessi reitur má ekki vera tómur",
         "email": "Þú verður að slá inn gilt netfang",
         "patternPasword": "lykilorðið verður að vera eins og þetta dæmi: Azs8}54*",
-        "confirmPassword": "lykilorð passa ekki, vinsamlegast reyndu aftur"
+        "confirmPassword": "lykilorðið passar ekki, vinsamlega reyndu aftur"
     },
     "form": {
         "choose": "Veldu"
@@ -138,7 +138,9 @@
         "resetPassword": {
             "backToSignin": "Átt þú ekki að vera hér? ",
             "backToSigninMsg": "Fara til baka á innskráningarsíðu",
-            "resetMsg": "Endurstilla lykilorð"
+            "resetMsg": "Endurstilla lykilorð",
+            "passwordChanged": "Lykilorðið þitt hefur verið endurnýjað",
+            "passwordIncorrect":"Tókst ekki að breyta lykilorðinu þínu. Vinsamlega sláðu inn rétta lykilorðiðið sem þú villt breyta."
         },
         "direction": {
           "previous": "Fyrri þráður",
