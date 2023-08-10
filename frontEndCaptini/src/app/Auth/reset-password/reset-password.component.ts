@@ -60,10 +60,10 @@ export class ResetPasswordComponent implements OnInit {
         console.error(error);
       if (error.status === 400) {
         this.errorMessage = 'Invalid token or expired link.';
-        this.showMsg = true
+        this.showMsg = false
         this.errorMessage = 'An error occurred while resetting the password.';
       } else {
-        this.showMsg = true
+        this.showMsg = false
         this.errorMessage = 'An error occurred while resetting the password.';
       }
         // Handle error, maybe show an error message
