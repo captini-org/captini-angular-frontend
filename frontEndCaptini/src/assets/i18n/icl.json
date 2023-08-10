@@ -139,7 +139,7 @@
             "backToSignin": "Átt þú ekki að vera hér? ",
             "backToSigninMsg": "Fara til baka á innskráningarsíðu",
             "resetMsg": "Endurstilla lykilorð",
-            "passwordChanged": "Lykilorðið þitt hefur verið endurnýjað",
+            "passwordChanged": "Lykilorðið þitt hefur verið endurnýjað.",
             "passwordIncorrect":"Tókst ekki að breyta lykilorðinu þínu. Vinsamlega sláðu inn rétta lykilorðiðið sem þú villt breyta."
         },
         "direction": {

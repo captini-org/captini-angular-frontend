@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { waitForAsync } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { UserService } from '../../../../Shared/services/profile/user.service';
@@ -27,6 +27,7 @@ function formatDate(year: number, month: number = 1, day: number = 1): string {
 export class ProfileComponent implements OnInit {
   Responsedata: any;
   loading = true;
+  changePasswordRequested: boolean = false;
   showMsg: boolean = false;
   errorMessage: string = '';
   msgContent: string = '';
@@ -37,6 +38,8 @@ export class ProfileComponent implements OnInit {
   profilePicture: String = '';
   file: File | string = '';
   is_icelandic: boolean = false;
+  div: any;
+  alertClass: string = '';
   constructor(
     private langService: LangService,
     private route: Router,
@@ -202,18 +205,25 @@ export class ProfileComponent implements OnInit {
       };
       this.API.changePassword(combinedFormData).subscribe((result) => {
         if (result != null) {
-          this.msgContent = this.Responsedata
-          this.showMsg = true
+          this.changePasswordRequested = true
+          if ('message'in result) {
+            this.msgContent = 'resetPassword.passwordChanged';
+            this.alertClass = 'alert-success';
+          }
+          else if('error' in result) {
+            this.msgContent = 'resetPassword.passwordIncorrect';
+            this.alertClass = 'alert-danger';
+          }
           console.log(result)
         }
       },
       (error) => {
-        // Handle registration error here
-        alert('something went wrong in the process of updating password')
-        // Display an error message to the user or perform any necessary actions
+        alert('Something went wrong in the process of updating password')
+        console.error(error);
       })
     }
   }
+
   // Inside your component class
   toggleAppNotification() {
     //console.log(this.profilForm.value.notification_setting_in_app);

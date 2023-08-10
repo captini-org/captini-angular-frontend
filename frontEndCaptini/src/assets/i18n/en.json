@@ -139,7 +139,7 @@
         "backToSignin": "Here mistakenly? ",
         "backToSigninMsg": "Go back to the sign in page",
         "resetMsg": "Reset your password",
-        "passwordChanged": "Your password has been updated",
+        "passwordChanged": "Your password has been successfully updated.",
         "passwordIncorrect":"Unable to change password. Please provide the correct password to change."
     },
     "direction": {
