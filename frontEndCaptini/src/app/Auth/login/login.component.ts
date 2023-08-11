@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
       );
     }
   }
-  
+
   switchLang(lang: string) {
     this.langServ.useLanguage(lang)
   }
