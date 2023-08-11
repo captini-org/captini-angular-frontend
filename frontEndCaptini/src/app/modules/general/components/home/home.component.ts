@@ -52,7 +52,7 @@ export class HomeComponent implements OnInit {
         this.langService.useLanguage(this.user.display_language);
 
         if (this.users) {
-          const id = Number(localStorage.getItem('id'));
+          const id = this.API.getUserId();
           const currentUserIndex = this.users.findIndex(
             (user: IUser) => Number(id) === Number(user.id)
           );
