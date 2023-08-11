@@ -12,7 +12,7 @@ export class UserService {
   updateUrl=Global.apiURL +"account/users/";
   deleteUrl =Global.apiURL +"";
   UsersUrl=Global.apiURL +"account/users/";
-  passwordUpdateUrl=Global.apiURL+"api/change-password/"
+  passwordUpdateUrl=Global.apiURL+"account/api/change-password/"
   constructor(private http:HttpClient,private API:AuthService) {}
   UserDetails(id:string)
   {
@@ -60,6 +60,7 @@ export class UserService {
     fetch(api, requestOptions)
       .then((response) => {
         console.log(response);
+        window.location.reload()
       })
       .catch((error) => {
         // Handle the error and show an error message
@@ -81,6 +82,7 @@ export class UserService {
       };
       return this.http.get<IUser[]>(this.UsersUrl, httpOptions)
   }
+
   updatePassword(usercred: any) {
     return this.http.post(this.passwordUpdateUrl, usercred);
   }

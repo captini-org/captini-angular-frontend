@@ -69,7 +69,7 @@
         "required": "Þessi reitur má ekki vera tómur",
         "email": "Þú verður að slá inn gilt netfang",
         "patternPasword": "lykilorðið verður að vera eins og þetta dæmi: Azs8}54*",
-        "confirmPassword": "lykilorð passa ekki, vinsamlegast reyndu aftur"
+        "confirmPassword": "lykilorðið passar ekki, vinsamlega reyndu aftur"
     },
     "form": {
         "choose": "Veldu"
@@ -144,8 +144,10 @@
         "resetMsgSuccess1": "Vinsamlegast athugaðu tölvupóstinn þinn",
         "resetMsgSuccess2": "Þú færð tölvupóst frá okkur til að endurstilla lykilorðitt þitt.",
         "resetMsgSuccess3": "Ef þú finnur hann ekki í innhólfinu þínu, athugaðu þá í ruslpóstinum eða ",
-        "resetMsgSuccess4": "sendu aftur beiðnina með því að slá inn netfangið."
-    },
+        "resetMsgSuccess4": "sendu aftur beiðnina með því að slá inn netfangið.",
+        "passwordChanged": "Lykilorðið þitt hefur verið endurnýjað.",
+        "passwordIncorrect":"Tókst ekki að breyta lykilorðinu þínu. Vinsamlega sláðu inn rétta lykilorðiðið sem þú villt breyta."
+      },
     "community": {
         "menu-give-feedback": "Gefa öðrum endurgjöf",
         "menu-get-feedback": "Fá endurgjöf frá öðrum",
