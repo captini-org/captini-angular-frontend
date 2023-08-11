@@ -13,6 +13,7 @@ import {
 } from '@angular/forms';
 import { LangService } from '../../../../Shared/services/lang.service';
 import { HeaderComponent } from '../header/header.component';
+import { ProfilePictureService } from 'src/app/Shared/services/profile/picture.service';
 
 function formatDate(year: number, month: number = 1, day: number = 1): string {
   const date = new Date(year, month - 1, day);
@@ -40,7 +41,8 @@ export class ProfileComponent implements OnInit {
     private langService: LangService,
     private route: Router,
     private userService: UserService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private profilePictureService: ProfilePictureService
   ) {}
 
   ngOnInit(): void {
@@ -250,9 +252,10 @@ export class ProfileComponent implements OnInit {
       const formData = new FormData();
       formData.append('profile_photo', this.form.value.profile_photo);
       this.userService.updateProfilePicture(formData);
+      let id = localStorage.getItem('id');
+      //this.profilePictureService.updateProfilePicture(id); 
+      }
     }
-
-  }
 
   cancel(){
     this.profilePicture = this.Responsedata.profile_photo;
