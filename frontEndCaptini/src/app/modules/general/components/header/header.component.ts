@@ -3,7 +3,6 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {UserService} from '../../../../Shared/services/profile/user.service';
 import {LangService} from '../../../../Shared/services/lang.service';
 import { Router } from '@angular/router';
-import { ProfilePictureService } from 'src/app/Shared/services/profile/picture.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -12,7 +11,7 @@ import { ProfilePictureService } from 'src/app/Shared/services/profile/picture.s
 export class HeaderComponent implements OnInit {
   user: any;
   profilePicture:any;
-  constructor(private route:Router,private userService:UserService,private langServ:LangService,private profilePictureService: ProfilePictureService) 
+  constructor(private route:Router,private userService:UserService,private langServ:LangService) 
   {
     const id = localStorage.getItem("id");
     this.userService.UserDetailsCatchError(id!).subscribe(
