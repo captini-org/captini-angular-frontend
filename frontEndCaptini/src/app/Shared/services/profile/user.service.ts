@@ -60,6 +60,7 @@ export class UserService {
     fetch(api, requestOptions)
       .then((response) => {
         console.log(response);
+        window.location.reload()
       })
       .catch((error) => {
         // Handle the error and show an error message
