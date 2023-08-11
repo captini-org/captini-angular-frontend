@@ -105,7 +105,6 @@ export class ProfileComponent implements OnInit {
     });
     const bodyElement = document.body;
     bodyElement.classList.remove('teacher-bird');
-
   }
   profilForm = this.formBuilder.group({
     id: [''],

@@ -141,6 +141,29 @@
         "resetMsg": "Reset your password",
         "passwordChanged": "Your password has been successfully updated.",
         "passwordIncorrect":"Unable to change password. Please provide the correct password to change."
+        "emailNotFound": "There is no account associated with this email address.",
+        "resetLinkExpired": "Reset password link expired. Click here to receive a new link:",
+        "resetMsgSuccess1": "Check your email",
+        "resetMsgSuccess2": "We have sent password reset instructions to your email.",
+        "resetMsgSuccess3": "If it doesn't arrive soon, check your spam folder or ",
+        "resetMsgSuccess4": "send the email again"
+        
+    },
+    "community": {
+      "menu-give-feedback":"Give feedback to the community",
+      "menu-get-feedback": "Get feedback from the community",
+      "instruction": "Give your feedback to others regarding their pronunciation",
+      "first-language": "Spanish",
+      "location": "Iceland",
+      "give-feedback": "Give feedback",
+      "see-feedback": "Sjá endurgjöf frá öðrum",
+      "rate": "Rate this pronunciation",
+      "replay": "Replay audio recording",
+      "comment": "Give your feedback",
+      "guidelines": "Guidelines",
+      "type-here":"Start typing here...",
+      "cancel":"Cancel",
+      "send":"Send feedback"
     },
     "direction": {
         "previous": "Previous lesson",

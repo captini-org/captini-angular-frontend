@@ -12,7 +12,7 @@ export class AuthService {
 
   apiUrl = Global.apiURL + 'account/api/token/'
   apiRegister = Global.apiURL + 'account/register/'
-  apiLoginForget = Global.apiURL + 'account/api/password_reset/'
+  apiLoginForget = Global.apiURL + 'account/api/password-reset/'
   apirefreshToken = Global.apiURL + 'account/api/token/refresh/'
   apiChangePassword = Global.apiURL + 'account/api/change_password/'
   errorMsg: string = ''
@@ -62,5 +62,8 @@ export class AuthService {
   logOUt() {
     localStorage.clear()
     this.route.navigate(['login'])
+  }
+  resetPassword(usercred: any) {
+    return this.http.put(this.apiResetPassword, usercred)
   }
 }
