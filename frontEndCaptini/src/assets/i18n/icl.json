@@ -69,7 +69,7 @@
         "required": "Þessi reitur má ekki vera tómur",
         "email": "Þú verður að slá inn gilt netfang",
         "patternPasword": "lykilorðið verður að vera eins og þetta dæmi: Azs8}54*",
-        "confirmPassword": "lykilorð passa ekki, vinsamlegast reyndu aftur"
+        "confirmPassword": "lykilorðið passar ekki, vinsamlega reyndu aftur"
     },
     "form": {
         "choose": "Veldu"

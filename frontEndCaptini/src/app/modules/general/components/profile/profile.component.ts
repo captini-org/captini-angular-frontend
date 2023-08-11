@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { waitForAsync } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { UserService } from '../../../../Shared/services/profile/user.service';
@@ -13,6 +13,7 @@ import {
 } from '@angular/forms';
 import { LangService } from '../../../../Shared/services/lang.service';
 import { HeaderComponent } from '../header/header.component';
+import { AuthService } from 'src/app/Shared/services/auth.service';
 
 function formatDate(year: number, month: number = 1, day: number = 1): string {
   const date = new Date(year, month - 1, day);
@@ -26,6 +27,7 @@ function formatDate(year: number, month: number = 1, day: number = 1): string {
 export class ProfileComponent implements OnInit {
   Responsedata: any;
   loading = true;
+  changePasswordRequested: boolean = false;
   showMsg: boolean = false;
   errorMessage: string = '';
   msgContent: string = '';
@@ -36,11 +38,14 @@ export class ProfileComponent implements OnInit {
   profilePicture: String = '';
   file: File | string = '';
   is_icelandic: boolean = false;
+  div: any;
+  alertClass: string = '';
   constructor(
     private langService: LangService,
     private route: Router,
     private userService: UserService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private API: AuthService,
   ) {}
 
   ngOnInit(): void {
@@ -193,15 +198,31 @@ export class ProfileComponent implements OnInit {
 
   changePassword() {
     if (this.passwordForm.valid) {
-      this.userService
-        .updatePassword(this.profilForm.value)
-        .subscribe((password) => {
-          if (password != null) {
-            this.showMsg = true;
+      const combinedFormData = {
+        profilForm: this.profilForm.value,
+        passwordForm: this.passwordForm.value
+      };
+      this.API.changePassword(combinedFormData).subscribe((result) => {
+        if (result != null) {
+          this.changePasswordRequested = true
+          if ('message'in result) {
+            this.msgContent = 'resetPassword.passwordChanged';
+            this.alertClass = 'alert-success';
           }
-        });
+          else if('error' in result) {
+            this.msgContent = 'resetPassword.passwordIncorrect';
+            this.alertClass = 'alert-danger';
+          }
+          console.log(result)
+        }
+      },
+      (error) => {
+        alert('Something went wrong in the process of updating password')
+        console.error(error);
+      })
     }
   }
+
   // Inside your component class
   toggleAppNotification() {
     //console.log(this.profilForm.value.notification_setting_in_app);
@@ -270,4 +291,6 @@ export class ProfileComponent implements OnInit {
         this.is_icelandic ? 'icl' : 'en'
     });
   }
+
+
 }
