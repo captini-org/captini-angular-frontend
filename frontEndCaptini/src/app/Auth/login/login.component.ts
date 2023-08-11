@@ -32,9 +32,9 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('id', this.Responsedata.id);
           let expiry = JSON.parse(window.atob(this.Responsedata.access.split('.')[1])).exp;
           localStorage.setItem('expiry', expiry);
-  
+
           // Redirect to the desired page upon successful login
-          this.route.navigate(['']);
+          this.route.navigate(['/topics']);
         },
         (error) => {
           // Handle authentication error here
@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
       );
     }
   }
-  
+
   switchLang(lang: string) {
     this.langServ.useLanguage(lang)
   }
