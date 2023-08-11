@@ -15,8 +15,8 @@ const routes: Routes = [
   children: [
     {
       path: 'index',
-      //component:HomeComponent
-      component:TopicsComponent
+      component:HomeComponent
+      //component:TopicsComponent
     },
     {
       path:'',redirectTo:'/index',pathMatch: 'full',
