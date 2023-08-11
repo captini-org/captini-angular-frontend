@@ -9,6 +9,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { Global } from 'src/app/common/global';
 import { IPrompts } from 'src/app/models/IPrompts';
+import { AuthService } from 'src/app/Shared/services/auth.service';
 @Component({
   selector: 'app-lesson-details',
   templateUrl: './lesson-details.component.html',
@@ -27,6 +28,7 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
     private domSanitizer: DomSanitizer,
     private renderer: Renderer2,
     private elementRef: ElementRef,
+    private API:AuthService
   ) {}
 
   public topic_id!: number;
@@ -58,7 +60,7 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
   ngOnInit(): void {
     //get the id from the url when you navigate between 2 diffrent components
     this.prompts = [];
-    this.id_current_user = localStorage.getItem('id');
+    this.id_current_user = this.API.getUserId();
     //get the id from the url when you navigate in the same component
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.topic_id = parseInt(params.get('topicId')!);

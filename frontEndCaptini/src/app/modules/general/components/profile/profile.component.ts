@@ -49,7 +49,7 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    let id = localStorage.getItem('id');
+    let id = this.API.getUserId();
     this.loading = true;
     this.errorMessage = '';
 

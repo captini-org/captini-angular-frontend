@@ -3,6 +3,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {UserService} from '../../../../Shared/services/profile/user.service';
 import {LangService} from '../../../../Shared/services/lang.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/Shared/services/auth.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -11,9 +12,9 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   user: any;
   profilePicture:any;
-  constructor(private route:Router,private userService:UserService,private langServ:LangService) 
+  constructor(private route:Router,private userService:UserService,private langServ:LangService,private API: AuthService) 
   {
-    const id = localStorage.getItem("id");
+    let id = this.API.getUserId();
     this.userService.UserDetailsCatchError(id!).subscribe(
       data => {
         this.user = data;
@@ -31,8 +32,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-     const id = localStorage.getItem("id");
-       
+     let id = this.API.getUserId();
      this.userService.UserDetailsCatchError(id!).subscribe(
       data => {
         this.user = data;
@@ -55,7 +55,6 @@ export class HeaderComponent implements OnInit {
   delete(fileName: string):void
   {
     console.warn("this account was");
-    var id = localStorage.getItem("id");
     localStorage.clear();
     this.route.navigate(['login']);
   /* this.userService.deletUser(id).subscribe(result=>{

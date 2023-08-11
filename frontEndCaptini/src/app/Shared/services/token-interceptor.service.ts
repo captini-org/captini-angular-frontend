@@ -37,7 +37,7 @@ export class TokenInterceptorService implements HttpInterceptor {
         authService.SaveToken(data)
         return next.handle(this.AddTokenHeader(request, data.access))
         catchError((errordata) => {
-          authService.logOUt()
+          authService.logOut()
           return throwError(errordata)
         })
       })

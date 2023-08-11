@@ -33,7 +33,7 @@ export class UserService {
     );
   }
   updateProfile(usercred: any) {
-    let id = localStorage.getItem('id');
+    let id = this.API.getUserId();
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + this.API.GetToken(),
       'Content-Type': 'multipart/form-data',
@@ -42,8 +42,7 @@ export class UserService {
     return this.http.patch(api, usercred, { headers });
   }
   updateProfilePicture(usercred: any) {
-    let id = localStorage.getItem('id');
-
+    let id = this.API.getUserId();
     const myHeaders = new Headers();
     myHeaders.append(
       'Authorization',
