@@ -40,7 +40,7 @@
                         </div>
                         <div class="profile" id="profile">
                             <div class="profile-img">
-                                <div class="profile-preview">
+                                <div class="profile-preview" style="cursor: pointer;">
                                     <div class="dropdown ">
                                         <a class="dropdown-toggle" id="dropdownMenu2" data-bs-toggle="dropdown"
                                             aria-expanded="false">
@@ -200,7 +200,7 @@
                                     <label class="form-check-label">{{'language.en'|translate}} <img src="../../assets/image/flag/en.png"></label>
                                   </div>
                                   <div class="form-switch ps-5">
-                                    <input mdbCheckbox class="form-check-input" type="radio" role="switch" formControlName="is_icelandic" [checked]="is_icelandic" (click)="switchLang()">
+                                    <input mdbCheckbox class="form-check-input" type="radio" role="switch" [checked]="is_icelandic" (click)="switchLang()">
                                   </div>
                                   <div class="form-check ps-0">
                                     <label class="form-check-label">{{'language.icl'|translate}} <img
