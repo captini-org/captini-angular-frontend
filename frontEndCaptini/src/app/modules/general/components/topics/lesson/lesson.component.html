@@ -59,6 +59,9 @@
                 >{{ i + 1 }}.
               </div>
             </div>
+            <div class="progress" style="height: 10px;">
+              <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
             <div
               class="card-header d-flex justify-content-between"
               style="height: 100px"
@@ -67,9 +70,6 @@
                 <h3>{{ "topic.lesson" | translate }} {{ i + 1 }}</h3>
                 <p class="semi-bold">{{ lesson.subject }}</p>
               </div>
-              <span class="success badge">
-                {{ "topic.finished" | translate }}</span
-              >
             </div>
           </div>
         </div>
