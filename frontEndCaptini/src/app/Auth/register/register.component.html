@@ -102,18 +102,14 @@
                   <input type="checkbox" value="false" [checked]="isChecked" formControlName="agree"> {{'register.agree' |translate}}
                   <a href="#"> {{'register.terms' |translate}}</a> {{'register.and' |translate}}
                   <a href="#"  data-bs-toggle="modal"
-                data-bs-target="#ImgModal">{{'register.privacy' |translate}}</a>
+                data-bs-target="#PrivacyModal">{{'register.privacy' |translate}}</a>
                 </span>
-
-                <!-- <router-outlet></router-outlet>
-                <privacypolicy *ngIf="isPrivacyPolicyOpen" (closeModalEvent)="closePrivacyPolicy()"></privacypolicy>Modal --> 
-                
             </div>
- <!-- Modal -->
- <div class="modal fade" id="ImgModal" tabindex="-1" aria-labelledby="ImgModalLabel"
- aria-hidden="true">
- <privacypolicy></privacypolicy>
- </div>
+            <!-- Modal -->
+            <div class="modal fade" id="PrivacyModal" tabindex="-1" aria-labelledby="PrivacyModalLabel"
+            aria-hidden="true">
+              <privacypolicy></privacypolicy>
+            </div>
 
             <button class="w-100 btn btn-lg btn-primary mb-2" type="submit" [disabled]="registerForm.invalid && isChecked">{{'buttons.sign-up' | translate}}</button>
         </form>

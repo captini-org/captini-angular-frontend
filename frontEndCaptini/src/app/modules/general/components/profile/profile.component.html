@@ -240,9 +240,18 @@
                                 <hr>
                             </div>
                             <p>{{'title.LessonsData'|translate}}</p>
-                            <p>{{'user.Read'|translate}} <a href="#">{{'register.terms'|translate}}</a>
-                                {{'register.and'|translate}} <a href="#">{{'register.privacy'|translate}}</a> </p>
+                            <p>{{'user.Read'|translate}}
+                              <a href="#">{{'register.terms'|translate}}</a>
+                                {{'register.and'|translate}}
+                                <a href="#"  data-bs-toggle="modal"
+                                data-bs-target="#PrivacyModal">{{'register.privacy' |translate}}</a>
+                            </p>
                             <a href="#">{{'user.help'|translate}}</a>
+                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="PrivacyModal" tabindex="-1" aria-labelledby="PrivacyModalLabel"
+                        aria-hidden="true">
+                          <privacypolicy></privacypolicy>
                         </div>
                         <div class="account" id="account">
                             <div class="title">
