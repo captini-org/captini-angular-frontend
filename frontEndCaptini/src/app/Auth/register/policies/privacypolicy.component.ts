@@ -20,9 +20,7 @@ export class PrivacyPolicyComponent implements OnInit {
 
   @Output() closeModalEvent = new EventEmitter<void>();
 
-  closeModal() {
-    this.closeModalEvent.emit();
-  }
+ 
 
   switchLang(lang: string) {
     this.langService.useLanguage(lang)

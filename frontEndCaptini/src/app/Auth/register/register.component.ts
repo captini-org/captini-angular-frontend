@@ -100,18 +100,6 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  isPrivacyPolicyOpen: boolean = false;
-
-
-  openPrivacyPolicy() {
-    this.isPrivacyPolicyOpen = true;
-    this.navigate.navigate(['/privacypolicy']);
-  }
-
-  closePrivacyPolicy() {
-    this.isPrivacyPolicyOpen = false;
-  }
-
   ngOnInit(): void {
     const routes: Routes = [
       { path: 'privacypolicy', component: PrivacyPolicyComponent },
