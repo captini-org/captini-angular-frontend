@@ -12,7 +12,8 @@ import {
 
 import { AuthService } from 'src/app/Shared/services/auth.service'
 import { HttpHeaders } from '@angular/common/http'
-import { ActivatedRoute, Router } from '@angular/router'
+import { ActivatedRoute, Router, Routes } from '@angular/router'
+import { PrivacyPolicyComponent } from './policies/privacypolicy.component'
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -20,6 +21,7 @@ import { ActivatedRoute, Router } from '@angular/router'
   providers: [DatePipe],
 })
 export class RegisterComponent implements OnInit {
+
   is_icelandic: boolean = false
   showMsg: boolean = false
   msgContent: string = ''
@@ -73,10 +75,12 @@ export class RegisterComponent implements OnInit {
     private API: AuthService,
     private navigate:Router
   ) {}
+
   switchLang(lang: string) {
     this.langService.useLanguage(lang)
     this.is_icelandic = !this.is_icelandic
   }
+
   register() {
     if (this.registerForm.valid) {
       this.API.registerUser(this.registerForm.value).subscribe((result) => {
@@ -95,5 +99,24 @@ export class RegisterComponent implements OnInit {
 
     }
   }
-  ngOnInit(): void {}
+
+  isPrivacyPolicyOpen: boolean = false;
+
+
+  openPrivacyPolicy() {
+    this.isPrivacyPolicyOpen = true;
+    this.navigate.navigate(['/privacypolicy']);
+  }
+
+  closePrivacyPolicy() {
+    this.isPrivacyPolicyOpen = false;
+  }
+
+  ngOnInit(): void {
+    const routes: Routes = [
+      { path: 'privacypolicy', component: PrivacyPolicyComponent },
+      //{ path: 'terms-and-condition', component: TermsAndConditionsComponent },
+    ];
+
+  }
 }

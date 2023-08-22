@@ -8,6 +8,7 @@ import { HomeComponent } from './components/home/home.component';
 import { TopicsComponent } from './components/topics/topics.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import {ProfileComponent} from './components/profile/profile.component';
+import { PrivacyPolicyComponent } from 'src/app/Auth/register/policies/privacypolicy.component';
 // import ngx-translate and the http loader
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
@@ -47,6 +48,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AllNationalitiesEnglishDirective,
     BirthYearsDirective,
     RecPplayStateDirective,
+    PrivacyPolicyComponent,
     SpecificAlphabetDirective,
     ShowPasswordDirective,
     LessonDetailsComponent,
