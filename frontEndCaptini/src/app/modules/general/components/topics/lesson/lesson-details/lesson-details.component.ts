@@ -69,7 +69,7 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
       const bodyElement = document.body;
       bodyElement.classList.add('teacher-bird');
       // problem
-      this.topicService.getTopicsById(this.topic_id).subscribe((data) => {
+      this.topicService.getTopicsById(this.topic_id).subscribe((data: ITopics | null | undefined) => {
         if (data != null) {
           //this.loading = false;
           this.topic_by_id = data;
