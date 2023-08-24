@@ -99,9 +99,18 @@
             </div>
             <div class="checkbox mb-2">
                 <span>
-                  <input type="checkbox" value="false" [checked]="isChecked" formControlName="agree"> {{'register.agree' |translate}}<a href="#"> {{'register.terms' |translate}}</a> {{'register.and' |translate}} <a href="#"> {{'register.privacy' |translate}}</a>
+                  <input type="checkbox" value="false" [checked]="isChecked" formControlName="agree"> {{'register.agree' |translate}}
+                  <a href="#"> {{'register.terms' |translate}}</a> {{'register.and' |translate}}
+                  <a href="#"  data-bs-toggle="modal"
+                data-bs-target="#PrivacyModal">{{'register.privacy' |translate}}</a>
                 </span>
             </div>
+            <!-- Modal -->
+            <div class="modal fade" id="PrivacyModal" tabindex="-1" aria-labelledby="PrivacyModalLabel"
+            aria-hidden="true">
+              <privacypolicy></privacypolicy>
+            </div>
+
             <button class="w-100 btn btn-lg btn-primary mb-2" type="submit" [disabled]="registerForm.invalid && isChecked">{{'buttons.sign-up' | translate}}</button>
         </form>
         <span> {{'register.account'|translate}} <a routerLink="/login">{{'register.singIn'|translate}}</a></span>

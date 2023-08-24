@@ -98,7 +98,8 @@
         "signInMsg": "This is the username you will need to sign in with",
         "signUpMsg": "Congratulations on successfully registering for CAPTinI!",
         "updateProfileMsg": "Profile updated successfully!",
-        "loginErrorMsg": "Invalid Credentials!"
+        "loginErrorMsg": "Invalid Credentials!",
+        "close": "Close"
     },
     "audio": {
       "record": "Record",

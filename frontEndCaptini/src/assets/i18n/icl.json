@@ -98,7 +98,8 @@
         "signInMsg": "Þetta er notendanafnið sem þú þarft til að skrá þig inn með",
         "signUpMsg": "Til hamingju með skráninguna í CAPTinI! ",
         "updateProfileMsg": "Prófíllinn þinn hefur verið uppfærður",
-        "loginErrorMsg": "Notandanafn og/eða lykilorð virkar ekki"
+        "loginErrorMsg": "Notandanafn og/eða lykilorð virkar ekki",
+        "close": "Loka"
     },
     "audio": {
         "record": "Taka upp",
