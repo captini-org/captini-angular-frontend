@@ -279,14 +279,21 @@
                         <input type="password" class="form-control" placeholder="*****" id="_oldPass" formControlName="_oldPass" aria-describedby="basic-addon1" style="border-right: none;" appShowPassword>
                     </div>
                   </div>
+
                   <div class="mb-3">
                     <label for="fullname" class="form-label">{{'user.new-password' | translate}}</label>
                     <div class="input-group">
                         <input type="password" class="form-control" placeholder="*****" id="_newPass" formControlName="_newPass" aria-describedby="basic-addon1" style="border-right: none;" appShowPassword>
                     </div>
+                    <div *ngIf="Rf['_newPass'] && Rf['_newPass'].invalid && Rf['_newPass'].touched">
+                      <span *ngIf="Rf['_newPass'] && Rf['_newPass'].errors?.['required']" class="text-danger ">{{'validation.required'|translate}}</span>
+                      <span class="text-danger" *ngIf="Rf['_newPass'] && Rf['_newPass'].errors?.['pattern']">
+                        {{'validation.patternPasword'|translate}}
+                      </span>
+                    </div>
                   </div>
                     <div class="float-end">
-                        <button type="submit" class="btn btn-secondary-success btn-sm"
+                        <button type="submit" class="btn btn-secondary-success btn-sm" [disabled]="passwordForm.invalid"
                             (click)="changePassword()">{{'buttons.update' | translate}}</button>
                     </div>
                 </form>

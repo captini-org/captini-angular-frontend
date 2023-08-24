@@ -48,6 +48,8 @@ export class ProfileComponent implements OnInit {
     private API: AuthService,
   ) {}
 
+
+
   ngOnInit(): void {
     let id = this.API.getUserId();
     this.loading = true;
@@ -126,8 +128,20 @@ export class ProfileComponent implements OnInit {
   });
   passwordForm = this.formBuilder.group({
     _oldPass: [''],
-    _newPass: [''],
+    _newPass: ['',
+      [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.pattern(
+          '(?=.{8,})(?=.*?[*.!@$%^&(){}[:;<>,.?/~_+=|])(?=.*?[^ws])(?=.*?[0-9])(?=.*?[A-Z]).*?[a-z].*'
+        ),
+      ],
+    ],
   });
+
+  get Rf() {
+    return this.passwordForm.controls
+  }
 
   logOUt() {
     localStorage.clear();
@@ -271,7 +285,7 @@ export class ProfileComponent implements OnInit {
       formData.append('profile_photo', this.form.value.profile_photo);
       this.userService.updateProfilePicture(formData);
       let id = localStorage.getItem('id');
-      //this.profilePictureService.updateProfilePicture(id); 
+      //this.profilePictureService.updateProfilePicture(id);
       }
     }
 
