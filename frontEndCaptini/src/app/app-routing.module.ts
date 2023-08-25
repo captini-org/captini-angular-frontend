@@ -7,6 +7,7 @@ import { AuthGuard } from './Shared/guard/auth.guard';
 import { ResetPasswordComponent } from './Auth/reset-password/reset-password.component';
 import { ResetSucessComponent } from './Auth/reset-password/reset-sucess/reset-sucess.component';
 import { PrivacyPolicyComponent } from './Auth/register/policies/privacypolicy.component';
+import { TermsOfUseComponent } from './Auth/register/policies/termsofuse.component';
 const routes: Routes = [
 
   {
@@ -39,7 +40,12 @@ const routes: Routes = [
   {
     component: PrivacyPolicyComponent,
     path: 'privacypolicy',
+  },
+  {
+    component: TermsOfUseComponent,
+    path: 'termsofuse',
   }
+
 
 ];
 

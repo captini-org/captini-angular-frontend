@@ -14,6 +14,7 @@ import { AuthService } from 'src/app/Shared/services/auth.service'
 import { HttpHeaders } from '@angular/common/http'
 import { ActivatedRoute, Router, Routes } from '@angular/router'
 import { PrivacyPolicyComponent } from './policies/privacypolicy.component'
+import { TermsOfUseComponent } from './policies/termsofuse.component'
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -103,6 +104,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     const routes: Routes = [
       { path: 'privacypolicy', component: PrivacyPolicyComponent },
+      { path: 'termsofuse', component: TermsOfUseComponent }
       //{ path: 'terms-and-condition', component: TermsAndConditionsComponent },
     ];
 
