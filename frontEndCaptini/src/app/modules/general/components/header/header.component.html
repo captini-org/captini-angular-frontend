@@ -24,8 +24,8 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start" aria-labelledby="dropdownMenu2">
                             <li><a class="dropdown-item" type="button" routerLink="/profile">{{'menu.updateProfile' | translate}}</a></li>
-                            <li><a class="dropdown-item" type="button" [swal]="{ title: 'Are you sure?',text:'You won\'t be able to revert this!',icon: 'warning',confirmButtonText:'Delete',buttonsStyling:true, showCancelButton: true }" (confirm)="delete($event)">{{'menu.delete' | translate}}</a></li>
-                            <li><a class="dropdown-item" type="button" (click)="logOUt()">{{'buttons.logOut' | translate}}</a></li>
+                            <li><a class="dropdown-item" type="button" [swal]="{ title: 'Are you sure?',text:'You won\'t be able to revert this!',icon: 'warning',confirmButtonText:'Delete',buttonsStyling:true, showCancelButton: true }" (confirm)="delete()">{{'menu.delete' | translate}}</a></li>
+                            <li><a class="dropdown-item" type="button" (click)="logOut()">{{'buttons.logOut' | translate}}</a></li>
                         </ul>
                     </div>
                 </div>

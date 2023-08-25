@@ -10,9 +10,10 @@ import { AuthService } from 'src/app/Shared/services/auth.service';
 export class UserService {
   apiUrl=Global.apiURL +"account/users/";
   updateUrl=Global.apiURL +"account/users/";
-  deleteUrl =Global.apiURL +"";
+  deleteUrl =Global.apiURL +"account/api/deactivate_account/";
   UsersUrl=Global.apiURL +"account/users/";
   passwordUpdateUrl=Global.apiURL+"account/api/change-password/"
+  deactivateUrl =Global.apiURL +"account/users/";
   constructor(private http:HttpClient,private API:AuthService) {}
   UserDetails(id:string)
   {
@@ -84,5 +85,15 @@ export class UserService {
 
   updatePassword(usercred: any) {
     return this.http.post(this.passwordUpdateUrl, usercred);
+  }
+  dactivateUser(id: any) {
+    const data = { id: id };
+    let httpOptions = {
+      headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + this.API.GetToken()
+      })
+  };
+    return this.http.post(this.deleteUrl,data,httpOptions);
   }
 }

@@ -47,23 +47,21 @@ export class HeaderComponent implements OnInit {
   
     
   
-  logOUt()
+  logOut()
   {
     localStorage.clear();
     this.route.navigate(['login']);
   }
-  delete(fileName: string):void
+  delete():void
   {
-    console.warn("this account was");
-    localStorage.clear();
-    this.route.navigate(['login']);
-  /* this.userService.deletUser(id).subscribe(result=>{
+   let id = this.API.getUserId();
+   this.userService.dactivateUser(id).subscribe(result=>{
       if(result!=null)
       {
         localStorage.clear();
         this.route.navigate(['login']);
       }
-    })*/
+    })
 
   }
   switchLang(lang:string){
