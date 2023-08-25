@@ -349,7 +349,7 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
         const sc = this.renderer.createElement('div');
         this.renderer.addClass(sc,'score');
         this.renderer.addClass(sc,'mt-2');
-        this.renderer.addClass(sc, 'mb-2');
+        this.renderer.addClass(sc,'text-success');
         // Set the content of the <span> element (you can use innerText or innerHTML)
         this.renderer.appendChild(sc, this.renderer.createText('Score: '+this.score));
         // Append the <span> element as a child of the target element
