@@ -62,9 +62,10 @@
                   <span *ngIf="prompt.flashcard_text" class="card-header"><h3 class="no-margin">{{ prompt.flashcard_text }}</h3></span>
 
                     <div class="card-title" *ngFor="let task of prompt.tasks">
+                      <div class="task">
                       <div class="card-body">
                         <div class="letter mb-2 phones" #targetElement><h4>{{ task.task_text }}</h4></div>
-                        <div class="mb-1">
+                        <div class="mb-2">
                           <button mat-button class="btn btn-listen me-2" (click)="play_audio(task.audio_url)">
                             <i class="ri-voiceprint-fill"></i>
                             {{ 'audio.listen' | translate}}
@@ -84,7 +85,7 @@
                         <ng-template #noAudio>
                           <!-- Placeholder content when audio is not available -->
                         </ng-template>
-                        <div
+                        <div class="mb-2"
                         *ngIf="url && task.id == id_current_task">
                           <button class="btn btn-evaluate me-2" (click)="getScore($event)">
                             <i class="ri-check-double-fill"></i>
@@ -96,6 +97,8 @@
                           </button>
                         </div>
                       </div>
+
+                    </div>
                     </div>
                   </div>
                 </div>
