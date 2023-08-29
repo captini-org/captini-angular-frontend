@@ -8,6 +8,9 @@ import { ResetPasswordComponent } from './Auth/reset-password/reset-password.com
 import { ResetSucessComponent } from './Auth/reset-password/reset-sucess/reset-sucess.component';
 import { PrivacyPolicyComponent } from './Auth/register/policies/privacypolicy.component';
 import { TermsOfUseComponent } from './Auth/register/policies/termsofuse.component';
+import { DeactivateAccountComponent } from './Auth/deactivate-account/deactivate-account.component';
+import { ActivateAccountComponent } from './Auth/activate-account/activate-account.component';
+import { ReactivateAccountComponent } from './Auth/activate-account/reactivate-account/reactivate-account.component';
 const routes: Routes = [
 
   {
@@ -44,8 +47,19 @@ const routes: Routes = [
   {
     component: TermsOfUseComponent,
     path: 'termsofuse',
-  }
-
+  },
+  {
+    component:DeactivateAccountComponent,
+    path:'deactivate-account'
+  },
+  {
+    component:ActivateAccountComponent,
+    path:'activate-account'
+  },
+  {
+    component:ReactivateAccountComponent,
+    path:'reactivate-account/:uid/:token'
+  },
 
 ];
 

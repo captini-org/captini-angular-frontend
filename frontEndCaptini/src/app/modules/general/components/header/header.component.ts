@@ -59,7 +59,7 @@ export class HeaderComponent implements OnInit {
       if(result!=null)
       {
         localStorage.clear();
-        this.route.navigate(['login']);
+        this.route.navigate(['deactivate-account']);
       }
     })
 

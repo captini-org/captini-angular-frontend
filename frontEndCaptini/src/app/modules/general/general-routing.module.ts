@@ -49,6 +49,8 @@ const routes: Routes = [
       component:FeedbackComponent,
       path:'community-feedback'
     },
+    
+    
   ]
 }
 ];

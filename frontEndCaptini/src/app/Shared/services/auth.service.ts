@@ -15,6 +15,8 @@ export class AuthService {
   apirefreshToken = Global.apiURL + 'account/api/token/refresh/';
   apiResetPassword = Global.apiURL + 'account/api/password-confirm/';
   apiChangePassword = Global.apiURL + 'account/api/change_password/';
+  apiActivatAccount = Global.apiURL + 'account/api/activate_account/';
+  apiReactivateAccount = Global.apiURL + 'account/api/reactivate_account/';
   errorMsg: string = '';
   Responsedata: any;
   secretKey: string = 'j3rTA8THW9Qc[t';
@@ -97,4 +99,11 @@ export class AuthService {
     }
     return null;
   }
+  activateAccount(usercred: any) {
+    return this.http.post(this.apiActivatAccount, usercred);
+  }
+  reactivateAccount(usercred: any) {
+    return this.http.put(this.apiReactivateAccount, usercred);
+  }
+  
 }

@@ -121,7 +121,8 @@
     },
     "menu": {
         "updateProfile": "Uppfæra prófil",
-        "delete": "Eyða aðgangi"
+        "delete": "Eyða aðgangi",
+        "deactivate": "Gera Mig Óvirkan"
     },
     "topic": {
         "topics": "Bálkur",
@@ -149,6 +150,26 @@
         "passwordChanged": "Lykilorðið þitt hefur verið endurnýjað.",
         "passwordIncorrect":"Tókst ekki að breyta lykilorðinu þínu. Vinsamlega sláðu inn rétta lykilorðiðið sem þú villt breyta."
       },
+      "activateAccount": {
+        "activateAccount": "Virkja aðgang",
+        "loginActivateAccount": "Óvirkur aðgangur? ",
+        "successEmail": "Hlekkur til að virkja aðganginn hefur verið sent á það netfang sem beiðnin kemur frá. Ef þú finnur hann ekki í innhólfinu þínu, athugaðu þá í ruslpóstinum eða sendu aftur beiðnina með því að slá inn netfangið.",
+        "emailNotFound": "Enginn aðgangur er tengdur þessu netfangi.",
+        "activateAccountButton": "Senda hlekk til að endurvirkja aðgang",
+        "activationMessage1": "Velkomin/n/ð aftur! Smelltu hér til að endurvirkja aðganginn þinn",
+        "activationLinkExpired":"Hlekkur til að virkja aðganginn er útrunninn"
+    },
+    "deactivateAccount": {
+        "deactivateAccount": "Gera mig óvirkan",
+        "deactivationMessage1": "Aðgangurinn þinn í CAPTinI hefur verið afvirkjaður tímabundinn.",
+        "deactivationMessage2": "Okkur þykir leitt að þurfa að kveðja þig en við þökkum þér kærlega fyrir að hafa prófað CAPTinI.",
+        "deactivationMessage3": "Gerðir þú mistök? Ert þú ekki viss?",
+        "activateAccountButton1": "Ef þú heldur að þessi afvirkjun sé mistök eða ef þú sért með einhverjar spurningar hafðu samband við okkur. Þú mátt líka reyna ", 
+        "activateAccountButton2": "að virkja aðganginn þinn ",
+        "activateAccountButton3": "með því að fara í gegnum skrefin til að endurvirkja aðganginn.",
+        "activationMessage1": "Velkomin/n/ð aftur! Smelltu hér til að endurvirkja aðganginn þinn",
+        "activationLinkExpired":"Hlekkur til að virkja aðganginn er útrunninn"
+    },
     "community": {
         "menu-give-feedback": "Gefa öðrum endurgjöf",
         "menu-get-feedback": "Fá endurgjöf frá öðrum",

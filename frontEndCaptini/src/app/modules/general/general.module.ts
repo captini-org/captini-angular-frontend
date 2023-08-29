@@ -29,6 +29,7 @@ import { AllNationalitiesIcelandicDirective } from 'src/app/Shared/directives/al
 import { CommunityComponent } from './components/community/community.component';
 import { ResetPasswordComponent } from 'src/app/Auth/reset-password/reset-password.component';
 import { TermsOfUseComponent } from 'src/app/Auth/register/policies/termsofuse.component';
+import { ReactivateAccountComponent } from 'src/app/Auth/activate-account/reactivate-account/reactivate-account.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -55,7 +56,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     LessonDetailsComponent,
     CommunityComponent,
     ResetPasswordComponent,
-    TermsOfUseComponent
+    TermsOfUseComponent,
+    ReactivateAccountComponent
       ],
   imports: [
     CommonModule,
