@@ -95,7 +95,7 @@
                         <div class="card h96">
                             <div class="card-body">
                                 <h5 class="card-title">Time spent learning</h5>
-                                <p class="card-text text-end text-lg">3 days 02:36</p>
+                                <p class="card-text text-end txt-md">{{formattedSessionDuration}}</p>
                             </div>
                         </div>
                         <div class="card h78" *ngIf="!loading && user">
@@ -144,12 +144,6 @@
                                     </div>
                                     <p class="card-text txt-md ">{{user?.completed_topics}}/{{user?.total_topics}}</p>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="card h78">
-                            <div class="card-body">
-                                <h5 class="card-title">Corrections</h5>
-                                <p class="card-text txt-md ">13</p>
                             </div>
                         </div>
                     </div>

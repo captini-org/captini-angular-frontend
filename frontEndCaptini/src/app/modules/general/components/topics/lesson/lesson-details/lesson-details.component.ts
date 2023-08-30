@@ -204,9 +204,9 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
       // Create a FormData object and append the recording data
       const formData = new FormData();
       formData.append('recording', this.jsonAudio);
-      formData.append('user', this.id_current_user); // Replace with the appropriate user ID
+      formData.append('user', this.id_current_user);
       formData.append('task', this.id_current_task);
-      formData.append('lesson', "4"); // Now include the lesson ID
+      formData.append('lesson', String(this.lessonNumber));
 
       const myHeaders = new Headers();
       myHeaders.append(

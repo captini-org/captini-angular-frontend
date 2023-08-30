@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LangService } from '../../../../Shared/services/lang.service';
 import {UserService} from 'src/app/Shared/services/profile/user.service'
 import { IUser } from 'src/app/models/IUser';
+import { SessionService } from 'src/app/Shared/services/session.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -12,14 +13,24 @@ export class HomeComponent implements OnInit {
   Responsedata: any;
   users: any;
   user: any;
+  sessionData: any;
+  formattedSessionDuration = '';
 
-  constructor(private userService:UserService, private langService: LangService) { }
+  constructor(private userService:UserService, private langService: LangService, private sessionService: SessionService) { }
 
   ngOnInit(): void {
     this.userService.getusers().subscribe(data=>{
       const id = localStorage.getItem("id");  // Fetch id of logged in user
       if (id != null) {
         this.getUser(id);  // Fetch specific user
+        this.sessionService.getSessionData(id).subscribe(sessionData => {
+          this.sessionData = sessionData;
+          console.log(this.sessionData);
+          const days = Math.floor(this.sessionData.total_duration / 86400);
+          const hours = Math.floor((this.sessionData.total_duration % 86400) / 3600);
+          const minutes = Math.floor(((this.sessionData.total_duration % 86400) % 3600) / 60);
+          this.formattedSessionDuration = `${days} days ${hours.toString().padStart(2, '0')} hours ${minutes.toString().padStart(2, '0')} minutes`;
+        });
       }
 
       if(data!=null)
