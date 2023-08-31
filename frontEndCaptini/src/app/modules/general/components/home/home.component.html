@@ -66,22 +66,16 @@
             <div class="tab-pane fade" id="pills-statics" role="tabpanel" aria-labelledby="pills-statics-tab">
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="card h96 active">
-                            <div class="card-body">
-                                <h5 class="card-title">Community Points</h5>
-                                <p class="card-text text-end text-lg">97</p>
-                            </div>
-                        </div>
-                        <div class="card h266">
-                            <div class="card-body" style=" height: 299px;">
-                                <h5 class="card-title">Fluency</h5>
-                                <img src="../../assets/image/bkg/pie.png" style="width: 250px; margin-top: 20²px;">
-                            </div>
-                        </div>
                         <div class="card h96 active" *ngIf="!loading && user">
                             <div class="card-body">
                                 <h5 class="card-title">Total score</h5>
                                 <p class="card-text text-end text-lg">{{user?.score}}</p>
+                            </div>
+                        </div>
+                        <div class="card h96 active" *ngIf="!loading && user">
+                            <div class="card-body">
+                                <h5 class="card-title">Your achievements (total tries)</h5>
+                                <p class="card-text text-end text-lg">{{user?.total_tries}}</p>
                             </div>
                         </div>
                     </div>
@@ -89,35 +83,55 @@
                         <div class="card h96">
                             <div class="card-body">
                                 <h5 class="card-title">Time spent learning</h5>
-                                <p class="card-text text-end text-lg">3 days 02:36</p>
+                                <p class="card-text text-end txt-md">{{formattedSessionDuration}}</p>
                             </div>
                         </div>
-                        <div class="card h78">
-                            <div class="card-body ">
-                                <h5 class="card-title"> Lessons completed</h5>
+                        <div class="card h78" *ngIf="!loading && user">
+                            <div class="card-body">
+                                <h5 class="card-title">Lessons completed (fully)</h5>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="progress">
-                                        <div class="progress-bar w-75" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar" 
+                                             role="progressbar" 
+                                             [attr.aria-valuenow]="user?.completed_lessons" 
+                                             aria-valuemin="0" 
+                                             [attr.aria-valuemax]="user?.total_lessons" 
+                                             [style.width.%]="(user?.completed_lessons / user?.total_lessons) * 100"></div>
                                     </div>
-                                    <p class="card-text txt-md ">60/100</p>
+                                    <p class="card-text txt-md">{{user?.completed_lessons}}/{{user?.total_lessons}}</p>
+                                </div>
+                            </div>                            
+                        </div>
+                        <div class="card h78" *ngIf="!loading && user">
+                            <div class="card-body">
+                                <h5 class="card-title">Tasks completed</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="progress">
+                                        <div class="progress-bar" 
+                                             role="progressbar" 
+                                             [attr.aria-valuenow]="user?.completed_tasks" 
+                                             aria-valuemin="0" 
+                                             [attr.aria-valuemax]="user?.total_tasks" 
+                                             [style.width.%]="(user?.completed_tasks / user?.total_tasks) * 100"></div>
+                                    </div>
+                                    <p class="card-text txt-md ">{{user?.completed_tasks}}/{{user?.total_tasks}}</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="card h78">
+                        <div class="card h78" *ngIf="!loading && user">
                             <div class="card-body">
-                                <h5 class="card-title">Tests completed</h5>
+                                <h5 class="card-title">Topics completed (fully)</h5>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="progress">
-                                        <div class="progress-bar w-25" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar" 
+                                             role="progressbar" 
+                                             [attr.aria-valuenow]="user?.completed_topics" 
+                                             aria-valuemin="0" 
+                                             [attr.aria-valuemax]="user?.total_topics" 
+                                             [style.width.%]="(user?.completed_topics / user?.total_topics) * 100"></div>
                                     </div>
-                                    <p class="card-text txt-md ">20/100</p>
+                                    <p class="card-text txt-md ">{{user?.completed_topics}}/{{user?.total_topics}}</p>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="card h78">
-                            <div class="card-body">
-                                <h5 class="card-title">Corrections</h5>
-                                <p class="card-text txt-md ">13</p>
                             </div>
                         </div>
                     </div>

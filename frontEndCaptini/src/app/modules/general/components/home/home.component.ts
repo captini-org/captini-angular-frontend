@@ -3,6 +3,7 @@ import { LangService } from '../../../../Shared/services/lang.service';
 import { UserService } from 'src/app/Shared/services/profile/user.service';
 import { IUser } from 'src/app/models/IUser';
 import { AuthService } from 'src/app/Shared/services/auth.service';
+import { SessionService } from 'src/app/Shared/services/session.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -13,18 +14,30 @@ export class HomeComponent implements OnInit {
   Responsedata: any;
   users: any;
   user: any;
+  sessionData: any;
+  formattedSessionDuration = '';
 
-  constructor(
-    private userService: UserService,
-    private langService: LangService,
-    private API: AuthService
-  ) {}
+  constructor(private userService:UserService, private langService: LangService, private sessionService: SessionService, private API: AuthService) { }
 
   ngOnInit(): void {
-    this.userService.getusers().subscribe((data) => {
-      const id = this.API.getUserId(); // Fetch id of logged in user
+    this.userService.getusers().subscribe(data=>{
+
+      const id = this.API.getUserId();
+
       if (id != null) {
-        this.getUser(id); // Fetch specific user
+        // Get the current user's data for the leaderboard and statistics (without session data)
+        this.getUser(id);
+
+        // Get the session data for the current user
+        this.sessionService.getSessionData(id).subscribe(sessionData => {
+          this.sessionData = sessionData;
+
+          // Format the session duration to days, hours, and minutes format
+          const days = Math.floor(this.sessionData.total_duration / 86400);
+          const hours = Math.floor((this.sessionData.total_duration % 86400) / 3600);
+          const minutes = Math.floor(((this.sessionData.total_duration % 86400) % 3600) / 60);
+          this.formattedSessionDuration = `${days} days ${hours.toString().padStart(2, '0')} hours ${minutes.toString().padStart(2, '0')} minutes`;
+        });
       }
 
       if (data != null) {
@@ -32,9 +45,9 @@ export class HomeComponent implements OnInit {
         this.Responsedata = data;
         this.users = this.Responsedata;
 
-        // Set the initial value of showGlow property for each user
+        // Set the initial value of showGlow property for each user to false since not everyone is the current user
         this.users.forEach((user: any) => {
-          user.showGlow = false; // You can set this to true or false based on your requirements
+          user.showGlow = false;
         });
       }
     });
