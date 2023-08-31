@@ -20,12 +20,18 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.getusers().subscribe(data=>{
-      const id = localStorage.getItem("id");  // Fetch id of logged in user
+
+      const id = localStorage.getItem("id"); // Get the current user's ID
+
       if (id != null) {
-        this.getUser(id);  // Fetch specific user
+        // Get the current user's data for the leaderboard and statistics (without session data)
+        this.getUser(id);
+
+        // Get the session data for the current user
         this.sessionService.getSessionData(id).subscribe(sessionData => {
           this.sessionData = sessionData;
-          console.log(this.sessionData);
+
+          // Format the session duration to days, hours, and minutes format
           const days = Math.floor(this.sessionData.total_duration / 86400);
           const hours = Math.floor((this.sessionData.total_duration % 86400) / 3600);
           const minutes = Math.floor(((this.sessionData.total_duration % 86400) % 3600) / 60);
@@ -39,9 +45,9 @@ export class HomeComponent implements OnInit {
         this.Responsedata=data;
         this.users=this.Responsedata;
 
-        // Set the initial value of showGlow property for each user
+        // Set the initial value of showGlow property for each user to false since not everyone is the current user
         this.users.forEach((user: any) => {
-          user.showGlow = false; // You can set this to true or false based on your requirements
+          user.showGlow = false;
         });
       }
     });
@@ -56,14 +62,16 @@ getUser(id: string) {
   this.userService.UserDetailsCatchError(id!).subscribe(
     data => {
       this.user = data;
-      console.log(this.user);
       // update content according to user specified display language
       this.langService.useLanguage(this.user.display_language);
 
       if (this.users) {
         const id = Number(localStorage.getItem("id"));
+        // Find the index of the current user in the leaderboard
         const currentUserIndex = this.users.findIndex((user: IUser) => Number(id) === Number(user.id));
 
+        // If the current user is not in the top 3, highlight him in the 4th position in the leaderboard
+        // even though he is not ranked in 4th place
         if (currentUserIndex > 2) {
           const currentUser = this.users.splice(currentUserIndex, 1)[0];
           this.users.splice(3, 0, currentUser);
@@ -72,7 +80,7 @@ getUser(id: string) {
           });
         }
         this.users = this.users;
-        // Limits the number of users to 25
+        // Limits the number of users shown in the leaderboard to 25
         this.users = this.users.slice(0, 25);
       }
     },

@@ -20,6 +20,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.translate.setDefaultLang('icl');
   }
 
+  // Whether the user is currently in a lesson
   inLesson = false;
 
   ngOnInit(): void {
@@ -28,8 +29,9 @@ export class AppComponent implements OnInit, OnDestroy {
       map(event => event as NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
       if (event.url.startsWith('/lesson')) {
+        // The user is in a lesson, if he navigates to new lesson page, don't end the session
         if (!this.inLesson) {
-          // The user just entered a lesson, so start a new session
+          // The user entered a lesson and wasn't in one before, so start a new session
           this.sessionService.startSession();
           document.addEventListener("visibilitychange", this.handleVisibilityChange);
           window.addEventListener("beforeunload", this.handleBeforeUnload);
@@ -37,7 +39,7 @@ export class AppComponent implements OnInit, OnDestroy {
         }
       } else {
         if (this.inLesson) {
-          // The user just left a lesson, so end the session
+          // The user just left a lesson to a non-lesson page, so end the session
           this.sessionService.endSession();
           document.removeEventListener("visibilitychange", this.handleVisibilityChange);
           window.removeEventListener("beforeunload", this.handleBeforeUnload);
