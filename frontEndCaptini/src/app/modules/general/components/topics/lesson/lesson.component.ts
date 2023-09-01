@@ -16,7 +16,11 @@ export class LessonComponent implements OnInit {
   public listtopics?:ITopics[];
   public topic_by_id !:ITopics;
   public listlesson ?:ILesson[];
+  Responsedata: any;
+  listlessonsstatistics: any;
+  
   ngOnInit(): void {
+    this.listlessonsstatistics = []
     let id =+this.route.snapshot.paramMap.get('id')!;
     this.topic_id=id;
     const bodyElement = document.body;
@@ -30,6 +34,22 @@ export class LessonComponent implements OnInit {
         
       }
     })
+
+    const user_id = localStorage.getItem("id"); // Get the current user's ID
+    this.topicService.getTopicStatisticsById(id, user_id).subscribe(
+      data=>{ 
+        if(data!=null)
+        {
+          this.listlessonsstatistics = []
+          //this.loading = false;
+          this.Responsedata=data;
+          for(const prop in data){
+            this.listlessonsstatistics.push(this.Responsedata[prop]);
+          }
+          this.listlessonsstatistics.sort((a: number[], b: number[]) => a[0] - b[0]);
+          console.log(this.listlessonsstatistics);
+        }
+      })
   }
   
   gotodetails(lesson_id:any,topic_by_id:any) {

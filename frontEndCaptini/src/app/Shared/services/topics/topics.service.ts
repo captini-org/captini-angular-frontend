@@ -4,6 +4,7 @@ import { catchError, map, Observable, throwError } from 'rxjs';
 import { Global } from 'src/app/common/global';
 import { ITopics } from 'src/app/models/ITopics';
 import { ILesson } from 'src/app/models/ILesson';
+import { IUser } from 'src/app/models/IUser';
 import { AuthService } from 'src/app/Shared/services/auth.service';
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ import { AuthService } from 'src/app/Shared/services/auth.service';
 export class TopicsService {
   topicUrl=Global.apiURL +"captini/topics/";
   lessonUrl=Global.apiURL +"captini/lessons/";
+  userUrl=Global.apiURL +"account/users/";
   constructor(private httpService:HttpClient,private API:AuthService) { }
 
   public getTopics(): Observable<ITopics> {
@@ -32,6 +34,28 @@ export class TopicsService {
       map(data => new ITopics().deserialize(data))
     );
   }
+
+  getTopicsStatisticsById(user_id:any):Observable<any>{
+    const api = this.userUrl +`${user_id}/`+`topics/`+`statistics/`;
+    return this.httpService.get<ITopics>(api).pipe(
+      map(data => new ITopics().deserialize(data))
+    );
+  }
+
+  getTopicStatisticsById(topic_id:any, user_id:any):Observable<any>{
+    const api = this.userUrl +`${user_id}/`+`topics/`+`${topic_id}/`+'statistics/';
+    return this.httpService.get<ITopics>(api).pipe(
+      map(data => new ITopics().deserialize(data))
+    );
+  }
+
+  getLessonStatisticsById(lesson_id:any, user_id:any):Observable<any>{
+    const api = this.userUrl +`${user_id}/`+`lessons/`+`${lesson_id}/`+'statistics/';
+    return this.httpService.get<ITopics>(api).pipe(
+      map(data => new ITopics().deserialize(data))
+    );
+  }
+
   getPromptsByIdLesson(value:any):Observable<any>{
     const api = this.topicUrl +`${value}/`;
     return this.httpService.get<ILesson>(api).pipe(

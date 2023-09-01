@@ -128,7 +128,8 @@
                                              [attr.aria-valuenow]="user?.completed_topics" 
                                              aria-valuemin="0" 
                                              [attr.aria-valuemax]="user?.total_topics" 
-                                             [style.width.%]="(user?.completed_topics / user?.total_topics) * 100"></div>
+                                             [style.width.%]="(user?.completed_topics / user?.total_topics) * 100">
+                                        </div>
                                     </div>
                                     <p class="card-text txt-md ">{{user?.completed_topics}}/{{user?.total_topics}}</p>
                                 </div>
