@@ -15,7 +15,8 @@ const routes: Routes = [
   children: [
     {
       path: 'index',
-      component:HomeComponent 
+      component:HomeComponent
+      //component:TopicsComponent
     },
     {
       path:'',redirectTo:'/index',pathMatch: 'full',
@@ -48,6 +49,8 @@ const routes: Routes = [
       component:FeedbackComponent,
       path:'community-feedback'
     },
+    
+    
   ]
 }
 ];

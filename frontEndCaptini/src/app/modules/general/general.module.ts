@@ -8,6 +8,7 @@ import { HomeComponent } from './components/home/home.component';
 import { TopicsComponent } from './components/topics/topics.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import {ProfileComponent} from './components/profile/profile.component';
+import { PrivacyPolicyComponent } from 'src/app/Auth/register/policies/privacypolicy.component';
 // import ngx-translate and the http loader
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
@@ -26,6 +27,9 @@ import { LoginComponent } from 'src/app/Auth/login/login.component';
 import { ShowPasswordDirective } from 'src/app/Shared/directives/show-password.directive';
 import { AllNationalitiesIcelandicDirective } from 'src/app/Shared/directives/all-nationalitiesIS.directive';
 import { CommunityComponent } from './components/community/community.component';
+import { ResetPasswordComponent } from 'src/app/Auth/reset-password/reset-password.component';
+import { TermsOfUseComponent } from 'src/app/Auth/register/policies/termsofuse.component';
+import { ReactivateAccountComponent } from 'src/app/Auth/activate-account/reactivate-account/reactivate-account.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -46,10 +50,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     AllNationalitiesEnglishDirective,
     BirthYearsDirective,
     RecPplayStateDirective,
+    PrivacyPolicyComponent,
     SpecificAlphabetDirective,
     ShowPasswordDirective,
     LessonDetailsComponent,
     CommunityComponent,
+    ResetPasswordComponent,
+    TermsOfUseComponent,
+    ReactivateAccountComponent
       ],
   imports: [
     CommonModule,

@@ -29,12 +29,14 @@ export class LoginComponent implements OnInit {
           this.Responsedata = result;
           localStorage.setItem('token', this.Responsedata.access);
           localStorage.setItem('refresh_token', this.Responsedata.refresh);
-          localStorage.setItem('id', this.Responsedata.id);
+          //localStorage.setItem('id', this.Responsedata.id);
           let expiry = JSON.parse(window.atob(this.Responsedata.access.split('.')[1])).exp;
           localStorage.setItem('expiry', expiry);
+          const userId = String(this.Responsedata.id);
+          this.API.setUserId(userId);
   
           // Redirect to the desired page upon successful login
-          this.route.navigate(['']);
+          this.route.navigate(['/topics']);
         },
         (error) => {
           // Handle authentication error here
@@ -45,7 +47,7 @@ export class LoginComponent implements OnInit {
       );
     }
   }
-  
+
   switchLang(lang: string) {
     this.langServ.useLanguage(lang)
   }

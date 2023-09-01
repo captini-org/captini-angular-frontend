@@ -13,10 +13,19 @@ import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
 import { NgxPageScrollModule } from 'ngx-page-scroll';
+import { ResetSucessComponent } from './Auth/reset-password/reset-sucess/reset-sucess.component';
+import { CheckEmailComponent } from './Auth/reset-password/check-email/check-email.component';
+import { DeactivateAccountComponent } from './Auth/deactivate-account/deactivate-account.component';
+import { ActivateAccountComponent } from './Auth/activate-account/activate-account.component';
 @NgModule({
   declarations: [
     AppComponent,
     ForgetPasswordComponent,
+    ResetSucessComponent,
+    CheckEmailComponent,
+    DeactivateAccountComponent,
+    ActivateAccountComponent,
+    
   ],
   imports: [
     BrowserModule,

@@ -12,7 +12,9 @@ import {
 
 import { AuthService } from 'src/app/Shared/services/auth.service'
 import { HttpHeaders } from '@angular/common/http'
-import { ActivatedRoute, Router } from '@angular/router'
+import { ActivatedRoute, Router, Routes } from '@angular/router'
+import { PrivacyPolicyComponent } from './policies/privacypolicy.component'
+import { TermsOfUseComponent } from './policies/termsofuse.component'
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -20,6 +22,7 @@ import { ActivatedRoute, Router } from '@angular/router'
   providers: [DatePipe],
 })
 export class RegisterComponent implements OnInit {
+
   is_icelandic: boolean = false
   showMsg: boolean = false
   msgContent: string = ''
@@ -73,27 +76,42 @@ export class RegisterComponent implements OnInit {
     private API: AuthService,
     private navigate:Router
   ) {}
+
   switchLang(lang: string) {
     this.langService.useLanguage(lang)
     this.is_icelandic = !this.is_icelandic
   }
+
   register() {
     if (this.registerForm.valid) {
-      this.API.registerUser(this.registerForm.value).subscribe((result) => {
-        if (result != null) {
-          this.msgContent = this.Responsedata
-          this.showMsg = true
-          console.log(result)
-          //this.navigate.navigate(['/login',]);
+      this.API.registerUser(this.registerForm.value).subscribe(
+        (result) => {
+          if (result != null) {
+            var responseResult = result as { username: string }
+            if (responseResult.username != "user with this username already exists.") {
+              this.msgContent = this.Responsedata
+              this.showMsg = true
+            } else {
+              this.showMsg = false
+              alert('Username already exists!')
+            }
+          }
+        },
+        (error) => {
+          // Handle registration error here
+          alert('Email is already registered!')
+          // Display an error message to the user or perform any necessary actions
         }
-      },
-      (error) => {
-        // Handle registration error here
-        alert('verify your data')
-        // Display an error message to the user or perform any necessary actions
-      })
-
+      );
     }
   }
-  ngOnInit(): void {}
+
+  ngOnInit(): void {
+    const routes: Routes = [
+      { path: 'privacypolicy', component: PrivacyPolicyComponent },
+      { path: 'termsofuse', component: TermsOfUseComponent }
+      //{ path: 'terms-and-condition', component: TermsAndConditionsComponent },
+    ];
+
+  }
 }

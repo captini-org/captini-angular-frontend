@@ -68,7 +68,7 @@ export class SessionService {
     const payload = {
       duration: duration,
       session_end: new Date(endTime).toISOString(),
-      user: localStorage.getItem('id')
+      user: this.API.getUserId()
     };
 
     this.http.post(this.sessionApiUrl, payload, { headers })

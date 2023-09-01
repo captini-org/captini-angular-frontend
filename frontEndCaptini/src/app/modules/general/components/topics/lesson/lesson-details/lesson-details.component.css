@@ -149,3 +149,9 @@ h2,h1,h3,h4 {text-align: center;}
   justify-content: center; /* align horizontal */
   align-items: center; /* align vertical */
 }
+
+.score {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--bs-success-300);
+}

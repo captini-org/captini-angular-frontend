@@ -9,6 +9,10 @@ import { DomSanitizer } from '@angular/platform-browser';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { Global } from 'src/app/common/global';
 import { IPrompts } from 'src/app/models/IPrompts';
+import { AuthService } from 'src/app/Shared/services/auth.service';
+import { IAudio } from 'src/app/models/IAudio';
+import { ITask } from 'src/app/models/ITask';
+
 @Component({
   selector: 'app-lesson-details',
   templateUrl: './lesson-details.component.html',
@@ -27,6 +31,7 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
     private domSanitizer: DomSanitizer,
     private renderer: Renderer2,
     private elementRef: ElementRef,
+    private API:AuthService
   ) {}
 
   public topic_id!: number;
@@ -58,7 +63,7 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
   ngOnInit(): void {
     //get the id from the url when you navigate between 2 diffrent components
     this.prompts = [];
-    this.id_current_user = localStorage.getItem('id');
+    this.id_current_user = this.API.getUserId();
     //get the id from the url when you navigate in the same component
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.topic_id = parseInt(params.get('topicId')!);
@@ -66,7 +71,7 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
       const bodyElement = document.body;
       bodyElement.classList.add('teacher-bird');
       // problem
-      this.topicService.getTopicsById(this.topic_id).subscribe((data) => {
+      this.topicService.getTopicsById(this.topic_id).subscribe((data: ITopics | null | undefined) => {
         if (data != null) {
           //this.loading = false;
           this.topic_by_id = data;
@@ -117,20 +122,17 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
 
   sanitize() {
     let current_audio_url = this.url;
-    this.url = '';
+    //this.url = '';
     return this.domSanitizer.bypassSecurityTrustUrl(current_audio_url);
   }
-  play_audio(url: string) {
-    this.audio.src = url;
-    if (this.audio_paused) {
-      this.audio.play();
-      this.audio_paused = false;
-    } else {
-      this.audio.pause();
-      this.audio_paused = true;
-    }
+  
+  play_audio(url: ITask) {
+    this.audio.src= url.examples[Math.floor(Math.random() * url.examples.length)].recording
+    this.audio.play();
   }
+
   initiateRecording(id: any) {
+    this.url=''
     this.id_current_task = id;
     let mediaConstraints = {
       video: false,
@@ -333,6 +335,7 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
 
       /*random score*/
       this.score = 100;
+      this.url=''
       // only show score on the relevant task
       const btn = event.target as HTMLElement;
       this.div = btn.closest('.card-body');
@@ -347,7 +350,7 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
         const sc = this.renderer.createElement('div');
         this.renderer.addClass(sc,'score');
         this.renderer.addClass(sc,'mt-2');
-        this.renderer.addClass(sc, 'mb-2');
+        this.renderer.addClass(sc,'text-success');
         // Set the content of the <span> element (you can use innerText or innerHTML)
         this.renderer.appendChild(sc, this.renderer.createText('Score: '+this.score));
         // Append the <span> element as a child of the target element

@@ -28,8 +28,12 @@
             <div class="text-center">
                 <span>{{'login.notAccount' | translate }} <a routerLink="/register" >{{ 'login.create' | translate }}</a></span>
             </div>
-            <div class="mb-3 text-center">
+            <div class="text-center">
                 <span><a routerLink="/reset">{{ 'login.forgot' | translate }}</a></span>
+                
+            </div>
+            <div class="text-center">
+                <span> {{ 'activateAccount.loginActivateAccount' | translate }} <a routerLink="/activate-account">{{ 'activateAccount.activateAccount' | translate }}</a></span>
             </div>
             <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="loginForm.invalid">{{ 'buttons.sign-in' | translate }}</button>
         </form>

@@ -11,16 +11,16 @@
         </ul>
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-leaderBoard" role="tabpanel" aria-labelledby="pills-leaderBoard-tab">
-                <div class="honorary-podium d-flex justify-content-center">
+                <div class="honorary-podium d-flex justify-content-center"  *ngIf="!loading && users.length > 1">
                     <div class="card silver mt-auto me-3">
-                        <div class="crown-silver">
-                            <img src="{{users[1].profile_photo}}" class="card-img-top silver-border" alt="...">
+                        <div class="crown-silver" >
+                            <img src="{{users[1]?.profile_photo}}" class="card-img-top silver-border" alt="...">
                         </div>
                         <div class="card-body d-flex">
                             <div class="rank">2</div>
                             <div class="text-end float-end  mt-auto ms-auto" *ngIf="!loading && users.length > 1">
-                                <h3 class="mb-2">{{users[1].username}}</h3>
-                                <span class="d-none d-sm-block">{{users[1].score}} points</span>
+                                <h3 class="mb-2">{{users[1]?.username}}</h3>
+                                <span class="d-none d-sm-block">{{users[1]?.score}} points</span>
                             </div>
                         </div>
                     </div>

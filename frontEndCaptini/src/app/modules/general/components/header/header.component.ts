@@ -3,6 +3,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {UserService} from '../../../../Shared/services/profile/user.service';
 import {LangService} from '../../../../Shared/services/lang.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/Shared/services/auth.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -10,45 +11,61 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   user: any;
-  constructor(private route:Router,private userService:UserService,private langServ:LangService) { }
-  @Input() isOpen = false;
-  @Output() closed = new EventEmitter();
-  close() {
-    this.closed.emit();
-  }
-  ngOnInit(): void {
-    const id = localStorage.getItem("id");
+  profilePicture:any;
+  constructor(private route:Router,private userService:UserService,private langServ:LangService,private API: AuthService) 
+  {
+    let id = this.API.getUserId();
     this.userService.UserDetailsCatchError(id!).subscribe(
       data => {
         this.user = data;
+        this.profilePicture = this.user.profile_photo;
       },
       (error) => {
         throw error;
       }
     );
   }
-  logOUt()
+  @Input() isOpen = false;
+  @Output() closed = new EventEmitter();
+  close() {
+    this.closed.emit();
+  }
+
+  ngOnInit(): void {
+     let id = this.API.getUserId();
+     this.userService.UserDetailsCatchError(id!).subscribe(
+      data => {
+        this.user = data;
+        this.profilePicture = this.user.profile_photo;
+      },
+      (error) => {
+        throw error;
+      }
+    );
+    }
+
+  
+    
+  
+  logOut()
   {
     localStorage.clear();
     this.route.navigate(['login']);
   }
-  delete(fileName: string):void
+  delete():void
   {
-    console.warn("this account was");
-    var id = localStorage.getItem("id");
-    localStorage.clear();
-    this.route.navigate(['login']);
-  /* this.userService.deletUser(id).subscribe(result=>{
+   let id = this.API.getUserId();
+   this.userService.dactivateUser(id).subscribe(result=>{
       if(result!=null)
       {
         localStorage.clear();
-        this.route.navigate(['login']);
+        this.route.navigate(['deactivate-account']);
       }
-    })*/
+    })
 
   }
   switchLang(lang:string){
     this.langServ.useLanguage(lang);
      }
-
+     
 }

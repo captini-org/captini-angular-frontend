@@ -20,12 +20,12 @@
                 <div class="profile-img ps-2">
                     <div class="dropdown">
                         <a class="dropdown-toggle" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="{{ user.profile_photo}}" alt="Iceland">
+                            <img [src]="profilePicture" alt="Iceland"style="width: 40px; height: 40px;">
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start" aria-labelledby="dropdownMenu2">
                             <li><a class="dropdown-item" type="button" routerLink="/profile">{{'menu.updateProfile' | translate}}</a></li>
-                            <li><a class="dropdown-item" type="button" [swal]="{ title: 'Are you sure?',text:'You won\'t be able to revert this!',icon: 'warning',confirmButtonText:'Delete',buttonsStyling:true, showCancelButton: true }" (confirm)="delete($event)">{{'menu.delete' | translate}}</a></li>
-                            <li><a class="dropdown-item" type="button" (click)="logOUt()">{{'buttons.logOut' | translate}}</a></li>
+                            <li><a class="dropdown-item" type="button" [swal]="{ title: 'Are you sure?',text:'You are about to deactivate temporarely your account',icon: 'warning',confirmButtonText:'Deactivate',buttonsStyling:true, showCancelButton: true }" (confirm)="delete()">{{'menu.deactivate' | translate}}</a></li>
+                            <li><a class="dropdown-item" type="button" (click)="logOut()">{{'buttons.logOut' | translate}}</a></li>
                         </ul>
                     </div>
                 </div>

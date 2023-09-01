@@ -1,4 +1,4 @@
-import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { Global } from 'src/app/common/global';
@@ -7,32 +7,33 @@ import { ILesson } from 'src/app/models/ILesson';
 import { IUser } from 'src/app/models/IUser';
 import { AuthService } from 'src/app/Shared/services/auth.service';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TopicsService {
   topicUrl=Global.apiURL +"captini/topics/";
   lessonUrl=Global.apiURL +"captini/lessons/";
   userUrl=Global.apiURL +"account/users/";
-  constructor(private httpService:HttpClient,private API:AuthService) { }
+  searchTopicsUrl = Global.apiURL + 'captini/topics/search/?search=';
+  constructor(private httpService: HttpClient, private API: AuthService) {}
 
   public getTopics(): Observable<ITopics> {
     let httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': 'JWT ' + this.API.GetToken()
-      })
+        Authorization: 'JWT ' + this.API.GetToken(),
+      }),
     };
-  
-    return this.httpService.get<ITopics>(this.topicUrl).pipe(
-      map(data => new ITopics().deserialize(data))
-    );
+
+    return this.httpService
+      .get<ITopics>(this.topicUrl)
+      .pipe(map((data) => new ITopics().deserialize(data)));
   }
- 
-  getTopicsById(value:any):Observable<any>{
-    const api = this.topicUrl +`${value}/`;
-    return this.httpService.get<ITopics>(api).pipe(
-      map(data => new ITopics().deserialize(data))
-    );
+
+  getTopicsById(value: any): Observable<any> {
+    const api = this.topicUrl + `${value}/`;
+    return this.httpService
+      .get<ITopics>(api)
+      .pipe(map((data) => new ITopics().deserialize(data)));
   }
 
   getTopicsStatisticsById(user_id:any):Observable<any>{
@@ -50,16 +51,42 @@ export class TopicsService {
   }
 
   getLessonStatisticsById(lesson_id:any, user_id:any):Observable<any>{
-    const api = this.userUrl +`${user_id}/`+`lessons/`+`${lesson_id}/`+'statistics/';
+    const api = this.userUrl +`${user_id}/`+`lesson/`+`${lesson_id}/`+'statistics/';
     return this.httpService.get<ITopics>(api).pipe(
       map(data => new ITopics().deserialize(data))
     );
   }
 
-  getPromptsByIdLesson(value:any):Observable<any>{
-    const api = this.topicUrl +`${value}/`;
-    return this.httpService.get<ILesson>(api).pipe(
-      map(data => new ILesson().deserialize(data))
-    );
+  getPromptsByIdLesson(value: any): Observable<any> {
+    const api = this.topicUrl + `${value}/`;
+    return this.httpService
+      .get<ILesson>(api)
+      .pipe(map((data) => new ILesson().deserialize(data)));
+  }
+
+  public searchTopics(searchPattern: any): Observable<ITopics> {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'JWT ' + this.API.GetToken(),
+      }),
+    };
+    var searchTopicsUrl = this.searchTopicsUrl + searchPattern;
+    return this.httpService
+      .get<ITopics>(searchTopicsUrl)
+      .pipe(map((data) => new ITopics().deserialize(data)));
+  }
+  public searchLessons(topicId: any, searchPattern: any): Observable<ILesson> {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'JWT ' + this.API.GetToken(),
+      }),
+    };
+    var searchLessonsUrl =
+      this.topicUrl + topicId + '/lessons/search/?search=' + searchPattern;
+    return this.httpService
+      .get<ITopics>(searchLessonsUrl)
+      .pipe(map((data) => new ILesson().deserialize(data)));
   }
 }

@@ -1,0 +1,51 @@
+<div class="form-signin ">
+    <div class="mb-5 text-center">
+        <img src="../../../assets/image/logo.svg" style="width: 250px;">
+    </div>
+    <div class="pb-3">
+        <label>{{'activateAccount.activationMessage1' | translate}}</label>
+        <div *ngIf="errorMessage" class="alert text-danger">
+            <strong>{{'activateAccount.activationLinkExpired' | translate}}  <a routerLink="/reset"> click </a></strong> 
+        </div>
+         
+    </div>
+    <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="showMsg">
+        {{'resetPassword.backToSigninMsg' | translate }}  <a routerLink="/login">{{'register.get-board'|translate}}</a>
+        <button type="button" class=" btn close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+        <form [formGroup]="restForm" (ngSubmit)="reactivateAccount()">
+            
+            <div class="form-group mb-2">
+                <label class="form-label">{{'user.password' | translate}}</label>
+                <div class="input-group">
+                    <input type="password" #pass class="form-control" placeholder="*****" formControlName="password" aria-describedby="basic-addon1" style="border-right: none;" appShowPassword>
+                </div>
+                <div *ngIf="Rf['password'] && Rf['password'].invalid && Rf['password'].touched">
+                    <span *ngIf="Rf['password'] && Rf['password'].errors?.['required']" class="text-danger ">{{'validation.required'|translate}}</span>
+                    <span class="text-danger" *ngIf="Rf['password'] && Rf['password'].errors?.['pattern']">
+                      {{'validation.patternPasword'|translate}}
+                    </span>
+                </div>
+            </div>
+            <div class="mb-2">
+                <label class="form-label">{{'user.confirm'| translate}}</label>
+                <div class="input-group">
+                    <input type="password" #confirmPass class="form-control" placeholder="*****" formControlName="password2" style="border-right: none;" appShowPassword>
+                </div>
+                <span class="text-danger" *ngIf="check(confirmPass.value,pass.value)">{{'validation.confirmPassword'|translate}}</span>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">{{'activateAccount.activateAccount'| translate}}</button>
+        </form>
+        <span> {{'register.account'|translate}} <a routerLink="/login">{{'register.singIn'|translate}}</a></span>
+        <div class="text-center">
+            <div>
+                <a [routerLink]="" (click)="switchLang( 'en')"><img src="../../../assets/image/flag/en.png" alt="England" class="pe-2"></a>
+                <a [routerLink]="" (click)="switchLang( 'icl')"><img src="../../../assets/image/flag/icl.png" alt="Iceland"></a>
+            </div>
+            <hr>
+            <p class="text-muted text-center">CAPTinI &copy; 2022</p>
+        </div>
+  
+</div>

@@ -98,7 +98,8 @@
         "signInMsg": "This is the username you will need to sign in with",
         "signUpMsg": "Congratulations on successfully registering for CAPTinI!",
         "updateProfileMsg": "Profile updated successfully!",
-        "loginErrorMsg": "Invalid Credentials!"
+        "loginErrorMsg": "Invalid Credentials!",
+        "close": "Close"
     },
     "audio": {
       "record": "Record",
@@ -120,7 +121,8 @@
     },
     "menu": {
         "updateProfile": "Update Profile",
-        "delete": "Delete"
+        "delete": "Delete",
+        "deactivate": "Deactivate Account"
     },
     "topic": {
         "topics": "Topics",
@@ -137,8 +139,37 @@
     } ,
     "resetPassword": {
         "backToSignin": "Here mistakenly? ",
-        "backToSigninMsg": "Go back to the sign in page",
-        "resetMsg": "Reset your password"
+        "backToSigninMsg": "Your password is successfully changed. Go back to the sign in page",
+        "resetMsg": "Reset your password",
+        "passwordChanged": "Your password has been successfully updated.",
+        "passwordIncorrect":"Unable to change password. Please provide the correct password to change.",
+        "emailNotFound": "There is no account associated with this email address.",
+        "resetLinkExpired": "Reset password link expired. Click here to receive a new link:",
+        "resetMsgSuccess1": "Check your email",
+        "resetMsgSuccess2": "We have sent password reset instructions to your email.",
+        "resetMsgSuccess3": "If it doesn't arrive soon, check your spam folder or ",
+        "resetMsgSuccess4": "send the email again"
+
+    },
+    "activateAccount": {
+        "activateAccount": "Activate account",
+        "loginActivateAccount": "Account deactivated? ",
+        "successEmail": "We have sent an activation link to your email.If it doesn't arrive soon, check your spam folder or send the email again.If it doesn't arrive soon, check your spam folder or send the email again",
+        "emailNotFound": "There is no account associated with this email address!",
+        "activateAccountButton": "Send reactivation link",
+        "activationMessage1": "Welcome Back! Reactivate your account",
+        "activationLinkExpired":"Activation link has expired"
+    },
+    "deactivateAccount": {
+        "deactivateAccount": "Deactivate account",
+        "deactivationMessage1": "Your CAPTinI account has been temporarily deactivated.",
+        "deactivationMessage2": "We are really sorry to see you go, but thanks for giving us a try.",
+        "deactivationMessage3": "Made a mistake? Having second thoughts?",
+        "activateAccountButton1": "If you believe that this cancellation is an error, or you have any other questions, please contact support. You can also try to ",
+        "activateAccountButton2": "activate your account ",
+        "activateAccountButton3":  "and follow the required steps to reactivate your account.",
+        "activationMessage1": "Welcome Back! Reactivate your account",
+        "activationLinkExpired":"Activation link has expired"
     },
     "community": {
       "menu-give-feedback":"Give feedback to the community",
