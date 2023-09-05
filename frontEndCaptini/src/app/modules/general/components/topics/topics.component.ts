@@ -43,7 +43,6 @@ export class TopicsComponent implements OnInit {
       if (data != null) {
         this.listtopicsstatistics = Object.values(data);
         this.listtopicsstatistics.sort((a: number[], b: number[]) => a[0] - b[0]);
-        console.log(this.listtopicsstatistics);
       }
     });
   }

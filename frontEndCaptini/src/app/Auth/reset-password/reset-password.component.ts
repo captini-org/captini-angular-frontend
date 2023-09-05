@@ -51,10 +51,7 @@ export class ResetPasswordComponent implements OnInit {
     // Make a POST or PUT request to your backend API to reset the password
     this.API.resetPassword(resetData).subscribe(
       response => {
-        console.log(response);
         this.showMsg = true
-        // Handle success, maybe show a success message
-        //this.router.navigate(['/login']); // Redirect to login page
       },
       error => {
         console.error(error);

@@ -34,9 +34,6 @@ export class ActivateAccountComponent implements  OnInit {
     this.API.activateAccount(this.activateAccountForm.value).subscribe(
 
       response => {
-        console.log(response);
-        // Handle success, maybe show a success message
-        //this.route.navigate(['/password-reset']);
         this.successMessage = true;
       },
       error => {
@@ -48,7 +45,6 @@ export class ActivateAccountComponent implements  OnInit {
         this.showMsg = true
         this.errorMessage = 'Server error';
       }
-        // Handle error, maybe show an error message
       }
     );
   }

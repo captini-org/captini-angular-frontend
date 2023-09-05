@@ -62,7 +62,6 @@ export class LessonComponent implements OnInit {
           this.listlessonsstatistics.sort(
             (a: number[], b: number[]) => a[0] - b[0]
           );
-          console.log(this.listlessonsstatistics);
         }
       },
       (error) => {

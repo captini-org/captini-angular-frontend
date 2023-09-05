@@ -34,12 +34,10 @@ export class ForgetPasswordComponent implements OnInit {
     this.API.loginForget(this.loginForgetForm.value).subscribe(
 
       response => {
-        console.log(response);
         // Handle success, maybe show a success message
         this.route.navigate(['/password-reset']);
       },
       error => {
-        console.error(error);
       if (error.status === 400) {
         this.showMsg = true
         this.errorMessage = 'There is no account associated with this email address ';

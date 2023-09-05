@@ -227,7 +227,6 @@ export class ProfileComponent implements OnInit {
             this.msgContent = 'resetPassword.passwordIncorrect';
             this.alertClass = 'alert-danger';
           }
-          console.log(result)
         }
       },
       (error) => {
@@ -239,12 +238,10 @@ export class ProfileComponent implements OnInit {
 
   // Inside your component class
   toggleAppNotification() {
-    //console.log(this.profilForm.value.notification_setting_in_app);
     this.notification_setting_in_app = !this.notification_setting_in_app;
     this.profilForm.patchValue({
       notification_setting_in_app: this.notification_setting_in_app,
     });
-    //console.log(this.profilForm.value.notification_setting_in_app);
   }
 
   toggleEmailNotification() {

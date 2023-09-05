@@ -50,10 +50,7 @@ export class ReactivateAccountComponent implements OnInit {
     };
     this.API.reactivateAccount(reactivateData).subscribe(
       response => {
-        console.log(response);
-        this.showMsg = true
-        // Handle success, maybe show a success message
-        //this.router.navigate(['/login']); // Redirect to login page
+        this.showMsg = true;
       },
       error => {
         console.error(error);
@@ -65,7 +62,6 @@ export class ReactivateAccountComponent implements OnInit {
         this.showMsg = false
         this.errorMessage = 'An error occurred while reactivating the password.';
       }
-        // Handle error, maybe show an error message
       }
     );
   }
