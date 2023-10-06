@@ -31,7 +31,6 @@ import { ResetPasswordComponent } from 'src/app/Auth/reset-password/reset-passwo
 import { TermsOfUseComponent } from 'src/app/Auth/register/policies/termsofuse.component';
 import { ReactivateAccountComponent } from 'src/app/Auth/activate-account/reactivate-account/reactivate-account.component';
 
-
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
@@ -57,7 +56,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     CommunityComponent,
     ResetPasswordComponent,
     TermsOfUseComponent,
-    ReactivateAccountComponent
+    ReactivateAccountComponent,
       ],
   imports: [
     CommonModule,

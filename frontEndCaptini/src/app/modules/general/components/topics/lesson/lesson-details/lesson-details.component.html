@@ -62,9 +62,22 @@
                   <span *ngIf="prompt.flashcard_text" class="card-header"><h3 class="no-margin">{{ prompt.flashcard_text }}</h3></span>
 
                     <div class="card-title" *ngFor="let task of prompt.tasks">
-                      <div class="task">
+                      <div class="task" style="border-bottom: 1px solid #ccc;">
                       <div class="card-body">
                         <div class="letter mb-2 phones" #targetElement><h4>{{ task.task_text }}</h4></div>
+                        <div class="aligned-container" *ngIf="taskScores[task.id] !== undefined">
+                          <div class="progress-bar">
+                            <div [style.width.%]="taskScores[task.id]?.feedback?.task_feedback"
+                            [ngStyle]="{'background-color': getBackgroundColor(taskScores[task.id]?.feedback?.task_feedback)}">{{ taskScores[task.id]?.feedback?.task_feedback }}%</div>
+                          </div>
+                          <br>
+                          <button class="btn btn-listen me-2" data-bs-toggle="modal" data-bs-target="#score-report-modal" (click)="openScoreReportModal(taskScores[task.id], task.task_text)">
+                            <i class="ri-eye-fill"></i>
+                            {{'statics.pronunciation-feedback' | translate}}
+                          </button>
+                        </div>
+                        <br>
+                        
                         <div class="mb-2">
                           <button mat-button class="btn btn-listen me-2" (click)="play_audio(task)" [disabled]="task.examples.length === 0 || recording">
                             <i class="ri-voiceprint-fill"></i>
@@ -91,7 +104,7 @@
                             <i class="ri-check-double-fill"></i>
                             {{ 'audio.check' | translate}}
                           </button>
-                          <button class="btn btn-listen me-2" >
+                          <button class="btn btn-listen me-2 disabled" >
                             <i class="ri-share-fill" (click)="sendTask()"></i>
                             {{ 'audio.share'|translate }}
                           </button>
@@ -169,3 +182,37 @@
   </section>
 </div>
 
+<div class="modal fade" id="score-report-modal" aria-labelledby="score-report-modal-label">
+  <div class="modal-dialog custom-modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        {{'statics.pronunciation-feedback' | translate}}
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Display data from selectedTask here -->
+        <div *ngFor="let word of selectedTask?.feedback.word_feedback">
+          <br>
+          <span [ngClass]="{'red-text': word.word_score === 0, 'green-text': word.word_score === 1}">
+            <h5>{{ word.word }}</h5>
+          </span>
+          <br>  
+          <table class="feedback-table">
+            <tr *ngFor="let phone of word.phone_feedback">
+              <td>
+                <span [ngClass]="{'red-text': phone.phone_score === 0, 'green-text': phone.phone_score === 1}">
+                  /{{ phone.phone }}/
+                </span>
+              </td>
+              <td>
+                <span [ngClass]="{'red-text': phone.phone_score === 0, 'green-text': phone.phone_score === 1}">
+                  {{ phone.phone_score === 0 ? 'Incorrect' : 'Correct' }}
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

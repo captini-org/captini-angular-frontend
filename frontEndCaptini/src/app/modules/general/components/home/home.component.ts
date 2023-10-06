@@ -16,7 +16,9 @@ export class HomeComponent implements OnInit {
   user: any;
   sessionData: any;
   formattedSessionDuration = '';
-
+  learningDays = '';
+  LearningHours = '';
+  LearningMinutes = '';
   constructor(
     private userService:UserService, 
     private langService: LangService, 
@@ -24,14 +26,13 @@ export class HomeComponent implements OnInit {
     private API: AuthService) { }
 
   ngOnInit(): void {
-    this.userService.getusers().subscribe(data=>{
-
-      const id = this.API.getUserId();
-
+    const id = this.API.getUserId();
       if (id != null) {
         // Get the current user's data for the leaderboard and statistics (without session data)
         this.getUser(id);
-
+      }
+    this.userService.getusers().subscribe(data=>{
+      if (id != null) {
         // Get the session data for the current user
         this.sessionService.getSessionData(id).subscribe(sessionData => {
           this.sessionData = sessionData;
@@ -40,6 +41,9 @@ export class HomeComponent implements OnInit {
           const days = Math.floor(this.sessionData.total_duration / 86400);
           const hours = Math.floor((this.sessionData.total_duration % 86400) / 3600);
           const minutes = Math.floor(((this.sessionData.total_duration % 86400) % 3600) / 60);
+          this.LearningHours= hours.toString().padStart(2, '0')
+          this.LearningMinutes=minutes.toString().padStart(2, '0')
+          this.learningDays=days.toString()
           this.formattedSessionDuration = `${days} days ${hours.toString().padStart(2, '0')} hours ${minutes.toString().padStart(2, '0')} minutes`;
         });
       }

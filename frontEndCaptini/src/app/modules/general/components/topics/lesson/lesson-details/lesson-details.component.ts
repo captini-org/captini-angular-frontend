@@ -1,26 +1,23 @@
-import { AfterViewChecked, Component, Renderer2, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, Renderer2, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ITopics } from 'src/app/models/ITopics';
 import { TopicsService } from 'src/app/Shared/services/topics/topics.service';
 import { ILesson } from 'src/app/models/ILesson';
 import * as RecordRTC from 'recordrtc';
-import { WriteVarExpr } from '@angular/compiler';
 import { DomSanitizer } from '@angular/platform-browser';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { Global } from 'src/app/common/global';
-import { IPrompts } from 'src/app/models/IPrompts';
 import { AuthService } from 'src/app/Shared/services/auth.service';
-import { IAudio } from 'src/app/models/IAudio';
 import { ITask } from 'src/app/models/ITask';
+import { WebsocketService } from 'src/app/Shared/services/websocket/websocket.service';
+import { IScore } from 'src/app/models/IScore';
 
 @Component({
   selector: 'app-lesson-details',
   templateUrl: './lesson-details.component.html',
   styleUrls: ['./lesson-details.component.css'],
 })
-export class LessonDetailsComponent implements OnInit, AfterViewChecked {
-  // unnecessary if working directly with DOM: class names, IDs, etc
-  // @ViewChild('targetElement', { static: false }) targetElementRef!: ElementRef;
+export class LessonDetailsComponent implements OnInit {
   tasksUrl = Global.apiURL + 'captini/tasks/';
   lessonUrl = Global.apiURL + 'captini/lessons/';
 
@@ -29,15 +26,13 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
     private navigateRouter: Router,
     private topicService: TopicsService,
     private domSanitizer: DomSanitizer,
-    private renderer: Renderer2,
-    private elementRef: ElementRef,
-    private API:AuthService
+    private API:AuthService,
+    private webSocketService: WebsocketService
   ) {}
 
   public topic_id!: number;
   public lesson_id!: number;
   public listLessons?: ILesson[];
-  public listtopics?: ITopics[];
   public topic_by_id?: ITopics;
   public lesson_by_id?: ILesson;
   public index_lesson!: number;
@@ -55,25 +50,24 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
   public hasCorrection = false;
   public answered = false;
   private i = 0;
-  public targetElement: any;
   public div: any;
   public phone: any;
   jsonAudio: any;
-
+  scoreData: IScore = {} as IScore;
+  selectedTask: any;
+  selectedText: any;
+  // Inside your component
+  taskScores: { [taskId: string]: IScore | undefined } = {};
   ngOnInit(): void {
-    //get the id from the url when you navigate between 2 diffrent components
     this.prompts = [];
     this.id_current_user = this.API.getUserId();
-    //get the id from the url when you navigate in the same component
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.topic_id = parseInt(params.get('topicId')!);
       this.lesson_id = parseInt(params.get('id')!);
       const bodyElement = document.body;
       bodyElement.classList.add('teacher-bird');
-      // problem
       this.topicService.getTopicsById(this.topic_id).subscribe((data: ITopics | null | undefined) => {
         if (data != null) {
-          //this.loading = false;
           this.topic_by_id = data;
           this.listLessons = [];
           this.listLessons = this.topic_by_id?.lessons;
@@ -98,10 +92,24 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
         }
       });
     });
+    //listen to the websocket server to get the score
+    this.webSocketService.connectToWebSocketServer();
+    // TODO: verify the user id
+    this.webSocketService.socket.subscribe(
+      (message) => {
+        // Handle incoming WebSocket messages here
+        this.handleWebSocketMessage(message);
+      },
+      (error) => {
+        console.error('WebSocket error:', error);
+      },
+      () => {
+        console.log('WebSocket connection closed.');
+      }
+    );
   }
   check() {
     const button = document.getElementById('rec');
-    //alert('gdflmgjsd');
   }
   gobacktolessons() {
     this.navigateRouter.navigate(['/topics', this.topic_id], {
@@ -143,14 +151,10 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
       .then(this.successCallback.bind(this), this.errorCallback.bind(this));
   }
 
-  /**
-   * Will be called automatically.
-   */
   successCallback(stream: any) {
-    //Start Actuall Recording
     this.recording = true;
     var StereoAudioRecorder = RecordRTC.StereoAudioRecorder;
-    this.record = new StereoAudioRecorder(stream);
+    this.record = new StereoAudioRecorder(stream, { numberOfAudioChannels: 1 });
     this.record.record();
   }
   /**
@@ -196,6 +200,7 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
       // Show an error message or handle the case when there is no recording available
       return;
     }
+    this.resetTaskScore(this.id_current_task);
     const reader = new FileReader();
     reader.onload = () => {
       const base64data = reader.result as string;
@@ -203,7 +208,6 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
         audio: base64data,
       };
 
-      // Create a FormData object and append the recording data
       const formData = new FormData();
       formData.append('recording', this.jsonAudio);
       formData.append('user', this.id_current_user);
@@ -229,11 +233,9 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
             'Tasks Recordings',
             'Your recording was successfully sent! Wait for the community feedbacks!'
           );
-          // Clear the recording data
           this.jsonAudio = null;
         })
         .catch((error) => {
-          // Handle the error and show an error message
           console.log('error', error);
         });
     };
@@ -241,35 +243,9 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
     reader.readAsDataURL(this.jsonAudio);
 
   }
-
-  ngAfterViewChecked() {
-    this.targetElement = this.elementRef.nativeElement.querySelectorAll('.phones');
+  resetTaskScore(taskId: any) {
+    this.taskScores[taskId] = undefined;
   }
-
-  showPhones(div: any){
-    this.hasCorrection = !this.hasCorrection;
-    // find div with class name = "phones"
-    const phone = div.querySelector('.phones') as HTMLElement;
-    if(phone){
-      // Check if there is an existing child with class "emphasis"
-      const existingPhones = this.div.querySelector('.emphasis');
-      if (existingPhones) {
-        // If it exists, remove it before adding a new one
-        this.renderer.removeChild(this.div, existingPhones);
-      }
-      // Create the span element
-      const newSpan = this.renderer.createElement('span');
-      this.renderer.addClass(newSpan,'emphasis');
-      // Set the content of the <span> element (you can use innerText or innerHTML)
-      this.renderer.appendChild(newSpan, this.renderer.createText('Phones displayed here'));
-      // Append the <span> element as a child of the target element
-      this.renderer.appendChild(phone, newSpan);
-    }
-    else {
-      console.error('phone div is undefined.');
-    }
-}
-
   getScore(event: Event) {
 
       this.answered = true;
@@ -277,13 +253,12 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
         // Show an error message or handle the case when there is no recording available
         return;
       }
-
-      // Parse the lesson index from the URL
+      this.resetTaskScore(this.id_current_task);
       const lessonPath = window.location.pathname;
-      const lessonIndex = lessonPath.split('/').pop(); // Gets the last segment of the path
+      const lessonIndex = lessonPath.split('/').pop(); 
 
       if (lessonIndex) {
-        this.lessonNumber = parseInt(lessonIndex, 10); // Convert string to integer
+        this.lessonNumber = parseInt(lessonIndex, 10); 
       } else {
         console.error('Lesson index not found in the URL.');
       }
@@ -295,13 +270,11 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
           audio: base64data,
         };
 
-        // Create a FormData object and append the recording data
         const formData = new FormData();
         formData.append('recording', this.jsonAudio);
-        formData.append('user', this.id_current_user); // Replace with the appropriate user ID
+        formData.append('user', this.id_current_user);
         formData.append('task', this.id_current_task);
         formData.append('lesson', String(this.lessonNumber));
-        //need to pass info to identify prompt number
 
         const myHeaders = new Headers();
         myHeaders.append(
@@ -315,7 +288,6 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
           body: formData,
           redirect: 'follow',
         };
-        /*change url to endpoint for ai model */
         fetch(this.tasksUrl + this.id_current_task + '/upload/', requestOptions)
           .then((response) => {
             // Handle the response and show a success message
@@ -323,7 +295,6 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
               'Checked',
               'Your recording was sent and graded! Check your score now'
             );
-            // Clear the recording data
             this.jsonAudio = null;
           })
           .catch((error) => {
@@ -333,32 +304,36 @@ export class LessonDetailsComponent implements OnInit, AfterViewChecked {
       };
       reader.readAsDataURL(this.jsonAudio);
 
-      /*random score*/
-      this.score = 100;
       this.url=''
-      // only show score on the relevant task
-      const btn = event.target as HTMLElement;
-      this.div = btn.closest('.card-body');
-      if (this.div) {
-        // Check if there is an existing child with class "score"
-        const existingScore = this.div.querySelector('.score');
-        if (existingScore) {
-          // If it exists, remove it before adding a new one
-          this.renderer.removeChild(this.div, existingScore);
-        }
-        // Create new child (div) to show score
-        const sc = this.renderer.createElement('div');
-        this.renderer.addClass(sc,'score');
-        this.renderer.addClass(sc,'mt-2');
-        this.renderer.addClass(sc,'text-success');
-        // Set the content of the <span> element (you can use innerText or innerHTML)
-        this.renderer.appendChild(sc, this.renderer.createText('Score: '+this.score));
-        // Append the <span> element as a child of the target element
-        this.renderer.appendChild(this.div, sc);
-        this.showPhones(this.div);
-      }
-      else {
-        console.error('div is undefined.');
-      }
   }
+  // Handle incoming WebSocket messages
+private handleWebSocketMessage(message: any) {
+  try {
+    this.scoreData = message;
+    if(this.scoreData.user_id == this.id_current_user)
+    {
+      this.taskScores[this.scoreData.task_id] = this.scoreData;
+    }
+  } catch (error) {
+    console.error('Error parsing WebSocket message:', error);
+  }
+}
+  openScoreReportModal(task: any,task_text: string) {
+    this.selectedTask = task; // Set the task data to be displayed in the modal
+  }
+
+  getBackgroundColor(value: number | undefined ): string {
+    if (value != undefined ) {
+    console.log(value)
+    if (value < 50 ) {
+      return '#FF3333'; // Red
+    } else if (value < 70) {
+      return '#FFA500'; // Orange
+    } else {
+      return '#4CAF50'; // Green
+    }
+  }
+  return '#4CAF50';
+  }
+  
 }

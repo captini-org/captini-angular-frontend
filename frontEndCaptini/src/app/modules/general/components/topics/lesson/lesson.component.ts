@@ -13,28 +13,24 @@ import { TopicsService } from 'src/app/Shared/services/topics/topics.service';
 })
 export class LessonComponent implements OnInit {
   public topic_id: number | undefined;
-
-  public listtopics?: ITopics[];
   public topic_by_id!: ITopics;
   public listlesson!: ILesson[];
   Responsedata: any;
   searchText: string = '';
   listlessonsstatistics: any;
-
   constructor(
     private route: ActivatedRoute,
     private topicService: TopicsService,
     private navigate: Router,
     private API: AuthService,
-    private userService: UserService,
   ) {}
 
   ngOnInit(): void {
     this.topic_id = Number(this.route.snapshot.paramMap.get('id')!);
-    let userID = this.API.getUserId();
+    let userId = this.API.getUserId();
 
     document.body.classList.remove('teacher-bird');
-    this.getTopicStatistiscsById(userID, this.topic_id);
+    this.getTopicStatistiscsById(userId, this.topic_id);
     this.searchLessons();
   }
 

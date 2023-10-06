@@ -188,5 +188,20 @@
     "direction": {
         "previous": "Fyrri þráður",
         "next": "Næsti þráður"
+    },
+    "statics": {
+        "score": "Heildar stig",
+        "achievements": "Fjöldi tilrauna",
+        "learning-time": "Heildar námstími",
+        "days": "dagar",
+        "hours": "klst",
+        "minutes": "mínútur",
+        "lessons-completed": "Námskeiðum lokið (að fullu)",
+        "tasks-completed": "Verkefnum lokið",
+        "topics-completed": "Efni lokið (að fullu)",
+        "pronunciation-feedback": "Endurgjöf á framburð",
+        "points": "Stig"
+        
     }
+    
 }

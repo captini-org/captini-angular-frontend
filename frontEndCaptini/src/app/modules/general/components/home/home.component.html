@@ -11,16 +11,16 @@
         </ul>
         <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-leaderBoard" role="tabpanel" aria-labelledby="pills-leaderBoard-tab">
-                <div class="honorary-podium d-flex justify-content-center"  *ngIf="!loading && users.length > 1">
+                <div class="honorary-podium d-flex justify-content-center"  *ngIf="!loading && users?.length > 1">
                     <div class="card silver mt-auto me-3">
                         <div class="crown-silver" >
                             <img src="{{users[1]?.profile_photo}}" class="card-img-top silver-border" alt="...">
                         </div>
                         <div class="card-body d-flex">
                             <div class="rank">2</div>
-                            <div class="text-end float-end  mt-auto ms-auto" *ngIf="!loading && users.length > 1">
+                            <div class="text-end float-end  mt-auto ms-auto" *ngIf="!loading && users?.length > 1">
                                 <h3 class="mb-2">{{users[1]?.username}}</h3>
-                                <span class="d-none d-sm-block">{{users[1]?.score}} points</span>
+                                <span class="d-none d-sm-block">{{users[1]?.score}} {{'statics.points' | translate}}</span>
                             </div>
                         </div>
                     </div>
@@ -30,21 +30,21 @@
                         </div>
                         <div class="card-body d-flex">
                             <div class="rank">1</div>
-                            <div class="text-end float-end mt-auto ms-auto" *ngIf="!loading && users.length > 0">
+                            <div class="text-end float-end mt-auto ms-auto" *ngIf="!loading && users?.length > 0">
                                 <h3 class="mb-2">{{users[0].username}}</h3>
-                                <span class="d-none d-sm-block">{{users[0].score}} points</span>
+                                <span class="d-none d-sm-block">{{users[0].score}} {{'statics.points' | translate}}</span>
                             </div>
                         </div>
                     </div>
-                    <div class="card bronze mt-auto">
+                    <div class="card bronze mt-auto"  *ngIf="!loading && users?.length > 2">
                         <div class="crown-bronze">
                             <img src="{{users[2].profile_photo}}" class="card-img-top bronze-border" alt="...">
                         </div>
                         <div class="card-body d-flex">
                             <div class="rank">3</div>
-                            <div class="text-end float-end  mt-auto ms-auto" *ngIf="!loading && users.length > 2">
+                            <div class="text-end float-end  mt-auto ms-auto">
                                 <h3 class="mb-2">{{users[2].username}}</h3>
-                                <span class="d-none d-sm-block">{{users[2].score}} points</span>
+                                <span class="d-none d-sm-block">{{users[2].score}} {{'statics.points' | translate}}</span>
                             </div>
                         </div>
                     </div>
@@ -68,27 +68,27 @@
                     <div class="col-md-6">
                         <div class="card h96 active" *ngIf="!loading && user">
                             <div class="card-body">
-                                <h5 class="card-title">Total score</h5>
+                                <h5 class="card-title">{{'statics.score' | translate}}</h5>
                                 <p class="card-text text-end text-lg">{{user?.score}}</p>
                             </div>
                         </div>
                         <div class="card h96 active" *ngIf="!loading && user">
                             <div class="card-body">
-                                <h5 class="card-title">Your achievements (total tries)</h5>
+                                <h5 class="card-title">{{'statics.achievements' | translate}}</h5>
                                 <p class="card-text text-end text-lg">{{user?.total_tries}}</p>
+                            </div>
+                        </div>
+                        <div class="card h96 active" *ngIf="!loading && user">
+                            <div class="card-body">
+                                <h5 class="card-title">{{'statics.learning-time' | translate}}</h5>
+                                <p class="card-text txt-md">{{learningDays}} {{'statics.days' | translate}}  {{LearningHours}} {{'statics.hours' | translate}} {{LearningMinutes}}{{'statics.minutes' | translate}} </p>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="card h96">
+                        <div class="card h96" *ngIf="!loading && user">
                             <div class="card-body">
-                                <h5 class="card-title">Time spent learning</h5>
-                                <p class="card-text text-end txt-md">{{formattedSessionDuration}}</p>
-                            </div>
-                        </div>
-                        <div class="card h78" *ngIf="!loading && user">
-                            <div class="card-body">
-                                <h5 class="card-title">Lessons completed (fully)</h5>
+                                <h5 class="card-title">{{'statics.lessons-completed' | translate}}</h5>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="progress">
                                         <div class="progress-bar" 
@@ -102,9 +102,9 @@
                                 </div>
                             </div>                            
                         </div>
-                        <div class="card h78" *ngIf="!loading && user">
+                        <div class="card h96" *ngIf="!loading && user">
                             <div class="card-body">
-                                <h5 class="card-title">Tasks completed</h5>
+                                <h5 class="card-title">{{'statics.tasks-completed' | translate}}</h5>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="progress">
                                         <div class="progress-bar" 
@@ -118,9 +118,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card h78" *ngIf="!loading && user">
+                        <div class="card h96" *ngIf="!loading && user">
                             <div class="card-body">
-                                <h5 class="card-title">Topics completed (fully)</h5>
+                                <h5 class="card-title">{{'statics.topics-completed' | translate}}</h5>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="progress">
                                         <div class="progress-bar" 

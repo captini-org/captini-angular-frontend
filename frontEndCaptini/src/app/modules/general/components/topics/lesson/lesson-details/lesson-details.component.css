@@ -155,3 +155,84 @@ h2,h1,h3,h4 {text-align: center;}
   font-weight: bold;
   color: var(--bs-success-300);
 }
+/* Text colors */
+.red-text {
+  color: red;
+}
+
+.green-text {
+  color: green;
+}
+
+/* Progress bar container styles */
+.progress-bar {
+  background-color: #ccc;
+  height: 20px;
+  width: 100%;
+  border-radius: 5px;
+}
+
+/* Progress bar fill styles */
+.progress-bar > div {
+  height: 100%;
+  transition: width 0.3s;
+  background-color: #4CAF50;
+  border-radius: 5px;
+}
+
+/* Custom modal dialog styles */
+.custom-modal-dialog {
+  max-width: 75%;
+  width: 50%;
+  height: auto;
+  margin: auto;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+/* Feedback table styles */
+.feedback-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+}
+
+.feedback-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.feedback-table th, .feedback-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+/* Aligned container styles */
+.aligned-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+/* Word feedback styles */
+.word-feedback {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 20px;
+}
+
+/* Word container styles */
+.word-container {
+  display: flex;
+  align-items: center;
+}
+
+
+
+

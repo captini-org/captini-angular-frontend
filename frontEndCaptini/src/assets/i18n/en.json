@@ -190,7 +190,22 @@
     "direction": {
         "previous": "Previous lesson",
         "next": "Next lesson"
+    },
+    "statics": {
+        "score": "Total score",
+        "achievements": "Your achievements (total tries)",
+        "learning-time": "Time spent learning",
+        "days": "days",
+        "hours": "hours",
+        "minutes": "minutes",
+        "lessons-completed": "Lessons completed (fully)",
+        "tasks-completed": "Tasks completed",
+        "topics-completed": "Topics completed (fully)",
+        "pronunciation-feedback": "Pronunciation Feedback",
+        "points": "Points"
+        
     }
+    
 
 
 }

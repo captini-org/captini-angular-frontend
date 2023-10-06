@@ -60,7 +60,6 @@ const routes: Routes = [
     component:ReactivateAccountComponent,
     path:'reactivate-account/:uid/:token'
   },
-
 ];
 
 @NgModule({
