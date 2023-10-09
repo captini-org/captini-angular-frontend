@@ -26,9 +26,9 @@ export class LessonDetailsComponent implements OnInit {
     private navigateRouter: Router,
     private topicService: TopicsService,
     private domSanitizer: DomSanitizer,
-    private API:AuthService,
+    private API: AuthService,
     private webSocketService: WebsocketService
-  ) {}
+  ) { }
 
   public topic_id!: number;
   public lesson_id!: number;
@@ -101,10 +101,10 @@ export class LessonDetailsComponent implements OnInit {
         this.handleWebSocketMessage(message);
       },
       (error) => {
-        console.error('WebSocket error:', error);
+        console.error('');
       },
       () => {
-        console.log('WebSocket connection closed.');
+        console.error('');
       }
     );
   }
@@ -133,14 +133,14 @@ export class LessonDetailsComponent implements OnInit {
     //this.url = '';
     return this.domSanitizer.bypassSecurityTrustUrl(current_audio_url);
   }
-  
+
   play_audio(url: ITask) {
-    this.audio.src= url.examples[Math.floor(Math.random() * url.examples.length)].recording
+    this.audio.src = url.examples[Math.floor(Math.random() * url.examples.length)].recording
     this.audio.play();
   }
 
   initiateRecording(id: any) {
-    this.url=''
+    this.url = ''
     this.id_current_task = id;
     let mediaConstraints = {
       video: false,
@@ -175,7 +175,7 @@ export class LessonDetailsComponent implements OnInit {
     this.jsonAudio = blob;
     // limit size of audio file
     const max_file_size_in_bytes = 1200000;
-    if(this.jsonAudio.size > max_file_size_in_bytes){
+    if (this.jsonAudio.size > max_file_size_in_bytes) {
       Swal.fire("File too large", "Please record a shorter audio");
       this.jsonAudio = null;
     }
@@ -236,7 +236,7 @@ export class LessonDetailsComponent implements OnInit {
           this.jsonAudio = null;
         })
         .catch((error) => {
-          console.log('error', error);
+          console.log('');
         });
     };
 
@@ -248,92 +248,89 @@ export class LessonDetailsComponent implements OnInit {
   }
   getScore(event: Event) {
 
-      this.answered = true;
-      if (!this.jsonAudio) {
-        // Show an error message or handle the case when there is no recording available
-        return;
-      }
-      this.resetTaskScore(this.id_current_task);
-      const lessonPath = window.location.pathname;
-      const lessonIndex = lessonPath.split('/').pop(); 
+    this.answered = true;
+    if (!this.jsonAudio) {
+      // Show an error message or handle the case when there is no recording available
+      return;
+    }
+    this.resetTaskScore(this.id_current_task);
+    const lessonPath = window.location.pathname;
+    const lessonIndex = lessonPath.split('/').pop();
 
-      if (lessonIndex) {
-        this.lessonNumber = parseInt(lessonIndex, 10); 
-      } else {
-        console.error('Lesson index not found in the URL.');
-      }
+    if (lessonIndex) {
+      this.lessonNumber = parseInt(lessonIndex, 10);
+    } else {
+      console.error('');
+    }
 
-      const reader = new FileReader();
-      reader.onload = () => {
-        const base64data = reader.result as string;
-        const sendObj = {
-          audio: base64data,
-        };
-
-        const formData = new FormData();
-        formData.append('recording', this.jsonAudio);
-        formData.append('user', this.id_current_user);
-        formData.append('task', this.id_current_task);
-        formData.append('lesson', String(this.lessonNumber));
-
-        const myHeaders = new Headers();
-        myHeaders.append(
-          'Authorization',
-          'Bearer ' + localStorage.getItem('token')
-        );
-
-        const requestOptions: RequestInit = {
-          method: 'POST',
-          headers: myHeaders,
-          body: formData,
-          redirect: 'follow',
-        };
-        fetch(this.tasksUrl + this.id_current_task + '/upload/', requestOptions)
-          .then((response) => {
-            // Handle the response and show a success message
-            this.showSuccessMessage(
-              'Checked',
-              'Your recording was sent and graded! Check your score now'
-            );
-            this.jsonAudio = null;
-          })
-          .catch((error) => {
-            // Handle the error and show an error message
-            console.log('error', error);
-          });
+    const reader = new FileReader();
+    reader.onload = () => {
+      const base64data = reader.result as string;
+      const sendObj = {
+        audio: base64data,
       };
-      reader.readAsDataURL(this.jsonAudio);
 
-      this.url=''
+      const formData = new FormData();
+      formData.append('recording', this.jsonAudio);
+      formData.append('user', this.id_current_user);
+      formData.append('task', this.id_current_task);
+      formData.append('lesson', String(this.lessonNumber));
+
+      const myHeaders = new Headers();
+      myHeaders.append(
+        'Authorization',
+        'Bearer ' + localStorage.getItem('token')
+      );
+
+      const requestOptions: RequestInit = {
+        method: 'POST',
+        headers: myHeaders,
+        body: formData,
+        redirect: 'follow',
+      };
+      fetch(this.tasksUrl + this.id_current_task + '/upload/', requestOptions)
+        .then((response) => {
+          // Handle the response and show a success message
+          this.showSuccessMessage(
+            'Checked',
+            'Your recording was sent and graded! Check your score now'
+          );
+          this.jsonAudio = null;
+        })
+        .catch((error) => {
+          // Handle the error and show an error message
+          console.error('');
+        });
+    };
+    reader.readAsDataURL(this.jsonAudio);
+
+    this.url = ''
   }
   // Handle incoming WebSocket messages
-private handleWebSocketMessage(message: any) {
-  try {
-    this.scoreData = message;
-    if(this.scoreData.user_id == this.id_current_user)
-    {
-      this.taskScores[this.scoreData.task_id] = this.scoreData;
+  private handleWebSocketMessage(message: any) {
+    try {
+      this.scoreData = message;
+      if (this.scoreData.user_id == this.id_current_user) {
+        this.taskScores[this.scoreData.task_id] = this.scoreData;
+      }
+    } catch (error) {
+      console.error('');
     }
-  } catch (error) {
-    console.error('Error parsing WebSocket message:', error);
   }
-}
-  openScoreReportModal(task: any,task_text: string) {
+  openScoreReportModal(task: any, task_text: string) {
     this.selectedTask = task; // Set the task data to be displayed in the modal
   }
 
-  getBackgroundColor(value: number | undefined ): string {
-    if (value != undefined ) {
-    console.log(value)
-    if (value < 50 ) {
-      return '#FF3333'; // Red
-    } else if (value < 70) {
-      return '#FFA500'; // Orange
-    } else {
-      return '#4CAF50'; // Green
+  getBackgroundColor(value: number | undefined): string {
+    if (value != undefined) {
+      if (value < 50) {
+        return '#FF3333'; // Red
+      } else if (value < 70) {
+        return '#FFA500'; // Orange
+      } else {
+        return '#4CAF50'; // Green
+      }
     }
+    return '#4CAF50';
   }
-  return '#4CAF50';
-  }
-  
 }
