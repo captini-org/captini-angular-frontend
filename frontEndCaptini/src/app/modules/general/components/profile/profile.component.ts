@@ -101,7 +101,7 @@ export class ProfileComponent implements OnInit {
             String(this.Responsedata.display_language) === 'icl'
             ? true : false,
         });
-        this.langService.useLanguage(this.Responsedata.display_language);
+        // this.langService.useLanguage(this.Responsedata.display_language);
         this.profilePicture = this.Responsedata.profile_photo;
       }
     });
@@ -291,6 +291,7 @@ export class ProfileComponent implements OnInit {
   }
   switchLang()
   {
+    /*
     if(!this.is_icelandic) {
       this.langService.useLanguage('icl');
     }
@@ -298,6 +299,7 @@ export class ProfileComponent implements OnInit {
       this.langService.useLanguage('en');
     }
     this.is_icelandic = !this.is_icelandic;
+    */
     this.profilForm.patchValue({
       display_language:
         this.is_icelandic ? 'icl' : 'en'

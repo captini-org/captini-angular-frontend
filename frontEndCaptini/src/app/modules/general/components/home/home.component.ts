@@ -70,7 +70,7 @@ export class HomeComponent implements OnInit {
       (data) => {
         this.user = data;
         // update content according to user specified display language
-        this.langService.useLanguage(this.user.display_language);
+        // this.langService.useLanguage(this.user.display_language);
 
         if (this.users) {
           const id = this.API.getUserId();
