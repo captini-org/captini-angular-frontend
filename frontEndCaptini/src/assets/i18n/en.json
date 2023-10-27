@@ -68,7 +68,7 @@
     "validation": {
         "required": "This field is required",
         "email": "You must enter a valid email",
-        "patternPasword": "Vinsamlegast notið samsetningu af tölum, lágstöfum, hástöfum og sérstökum táknum.",
+        "patternPasword": "Please use a combination of digits, lower case letter, upper case letters and special characters.",
         "confirmPassword": "Passwords do not match ,please try again"
     },
     "form": {
