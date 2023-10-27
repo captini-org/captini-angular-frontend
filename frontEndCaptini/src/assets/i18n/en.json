@@ -68,7 +68,7 @@
     "validation": {
         "required": "This field is required",
         "email": "You must enter a valid email",
-        "patternPasword": "the password must be like this example: Azs8}54*",
+        "patternPasword": "Vinsamlegast notið samsetningu af tölum, lágstöfum, hástöfum og sérstökum táknum.",
         "confirmPassword": "Passwords do not match ,please try again"
     },
     "form": {
