@@ -320,7 +320,6 @@ export class LessonDetailsComponent implements OnInit {
   openScoreReportModal(task: any, task_text: string) {
     this.selectedTask = task; // Set the task data to be displayed in the modal
   }
-
   getBackgroundColor(value: number | undefined): string {
     if (value != undefined) {
       if (value < 50) {
