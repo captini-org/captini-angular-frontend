@@ -65,7 +65,7 @@
                       <div class="task" style="border-bottom: 1px solid #ccc;">
                       <div class="card-body">
                         <div class="letter mb-2 phones" #targetElement><h4>{{ task.task_text }}</h4></div>
-                        <div ngIf="taskScores[task.id] !== undefined">
+                        <div *ngIf="taskScores[task.id] !== undefined">
                           <div class="progress-bar">
                             <div [style.width.%]="taskScores[task.id]?.feedback?.task_feedback"
                             [ngStyle]="{'background-color': getBackgroundColor(taskScores[task.id]?.feedback?.task_feedback)}">{{ taskScores[task.id]?.feedback?.task_feedback }}%</div>
