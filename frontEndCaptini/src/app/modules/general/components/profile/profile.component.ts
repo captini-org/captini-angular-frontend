@@ -48,8 +48,6 @@ export class ProfileComponent implements OnInit {
     private API: AuthService,
   ) {}
 
-
-
   ngOnInit(): void {
     let id = this.API.getUserId();
     this.loading = true;
@@ -258,22 +256,17 @@ export class ProfileComponent implements OnInit {
   }
 
   onImageUpload(event: any) {
-    const max_file_size_in_bytes = 1500000;
-    if(event.target.files[0].size < max_file_size_in_bytes){
-      this.file = event.target.files[0];
-      const reader = new FileReader();
-      this.form.patchValue({
-        profile_photo: event.target.files[0],
-      });
-      reader.onload = (e: any) => {
-        // Update the profile_photo field in the form with the uploaded image
-        this.profilePicture = e.target.result;
-      };
-      reader.readAsDataURL(event.target.files[0]);
-    }
-    else {
-      Swal.fire("File too large", "Please upload a file under "+max_file_size_in_bytes/1000+" kB");
-    }
+    this.file = event.target.files[0];
+    const reader = new FileReader();
+    this.form.patchValue({
+      profile_photo: event.target.files[0],
+    });
+    reader.onload = (e: any) => {
+      // Update the profile_photo field in the form with the uploaded image
+      this.profilePicture = e.target.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+
   }
 
   saveProfilePicture() {

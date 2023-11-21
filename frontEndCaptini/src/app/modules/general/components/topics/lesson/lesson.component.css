@@ -1,5 +1,5 @@
 .search-input {
-    background: url(src/assets/image/icon/SearchIcon.svg) no-repeat left center;
-    background-size: 12px 12px; /* Adjust the size as needed */
-    padding-right: 20px; /* Adjust the padding to create space for the icon */
+    background: url(src/assets/image/icon/SearchIcon.svg) no-repeat 2px center;;
+    background-size: 12px 12px; 
+    padding-right: 20px;
 }
