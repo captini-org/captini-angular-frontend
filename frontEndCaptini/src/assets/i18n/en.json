@@ -1,211 +1,205 @@
 {
-    "login": {
-        "forgot": "Forgot password ?",
-        "notAccount": "Don't have an account?",
-        "create": "Create one now"
-    },
-    "register": {
-        "get-board": "Get on board",
-        "agree": "I agree to",
-        "terms": "the term of use",
-        "and": "and",
-        "privacy": "privacy policy",
-        "account": "You have an account?",
-        "singIn": "Sign in instead"
-    },
-    "buttons": {
-        "sign-up": "Sign up",
-        "sign-in": "Sign in",
-        "logOut": "Log out",
-        "edit": "Edit",
-        "update": "Update",
-        "sendResetLink": "Send reset link"
-
-    },
-    "copyrights": {
-        "copyright": "CAPTinI &copy; 2022",
-        "Terms": "Terms of services"
-    },
-    "user": {
-        "full-name": "Full name",
-        "username": "User name",
-        "firstName": "First name",
-        "lastName": "Last name",
-        "nationality": "Nationality",
-        "age": "Age",
-        "password": "Password",
-        "email": "Email",
-        "hello": "Hello there,",
-        "welcome": "Welcome back",
-        "confirm": "Confirm password",
-        "nativeLanguage": "First language",
-        "gender": "Gender",
-        "year": "Year of birth",
-        "birthday": "Birthday",
-        "langLevel": "Language level",
-        "beginner": "Beginner",
-        "intermediate": "Intermediate",
-        "advanced": "Advanced",
-        "type": "Type",
-        "learner": "Learner",
-        "tutor": "Tutor",
-        "displayLang": "Display language",
-        "notif": "Notification",
-        "appNotif": "Enable in-app notifications",
-        "emailNotif": "Enable email notifications",
-        "male": "Male",
-        "female": "Female",
-        "other": "Other",
-        "unkown": "don't want to say",
-        "help": "Need help ?",
-        "Read": "Read the",
-        "old-password": "Old password",
-        "new-password": "New password",
-        "choose-year": "Select your year of birth",
-        "choose-nationality": "Select your country of nationality",
-        "choose-first-language": "Select your first language"
-    },
-    "validation": {
-        "required": "This field is required",
-        "email": "You must enter a valid email",
-        "patternPasword": "Please use a combination of digits, lower case letter, upper case letters and special characters.",
-        "confirmPassword": "Passwords do not match ,please try again"
-    },
-    "form": {
-        "choose": "Choose"
-    },
-    "image": {
-      "change": "Change profile photo",
-      "upload": "Upload new profile photo",
-      "select": "Select image",
-      "warning": "Your profile photo should be either a .jpg, .jpeg, or .png file.",
-      "save": "Save changes",
-      "cancel": "Cancel"
-    },
-    "title": {
-        "profile": "Profile",
-        "interfaceNotif": "Interface and language ",
-        "privacyData": "Privacy data",
-        "account": "Account",
-        "accountActions": "Account actions",
-        "LessonsData": "Lessons Data",
-        "modalTitle": "update your profile picture",
-        "importPhoto": "import a photo",
-        "suggested": "Suggested pictures",
-        "change-password": "Change password"
-    },
-    "alert": {
-        "signInMsg": "This is the username you will need to sign in with",
-        "signUpMsg": "Congratulations on successfully registering for CAPTinI!",
-        "updateProfileMsg": "Profile updated successfully!",
-        "loginErrorMsg": "Invalid Credentials!",
-        "close": "Close"
-    },
-    "audio": {
-      "record": "Record",
-      "stop": "Stop",
-      "listen": "Listen",
-      "check": "Check",
-      "share": "Share recording"
-  },
-    "language": {
-        "en": "English",
-        "icl": "Icelandic"
-    },
-    "header": {
-        "lessons": "Lessons",
-        "leaderBoard": "Leaderboard",
-        "review": "Review",
-        "community": "Community",
-        "statics": "Statistics"
-    },
-    "menu": {
-        "updateProfile": "Update Profile",
-        "delete": "Delete",
-        "deactivate": "Deactivate Account"
-    },
-    "topic": {
-        "topics": "Topics",
-        "searchTopic": "Search for any topic",
-        "searchLesson": "Search for any lesson",
-        "lessons": "Lessons",
-        "lesson": "Lesson",
-        "of": "of",
-        "recordMsg": "Your recording was successfully sent! Wait for the community feedbacks!",
-        "tasksRecordings": "Tasks Recordings",
-        "okButton": "OK",
-        "score": "Score",
-        "finished": "Finished"
-    } ,
-    "resetPassword": {
-        "backToSignin": "Here mistakenly? ",
-        "backToSigninMsg": "Your password is successfully changed. Go back to the sign in page",
-        "resetMsg": "Reset your password",
-        "passwordChanged": "Your password has been successfully updated.",
-        "passwordIncorrect":"Unable to change password. Please provide the correct password to change.",
-        "emailNotFound": "There is no account associated with this email address.",
-        "resetLinkExpired": "Reset password link expired. Click here to receive a new link:",
-        "resetMsgSuccess1": "Check your email",
-        "resetMsgSuccess2": "We have sent password reset instructions to your email.",
-        "resetMsgSuccess3": "If it doesn't arrive soon, check your spam folder or ",
-        "resetMsgSuccess4": "send the email again"
-
-    },
-    "activateAccount": {
-        "activateAccount": "Activate account",
-        "loginActivateAccount": "Account deactivated? ",
-        "successEmail": "We have sent an activation link to your email.If it doesn't arrive soon, check your spam folder or send the email again.If it doesn't arrive soon, check your spam folder or send the email again",
-        "emailNotFound": "There is no account associated with this email address!",
-        "activateAccountButton": "Send reactivation link",
-        "activationMessage1": "Welcome Back! Reactivate your account",
-        "activationLinkExpired":"Activation link has expired"
-    },
-    "deactivateAccount": {
-        "deactivateAccount": "Deactivate account",
-        "deactivationMessage1": "Your CAPTinI account has been temporarily deactivated.",
-        "deactivationMessage2": "We are really sorry to see you go, but thanks for giving us a try.",
-        "deactivationMessage3": "Made a mistake? Having second thoughts?",
-        "activateAccountButton1": "If you believe that this cancellation is an error, or you have any other questions, please contact support. You can also try to ",
-        "activateAccountButton2": "activate your account ",
-        "activateAccountButton3":  "and follow the required steps to reactivate your account.",
-        "activationMessage1": "Welcome Back! Reactivate your account",
-        "activationLinkExpired":"Activation link has expired"
-    },
-    "community": {
-      "menu-give-feedback":"Give feedback to the community",
-      "menu-get-feedback": "Get feedback from the community",
-      "instruction": "Give your feedback to others regarding their pronunciation",
-      "first-language": "Spanish",
-      "location": "Iceland",
-      "give-feedback": "Give feedback",
-      "see-feedback": "Sjá endurgjöf frá öðrum",
-      "rate": "Rate this pronunciation",
-      "replay": "Replay audio recording",
-      "comment": "Give your feedback",
-      "guidelines": "Guidelines",
-      "type-here":"Start typing here...",
-      "cancel":"Cancel",
-      "send":"Send feedback"
-    },
-    "direction": {
-        "previous": "Previous lesson",
-        "next": "Next lesson"
-    },
-    "statics": {
-        "score": "Total score",
-        "achievements": "Your achievements (total tries)",
-        "learning-time": "Time spent learning",
-        "days": "days",
-        "hours": "hours",
-        "minutes": "minutes",
-        "lessons-completed": "Lessons completed (fully)",
-        "tasks-completed": "Tasks completed",
-        "topics-completed": "Topics completed (fully)",
-        "pronunciation-feedback": "Pronunciation Feedback",
-        "points": "Points"
-        
-    }
-    
-
-
+	"login": {
+		"forgot": "Forgot password?",
+		"notAccount": "Don't have an account?",
+		"create": "Create one now"
+	},
+	"register": {
+		"get-board": "Get on board",
+		"agree": "I agree to",
+		"terms": "the term of use",
+		"and": "and",
+		"privacy": "privacy policy",
+		"account": "Do you have an account?",
+		"singIn": "Sign in instead"
+	},
+	"buttons": {
+		"sign-up": "Sign up",
+		"sign-in": "Sign in",
+		"logOut": "Log out",
+		"edit": "Edit",
+		"update": "Update",
+		"sendResetLink": "Send reset link"
+	},
+	"copyrights": {
+		"copyright": "CAPTinI &copy; 2022",
+		"Terms": "Terms of services"
+	},
+	"user": {
+		"full-name": "Full name",
+		"username": "User name",
+		"firstName": "First name",
+		"lastName": "Last name",
+		"nationality": "Nationality",
+		"age": "Age",
+		"password": "Password",
+		"email": "Email",
+		"hello": "Hello there,",
+		"welcome": "Welcome back",
+		"confirm": "Confirm password",
+		"nativeLanguage": "First language",
+		"gender": "Gender",
+		"year": "Year of birth",
+		"birthday": "Birthday",
+		"langLevel": "Language level",
+		"beginner": "Beginner",
+		"intermediate": "Intermediate",
+		"advanced": "Advanced",
+		"type": "Type",
+		"learner": "Learner",
+		"tutor": "Tutor",
+		"displayLang": "Display language",
+		"notif": "Notification",
+		"appNotif": "Enable in-app notifications",
+		"emailNotif": "Enable email notifications",
+		"male": "Male",
+		"female": "Female",
+		"other": "Other",
+		"unkown": "Don't want to say",
+		"help": "Need help?",
+		"Read": "Read the",
+		"old-password": "Old password",
+		"new-password": "New password",
+		"choose-year": "Select your year of birth",
+		"choose-nationality": "Select your country of nationality",
+		"choose-first-language": "Select your first language"
+	},
+	"validation": {
+		"required": "This field is required",
+		"email": "You must enter a valid email",
+		"patternPasword": "Please use a combination of digits, lower case letter, upper case letters and special characters.",
+		"confirmPassword": "Passwords do not match, please try again"
+	},
+	"form": {
+		"choose": "Choose"
+	},
+	"image": {
+		"change": "Change profile photo",
+		"upload": "Upload new profile photo",
+		"select": "Select image",
+		"warning": "Your profile photo should be either a .jpg, .jpeg, or .png file.",
+		"save": "Save changes",
+		"cancel": "Cancel"
+	},
+	"title": {
+		"profile": "Profile",
+		"interfaceNotif": "Interface and language ",
+		"privacyData": "Privacy data",
+		"account": "Account",
+		"accountActions": "Account actions",
+		"LessonsData": "Lessons Data",
+		"modalTitle": "update your profile picture",
+		"importPhoto": "import a photo",
+		"suggested": "Suggested pictures",
+		"change-password": "Change password"
+	},
+	"alert": {
+		"signInMsg": "This is the username you will need to sign in with",
+		"signUpMsg": "Congratulations on successfully registering for CAPTinI!",
+		"updateProfileMsg": "Profile updated successfully!",
+		"loginErrorMsg": "Invalid Credentials!",
+		"close": "Close"
+	},
+	"audio": {
+		"record": "Record",
+		"stop": "Stop",
+		"listen": "Listen",
+		"check": "Check",
+		"share": "Share recording"
+	},
+	"language": {
+		"en": "English",
+		"icl": "Icelandic"
+	},
+	"header": {
+		"lessons": "Lessons",
+		"leaderBoard": "Leaderboard",
+		"review": "Review",
+		"community": "Community",
+		"statics": "Statistics"
+	},
+	"menu": {
+		"updateProfile": "Update Profile",
+		"delete": "Delete",
+		"deactivate": "Deactivate Account"
+	},
+	"topic": {
+		"topics": "Topics",
+		"searchTopic": "Search for any topic",
+		"searchLesson": "Search for any lesson",
+		"lessons": "Lessons",
+		"lesson": "Lesson",
+		"of": "of",
+		"recordMsg": "Your recording was successfully sent! Wait for the community feedback!",
+		"tasksRecordings": "Tasks Recordings",
+		"okButton": "OK",
+		"score": "Score",
+		"finished": "Finished"
+	},
+	"resetPassword": {
+		"backToSignin": "Are you here by mistake? ",
+		"backToSigninMsg": "Your password is successfully changed. Go back to the sign in page",
+		"resetMsg": "Reset your password",
+		"passwordChanged": "Your password has been successfully updated.",
+		"passwordIncorrect": "Unable to change password. Please provide the correct password to change.",
+		"emailNotFound": "There is no account associated with this email address.",
+		"resetLinkExpired": "Reset password link expired. Click here to receive a new link:",
+		"resetMsgSuccess1": "Check your email",
+		"resetMsgSuccess2": "We have sent password reset instructions to your email.",
+		"resetMsgSuccess3": "If it doesn't arrive soon, check your spam folder or ",
+		"resetMsgSuccess4": "send the email again."
+	},
+	"activateAccount": {
+		"activateAccount": "Activate account",
+		"loginActivateAccount": "Account deactivated? ",
+		"successEmail": "We have sent an activation link to your email. If it doesn't arrive soon, check your spam folder or send the email again.If it doesn't arrive soon, check your spam folder or send the email again.",
+		"emailNotFound": "There is no account associated with this email address!",
+		"activateAccountButton": "Send reactivation link",
+		"activationMessage1": "Welcome Back! Reactivate your account",
+		"activationLinkExpired": "Activation link has expired"
+	},
+	"deactivateAccount": {
+		"deactivateAccount": "Deactivate account",
+		"deactivationMessage1": "Your CAPTinI account has been temporarily deactivated.",
+		"deactivationMessage2": "We are really sorry to see you go, but thanks for giving us a try.",
+		"deactivationMessage3": "Made a mistake? Having second thoughts?",
+		"activateAccountButton1": "If you believe that this cancellation is an error, or you have any other questions, please contact support. You can also try to ",
+		"activateAccountButton2": "activate your account ",
+		"activateAccountButton3": "and follow the required steps to reactivate your account.",
+		"activationMessage1": "Welcome Back! Reactivate your account",
+		"activationLinkExpired": "Activation link has expired"
+	},
+	"community": {
+		"menu-give-feedback": "Give feedback to the community",
+		"menu-get-feedback": "Get feedback from the community",
+		"instruction": "Give your feedback to others regarding their pronunciation",
+		"first-language": "Spanish",
+		"location": "Iceland",
+		"give-feedback": "Give feedback",
+		"see-feedback": "See feedback from others",
+		"rate": "Rate this pronunciation",
+		"replay": "Replay audio recording",
+		"comment": "Give your feedback",
+		"guidelines": "Guidelines",
+		"type-here": "Start typing here...",
+		"cancel": "Cancel",
+		"send": "Send feedback"
+	},
+	"direction": {
+		"previous": "Previous lesson",
+		"next": "Next lesson"
+	},
+	"statics": {
+		"score": "Total score",
+		"achievements": "Your achievements (total tries)",
+		"learning-time": "Time spent learning",
+		"days": "days",
+		"hours": "hours",
+		"minutes": "minutes",
+		"lessons-completed": "Lessons completed (fully)",
+		"tasks-completed": "Tasks completed",
+		"topics-completed": "Topics completed (fully)",
+		"pronunciation-feedback": "Pronunciation feedback",
+		"points": "points"
+	}
 }

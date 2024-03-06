@@ -1,207 +1,206 @@
 {
-    "login": {
-        "forgot": "Gleymdirðu lykilorðinu?",
-        "notAccount": "Ertu ekki með reikning?",
-        "create": "Stofna aðgang núna"
-    },
-    "register": {
-        "get-board": "Farðu um borð",
-        "agree": "Ég er sammála",
-        "terms": "notkunarskilmála",
-        "and": "og",
-        "privacy": "friðhelgisstefnu",
-        "account": "Ertu með reikning ?",
-        "singIn": "Skráðu þig inn í staðinn"
-    },
-    "buttons": {
-        "sign-in": "Innskráning",
-        "sign-up": "Stofna aðgang",
-        "logOut": "Skrá út",
-        "edit": "Breyta",
-        "update": "Vista breytingar",
-        "sendResetLink": "Senda hlekk til að endurstilla lykilorð"
-    },
-    "copyrights": {
-        "copyright": "CAPTinI &copy; 2022",
-        "Terms": "notkunarskilmála",
-        "and": "og"
-    },
-    "user": {
-        "full-name": "Fullt nafn",
-        "username": "Notandanafn",
-        "firstName": "Eiginnafn/nöfn",
-        "lastName": "Kenninafn",
-        "nationality": "Þjóðerni",
-        "age": "Aldur",
-        "password": "Lykilorð",
-        "email": "Netfang",
-        "hello": "Halló,",
-        "welcome": "Velkomin/n/ð aftur",
-        "confirm": "Staðfesta lykilorð",
-        "nativeLanguage": "Þitt fyrsta mál",
-        "gender": "Kyn",
-        "year": "Fæðingarár",
-        "birthday": "Fæðingardagur",
-        "langLevel": "Tungumálastig",
-        "beginner": "Byrjandi",
-        "intermediate": "Miðstig",
-        "advanced": "Lengra komið",
-        "type": "Ég er",
-        "learner": "Nemandi",
-        "tutor": "Kennari",
-        "displayLang": "Veldu tungumál",
-        "notif": "Tilkynning",
-        "appNotif": "Virkja tilkynningar í forriti",
-        "emailNotif": "Virkja tölvupósttilkynningar",
-        "male": "Karl",
-        "female": "Kona",
-        "other": "Annað",
-        "unkown": "Vil ekki svara",
-        "help": "Þarftu aðstoð?",
-        "Read": "Lestu okkar",
-        "old-password": "Gamalt lykilorð",
-        "new-password": "Nýtt lykilorð",
-        "choose-year": "Veldu þitt fæðingarár",
-        "choose-nationality": "Veldu þitt land",
-        "choose-first-language": "Veldu þitt fyrsta mál"
-    },
-    "validation": {
-        "required": "Þessi reitur má ekki vera tómur",
-        "email": "Please use a combination of digits, lower case letter, upper case letters and special characters.",
-        "patternPasword": "Vinsamlegast notið samsetningu af tölum, lágstöfum, hástöfum og sérstökum táknum.",
-        "confirmPassword": "lykilorðið passar ekki, vinsamlega reyndu aftur"
-    },
-    "form": {
-        "choose": "Veldu"
-    },
-    "image": {
-        "change": "Skipta um prófílmynd",
-        "upload": "Hlaða upp mynd",
-        "select": "Veldu mynd",
-        "warning": "Prófílmyndin þarf að vera annaðhvort .jpg, .jpeg eða .png skrá..",
-        "save": "Vista breytingar",
-        "cancel": "Hætta við"
-    },
-    "title": {
-        "profile": "Minn prófíll",
-        "interfaceNotif": "Viðmót og tungumál",
-        "privacyData": "Persónuverndargögn",
-        "account": "Reikningur",
-        "accountActions": "Reikningsaðgerðir",
-        "LessonsData": "Lærdómsgögn",
-        "modalTitle": "uppfærðu prófílmyndina þína",
-        "importPhoto": "flytja inn mynd",
-        "suggested": "Tillögur að myndum",
-        "change-password": "Breyta lykilorði"
-    },
-    "alert": {
-        "signInMsg": "Þetta er notendanafnið sem þú þarft til að skrá þig inn með",
-        "signUpMsg": "Til hamingju með skráninguna í CAPTinI! ",
-        "updateProfileMsg": "Prófíllinn þinn hefur verið uppfærður",
-        "loginErrorMsg": "Notandanafn og/eða lykilorð virkar ekki",
-        "close": "Loka"
-    },
-    "audio": {
-        "record": "Taka upp",
-        "stop": "Stoppa",
-        "listen": "Hlusta",
-        "check": "Meta",
-        "share": "Deila upptöku"
-    },
-    "language": {
-        "en": "Enska",
-        "icl": "Íslenska"
-    },
-    "header": {
-        "lessons": "Æfingar",
-        "leaderBoard": "Stigatafla",
-        "review": "Yfirferð",
-        "community": "Samfélag",
-        "statics": "Tölfræði"
-    },
-    "menu": {
-        "updateProfile": "Uppfæra prófil",
-        "delete": "Eyða aðgangi",
-        "deactivate": "Gera Mig Óvirkan"
-    },
-    "topic": {
-        "topics": "Bálkur",
-        "searchTopic": "Leita að bálki",
-        "searchLesson": "Leita að þræði/æfingar",
-        "lessons": "Þræðir",
-        "lesson": "Þráður",
-        "of": "af",
-        "recordMsg": "Það tókst að senda þína upptöku! Skoðum hvað hinir segja",
-        "tasksRecordings": "Tasks Recordings",
-        "okButton": "OK",
-        "score": "Stig",
-        "finished": "Lokið"
-    },
-    "resetPassword": {
-        "backToSignin": "Átt þú ekki að vera hér? ",
-        "backToSigninMsg": "Lykilorðinu þínu hefur verið breytt. Fara til baka á innskráningarsíðu",
-        "resetMsg": "Endurstilla lykilorð",
-        "emailNotFound": "Enginn aðgangur er tengdur þessu netfangi.",
-        "resetLinkExpired": "Hlekkur til að endustilla lykilorðið er útrunninn. Smelltu hér til að fá nýjan hlekk:",
-        "resetMsgSuccess1": "Vinsamlegast athugaðu tölvupóstinn þinn",
-        "resetMsgSuccess2": "Þú færð tölvupóst frá okkur til að endurstilla lykilorðitt þitt.",
-        "resetMsgSuccess3": "Ef þú finnur hann ekki í innhólfinu þínu, athugaðu þá í ruslpóstinum eða ",
-        "resetMsgSuccess4": "sendu aftur beiðnina með því að slá inn netfangið.",
-        "passwordChanged": "Lykilorðið þitt hefur verið endurnýjað.",
-        "passwordIncorrect":"Tókst ekki að breyta lykilorðinu þínu. Vinsamlega sláðu inn rétta lykilorðiðið sem þú villt breyta."
-      },
-      "activateAccount": {
-        "activateAccount": "Virkja aðgang",
-        "loginActivateAccount": "Óvirkur aðgangur? ",
-        "successEmail": "Hlekkur til að virkja aðganginn hefur verið sent á það netfang sem beiðnin kemur frá. Ef þú finnur hann ekki í innhólfinu þínu, athugaðu þá í ruslpóstinum eða sendu aftur beiðnina með því að slá inn netfangið.",
-        "emailNotFound": "Enginn aðgangur er tengdur þessu netfangi.",
-        "activateAccountButton": "Senda hlekk til að endurvirkja aðgang",
-        "activationMessage1": "Velkomin/n/ð aftur! Smelltu hér til að endurvirkja aðganginn þinn",
-        "activationLinkExpired":"Hlekkur til að virkja aðganginn er útrunninn"
-    },
-    "deactivateAccount": {
-        "deactivateAccount": "Gera mig óvirkan",
-        "deactivationMessage1": "Aðgangurinn þinn í CAPTinI hefur verið afvirkjaður tímabundinn.",
-        "deactivationMessage2": "Okkur þykir leitt að þurfa að kveðja þig en við þökkum þér kærlega fyrir að hafa prófað CAPTinI.",
-        "deactivationMessage3": "Gerðir þú mistök? Ert þú ekki viss?",
-        "activateAccountButton1": "Ef þú heldur að þessi afvirkjun sé mistök eða ef þú sért með einhverjar spurningar hafðu samband við okkur. Þú mátt líka reyna ", 
-        "activateAccountButton2": "að virkja aðganginn þinn ",
-        "activateAccountButton3": "með því að fara í gegnum skrefin til að endurvirkja aðganginn.",
-        "activationMessage1": "Velkomin/n/ð aftur! Smelltu hér til að endurvirkja aðganginn þinn",
-        "activationLinkExpired":"Hlekkur til að virkja aðganginn er útrunninn"
-    },
-    "community": {
-        "menu-give-feedback": "Gefa öðrum endurgjöf",
-        "menu-get-feedback": "Fá endurgjöf frá öðrum",
-        "instruction": "Gefðu öðrum endurgjöf um hvernig þau bera fram orð/setningu",
-        "first-language": "Spænska",
-        "location": "Ísland",
-        "give-feedback": "Gefa endurgjöf",
-        "rate": "Gefa einkunn fyrir framburð",
-        "replay": "Hlusta aftur á upptöku",
-        "comment": "Setja inn athugasemd",
-        "guidelines": "Leiðbeiningar um athugasemdir",
-        "type-here": "Skrifaðu athugasemdir hér",
-        "cancel": "Hætta við",
-        "send": "Senda endurgjöf"
-    },
-    "direction": {
-        "previous": "Fyrri þráður",
-        "next": "Næsti þráður"
-    },
-    "statics": {
-        "score": "Heildar stig",
-        "achievements": "Fjöldi tilrauna",
-        "learning-time": "Heildar námstími",
-        "days": "dagar",
-        "hours": "klst",
-        "minutes": "mínútur",
-        "lessons-completed": "Námskeiðum lokið (að fullu)",
-        "tasks-completed": "Verkefnum lokið",
-        "topics-completed": "Efni lokið (að fullu)",
-        "pronunciation-feedback": "Endurgjöf á framburð",
-        "points": "Stig"
-        
-    }
-    
+	"login": {
+		"forgot": "Gleymdirðu lykilorðinu?",
+		"notAccount": "Ertu ekki með reikning?",
+		"create": "Stofna aðgang núna"
+	},
+	"register": {
+		"get-board": "Skráðu þig",
+		"agree": "Ég samþykki",
+		"terms": "notkunarskilmálana",
+		"and": "og",
+		"privacy": "friðhelgisstefnuna",
+		"account": "Ertu með reikning?",
+		"singIn": "Skráðu þig inn í staðinn"
+	},
+	"buttons": {
+		"sign-in": "Innskráning",
+		"sign-up": "Stofna aðgang",
+		"logOut": "Skrá út",
+		"edit": "Breyta",
+		"update": "Vista breytingar",
+		"sendResetLink": "Senda hlekk til að endurstilla lykilorð"
+	},
+	"copyrights": {
+		"copyright": "CAPTinI &copy; 2022",
+		"Terms": "notkunarskilmála",
+		"and": "og"
+	},
+	"user": {
+		"full-name": "Fullt nafn",
+		"username": "Notandanafn",
+		"firstName": "Eiginnafn/nöfn",
+		"lastName": "Kenninafn",
+		"nationality": "Þjóðerni",
+		"age": "Aldur",
+		"password": "Lykilorð",
+		"email": "Netfang",
+		"hello": "Halló,",
+		"welcome": "Velkomin/n/ð aftur",
+		"confirm": "Staðfesta lykilorð",
+		"nativeLanguage": "Þitt fyrsta mál",
+		"gender": "Kyn",
+		"year": "Fæðingarár",
+		"birthday": "Fæðingardagur",
+		"langLevel": "Tungumálastig",
+		"beginner": "Byrjandi",
+		"intermediate": "Miðstig",
+		"advanced": "Lengra komið",
+		"type": "Ég er",
+		"learner": "Nemandi",
+		"tutor": "Kennari",
+		"displayLang": "Veldu tungumál",
+		"notif": "Tilkynning",
+		"appNotif": "Virkja tilkynningar í forriti",
+		"emailNotif": "Virkja tölvupósttilkynningar",
+		"male": "Karl",
+		"female": "Kona",
+		"other": "Annað",
+		"unkown": "Vil ekki svara",
+		"help": "Þarftu aðstoð?",
+		"Read": "Lestu ",
+		"old-password": "Gamalt lykilorð",
+		"new-password": "Nýtt lykilorð",
+		"choose-year": "Veldu þitt fæðingarár",
+		"choose-nationality": "Veldu þitt land",
+		"choose-first-language": "Veldu þitt fyrsta mál"
+	},
+	"validation": {
+		"required": "Þessi reitur má ekki vera tómur",
+		"email": "Þú verður að skrá gilt netfang ",
+		"patternPasword": "Vinsamlegast notið samsetningu af tölum, lágstöfum, hástöfum og sérstökum táknum.",
+		"confirmPassword": "Lykilorðin passa ekki, vinsamlega reyndu aftur"
+	},
+	"form": {
+		"choose": "Veldu"
+	},
+	"image": {
+		"change": "Skipta um prófílmynd",
+		"upload": "Hlaða upp mynd",
+		"select": "Veldu mynd",
+		"warning": "Prófílmyndin þarf að vera annaðhvort .jpg, .jpeg eða .png skrá.",
+		"save": "Vista breytingar",
+		"cancel": "Hætta við"
+	},
+	"title": {
+		"profile": "Minn prófíll",
+		"interfaceNotif": "Viðmót og tungumál",
+		"privacyData": "Persónuverndargögn",
+		"account": "Reikningur",
+		"accountActions": "Reikningsaðgerðir",
+		"LessonsData": "Lærdómsgögn",
+		"modalTitle": "uppfærðu prófílmyndina þína",
+		"importPhoto": "flytja inn mynd",
+		"suggested": "Tillögur að myndum",
+		"change-password": "Breyta lykilorði"
+	},
+	"alert": {
+		"signInMsg": "Þetta er notendanafnið sem þú þarft til að skrá þig inn",
+		"signUpMsg": "Til hamingju með skráninguna í CAPTinI!",
+		"updateProfileMsg": "Prófíllinn þinn hefur verið uppfærður!",
+		"loginErrorMsg": "Notandanafn og/eða lykilorð virkar ekki",
+		"close": "Loka"
+	},
+	"audio": {
+		"record": "Taka upp",
+		"stop": "Stoppa",
+		"listen": "Hlusta",
+		"check": "Meta",
+		"share": "Deila upptöku"
+	},
+	"language": {
+		"en": "Enska",
+		"icl": "Íslenska"
+	},
+	"header": {
+		"lessons": "Æfingar",
+		"leaderBoard": "Stigatafla",
+		"review": "Yfirlit",
+		"community": "Samfélag",
+		"statics": "Tölfræði"
+	},
+	"menu": {
+		"updateProfile": "Uppfæra prófil",
+		"delete": "Eyða aðgangi",
+		"deactivate": "Gera aðgang óvirkan"
+	},
+	"topic": {
+		"topics": "Bálkur",
+		"searchTopic": "Leita að bálki",
+		"searchLesson": "Leita að æfingum",
+		"lessons": "Þræðir",
+		"lesson": "Þráður",
+		"of": "af",
+		"recordMsg": "Það tókst að senda upptökuna þína! Skoðum hvað aðrir notendur segja!",
+		"tasksRecordings": "Tasks Recordings",
+		"okButton": "OK",
+		"score": "Stig",
+		"finished": "Lokið"
+	},
+	"resetPassword": {
+		"backToSignin": "Átt þú nokkuð að vera hér? ",
+		"backToSigninMsg": "Lykilorðinu þínu hefur verið breytt. Fara til baka á innskráningarsíðu",
+		"resetMsg": "Endurstilla lykilorð",
+		"emailNotFound": "Enginn aðgangur er tengdur þessu netfangi.",
+		"resetLinkExpired": "Hlekkur til að endustilla lykilorðið er útrunninn. Smelltu hér til að fá nýjan hlekk:",
+		"resetMsgSuccess1": "Vinsamlegast athugaðu tölvupóstinn þinn",
+		"resetMsgSuccess2": "Þú færð tölvupóst frá okkur til að endurstilla lykilorðitt þitt.",
+		"resetMsgSuccess3": "Ef þú finnur hann ekki í innhólfinu þínu, athugaðu þá í ruslpóstinum eða ",
+		"resetMsgSuccess4": "sendu beiðnina aftur.",
+		"passwordChanged": "Lykilorðið þitt hefur verið uppfært.",
+		"passwordIncorrect": "Tókst ekki að breyta lykilorðinu þínu. Vinsamlega sláðu inn rétta lykilorðið sem þú vilt breyta."
+	},
+	"activateAccount": {
+		"activateAccount": "Virkja aðgang",
+		"loginActivateAccount": "Óvirkur aðgangur? ",
+		"successEmail": "Hlekkur til að virkja aðganginn hefur verið sendur á netfangið þitt. Ef þú finnur hann ekki í innhólfinu þínu, athugaðu þá í ruslpóstinum eða sendu aftur beiðnina.",
+		"emailNotFound": "Enginn aðgangur er tengdur þessu netfangi!",
+		"activateAccountButton": "Senda hlekk til að endurvirkja aðgang",
+		"activationMessage1": "Velkomin/n/ð aftur! Smelltu hér til að endurvirkja aðganginn þinn",
+		"activationLinkExpired": "Hlekkur til að virkja aðganginn er útrunninn"
+	},
+	"deactivateAccount": {
+		"deactivateAccount": "Gera aðgang óvirkan",
+		"deactivationMessage1": "Aðgangurinn þinn í CAPTinI hefur verið afvirkjaður tímabundið.",
+		"deactivationMessage2": "Okkur þykir leitt að þurfa að kveðja þig, en við þökkum þér kærlega fyrir að hafa prófað CAPTinI.",
+		"deactivationMessage3": "Gerðir þú mistök? Ert þú ekki viss?",
+		"activateAccountButton1": "Ef þú heldur að þessi afvirkjun sé mistök eða ef þú sért með einhverjar spurningar, hafðu samband við okkur. Þú getur einnig prófað að ",
+		"activateAccountButton2": "virkja aðganginn þinn ",
+		"activateAccountButton3": "með því að fara í gegnum skrefin til að endurvirkja aðganginn.",
+		"activationMessage1": "Velkomin/n/ð aftur! Smelltu hér til að endurvirkja aðganginn þinn",
+		"activationLinkExpired": "Hlekkur til að virkja aðganginn er útrunninn"
+	},
+	"community": {
+		"menu-give-feedback": "Gefa öðrum endurgjöf",
+		"menu-get-feedback": "Fá endurgjöf frá öðrum",
+		"instruction": "Gefðu öðrum endurgjöf um framburð þeirra",
+		"first-language": "Spænska",
+		"location": "Ísland",
+		"give-feedback": "Gefa endurgjöf",
+		"see-feedback": "Sjá endurgjöf frá öðrum",
+		"rate": "Gefa einkunn fyrir framburð",
+		"replay": "Hlusta aftur á upptöku",
+		"comment": "Setja inn athugasemd",
+		"guidelines": "Leiðbeiningar",
+		"type-here": "Skrifaðu athugasemdir hér...",
+		"cancel": "Hætta við",
+		"send": "Senda endurgjöf"
+	},
+	"direction": {
+		"previous": "Fyrri þráður",
+		"next": "Næsti þráður"
+	},
+	"statics": {
+		"score": "Heildareinkunn",
+		"achievements": "Fjöldi tilrauna",
+		"learning-time": "Heildarnámstími",
+		"days": "dagar",
+		"hours": "klst",
+		"minutes": "mínútur",
+		"lessons-completed": "Æfingum lokið (að fullu)",
+		"tasks-completed": "Verkefnum lokið",
+		"topics-completed": "Bálkum lokið (að fullu)",
+		"pronunciation-feedback": "Endurgjöf um framburð",
+		"points": "stig"
+	}
 }
