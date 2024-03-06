@@ -9,14 +9,20 @@
                     <li class="nav-item"><a class="nav-link" routerLink="/">{{'header.leaderBoard' | translate}}</a></li>
                     <li class="nav-item"><a class="nav-link" routerLink="/review">{{'header.review' | translate}}</a></li>
                     <li class="nav-item"><a class="nav-link" routerLink="/community">{{'header.community' | translate}}</a></li>
+                    <li class="nav-item"><a class="nav-link" routerLink="/references">References</a></li>
                 </ul>
             </div>
             <div class="float-end d-inline-flex ms-auto">
-                <div class="language d-none d-sm-none d-lg-block d-xl-block ">
-                    <a [routerLink]="" (click)="switchLang('en')" class="ps-2"><img src="../../../assets/image/flag/en.png" alt="England"></a>
-                    <a [routerLink]="" (click)="switchLang('icl')" class="ps-2"><img src="../../../assets/image/flag/icl.png" alt="Iceland"></a>
+                <div class="dropdown language d-none d-sm-none d-lg-block d-xl-block">
+                    <button class="btn dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img id="selectedFlag" src="../../../assets/image/flag/en.png" alt="England">
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                        <li><button class="dropdown-item" (click)="switchLang('en')"><img src="../../../assets/image/flag/en.png" alt="England"> English</button></li>
+                        <li><button class="dropdown-item" (click)="switchLang('icl')"><img src="../../../assets/image/flag/icl.png" alt="Iceland"> Icelandic</button></li>
+                    </ul>
                 </div>
-                <div class="notification ps-2 d-none d-sm-block"><img src="../../../assets/image/icon/notif.svg" alt="Iceland"></div>
+                
                 <div class="profile-img ps-2">
                     <div class="dropdown">
                         <a class="dropdown-toggle" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
@@ -29,10 +35,6 @@
                         </ul>
                     </div>
                 </div>
-            </div>
-            <div class="language d-none mt-auto">
-                <a [routerLink]="" (click)="switchLang('en')" class="ps-2"><img src="../../../assets/image/flag/en.png" alt="England"></a>
-                <a [routerLink]="" (click)="switchLang('icl')" class="ps-2"><img src="../../../assets/image/flag/icl.png" alt="Iceland"></a>
             </div>
         </div>
 

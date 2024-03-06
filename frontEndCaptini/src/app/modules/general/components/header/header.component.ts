@@ -66,6 +66,14 @@ export class HeaderComponent implements OnInit {
   }
   switchLang(lang:string){
     this.langServ.useLanguage(lang);
-     }
+    var flagImage = document.getElementById('selectedFlag')as HTMLImageElement;;
+    if (lang === 'en') {
+        flagImage.src = '../../../assets/image/flag/en.png';
+        flagImage.alt = 'England';
+    } else if (lang === 'icl') {
+        flagImage.src = '../../../assets/image/flag/icl.png';
+        flagImage.alt = 'Iceland';
+    }
+  }
      
 }

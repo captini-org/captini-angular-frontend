@@ -30,7 +30,8 @@ import { CommunityComponent } from './components/community/community.component';
 import { ResetPasswordComponent } from 'src/app/Auth/reset-password/reset-password.component';
 import { TermsOfUseComponent } from 'src/app/Auth/register/policies/termsofuse.component';
 import { ReactivateAccountComponent } from 'src/app/Auth/activate-account/reactivate-account/reactivate-account.component';
-
+import { ReferenceComponent } from './components/reference/reference.component';
+ 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
@@ -57,6 +58,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ResetPasswordComponent,
     TermsOfUseComponent,
     ReactivateAccountComponent,
+    ReferenceComponent,
       ],
   imports: [
     CommonModule,

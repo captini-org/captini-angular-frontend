@@ -9,6 +9,7 @@ import { ReviewComponent } from './components/review/review.component';
 import { LessonDetailsComponent } from './components/topics/lesson/lesson-details/lesson-details.component';
 import { LessonComponent } from './components/topics/lesson/lesson.component';
 import { TopicsComponent } from './components/topics/topics.component';
+import { ReferenceComponent } from './components/reference/reference.component';
 
 const routes: Routes = [
   { path: '', component:LayoutComponent ,
@@ -49,7 +50,10 @@ const routes: Routes = [
       component:FeedbackComponent,
       path:'community-feedback'
     },
-    
+    {
+      component:ReferenceComponent,
+      path:'references'
+    },
     
   ]
 }
