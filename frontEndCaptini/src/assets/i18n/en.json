@@ -116,7 +116,8 @@
 		"leaderBoard": "Leaderboard",
 		"review": "Review",
 		"community": "Community",
-		"statics": "Statistics"
+		"statics": "Statistics",
+		"reference": "References"
 	},
 	"menu": {
 		"updateProfile": "Update Profile",
