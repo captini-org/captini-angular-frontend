@@ -6,6 +6,7 @@ export class ILesson implements Deserializable {
     public subject!:string;
     public prompts!:IPrompts[];
     public number!:number ;
+    public photo!:string ;
     deserialize(input: any): this {
         // Assign input to our object BEFORE deserialize our prompts to prevent already deserialized prompts from being overwritten.
         Object.assign(this, input);

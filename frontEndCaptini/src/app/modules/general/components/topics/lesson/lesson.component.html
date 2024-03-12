@@ -53,12 +53,8 @@
             (click)="goToDetails(lesson.id, topic_id)"
             *ngFor="let lesson of listlesson; let i = index"
           >
-            <div class="card-body bg-yellow">
-              <div class="number">
-                <span *ngIf="listlesson && i < listlesson.length">0</span
-                >{{ i + 1 }}.
-              </div>
-            </div>
+          <div class="card-body" style="background-image: url('{{ lesson.photo }}'); background-size: 100% 100%; background-position: left;height: 40px;"></div>
+
             <div class="progress" style="height: 10px;">
               <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width.%]="(100*listlessonsstatistics[0][i][1])" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
             </div>

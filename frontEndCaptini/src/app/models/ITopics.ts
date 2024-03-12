@@ -6,6 +6,7 @@ export class ITopics implements Deserializable {
     public topic_name!:string;
     public lessons !: ILesson[];
     public number!:number;
+    public photo!:string;
     deserialize(input: any): this {
         // Assign input to our object BEFORE deserialize our cars to prevent already deserialized cars from being overwritten.
         Object.assign(this, input);
