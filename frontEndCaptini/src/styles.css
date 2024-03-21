@@ -4294,9 +4294,9 @@ fieldset:disabled .btn {
 }
 
 .navbar-brand.logo {
-  width: 154px;
-  height: 50px;
-  background-image: url(../src/assets/image/icon/logo.svg);
+  width: 240px;
+  height: 80px;
+  background-image: url(../src/assets/image/logoIcl.png);
   background-repeat: no-repeat;
 }
 
