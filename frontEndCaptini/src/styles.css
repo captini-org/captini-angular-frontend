@@ -4294,8 +4294,8 @@ fieldset:disabled .btn {
 }
 
 .navbar-brand.logo {
-  width: 288px;
-  height: 90px;
+  width: 290px;
+  height: 105px;
   background-image: url(../src/assets/image/logo.png);
   background-repeat: no-repeat;
 }
