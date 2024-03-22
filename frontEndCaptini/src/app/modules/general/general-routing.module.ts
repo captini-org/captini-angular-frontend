@@ -13,7 +13,7 @@ import { ReferenceComponent } from './components/reference/reference.component';
 
 const routes: Routes = [
   { path: '', component:LayoutComponent ,
-  children: [
+    children: [
     {
       path: 'index',
       component:HomeComponent
@@ -38,6 +38,7 @@ const routes: Routes = [
       path:'profile',
       component:ProfileComponent
     },
+    /*
     {
       component:ReviewComponent,
       path:'review'
@@ -49,14 +50,19 @@ const routes: Routes = [
     {
       component:FeedbackComponent,
       path:'community-feedback'
-    },
+    },*/
     {
       component:ReferenceComponent,
       path:'references'
     },
     
   ]
-}
+  
+  },
+  { 
+    path: '**', 
+    redirectTo:'/topics'
+  }
 ];
 
 @NgModule({
