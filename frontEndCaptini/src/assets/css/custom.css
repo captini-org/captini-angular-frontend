@@ -1,6 +1,6 @@
 body.teacher-bird::after {
   content: "";
-  background-image: url(../../assets/image/icon/bird.svg);
+  background-image: url(../../assets/image/illustration.svg);
   position: fixed;
   bottom: 0;
   width: 166px;
