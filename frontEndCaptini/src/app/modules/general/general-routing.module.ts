@@ -58,10 +58,6 @@ const routes: Routes = [
     
   ]
   
-  },
-  { 
-    path: '**', 
-    redirectTo:'/topics'
   }
 ];
 
