@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LangService } from 'src/app/Shared/services/lang.service';
 
 @Component({
   selector: 'app-reference',
@@ -7,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReferenceComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private langServ: LangService) { }
+  switchLang(lang: string) {
+    this.langServ.useLanguage(lang)
+  }
   ngOnInit(): void {
   }
 

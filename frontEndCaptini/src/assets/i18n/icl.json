@@ -19,7 +19,8 @@
 		"logOut": "Skrá út",
 		"edit": "Breyta",
 		"update": "Vista breytingar",
-		"sendResetLink": "Senda hlekk til að endurstilla lykilorð"
+		"sendResetLink": "Senda hlekk til að endurstilla lykilorð",
+		"back": "Farðu Til Baka"
 	},
 	"copyrights": {
 		"copyright": "CAPTinI &copy; 2024",
@@ -118,7 +119,7 @@
 		"review": "Yfirlit",
 		"community": "Samfélag",
 		"statics": "Tölfræði",
-		"reference": "Heimildir"
+		"about": "Um"
 	},
 	"menu": {
 		"updateProfile": "Uppfæra prófil",
@@ -203,5 +204,15 @@
 		"topics-completed": "Bálkum lokið (að fullu)",
 		"pronunciation-feedback": "Endurgjöf um framburð",
 		"points": "stig"
+	},
+	"reference": {
+		"about": "Um",
+		"references": "Heimildir",
+		"about-content": "Vefsíðan  \"Tölvustudd framburðarþjálfun í íslensku \" er sýnishorn af kennslufræðilegum nálgunum, námsumhverfi og kennsluefni í framburðarkennslu með notkun á CAPT tækni (e. Computer Assisted Pronunciation Training; ísl. tölvustudd framburðarþjálfun). Vefsíðan sýnir notendaviðmótið og býður upp á gagnvirka námsupplifun. Megintilgangur vefsíðunnar er að sýna fram á hversu ríkulega kennslukerfið nýtist nemendum og hve lærdómsríkt umhverfi það býður upp á.",
+		"published-articles": "Útgefnar greinar: ",
+		"logo-design": "Hönnun merkisins var unnin út frá merkinu frá ",
+		"reading-exercice": "Framburðaræfingar á CAPTinI eru byggðar á efni ",
+		"pedagoy": "Kennslufræði sem liggur að baki ",
+		"topics-images": "Myndir fyrir bálka: "
 	}
 }

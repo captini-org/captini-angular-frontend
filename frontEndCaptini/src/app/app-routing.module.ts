@@ -11,6 +11,7 @@ import { TermsOfUseComponent } from './Auth/register/policies/termsofuse.compone
 import { DeactivateAccountComponent } from './Auth/deactivate-account/deactivate-account.component';
 import { ActivateAccountComponent } from './Auth/activate-account/activate-account.component';
 import { ReactivateAccountComponent } from './Auth/activate-account/reactivate-account/reactivate-account.component';
+import { ReferenceComponent } from './modules/general/components/reference/reference.component';
 const routes: Routes = [
 
   {
@@ -19,7 +20,6 @@ const routes: Routes = [
     path:'',
     canActivate:[AuthGuard]
   },
-
   {
     component:LoginComponent,
     path:'login'
@@ -60,6 +60,14 @@ const routes: Routes = [
     component:ReactivateAccountComponent,
     path:'reactivate-account/:uid/:token'
   },
+  {
+    component:ReferenceComponent,
+    path:'about-us'
+  },
+  {
+    path: '**',
+    redirectTo: ''
+  }
 ];
 
 @NgModule({

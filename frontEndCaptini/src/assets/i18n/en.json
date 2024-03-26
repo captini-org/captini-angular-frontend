@@ -19,7 +19,8 @@
 		"logOut": "Log out",
 		"edit": "Edit",
 		"update": "Update",
-		"sendResetLink": "Send reset link"
+		"sendResetLink": "Send reset link",
+		"back": "Go Back"
 	},
 	"copyrights": {
 		"copyright": "CAPTinI &copy; 2024",
@@ -117,7 +118,7 @@
 		"review": "Review",
 		"community": "Community",
 		"statics": "Statistics",
-		"reference": "References"
+		"about": "About"
 	},
 	"menu": {
 		"updateProfile": "Update Profile",
@@ -202,5 +203,15 @@
 		"topics-completed": "Topics completed (fully)",
 		"pronunciation-feedback": "Pronunciation feedback",
 		"points": "points"
+	},
+	"reference": {
+		"about": "About",
+		"references": "References",
+		"about-content": "The CAPTinI platform serves as a demonstration of pedagogical approaches, the learning environment, and lesson content for teaching Icelandic pronunciation by using CAPT (Computer Assisted Pronunciation Training) technology. It showcases the user interface and provides an interactive learning experience. Its primary purpose is to illustrate the richness of CAPTinI’s lessons and the engaging environment it offers to learners.",
+		"published-articles": "Published articles: ",
+		"logo-design": "Logo design was inspired by the logo from ",
+		"reading-exercice": "The reading exercises on CAPTinI are based on the content from ",
+		"pedagoy": "Pedagogy underlying ",
+		"topics-images": "Images for topics: "
 	}
 }

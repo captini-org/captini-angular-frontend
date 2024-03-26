@@ -1,33 +1,141 @@
 <div class="container">
-    <section class="review boxed">
+    <div class="breadcrumb">
+        <li class="nav-item" role="presentation">
+          <button
+            class="btn btn-default btn-sm"
+            type="button"
+            routerLink="/"
+          >
+            <svg
+              width="6"
+              height="8"
+              viewBox="0 0 6 8"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2.31629 3.99993L5.20379 6.88743L4.37896 7.71226L0.666626 3.99993L4.37896 0.287598L5.20379 1.11243L2.31629 3.99993Z"
+                fill="#32324D"
+              />
+            </svg>
+            {{'buttons.back' | translate}}
+          </button>
+        </li>
+      </div>
+    <section class="community boxed">
+        
         <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade show active" id="pills-review" role="tabpanel" aria-labelledby="pills-review-tab">
+            <div class="tab-pane fade show active" id="pills-givefeed" role="tabpanel" aria-labelledby="pills-givefeed-tab">
                 <ul class="list-group">
-                    <li class="list-group-item d-flex community-feedback">
-                        <div class="item-content">
-                            <div class="item-content d-flex flex-column">
-                                <span>[1] Sérhljóð. (2023, September 16). In Wikipedia. <a href="https://is.wikipedia.org/wiki/S%C3%A9rhlj%C3%B3%C3%B0" target="_blank">https://is.wikipedia.org/wiki/S%C3%A9rhlj%C3%B3%C3%B0</a><br> (retrieved 12.02.2024). CC BY-SA 3.0 unported. Modified to black and white and added reference marks.</span>
-                            </div>                            
+                    <li class="list-group-item d-flex justify-content-between align-items-center header-item bg-blue">
+                        <div class="item-content d-flex flex-column ">
+                            <b>{{'reference.about' | translate}}</b>
+                            
                         </div>
                     </li>
                     <li class="list-group-item d-flex community-feedback">
                         <div class="item-content">
-                            <div class="item-content d-flex flex-column">
-                                <span>[2] Samhljóð. (2022, May 11). In Wikipedia. <a href="https://is.wikipedia.org/wiki/Samhlj%C3%B3%C3%B0" target="_blank">https://is.wikipedia.org/wiki/Samhlj%C3%B3%C3%B0</a> <br>(retrieved 12.02.2024). CC BY-SA 3.0 unported. Modified to black and white and added reference marks.</span>
+                            <div class="item-content d-flex d-inline-flex">
+                                <aside class="ms-2">
+                                    <p>
+                                        {{'reference.about-content' | translate}}
+                                    </p>
+                                </aside>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center header-item bg-blue">
+                        <div class="item-content d-flex flex-column ">
+                            <b>{{'reference.references' | translate}}</b>
+                        </div>
+                    </li>
+                    <li class="list-group-item d-flex community-feedback">
+                        <div class="item-content">
+                            <div class="item-content d-flex d-inline-flex">
+                                <aside class="ms-2">
+                                    <b>{{'reference.published-articles' | translate}} </b>
+                                    <div class="mt-3">
+                                        <div class="mt-3"><a href="https://research-publishing.net/publication/chapters/978-2-38372-015-7/1480.pdf">Computer-assisted pronunciation training in Icelandic (CAPTinI): developing a method for quantifying mispronunciation in L2 speech
+                                            Orthography-based pronunciation scoring for better CAPT feedback </a></div>
+                                    </div>
+                                </aside>
                             </div>
                         </div>
                     </li>
                     <li class="list-group-item d-flex community-feedback">
                         <div class="item-content">
-                            <div class="item-content d-flex flex-column">
-                                <span>[3] Idealistic tongue positions of cardinal front vowels with highest point indicated. (2008, February 11). In Wikipedia. <a href="https://en.wikipedia.org/wiki/Vowel#/media/File:Cardinal_vowel_tongue_position-front.svg" target="_blank">https://en.wikipedia.org/wiki/Vowel#/media/File:Cardinal_vowel_tongue_position-front.svg</a><br>(retrieved 05.03.2024). CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=3539944. Modified to black and white and added a reference </span>
+                            <div class="item-content d-flex d-inline-flex">
+                                <aside class="ms-2">
+                                    <b>{{'reference.logo-design' | translate}}</b><a href="https://icelandiconline.com/"><b>Icelandic Online</b></a>
+                                </aside>
                             </div>
                         </div>
                     </li>
                     <li class="list-group-item d-flex community-feedback">
                         <div class="item-content">
-                            <div class="item-content d-flex flex-column">
-                                <span>[4] File:IPA-euler-manners-features.svg. (2022, May 31). In Wikipedia. <a href="https://en.wikipedia.org/wiki/File:IPA-euler-manners-features.svg" target="_blank">https://en.wikipedia.org/wiki/File:IPA-euler-manners-features.svg</a><br>(retrieved 05.03.2024). Creative Commons Attribution-Share Alike 4.0 International. Modified to black and white, added white background and added a reference mark.</span>
+                            <div class="item-content d-flex d-inline-flex">
+                                <aside class="ms-2">
+                                    <b>{{'reference.reading-exercice' | translate}} </b><a href="https://icelandiconline.com/"><b>Icelandic Online</b></a>
+                                    
+                                </aside>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item d-flex community-feedback">
+                        <div class="item-content">
+                            <div class="item-content d-flex d-inline-flex">
+                                <aside class="ms-2">
+                                    <b>{{'reference.pedagoy' | translate}} </b><a href="https://icelandiconline.com/"><b>Icelandic Online</b></a>
+                                    <div class="mt-3">
+                                        <div class="mt-3"><a href="https://millimala.hi.is/wp-content/uploads/2022/01/2021-2-Birna-Arnbjo%CC%88rnsdo%CC%81ttir.pdf">[1] Tölvutengd tungumálakennsla: Kennslufræði, árangur og möguleikar Icelandic Online námskerfisins</a></div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <div class="mt-3">[2] Arnbjörnsdóttir, B. (2004). Teaching morphologically complex languages online: Theoretical questions and practical answers. In P. J. Henrichsen (Ed.), CALL for the Nordic languages. Tools and methods for computer assisted language learning (pp. 79–94). Copenhagen: Samfundslitteratur.</div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <div class="mt-3"><a href="https://www.cambridge.org/core/journals/recall/article/abs/effect-of-contentrelated-and-external-factors-on-student-retention-in-lmoocs/28BD10D22489BCB3BBFEC423306C33E5">[3] The effect of content-related and external factors on student retention in LMOOCs</a></div>
+                                    </div>
+                                </aside>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item community-feedback">
+                        <div class="item-content">
+                            <div class="item-content">
+                                <aside class="ms-2">
+                                    <b>{{'reference.topics-images' | translate}} </b> 
+                                    <div class="mt-3">
+                                        <div class="mt-3">
+                                            [1] Sérhljóð. (2023, September 16). In Wikipedia. 
+                                            <a href="https://is.wikipedia.org/wiki/Sérhljóð">https://is.wikipedia.org/wiki/Sérhljóð</a> 
+                                            (retrieved 12.02.2024). CC BY-SA 3.0 unported. Modified to black and white and added reference marks.
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <div class="mt-3">
+                                            [2] Samhljóð. (2022, May 11). In Wikipedia. 
+                                            <a href="https://is.wikipedia.org/wiki/Samhljóð">https://is.wikipedia.org/wiki/Samhljóð</a> 
+                                            (retrieved 12.02.2024). CC BY-SA 3.0 unported. Modified to black and white and added reference marks.
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <div class="mt-3">
+                                            [3] Idealistic tongue positions of cardinal front vowels with highest point indicated. (2008, February 11). In Wikipedia.
+                                            <a style="display: block; word-break: break-all;" href="https://en.wikipedia.org/wiki/Vowel#/media/File:Cardinal_vowel_tongue_position-front.svg">https://en.wikipedia.org/wiki/Vowel#/media/File:Cardinal_vowel_tongue_position-front.svg</a> 
+                                            (retrieved 05.03.2024). CC BY-SA 4.0,
+                                            <a href="https://commons.wikimedia.org/w/index.php?curid=3539944">https://commons.wikimedia.org/w/index.php?curid=3539944 </a> 
+                                            Modified to black and white and added a reference 
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <div class="mt-3">
+                                            [4] File:IPA-euler-manners-features.svg. (2022, May 31). In Wikipedia. 
+                                            <a href="https://en.wikipedia.org/wiki/File:IPA-euler-manners-features.svg">https://en.wikipedia.org/wiki/File:IPA-euler-manners-features.svg</a> 
+                                            (retrieved 05.03.2024). Creative Commons Attribution-Share Alike 4.0 International. Modified to black and white, added white background and added a reference mark.
+                                        </div>
+                                    </div>
+                                </aside>
                             </div>
                         </div>
                     </li>
@@ -35,4 +143,12 @@
             </div>
         </div>
     </section>
+</div>
+<div class="text-center">
+    <div>
+        <a [routerLink]="" (click)="switchLang('en')"><img src="../../../assets/image/flag/en.png" alt="England" class="pe-2"></a>
+        <a [routerLink]="" (click)="switchLang('icl')"><img src="../../../assets/image/flag/icl.png" alt="Iceland"></a>
+    </div>
+    <hr>
+    <p class="text-muted text-center">CAPTinI &copy; 2024</p>
 </div>

@@ -38,6 +38,10 @@ const routes: Routes = [
       path:'profile',
       component:ProfileComponent
     },
+    {
+      component:ReferenceComponent,
+      path:'about'
+    },
     /*
     {
       component:ReviewComponent,
@@ -51,10 +55,6 @@ const routes: Routes = [
       component:FeedbackComponent,
       path:'community-feedback'
     },*/
-    {
-      component:ReferenceComponent,
-      path:'references'
-    },
     
   ]
   

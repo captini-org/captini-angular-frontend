@@ -39,10 +39,11 @@
         </form>
         <div class="text-center">
             <div>
-                <a [routerLink]="" (click)="switchLang( 'en')"><img src="../../../assets/image/flag/en.png" alt="England" class="pe-2"></a>
-                <a [routerLink]="" (click)="switchLang( 'icl')"><img src="../../../assets/image/flag/icl.png" alt="Iceland"></a>
+                <a [routerLink]="" (click)="switchLang('en')"><img src="../../../assets/image/flag/en.png" alt="England" class="pe-2"></a>
+                <a [routerLink]="" (click)="switchLang('icl')"><img src="../../../assets/image/flag/icl.png" alt="Iceland"></a>
             </div>
             <hr>
+            <a class="text-muted text-center" routerLink="/about-us">{{ 'header.about' | translate }}</a>
             <p class="text-muted text-center">CAPTinI &copy; 2024</p>
         </div>
     </div>
