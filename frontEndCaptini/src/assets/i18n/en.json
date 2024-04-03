@@ -212,6 +212,8 @@
 		"logo-design": "Logo design was inspired by the logo from ",
 		"reading-exercice": "The reading exercises on CAPTinI are based on the content from ",
 		"pedagoy": "Pedagogy underlying ",
-		"topics-images": "Images for topics: "
+		"topics-images": "Images for topics: ",
+		"collaboration": "The following institutes and company collaborated on this project:",
+		"collaboration-content": "Reykjavik University, University of Iceland, Tiro ehf and The Árni Magnússon Institute for Icelandic Studies. The software development company Víkonnekt (founded by Safa Jemai) worked as a contractor on this project. Other participants were Marc Skipstað Volhardt and Bjarni Barkarson, as well as three students who worked on this project through funding received from the Student Innovation Fund: Theresia Mita Erika, Davide Parente and Daniel Logi Matthíason. Project management was handled by Reykjavik University. This project is open source. Code and models can be found here: https://github.com/captini-org. If you have questions or suggestions and would like to contact us, please contact: _____________."
 	}
 }
